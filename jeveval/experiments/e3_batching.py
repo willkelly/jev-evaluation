@@ -54,12 +54,31 @@ it once rather than twice saves 3,000 calls for no loss of information.
 
 Three things worth stating because they shape the numbers.
 
-*The target is the semantic control at its "hard" level, not its default.* The
-smoke test notes that the clean level is solvable by keyword matching alone. A
-target the model answers perfectly has no headroom for decay to appear in, so a
-flat curve would be evidence of a ceiling rather than of parallelism. At the
-hard level the keyword baseline is about 0.37 against a 0.125 random baseline,
-which leaves room for a decay to show up as one.
+*The positional-decay target is a Dyck balance question, chosen by measurement
+rather than by argument.* A target the model answers perfectly has no headroom
+for decay to appear in, so a flat curve would be evidence of a ceiling rather
+than of parallelism -- and this experiment's whole job is to decide whether the
+architecture is genuinely parallel. The semantic control was the obvious base
+task and turns out to be unusable: at its hard level this model scores 0.958 on
+48 held-out instances, and E8 independently measured 40/40 with AUROC 1.00 on
+the same task. Four points of room cannot show a 5% decay.
+
+Candidates were measured against this model before choosing:
+
+    semantic/hard choice     accuracy 0.958   headroom 0.04   rejected
+    dyck length 24 depth 4   accuracy 0.833   headroom 0.17   chosen
+    graphreach 3 hops        accuracy 0.688   headroom 0.31
+
+Being hard is not sufficient on its own. E2 measured that this model answers
+"satisfiable" for 100% of 3SAT instances at every ratio, and a model that
+returns a constant shows zero decay no matter where the question sits, so a
+3SAT target would produce the same false confirmation of P7 by the opposite
+route. The chosen target is both below ceiling and demonstrably sensitive to
+its state.
+
+The contamination condition still uses the semantic control, because it
+measures probability drift between batched and unbatched answers rather than
+accuracy, and drift is measurable at a ceiling.
 
 *Drift is measured as total-variation distance between the batched and
 unbatched answer distributions.* A noul answer carries no confidence field --
@@ -94,7 +113,7 @@ from typing import Any, Sequence
 
 from .. import config, metrics, plots, predictions, tiers
 from ..client import Call, CallResult, JevClient
-from ..generators import filler, sat3, semantic
+from ..generators import dyck, filler, sat3, semantic
 from ..instances import Instance, noul, rng_for
 
 EXPERIMENT = "E3"
@@ -128,8 +147,36 @@ EASY_QUESTIONS = 9
 SAT_RATIO = 4.25
 SAT_VARS = 20
 
-# The semantic control's hard level: see the module docstring on headroom.
+# The semantic control's hard level, still used by the contamination condition,
+# which measures probability drift rather than accuracy and so is not blocked by
+# a ceiling.
 TARGET_LEVEL = "hard"
+
+# The positional-decay target is a Dyck balance question, not a routing ticket.
+# Measured on 48 fresh instances of each candidate against this model:
+#
+#   semantic/hard choice     accuracy 0.958   headroom 0.04
+#   dyck length 24 depth 4   accuracy 0.833   headroom 0.17
+#   graphreach 3 hops        accuracy 0.688   headroom 0.31
+#
+# Routing leaves 4 points of room, so a 5% decay is inside the measurement and
+# P7 ("no positional decay") would score right whether or not decay exists --
+# on the plan's own load-bearing experiment.
+#
+# 3SAT is unusable here despite being hard for a different reason: E2 measured
+# that this model answers "satisfiable" for 100% of instances at every ratio,
+# and a constant answerer shows zero decay by construction. A usable target has
+# to be both below ceiling and actually sensitive to its state, which is what
+# the "const" column of that measurement checks.
+TARGET_GENERATOR = dyck
+TARGET_DIFFICULTY = {"length": 24, "max_depth": 4}
+TARGET_HEADROOM_NOTE = (
+    "Positional-decay target is dyck(length=24, max_depth=4), measured at "
+    "accuracy 0.833 against a 0.500 majority baseline on 48 held-out instances. "
+    "The semantic control's hard level was rejected as the target: it measured "
+    "0.958, leaving too little room for a decay of the size the plan cares about "
+    "to be visible."
+)
 
 # Filler accuracy is also read as a function of each filler's own position,
 # which gives a 255-point positional curve for free from the same calls. Binned
@@ -254,10 +301,29 @@ def _p_correct(answer: dict, truth: Any) -> float | None:
 
 
 def _target_instances(n: int) -> list[Instance]:
-    """`n` support-ticket routing instances at the hard level, one choice each."""
-    return semantic.generate_choice(
-        seed=config.seed_for(EXPERIMENT, "targets"), count=n, level=TARGET_LEVEL
+    """`n` target instances with one question each, chosen for headroom.
+
+    See TARGET_HEADROOM_NOTE. The instance carries exactly one question, so
+    callers take its key rather than naming a generator-specific constant --
+    which is what lets the target task be swapped without touching the three
+    conditions that consume it.
+    """
+    return TARGET_GENERATOR.generate(
+        difficulty=dict(TARGET_DIFFICULTY),
+        seed=config.seed_for(EXPERIMENT, "targets"),
+        count=n,
     )
+
+
+def _target_key(inst: Instance) -> str:
+    """The instance's single question key."""
+    keys = list(inst.questions)
+    if len(keys) != 1:
+        raise ValueError(
+            f"target instance {inst.instance_id} has {len(keys)} questions; "
+            "the positional-decay conditions assume exactly one"
+        )
+    return keys[0]
 
 
 def _block(index: int, count: int, tag: str) -> filler.FillerBlock:
@@ -364,7 +430,7 @@ def _position_calls(
 ) -> list[Call]:
     calls: list[Call] = []
     for i, (inst, block, state) in enumerate(zip(targets, blocks, states)):
-        key = semantic.KEY_CHOICE
+        key = _target_key(inst)
         target_q = inst.questions[key]
         target_truth = inst.truth[key]
         for position in POSITIONS:
@@ -928,7 +994,7 @@ def _count_calls(
     """Target at position 1, question count swept, state held identical."""
     calls: list[Call] = []
     for i, (inst, block, state) in enumerate(zip(targets, blocks, states)):
-        key = semantic.KEY_CHOICE
+        key = _target_key(inst)
         target_q = inst.questions[key]
         target_truth = inst.truth[key]
         for count in COUNTS:
@@ -976,7 +1042,7 @@ def _order_calls(
     calls: list[Call] = []
     for i, (inst, block, state) in enumerate(zip(targets, blocks, states)):
         rng = rng_for(EXPERIMENT, {"condition": "order"}, seed, i)
-        key = semantic.KEY_CHOICE
+        key = _target_key(inst)
         items = [(inst.questions[key], inst.truth[key])] + [
             (block.questions[k], block.truth[k]) for k in block.questions
         ]
@@ -1827,7 +1893,8 @@ def run(run_dir: Path) -> dict:
     decay_50_ci = position.get("decay_ci", {}).get(50)
     n_at_50 = position.get("n", {}).get(50, 0)
 
-    notes = _sample_size_notes(n, position, counts, contamination, interference)
+    notes = [TARGET_HEADROOM_NOTE]
+    notes += _sample_size_notes(n, position, counts, contamination, interference)
     joint = {t.tier for t in tier_results}
     if len(joint) == 1 and len({t.tier for t in decay_only}) > 1:
         notes.append(
