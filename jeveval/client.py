@@ -205,6 +205,13 @@ class RunLog:
 
 RETRY_STATUSES = {408, 409, 425, 429, 500, 502, 503, 504}
 
+# Statuses that will not come right by retrying or by waiting, and that every
+# subsequent call in the run will hit identically: an exhausted credit balance,
+# a rejected key, a revoked one. Continuing past the first of these produces
+# nothing but a log full of identical failures -- an out-of-credits balance
+# discovered partway through E3 burned 3,488 calls before anything noticed.
+FATAL_STATUSES = {401, 402, 403}
+
 
 def _rubric_ids(questions: dict[str, dict]) -> dict[str, list[str]]:
     """Rubric ids per score question, in wire order, or {} if there are none."""
@@ -236,6 +243,8 @@ class JevClient:
         self._ssl = ssl.create_default_context()
         self._local = threading.local()
         self._key: str | None = None
+        self._fatal: str | None = None
+        self._fatal_status: int | None = None
 
         # Run-level counters the report header needs.
         self._counter_lock = threading.Lock()
@@ -303,6 +312,17 @@ class JevClient:
     # -- one call ---------------------------------------------------------
 
     def call(self, spec: Call) -> CallResult:
+        # Once the run has hit an unrecoverable condition, every later call
+        # would fail the same way. Return without touching the network, and
+        # count it as a failure so the totals stay honest about what was not
+        # measured.
+        if self._fatal is not None:
+            self._tally(failed=True)
+            return CallResult(
+                call=spec, ok=False, http_status=self._fatal_status,
+                error=f"aborted before sending: {self._fatal}",
+            )
+
         body_obj = wire.build_request(
             state=spec.state, questions=spec.questions, model=self.model
         )
@@ -383,6 +403,19 @@ class JevClient:
 
             # Non-retryable error.
             if status != 200:
+                if status in FATAL_STATUSES and self._fatal is None:
+                    detail = ""
+                    if isinstance(payload, dict):
+                        d = payload.get("detail")
+                        detail = (d or {}).get("message", "") if isinstance(d, dict) else str(d or "")
+                    self._fatal = f"HTTP {status}: {detail or 'unrecoverable'}"
+                    self._fatal_status = status
+                    print(
+                        f"\n  ABORTING RUN -- {self._fatal}\n"
+                        f"  Every remaining call would fail identically. "
+                        f"{self.total_calls} calls completed so far.\n",
+                        flush=True,
+                    )
                 record["outcome"] = "error"
                 self.log.write(record)
                 self._tally(failed=True)
@@ -555,6 +588,8 @@ class JevClient:
             "peak_concurrency": self.limiter.peak_limit,
             "final_concurrency": self.limiter.limit,
             "throttle_events": self.limiter.throttle_events,
+            "throttle_episodes": self.limiter.throttle_episodes,
+            "aborted": self._fatal,
             "status_counts": dict(self.status_counts),
             "log_path": str(self.log.path),
             "log_records": self.log.records,
