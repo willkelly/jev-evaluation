@@ -715,6 +715,43 @@ def _reference_modes(
 MARGIN_BANDS: tuple[float, ...] = (0.0, 0.2, 0.4, 0.6, 0.8, 1.0)
 
 
+# Gap bands are narrow at the bottom because that is the only region where the
+# argmax can move: the probability's own standard deviation is around 0.01-0.02,
+# so a top-two gap of that size is where flips live.
+GAP_BANDS: tuple[float, ...] = (0.0, 0.02, 0.05, 0.10, 0.25, 1.0)
+
+
+def _top_two_gap(answer: dict) -> float | None:
+    """Distance between the best and second-best option.
+
+    This, rather than the winner's probability, is what predicts whether a
+    repeated call returns the same discrete answer. A distribution can be flat
+    -- a winner at 0.30 -- and still be answered identically every time if the
+    runner-up is far below it; a distribution can be sharp and still flip if two
+    options are a hundredth apart.
+
+    The distinction is not hypothetical. A semantic-routing instance measured by
+    hand returned two different departments across 30 identical calls, 18 to 12,
+    while the pooled choice agreement over E1's own 1500 observations was
+    1.0000: E1's ten hard states simply contained no near-tie. Reporting the
+    pooled number alone would tell a reader the model is deterministic on
+    choices, when what is deterministic is the distribution, not the argmax of a
+    distribution whose top two are within its own jitter.
+
+    A noul is the two-outcome case of the same quantity: its options are p and
+    1 - p, so the gap is |2p - 1|.
+    """
+    if answer.get("type") == "noul":
+        p = answer.get("p")
+        return abs(2.0 * float(p) - 1.0) if isinstance(p, (int, float)) else None
+    probs = answer.get("probabilities") or {}
+    if len(probs) < 2:
+        top = answer.get("max_probability")
+        return float(top) if isinstance(top, (int, float)) else None
+    ordered = sorted((float(v) for v in probs.values()), reverse=True)
+    return ordered[0] - ordered[1]
+
+
 def _decidedness(answer: dict) -> float | None:
     """How committed one answer is, on a common 0-to-1 scale.
 
@@ -795,13 +832,93 @@ def agreement_by_margin(data: Collected) -> dict:
     spread = None
     if len(rows) >= 2:
         spread = max(r["agreement"] for r in rows) - min(r["agreement"] for r in rows)
+    gap = agreement_by_top_two_gap(data)
     return {
         "bands": rows,
         "agreement_spread_across_bands": spread,
+        "by_top_two_gap": gap["bands"],
+        "narrowest_gap_observed": gap["narrowest_gap_observed"],
+        "near_tie_cells": gap["near_tie_cells"],
+        "coverage_warning": gap["coverage_warning"],
         "note": (
             "Decidedness is the returned max probability for choice and score, "
-            "and |p - 0.5| * 2 for noul, which carries no confidence field."
+            "and |p - 0.5| * 2 for noul, which carries no confidence field. The "
+            "top-two-gap split is the one that predicts whether the discrete "
+            "answer repeats; see _top_two_gap."
         ),
+    }
+
+
+def agreement_by_top_two_gap(data: Collected) -> dict:
+    """Repeat-agreement as a function of the gap between the top two options.
+
+    Separate from the margin split because the two can disagree: a winner at
+    0.30 with nothing else above 0.05 repeats perfectly, and a winner at 0.90
+    with a runner-up at 0.89 does not.
+
+    `coverage_warning` exists because a pooled agreement of 1.0 is only evidence
+    that the model is stable where it was *measured*. If no cell in the sample
+    had a top-two gap near the probability's own jitter, then the sample never
+    tested the case where flipping is possible, and the report must say so
+    rather than letting the reader generalise from it.
+    """
+    buckets: dict[str, dict] = {}
+    for lo, hi in zip(GAP_BANDS, GAP_BANDS[1:]):
+        buckets[f"{lo:.2f}-{hi:.2f}"] = {
+            "cells": 0, "observations": 0, "agreements": 0
+        }
+    narrowest: float | None = None
+    near_tie = 0
+
+    for (_iid, _key), reps in data.cells(REFERENCE_CONDITION).items():
+        if len(reps) < MIN_REPS_FOR_AGREEMENT:
+            continue
+        gaps = [g for g in (_top_two_gap(r["answer"]) for r in reps) if g is not None]
+        if not gaps:
+            continue
+        gap = sum(gaps) / len(gaps)
+        narrowest = gap if narrowest is None else min(narrowest, gap)
+        if gap < GAP_BANDS[1]:
+            near_tie += 1
+        label = None
+        for lo, hi in zip(GAP_BANDS, GAP_BANDS[1:]):
+            if lo <= gap < hi or (hi == GAP_BANDS[-1] and gap >= lo):
+                label = f"{lo:.2f}-{hi:.2f}"
+                break
+        if label is None:
+            continue
+        b = buckets[label]
+        flags = _leave_one_out_flags([_discrete(r["answer"]) for r in reps])
+        b["cells"] += 1
+        b["observations"] += len(flags)
+        b["agreements"] += len(flags) - sum(flags)
+
+    rows = [
+        {
+            "gap_band": label,
+            "cells": b["cells"],
+            "observations": b["observations"],
+            "agreement": b["agreements"] / b["observations"],
+        }
+        for label, b in buckets.items()
+        if b["observations"]
+    ]
+    warning = None
+    if near_tie == 0:
+        warning = (
+            f"No cell in this sample had a top-two gap below {GAP_BANDS[1]:.2f}, "
+            f"the scale of the probability's own standard deviation. The "
+            f"narrowest gap seen was {narrowest:.3f} if any. Agreement measured "
+            "here therefore says nothing about near-ties, which is the case "
+            "where a repeated call can return a different option. A hand-probed "
+            "routing instance with a near-tie returned two different answers "
+            "across 30 identical calls, 18 to 12."
+        )
+    return {
+        "bands": rows,
+        "narrowest_gap_observed": narrowest,
+        "near_tie_cells": near_tie,
+        "coverage_warning": warning,
     }
 
 
