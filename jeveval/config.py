@@ -105,7 +105,14 @@ class RateConfig:
     min_concurrency: int = 1
     # Multiplicative-decrease on 429 / 5xx, additive-increase on sustained success.
     backoff_factor: float = 0.5
+    # Kept for compatibility; the limiter now climbs after roughly `limit`
+    # successes, with this as the floor, so recovery costs a constant number of
+    # round trips instead of a constant number of calls.
     increase_after_successes: int = 50
+    min_successes_to_increase: int = 12
+    # A burst of rejections from requests already in flight is one throttling
+    # event seen many times. Only the first decrease within this window counts.
+    throttle_cooldown: float = 2.0
     max_retries: int = 6
     base_retry_delay: float = 1.0
     max_retry_delay: float = 60.0

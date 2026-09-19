@@ -112,6 +112,8 @@ class AdaptiveLimiter:
         self._cond = threading.Condition()
         self.peak_limit = self.limit
         self.throttle_events = 0
+        self.throttle_episodes = 0
+        self._last_decrease = 0.0
 
     def acquire(self) -> int:
         with self._cond:
@@ -128,18 +130,35 @@ class AdaptiveLimiter:
     def on_success(self) -> None:
         with self._cond:
             self._successes += 1
-            if (
-                self._successes >= self._rate.increase_after_successes
-                and self.limit < self._rate.max_concurrency
-            ):
+            # Climb a step once a number of successes proportional to the
+            # current limit have landed, so recovery takes roughly a constant
+            # number of round trips rather than a constant number of calls. With
+            # a flat threshold, a limit knocked down to 1 needed 50 successes at
+            # about 2 calls/s to regain a single step -- twenty minutes to climb
+            # back to where it started, which is slower than the throttling it
+            # was reacting to.
+            need = max(self._rate.min_successes_to_increase, self.limit)
+            if self._successes >= need and self.limit < self._rate.max_concurrency:
                 self._successes = 0
-                self.limit += 1
+                self.limit += max(1, self.limit // 8)
+                self.limit = min(self.limit, self._rate.max_concurrency)
                 self.peak_limit = max(self.peak_limit, self.limit)
-                self._cond.notify()
+                self._cond.notify_all()
 
     def on_throttle(self) -> None:
         with self._cond:
             self.throttle_events += 1
+            now = time.time()
+            # Every request already in flight when the endpoint starts throttling
+            # tends to come back throttled, so a burst of N rejections is one
+            # event observed N times. Halving per rejection compounds it: four
+            # 429s out of 533 calls took the limit from 128 to 1. Collapse a
+            # burst into a single decrease by ignoring further throttles until
+            # the in-flight requests from before the cut have had time to drain.
+            if now - self._last_decrease < self._rate.throttle_cooldown:
+                return
+            self._last_decrease = now
+            self.throttle_episodes += 1
             self._successes = 0
             self.limit = max(
                 self._rate.min_concurrency, int(self.limit * self._rate.backoff_factor)
