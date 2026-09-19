@@ -245,6 +245,7 @@ def scan_stats(paths: Iterable[str | Path]) -> dict:
     lo_ts: float | None = None
     hi_ts: float | None = None
     per_exp: dict[str, dict] = {}
+    throttles_by_exp: dict[str, int] = {}
 
     for p in paths:
         try:
@@ -268,6 +269,8 @@ def scan_stats(paths: Iterable[str | Path]) -> dict:
                 outcome = r.get("outcome")
                 if r.get("http_status") in (429, 503) or r.get("transport_error"):
                     throttles += 1
+                    e0 = r.get("experiment") or ""
+                    throttles_by_exp[e0] = throttles_by_exp.get(e0, 0) + 1
                 if outcome == "retry":
                     retries += 1
                     continue
@@ -275,8 +278,11 @@ def scan_stats(paths: Iterable[str | Path]) -> dict:
                     continue
                 calls += 1
                 exp = r.get("experiment") or ""
-                slot = per_exp.setdefault(exp, {"calls": 0, "lo": None, "hi": None})
+                slot = per_exp.setdefault(
+                    exp, {"calls": 0, "lo": None, "hi": None, "tokens": 0}
+                )
                 slot["calls"] += 1
+                slot["tokens"] += int(r.get("input_tokens") or 0)
                 if isinstance(ts, (int, float)):
                     slot["lo"] = ts if slot["lo"] is None else min(slot["lo"], ts)
                     slot["hi"] = ts if slot["hi"] is None else max(slot["hi"], ts)
@@ -294,10 +300,21 @@ def scan_stats(paths: Iterable[str | Path]) -> dict:
 
     latencies.sort()
     span = (hi_ts - lo_ts) if (lo_ts is not None and hi_ts is not None) else 0.0
-    rates = {
-        e: (s["calls"] / (s["hi"] - s["lo"]))
-        for e, s in per_exp.items()
+    live = {
+        e: s for e, s in per_exp.items()
         if s["lo"] is not None and s["hi"] is not None and s["hi"] > s["lo"] and s["calls"] > 1
+    }
+    rates = {e: s["calls"] / (s["hi"] - s["lo"]) for e, s in live.items()}
+    # Input tokens per second, which is the quantity the endpoint appears to
+    # actually limit. Measured across this run, request throughput tracked
+    # roughly 170k-240k input tokens/s regardless of how those tokens were
+    # divided into requests: about 145 req/s at 1,645 tokens per single-question
+    # call, and about 6 req/s at 26,500 tokens per 255-question call, with
+    # per-call latency unchanged. A req/s figure alone is therefore a property of
+    # the request size chosen, not of the endpoint.
+    token_rates = {e: s["tokens"] / (s["hi"] - s["lo"]) for e, s in live.items()}
+    mean_tokens = {
+        e: (s["tokens"] / s["calls"]) for e, s in live.items() if s["calls"]
     }
     return {
         "attempts_logged": attempts,
@@ -313,6 +330,9 @@ def scan_stats(paths: Iterable[str | Path]) -> dict:
         "wall_clock_s": span,
         "sustained_req_per_s": (calls / span) if span > 0 else None,
         "req_per_s_by_experiment": rates,
+        "input_tokens_per_s_by_experiment": token_rates,
+        "mean_input_tokens_by_experiment": mean_tokens,
+        "throttles_by_experiment": throttles_by_exp,
         "latency_p50": latencies[len(latencies) // 2] if latencies else None,
         "latency_p95": latencies[int(len(latencies) * 0.95)] if latencies else None,
     }

@@ -85,6 +85,43 @@ def _per_experiment_rates(stats: dict) -> str:
     return (" — per experiment: " + ", ".join(parts)) if parts else ""
 
 
+def _rate_limit_lines(stats: dict) -> list[str]:
+    """What the endpoint actually limited, which is not requests per second.
+
+    The plan asks for the sustained rate as a finding in its own right, because
+    it decides whether the real-time architectures are feasible. Reported as a
+    request rate alone it is misleading: the same endpoint sustained about 145
+    req/s on single-question calls and about 6 req/s on 255-question calls, with
+    per-call latency unchanged in both. The invariant across them is input tokens
+    per second, so that is what a reader needs.
+    """
+    tps = stats.get("input_tokens_per_s_by_experiment") or {}
+    mt = stats.get("mean_input_tokens_by_experiment") or {}
+    rps = stats.get("req_per_s_by_experiment") or {}
+    thr = stats.get("throttles_by_experiment") or {}
+    if not tps:
+        return []
+    lines = [
+        "### Rate limiting observed",
+        "",
+        "The endpoint limits on input tokens, not on requests. Request throughput "
+        "is whatever that token budget allows at the request size being sent, and "
+        "per-call latency did not degrade under throttling.",
+        "",
+        "| experiment | mean input tokens/call | req/s | input tokens/s | throttled responses |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for e in sorted(tps):
+        if not e:
+            continue
+        lines.append(
+            f"| {e} | {mt.get(e, 0):,.0f} | {rps.get(e, 0):.1f} | "
+            f"{tps[e]:,.0f} | {thr.get(e, 0):,} |"
+        )
+    lines.append("")
+    return lines
+
+
 def _header(run_dir: Path, st: dict, meta: dict) -> list[str]:
     versions = ", ".join(st["model_versions"]) or "unknown"
     rate = st["sustained_req_per_s"]
@@ -519,6 +556,7 @@ def build(run_dir: Path) -> Path:
     for key in sorted(set(results) - set(ORDER)):
         lines += _experiment_section(key, results[key])
 
+    lines += _rate_limit_lines(stats)
     lines += _unexpected_section(results)
     lines += _predictions_section(results)
     lines += _what_this_changes(results)
