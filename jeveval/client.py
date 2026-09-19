@@ -187,6 +187,15 @@ class RunLog:
 RETRY_STATUSES = {408, 409, 425, 429, 500, 502, 503, 504}
 
 
+def _rubric_ids(questions: dict[str, dict]) -> dict[str, list[str]]:
+    """Rubric ids per score question, in wire order, or {} if there are none."""
+    out: dict[str, list[str]] = {}
+    for key, q in questions.items():
+        if q.get("type") == "score":
+            out[key] = [str(r["id"]) for r in (q.get("rubric") or [])]
+    return out
+
+
 class JevClient:
     def __init__(
         self,
@@ -310,6 +319,14 @@ class JevClient:
                 "condition": spec.condition,
                 "instance_id": spec.instance_id,
                 "repetition": spec.repetition,
+                # The wire form loses one thing the caller needs back: a score
+                # question's rubric travels as a list of labels, so the caller's
+                # rubric ids -- which are what ground truth is expressed in --
+                # are not recoverable from the request alone. Without this the
+                # log cannot rescore a score question offline, which the plan
+                # requires. Choice questions need no equivalent, because their
+                # option ids are the criteria keys.
+                "rubric_ids": _rubric_ids(spec.questions),
                 "attempt": attempt,
                 "http_status": status,
                 "request_id": request_id,

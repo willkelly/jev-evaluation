@@ -159,23 +159,40 @@ def answers_of(record: dict) -> dict[str, dict]:
         elif atype == "score":
             idx = {int(k): float(v) for k, v in (ans.get("probabilities") or {}).items()}
             labels = wq.get("criteria") or []
-            by_label: dict[str, float] = {}
-            for i, lab in enumerate(labels):
-                name = lab.get("label") if isinstance(lab, dict) else str(lab)
-                if i in idx:
-                    by_label[str(name)] = idx[i]
+            # Ground truth for a score question is the caller's rubric id, but
+            # the wire carries only labels. The client records the id list per
+            # score question for exactly this reason; when it is present, key
+            # the result by id so an offline rescore matches a live one. Without
+            # it, fall back to labels and say so, rather than returning labels
+            # under a name that implies they are ids -- that silently rescores
+            # every score question as wrong.
+            rubric_ids = (record.get("rubric_ids") or {}).get(key) or []
+            keyed_by_id = bool(rubric_ids) and len(rubric_ids) >= len(labels)
+
+            def name_at(i: int) -> str | None:
+                if keyed_by_id and i < len(rubric_ids):
+                    return str(rubric_ids[i])
+                if i < len(labels):
+                    lab = labels[i]
+                    return str(lab.get("label") if isinstance(lab, dict) else lab)
+                return None
+
+            by_name: dict[str, float] = {}
+            for i in range(len(labels)):
+                nm = name_at(i)
+                if nm is not None and i in idx:
+                    by_name[nm] = idx[i]
             chosen = None
             if idx:
                 best = max(idx, key=lambda i: idx[i])
-                if 0 <= best < len(labels):
-                    lab = labels[best]
-                    chosen = str(lab.get("label") if isinstance(lab, dict) else lab)
+                chosen = name_at(best)
             out[key] = {
                 "type": "score",
                 "score": _f(ans.get("score")),
                 "chosen": chosen,
+                "chosen_is_rubric_id": keyed_by_id,
                 "confidence": _f(ans.get("confidence")),
-                "probabilities": by_label,
+                "probabilities": by_name,
                 "index_probabilities": idx,
                 "legend": ans.get("legend"),
                 "max_probability": max(idx.values()) if idx else None,

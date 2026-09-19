@@ -225,15 +225,54 @@ class TestLogstore(unittest.TestCase):
         self.assertAlmostEqual(a["q"]["p"], 0.8)
         self.assertTrue(a["q"]["predicted"])
 
-    def test_score_answers_reparse_via_wire_criteria(self):
+    SCORE_RESPONSE = {
+        "answers": {"q": {"type": "score", "score": 2.0,
+                          "probabilities": {"0": 0.1, "1": 0.2, "2": 0.7}}}
+    }
+    SCORE_REQUEST = {"questions": {"q": {"type": "score",
+                                         "criteria": ["low", "mid", "high"]}}}
+
+    def test_score_reparse_uses_rubric_ids_when_the_log_has_them(self):
+        # Ground truth is expressed in the caller's rubric ids, but the wire
+        # carries only labels. The client records the id list for this reason.
         rec = self._record(
-            request={"questions": {"q": {"type": "score", "criteria": ["low", "mid", "high"]}}},
-            response={"answers": {"q": {"type": "score", "score": 2.0,
-                                        "probabilities": {"0": 0.1, "1": 0.2, "2": 0.7}}}},
+            request=self.SCORE_REQUEST,
+            response=self.SCORE_RESPONSE,
+            rubric_ids={"q": ["lo", "me", "hi"]},
         )
         a = logstore.answers_of(rec)["q"]
+        self.assertTrue(a["chosen_is_rubric_id"])
+        self.assertEqual(a["chosen"], "hi")
+        self.assertAlmostEqual(a["probabilities"]["me"], 0.2)
+
+    def test_score_reparse_falls_back_to_labels_and_admits_it(self):
+        # Logs written before rubric_ids existed must still parse, but must not
+        # claim the labels are ids -- that silently rescores every score
+        # question as wrong.
+        rec = self._record(request=self.SCORE_REQUEST, response=self.SCORE_RESPONSE)
+        a = logstore.answers_of(rec)["q"]
+        self.assertFalse(a["chosen_is_rubric_id"])
         self.assertEqual(a["chosen"], "high")
-        self.assertAlmostEqual(a["probabilities"]["mid"], 0.2)
+
+    def test_offline_rescore_agrees_with_the_live_parse(self):
+        # The invariant the plan depends on: a metric recomputed from the log
+        # must equal the one computed live, or "recomputable offline without
+        # re-spending calls" is not true.
+        from jeveval.client import _rubric_ids
+
+        q = score("urgency", [{"id": "lo", "label": "low"},
+                              {"id": "me", "label": "mid"},
+                              {"id": "hi", "label": "high"}])
+        questions = {"q": q}
+        live = wire.parse_answer(self.SCORE_RESPONSE["answers"]["q"], q)
+        rec = self._record(
+            request=wire.build_request(state="s", questions=questions, model="m"),
+            response=self.SCORE_RESPONSE,
+            rubric_ids=_rubric_ids(questions),
+        )
+        offline = logstore.answers_of(rec)["q"]
+        self.assertEqual(live["chosen"], offline["chosen"])
+        self.assertEqual(live["probabilities"], offline["probabilities"])
 
     def test_choice_option_order_recoverable_for_position_analysis(self):
         rec = self._record(
