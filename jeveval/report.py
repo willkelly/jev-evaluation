@@ -14,9 +14,10 @@ prescriptive, so this module follows it literally rather than inventing a layout
   * a required "what this changes" section;
   * the prediction scoreboard.
 
-The report is rebuilt from the run directory alone -- the `*_result.json` files
-and the JSONL logs -- so it can be regenerated after a metric is redefined
-without re-spending a single call.
+The report is rebuilt from the run directory alone. Note the limit on that: it
+re-renders the numbers stored in `*_result.json` and streams the JSONL only for
+the run-level header. Recomputing a redefined metric from the log needs a
+`score(run_dir)` in the experiment, which only E2 currently has.
 
 Two things this module refuses to do quietly. It will not print a headline number
 without a baseline next to it, and it will not print a single overall grade in
@@ -66,15 +67,25 @@ def _load_results(run_dir: Path) -> dict[str, dict]:
     return out
 
 
-def _all_log_records(run_dir: Path) -> list[dict]:
-    records: list[dict] = []
-    for log in sorted(run_dir.glob("*.jsonl")):
-        records.extend(logstore.read(log))
-    return records
+def _log_stats(run_dir: Path) -> dict:
+    """Run-level statistics, streamed from every log in the directory.
+
+    Materialising the records instead costs roughly 3.5x the JSONL size in RAM
+    -- several gigabytes at full scale, since E3 alone logs around 450 MB --
+    to compute eight scalars.
+    """
+    return logstore.scan_stats(sorted(run_dir.glob("*.jsonl")))
 
 
-def _header(run_dir: Path, records: list[dict], meta: dict) -> list[str]:
-    st = logstore.run_stats(records)
+def _per_experiment_rates(stats: dict) -> str:
+    """Achieved request rate per experiment, since the pooled figure spans idle
+    time between experiments and is not the rate anything actually sustained."""
+    rates = stats.get("req_per_s_by_experiment") or {}
+    parts = [f"{e} {r:.0f}/s" for e, r in sorted(rates.items()) if e]
+    return (" — per experiment: " + ", ".join(parts)) if parts else ""
+
+
+def _header(run_dir: Path, st: dict, meta: dict) -> list[str]:
     versions = ", ".join(st["model_versions"]) or "unknown"
     rate = st["sustained_req_per_s"]
     lines = [
@@ -89,9 +100,15 @@ def _header(run_dir: Path, records: list[dict], meta: dict) -> list[str]:
         f"{st['failed']:,} failed, {st['retries']:,} retries logged)",
         f"- **Total spend**: ${st['cost_usd']:.4f} "
         f"({st['input_tokens']:,} input tokens, {st['output_tokens']:,} output tokens)",
+        # Pooled across the whole directory this number is wrong whenever the
+        # run spans idle time -- E6's temporal condition deliberately writes
+        # into the same directory hours later, which would drag a 130 req/s run
+        # toward zero. The plan treats the achieved rate as a finding in its own
+        # right, so the per-experiment figures are what to read.
         f"- **Sustained request rate**: "
-        + (f"{rate:.1f} req/s" if rate else "not measurable")
-        + f" over {st['wall_clock_s'] / 60:.1f} minutes",
+        + (f"{rate:.1f} req/s pooled" if rate else "not measurable")
+        + f" over {st['wall_clock_s'] / 60:.1f} minutes"
+        + _per_experiment_rates(st),
         f"- **Latency**: p50 "
         + (f"{st['latency_p50'] * 1000:.0f} ms" if st["latency_p50"] else "n/a")
         + ", p95 "
@@ -145,37 +162,74 @@ def _experiment_section(key: str, res: dict) -> list[str]:
     rows = res.get("by_difficulty") or []
     if rows:
         lines += ["**Tier by difficulty.**", ""]
+        # The decisive columns: which metric set the tier, what it was measured
+        # against, and why. An earlier version printed the first four metric
+        # keys it happened to encounter and a bare baseline number, which on the
+        # E2 sweep dropped AUROC and every baseline name -- so a row showed a
+        # near-perfect ECE beside "Doesn't work" with nothing to explain it, and
+        # a reader could not tell a calibrated model from one whose ECE merely
+        # matches the base rate because it answers the same way every time.
+        lines.append(
+            "| difficulty | n | deciding metric | value | baseline | tier | why |"
+        )
+        lines.append("| --- | --- | --- | --- | --- | --- | --- |")
+        for r in rows:
+            base = _fmt(r.get("baseline"))
+            bname = r.get("baseline_name")
+            bsrc = r.get("baseline_source")
+            if bname:
+                base = f"{base} ({bname}"
+                base += f", {bsrc})" if bsrc and bsrc != "measured" else ")"
+            elif r.get("baseline") is not None:
+                base = f"{base} (**unnamed**)"
+            why = "; ".join(
+                list(r.get("reasons") or []) + list(r.get("signatures") or [])
+            )
+            if not r.get("reportable", True):
+                why = ("not reportable; " + why).strip("; ")
+            # The row's n is the condition's, but the tier may have been decided
+            # on a sub-sample with its own n -- E2's matched control is 200 of a
+            # 500-instance sweep cell. Printing only the larger number attributes
+            # the tier to more evidence than it had.
+            n_txt = str(r.get("n", "?"))
+            metric = r.get("metric")
+            m = r.get("metrics") or {}
+            metric_n = m.get(f"{metric}_n")
+            if metric_n is None and isinstance(metric, str) and metric.startswith("matched"):
+                metric_n = m.get("matched_n")
+            if metric_n is not None and metric_n != r.get("n"):
+                n_txt = f"{n_txt} ({metric} n={_fmt(metric_n)})"
+            lines.append(
+                f"| {_fmt_difficulty(r.get('difficulty'))} | {n_txt} "
+                f"| {r.get('metric', '—')} | {_fmt(r.get('value'))} | {base} "
+                f"| {r.get('tier', '?')} | {why or '—'} |"
+            )
+        lines.append("")
+
+        # Every metric each row computed, in full. Truncating this is how a
+        # discrimination number like AUROC goes missing next to a calibration
+        # number, which the plan warns about by name: "A model can be badly
+        # calibrated but perfectly discriminating; you need both numbers to tell
+        # those apart."
         metric_keys: list[str] = []
         for r in rows:
             for k in (r.get("metrics") or {}):
                 if k not in metric_keys:
                     metric_keys.append(k)
-        metric_keys = metric_keys[:4]
-        lines.append(
-            "| difficulty | n | " + " | ".join(metric_keys) + " | baseline | tier |"
-        )
-        lines.append("| --- | --- | " + " | ".join("---" for _ in metric_keys) + " | --- | --- |")
-        for r in rows:
-            m = r.get("metrics") or {}
-            cells = [_fmt(m.get(k)) for k in metric_keys]
-            lines.append(
-                f"| {_fmt_difficulty(r.get('difficulty'))} | {r.get('n', '?')} | "
-                + " | ".join(cells)
-                + f" | {_fmt(r.get('baseline'))} | {r.get('tier', '?')} |"
-            )
-        lines.append("")
-        crossings = res.get("boundary_crossings") or {}
-        if crossings:
-            lines.append("**Tier boundaries crossed at:**")
-            lines.append("")
-            for boundary, where in crossings.items():
-                lines.append(f"- {boundary}: {_fmt_difficulty(where)}")
-            lines.append("")
-        else:
-            lines += [
-                "_No tier boundary was crossed within the difficulty range swept._",
-                "",
-            ]
+        if metric_keys:
+            lines += ["<details><summary>All measured metrics per difficulty</summary>", ""]
+            lines.append("| difficulty | n | " + " | ".join(metric_keys) + " |")
+            lines.append("| --- | --- | " + " | ".join("---" for _ in metric_keys) + " |")
+            for r in rows:
+                m = r.get("metrics") or {}
+                lines.append(
+                    f"| {_fmt_difficulty(r.get('difficulty'))} | {r.get('n', '?')} | "
+                    + " | ".join(_fmt(m.get(k)) for k in metric_keys)
+                    + " |"
+                )
+            lines += ["", "</details>", ""]
+
+        lines += _crossings_lines(res, rows)
     else:
         lines += [
             "_This experiment reported no tier-by-difficulty breakdown. The plan "
@@ -207,11 +261,20 @@ def _experiment_section(key: str, res: dict) -> list[str]:
             lines.append(f"| {pid} | {claim} | {p.get('outcome', '')} | {mark} |")
         lines.append("")
 
-    # 6. Anything anomalous.
-    anomalies = res.get("anomalies") or []
+    # 6. Anything anomalous. `notes` is a parallel channel several experiments
+    # use for caveats that are not anomalies -- a plot that failed to render, a
+    # measurement substituted for the one the plan named, a baseline that was
+    # assumed rather than measured. Leaving it unread hid exactly the kind of
+    # qualification the report exists to surface.
+    anomalies = list(res.get("anomalies") or [])
+    notes = list(res.get("notes") or [])
     if anomalies:
         lines += ["**Anomalies.**", ""]
         lines += [f"- {a}" for a in anomalies]
+        lines.append("")
+    if notes:
+        lines += ["**Notes and caveats.**", ""]
+        lines += [f"- {n}" for n in notes]
         lines.append("")
 
     fails = res.get("failures") or {}
@@ -225,9 +288,89 @@ def _experiment_section(key: str, res: dict) -> list[str]:
 
     gate = res.get("gate")
     if gate:
-        state = "passed" if gate.get("passed") else "**TRIPPED**"
+        # A gate can pass because it was measured and cleared, or because there
+        # was nothing to measure it against. Those are opposite facts and the
+        # bolded verdict is what a reader carries away, so an unevaluated gate
+        # must not print as "passed" with the explanation buried in prose after
+        # it.
+        if gate.get("evaluated") is False:
+            state = (
+                "**NOT EVALUATED** (did not pass; there was nothing to measure "
+                "it against)"
+            )
+        elif gate.get("passed"):
+            state = "passed"
+        else:
+            state = "**TRIPPED**"
         lines += [f"**Gate.** {state}. {gate.get('reason', '')}", ""]
 
+    return lines
+
+
+def _crossings_lines(res: dict, rows: list[dict]) -> list[str]:
+    """Where each tier boundary was crossed, without inventing crossings.
+
+    `tiers.boundary_crossings` reports the first row whose tier is below each
+    boundary. When a sweep starts already below a boundary it never crossed it
+    -- it was never above it -- and the Crossing carries `from_tier: None` to
+    say so. Printing those as crossings turns a sweep that failed every bar into
+    what reads as graceful degradation through four tiers, all at the easiest
+    difficulty.
+
+    Some experiments also sweep several unrelated conditions rather than one
+    difficulty ladder, in which case a single crossings list over row order is
+    meaningless. Those modules say so in `boundary_crossings_axis` and supply
+    `boundary_crossings_by_condition`; both are preferred here when present.
+    """
+    lines: list[str] = []
+    axis = res.get("boundary_crossings_axis")
+    by_condition = res.get("boundary_crossings_by_condition")
+    detail = res.get("boundary_crossings_detail")
+    crossings = res.get("boundary_crossings") or {}
+
+    tiers_seen = [r.get("tier") for r in rows if r.get("tier")]
+    never_cleared = bool(tiers_seen) and set(tiers_seen) <= {"Doesn't work"}
+
+    if axis:
+        lines += [f"_Difficulty axis for crossings: {axis}_", ""]
+
+    genuine: dict[str, Any] = {}
+    if isinstance(detail, dict) and detail:
+        for boundary, c in detail.items():
+            if not isinstance(c, dict):
+                continue
+            if c.get("from_tier") is None:
+                continue
+            genuine[boundary] = c.get("difficulty")
+    elif crossings and not never_cleared:
+        genuine = dict(crossings)
+
+    if genuine:
+        lines += ["**Tier boundaries crossed at:**", ""]
+        for boundary, where in genuine.items():
+            lines.append(f"- {boundary}: {_fmt_difficulty(where)}")
+        lines.append("")
+    elif never_cleared:
+        lines += [
+            "_No tier boundary was crossed: every difficulty in this sweep is "
+            "already at the lowest tier, so the sweep never cleared any bar. "
+            "This is not degradation across difficulty._",
+            "",
+        ]
+    else:
+        lines += [
+            "_No tier boundary was crossed within the difficulty range swept._",
+            "",
+        ]
+
+    if isinstance(by_condition, dict) and by_condition:
+        lines += ["<details><summary>Boundary crossings per condition</summary>", ""]
+        for cond, cross in by_condition.items():
+            inner = ", ".join(
+                f"{b} at {_fmt_difficulty(w)}" for b, w in (cross or {}).items()
+            )
+            lines.append(f"- **{cond}**: {inner or 'none crossed'}")
+        lines += ["", "</details>", ""]
     return lines
 
 
@@ -356,12 +499,12 @@ def _what_this_changes(results: dict[str, dict]) -> list[str]:
 def build(run_dir: Path) -> Path:
     run_dir = Path(run_dir)
     results = _load_results(run_dir)
-    records = _all_log_records(run_dir)
+    stats = _log_stats(run_dir)
     meta_path = run_dir / "run_meta.json"
     meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
 
     lines: list[str] = []
-    lines += _header(run_dir, records, meta)
+    lines += _header(run_dir, stats, meta)
 
     if not results:
         lines += [
@@ -388,8 +531,17 @@ def build(run_dir: Path) -> Path:
         f"- Plots: `{run_dir}/plots/`",
         f"- Master seed `{meta.get('master_seed', config.MASTER_SEED)}`; every "
         "instance is reproducible from (generator, difficulty, seed, index).",
-        "- Recompute every metric offline from the log with: "
-        f"`python run.py report --run-id {run_dir.name}`",
+        f"- Rebuild this document from the stored results: "
+        f"`python run.py report --run-id {run_dir.name}`. Note that this "
+        "re-renders the numbers in `*_result.json`; it does not recompute them "
+        "from the call log.",
+        "- **Offline recomputation is only partly implemented.** The plan makes "
+        "it a non-negotiable, and the *data* satisfies it: every call, retry and "
+        "failure is in the JSONL with its ground truth in `meta.truth`, and "
+        "`jeveval.logstore` re-parses answers from the logged wire response. But "
+        "only E2 implements a `score(run_dir)` that rebuilds its metrics from "
+        "the log. For the other experiments a redefined metric currently costs a "
+        "re-run rather than a rescore.",
         "",
     ]
 

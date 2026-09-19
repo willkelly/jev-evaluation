@@ -209,6 +209,115 @@ def _f(v: Any) -> float | None:
 # --------------------------------------------------------------------------
 
 
+# The only fields any run-level statistic reads. Projecting onto these while
+# streaming, rather than materialising every record, is the difference between
+# a few megabytes and several gigabytes: a parsed record costs roughly 3.5x its
+# JSONL text, and E3 alone logs around 450 MB because it sends up to 255
+# questions per call.
+_STAT_FIELDS = (
+    "ts",
+    "outcome",
+    "latency_s",
+    "input_tokens",
+    "output_tokens",
+    "model_version",
+    "http_status",
+    "transport_error",
+    "experiment",
+)
+
+
+def scan_stats(paths: Iterable[str | Path]) -> dict:
+    """Run-level statistics, streamed.
+
+    Same numbers as `run_stats`, without ever holding more than one record.
+    Also returns the achieved request rate per experiment, because the pooled
+    figure spans the idle time between experiments -- and E6's temporal
+    condition deliberately writes into the same directory hours later, which
+    would drag a 130 req/s run toward zero. The plan treats the sustained rate
+    as a finding in its own right, so it has to be the rate something actually
+    sustained.
+    """
+    latencies: list[float] = []
+    itok = otok = 0
+    versions: set[str] = set()
+    calls = ok = retries = throttles = attempts = 0
+    lo_ts: float | None = None
+    hi_ts: float | None = None
+    per_exp: dict[str, dict] = {}
+
+    for p in paths:
+        try:
+            fh = Path(p).open(encoding="utf-8")
+        except OSError:
+            continue
+        with fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    r = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                attempts += 1
+                ts = r.get("ts")
+                if isinstance(ts, (int, float)):
+                    lo_ts = ts if lo_ts is None else min(lo_ts, ts)
+                    hi_ts = ts if hi_ts is None else max(hi_ts, ts)
+                outcome = r.get("outcome")
+                if r.get("http_status") in (429, 503) or r.get("transport_error"):
+                    throttles += 1
+                if outcome == "retry":
+                    retries += 1
+                    continue
+                if outcome not in ("ok", "error", "parse_error"):
+                    continue
+                calls += 1
+                exp = r.get("experiment") or ""
+                slot = per_exp.setdefault(exp, {"calls": 0, "lo": None, "hi": None})
+                slot["calls"] += 1
+                if isinstance(ts, (int, float)):
+                    slot["lo"] = ts if slot["lo"] is None else min(slot["lo"], ts)
+                    slot["hi"] = ts if slot["hi"] is None else max(slot["hi"], ts)
+                if outcome != "ok":
+                    continue
+                ok += 1
+                lat = r.get("latency_s")
+                if isinstance(lat, (int, float)):
+                    latencies.append(float(lat))
+                itok += int(r.get("input_tokens") or 0)
+                otok += int(r.get("output_tokens") or 0)
+                v = r.get("model_version")
+                if v:
+                    versions.add(str(v))
+
+    latencies.sort()
+    span = (hi_ts - lo_ts) if (lo_ts is not None and hi_ts is not None) else 0.0
+    rates = {
+        e: (s["calls"] / (s["hi"] - s["lo"]))
+        for e, s in per_exp.items()
+        if s["lo"] is not None and s["hi"] is not None and s["hi"] > s["lo"] and s["calls"] > 1
+    }
+    return {
+        "attempts_logged": attempts,
+        "calls": calls,
+        "successful": ok,
+        "failed": calls - ok,
+        "retries": retries,
+        "throttle_or_transport_events": throttles,
+        "input_tokens": itok,
+        "output_tokens": otok,
+        "cost_usd": itok * (42.0 / 1e9),
+        "model_versions": sorted(versions),
+        "wall_clock_s": span,
+        "sustained_req_per_s": (calls / span) if span > 0 else None,
+        "req_per_s_by_experiment": rates,
+        "latency_p50": latencies[len(latencies) // 2] if latencies else None,
+        "latency_p95": latencies[int(len(latencies) * 0.95)] if latencies else None,
+    }
+
+
 def run_stats(records: Iterable[dict]) -> dict:
     records = list(records)
     term = list(terminal(records))

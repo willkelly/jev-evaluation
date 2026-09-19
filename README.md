@@ -76,7 +76,7 @@ jeveval/
   auth.py         key acquisition; one touch per session
   wire.py         neutral question/answer types <-> the real wire format
   client.py       adaptive concurrency, retry with backoff, JSONL logging
-  logstore.py     offline reading of the log; every metric recomputable from it
+  logstore.py     offline reading of the log (see Reproducibility for limits)
   metrics.py      ECE, Brier, AUROC, reliability bins, KL, Wilson, paired tests
   plots.py        reliability diagrams and curves
   tiers.py        the plan's five-tier rubric, as data
@@ -85,7 +85,8 @@ jeveval/
   report.py       the markdown report
   generators/     3SAT, graph reachability, program reachability, Sudoku,
                   pairwise ordering, DFA, Dyck words, the semantic control,
-                  and filler/dilution material
+                  filler/dilution material, and the taxonomy, numeric and
+                  adversarial sets E7 and E9 need
   experiments/    E1 .. E9
 runs/<run-id>/    calls.jsonl, *_result.json, plots/, report.md
 ```
@@ -114,7 +115,15 @@ model string observed is `jev-1.13.0`, and `score` returns an undocumented
 Every instance is a deterministic function of `(generator, difficulty, seed,
 index)`, so instance 400 of a condition can be regenerated without generating
 the 399 before it. Every call, retry and failure is appended to JSONL before any
-metric is computed, and all analysis runs offline against that log — so a metric
-can be redefined and the whole report rebuilt without re-spending a call. A
-failed call is recorded as a failure and excluded with a count; it is never
-defaulted to 0.5, to `False`, or to the majority class.
+metric is computed. A failed call is recorded as a failure and excluded with a
+count; it is never defaulted to 0.5, to `False`, or to the majority class.
+
+**Offline recomputation is only partly implemented.** The plan makes it a
+non-negotiable and the data satisfies it — ground truth rides in `meta.truth` on
+every record, and `jeveval.logstore` re-parses answers from the logged wire
+response, including mapping a score question's rubric indices back to the
+caller's ids. But only E2 implements a `score(run_dir)` that rebuilds its metrics
+from the log; the others compute from live results in memory. `run.py report`
+re-renders the stored `*_result.json`, it does not rescore. Redefining a metric
+therefore costs a re-run for eight of the nine experiments, which is the largest
+outstanding gap against the plan.

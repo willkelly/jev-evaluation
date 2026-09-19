@@ -176,20 +176,28 @@ def main(argv: list[str]) -> int:
 
     run_id = args.run_id or default_run_id()
     run_dir = config.run_dir(run_id)
-    (run_dir / "run_meta.json").write_text(
-        json.dumps(
-            {
-                "run_id": run_id,
-                "started": time.time(),
-                "command": args.command,
-                "scale": config.SCALE,
-                "master_seed": config.MASTER_SEED,
-                "model_alias": config.MODEL_ALIAS,
-                "api_url": config.API_URL,
-            },
-            indent=2,
+    # Written once, by the command that spends the calls. `report` and `status`
+    # read a run rather than producing one, so they must not restamp it: doing
+    # so replaces the real start time and, worse, the real `scale`, which is
+    # what makes the report print its "SAMPLE SIZES SCALED BY" warning. A run
+    # made at --scale 0.02 and reported later without the flag would silently
+    # lose that warning and read as a full run.
+    meta_path = run_dir / "run_meta.json"
+    if args.command.lower() not in ("report", "status") or not meta_path.exists():
+        meta_path.write_text(
+            json.dumps(
+                {
+                    "run_id": run_id,
+                    "started": time.time(),
+                    "command": args.command,
+                    "scale": config.SCALE,
+                    "master_seed": config.MASTER_SEED,
+                    "model_alias": config.MODEL_ALIAS,
+                    "api_url": config.API_URL,
+                },
+                indent=2,
+            )
         )
-    )
     if config.SCALE != 1.0:
         print(
             f"NOTE: sample sizes scaled by {config.SCALE}. This is recorded in the "

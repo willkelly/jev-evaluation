@@ -61,4 +61,7 @@ ALL = [
     "dyck",
     "semantic",
     "filler",
+    "taxonomy",
+    "numeric",
+    "adversarial",
 ]

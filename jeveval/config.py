@@ -94,7 +94,14 @@ class RateConfig:
     conservative, climbs while calls succeed, and backs off hard on 429."""
 
     start_concurrency: int = 5
-    max_concurrency: int = 32
+    # The ceiling has to be high enough for the limiter to actually find the
+    # endpoint's limit rather than sit at a constant this file chose. Across
+    # 52,200 consecutive calls the limiter backed off zero times at a cap of 24,
+    # so the "sustained rate achieved" the plan asks to be reported as a finding
+    # was a property of the cap, not of the endpoint. Additive increase and the
+    # halving on the first 429 still bound how fast it climbs and how hard it
+    # retreats.
+    max_concurrency: int = 128
     min_concurrency: int = 1
     # Multiplicative-decrease on 429 / 5xx, additive-increase on sustained success.
     backoff_factor: float = 0.5
@@ -111,7 +118,9 @@ RATE = RateConfig(
     # held well below the sustained rate a single full run is allowed to climb
     # to.
     start_concurrency=int(os.environ.get("JEV_START_CONCURRENCY", "5")),
-    max_concurrency=int(os.environ.get("JEV_MAX_CONCURRENCY", "32")),
+    max_concurrency=int(
+        os.environ.get("JEV_MAX_CONCURRENCY", str(RateConfig.max_concurrency))
+    ),
 )
 
 # --------------------------------------------------------------------------

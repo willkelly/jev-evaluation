@@ -905,14 +905,22 @@ def agreement_by_top_two_gap(data: Collected) -> dict:
     ]
     warning = None
     if near_tie == 0:
+        # `narrowest` is None when no cell yielded a gap at all -- which is the
+        # every-call-failed case, and is exactly when this branch runs. Formatting
+        # it unguarded crashed the whole experiment on the failure mode the plan
+        # calls most likely, losing 6000 spent calls and Phase 1's gate with it.
+        seen = (
+            f"The narrowest gap seen was {narrowest:.3f}."
+            if narrowest is not None
+            else "No gap could be measured at all, so no cell produced a usable answer."
+        )
         warning = (
             f"No cell in this sample had a top-two gap below {GAP_BANDS[1]:.2f}, "
-            f"the scale of the probability's own standard deviation. The "
-            f"narrowest gap seen was {narrowest:.3f} if any. Agreement measured "
-            "here therefore says nothing about near-ties, which is the case "
-            "where a repeated call can return a different option. A hand-probed "
-            "routing instance with a near-tie returned two different answers "
-            "across 30 identical calls, 18 to 12."
+            f"the scale of the probability's own standard deviation. {seen} "
+            "Agreement measured here therefore says nothing about near-ties, "
+            "which is the case where a repeated call can return a different "
+            "option. A hand-probed routing instance with a near-tie returned "
+            "two different answers across 30 identical calls, 18 to 12."
         )
     return {
         "bands": rows,

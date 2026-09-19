@@ -423,7 +423,34 @@ class JevClient:
                 raw_response=payload,
             )
 
-        # Retries exhausted.
+        # Retries exhausted. This needs its own terminal record: the attempts
+        # above were all logged with outcome "retry", which the offline analysis
+        # counts as retry history rather than as a call. Without this line the
+        # log shows three retries and zero failures for a call the client
+        # counted as failed -- and a run that loses calls to sustained rate
+        # limiting would report "0 failed", which is the failure mode the plan
+        # says is most likely to actually occur.
+        self.log.write(
+            {
+                "ts": time.time(),
+                "experiment": spec.experiment,
+                "condition": spec.condition,
+                "instance_id": spec.instance_id,
+                "repetition": spec.repetition,
+                "rubric_ids": _rubric_ids(spec.questions),
+                "attempt": self.rate.max_retries,
+                "http_status": last_status,
+                "request_id": None,
+                "latency_s": 0.0,
+                "concurrency": self.limiter.limit,
+                "request": body_obj,
+                "response": None,
+                "transport_error": last_error,
+                "meta": spec.meta,
+                "outcome": "error",
+                "error": f"retries exhausted: {last_error}",
+            }
+        )
         self._tally(failed=True)
         return CallResult(
             call=spec,
