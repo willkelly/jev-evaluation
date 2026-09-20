@@ -9,9 +9,12 @@ reported here was chosen after seeing an outcome.
 One run produced every number below: **123,805 requests, 138 minutes, $12.69,
 five failures**, all answered by `jev-1.13.0`.
 
-- **[The report](runs/full-20260919/report.html)** — findings, method, and a
-  prompting guide. Open the HTML locally, or read
-  [the markdown](runs/full-20260919/report.md).
+- **[A prompting guide](PROMPTING.md)** — ten rules for using this model, each
+  with the request to write, the request to avoid, and the measurement behind it.
+  Start here if you are deciding how to call the API.
+- **[The report](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html)**
+  — findings, method and figures. Also available as
+  [markdown](runs/full-20260919/report.md) or [a local file](runs/full-20260919/report.html).
 - **[The plan](jev-evaluation-plan.md)** — what was predicted, and why.
 
 ## What it found
@@ -107,6 +110,7 @@ jeveval/
                   adversarial set
   experiments/    the nine experiments
 tests/            unit tests for the hand-written core
+PROMPTING.md      the ten rules, generated from the same measurements
 runs/<id>/        report, figures, per-experiment results
 ```
 
