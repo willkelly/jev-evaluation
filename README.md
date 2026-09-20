@@ -9,8 +9,8 @@ reported here was chosen after seeing an outcome.
 One run produced every number below: **123,805 requests, 138 minutes, $12.69,
 five failures**, all answered by `jev-1.13.0`.
 
-- **[A prompting guide](PROMPTING.md)** — ten rules for using this model, each
-  with the request to write, the request to avoid, and the measurement behind it.
+- **[A prompting guide](PROMPTING.md)** — twelve rules for using this model, each
+  with the requests to write, the mistakes to avoid, and the measurement behind it.
   Start here if you are deciding how to call the API.
 - **[The report](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html)**
   — findings, method and figures. Also available as
@@ -110,7 +110,7 @@ jeveval/
                   adversarial set
   experiments/    the nine experiments
 tests/            unit tests for the hand-written core
-PROMPTING.md      the ten rules, generated from the same measurements
+PROMPTING.md      the twelve rules, generated from the same measurements
 runs/<id>/        report, figures, per-experiment results
 ```
 
