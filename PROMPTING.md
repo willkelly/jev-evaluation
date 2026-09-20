@@ -91,7 +91,7 @@ if len(legal) == 1:
 
 Asked whether `x AND NOT x` is satisfiable — false by inspection — the model returned **P = 0.38**. On a hard unsatisfiable formula, **P = 0.71**. Across a sweep of 37,500 formulas it answered satisfiable for every one at every clause ratio, and a short program reading the clause count off the header beat it at 41 of 75 conditions.
 
-> A validator is the worst of these, because a wrong answer is silent and trusted. The limit holds even when the constraint has already been solved: given a Sudoku cell with exactly one legal digit, the model answered correctly **0.855** of the time. Cells with five legal digits scored 0.145 against a chance rate of 0.200 — worse than guessing.
+> A validator is the worst of these, because a wrong answer is silent and trusted. The limit holds even when the constraint has already been solved: given a Sudoku cell reduced to one legal digit plus one eliminated decoy — a two-way test against a 0.500 chance baseline, where a constraint propagator scores 1.000 — the model answered correctly **0.855** of the time. Cells with five legal digits scored 0.145 against a chance rate of 0.200 — worse than guessing.
 
 *Produced by [2. Calibration](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE2) — [`e2_calibration.py`](jeveval/experiments/e2_calibration.py) and [5. Asking about combinations](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE5) — [`e5_enrollment.py`](jeveval/experiments/e5_enrollment.py). Problems and their answers come from [`dfa.py`](jeveval/generators/dfa.py), [`sat3.py`](jeveval/generators/sat3.py), [`semantic.py`](jeveval/generators/semantic.py), [`sudoku.py`](jeveval/generators/sudoku.py).*
 
@@ -237,9 +237,9 @@ if estimate_tokens(state) < 32_000:   # the documented state limit
 # HTTP 400 max_tokens_exceeded        # so this clears it and still fails
 ```
 
-Accuracy lost between the smallest state and a 10,000-token state: **0.000**, over 1,000 problems. Moving the relevant fact to 0, 25, 50, 75 or 100 percent of the way through, holding length constant, also cost **0.000**. The middle-of-state penalty other models show did not appear, so a long state is safe up to the limit.
+Accuracy lost between the smallest state and a 10,000-token state: **0.000**, over 1,000 problems. Moving the relevant fact to 0, 25, 50, 75 or 100 percent of the way through, holding length constant, also cost **0.000**. The middle-of-state penalty other models show did not appear. That is flat as far as accuracy could be measured: the largest rung that answered was targeted at 20,000 tokens and reported as 24,313.
 
-The limit measured where the documentation says it is. Growing one state until it was refused: a request reporting **28,844** input tokens was answered, and the next size up was refused with `max_tokens_exceeded`. Separately, 255 questions over an 8,000-token state totalled **32,720** input tokens and was answered — which is how you can tell the 32k bound applies to the state plus the longest single question rather than to the whole request, with 64k as the separate per-request ceiling.
+The limit brackets where the documentation says it is. Growing one state until it was refused: a request reporting **28,844** input tokens was answered, and the next target up was refused with `max_tokens_exceeded`. A refused request reports no token count, so the boundary is bracketed rather than pinned. Separately, 255 questions over a state that reported 9,982 input tokens on its own totalled **32,720** input tokens and was answered — which is how you can tell the 32k bound applies to the state plus the longest single question rather than to the whole request, with 64k as the separate per-request ceiling.
 
 > The evaluation first read this as an undocumented limit, because its own sweep jumped from about 24,000 tokens straight to 50,000 and saw only the refusal. It is documented, and the measurements above agree with it. What is worth carrying is the gap between an estimate and the truth: a state this harness targeted at 24,000 tokens was reported by the endpoint as 28,844, about 20 percent higher. Budget against `usage.input_tokens` from a real response, and leave room.
 
@@ -247,7 +247,7 @@ The limit measured where the documentation says it is. Growing one state until i
 
 ## 5. Put worked examples in the state, and say what your terms mean
 
-Examples did not degrade calibration, and a definition of your own is followed even against ordinary usage.
+Examples in the state did not degrade calibration, and a definition of your own is followed even against ordinary usage.
 
 **Don't** — Withhold examples to protect calibration
 
@@ -305,9 +305,9 @@ Examples did not degrade calibration, and a definition of your own is followed e
 }
 ```
 
-Ten examples in the state moved calibration error from 0.069 to **0.065**. The trade-off people expect did not appear. A rubric written to mean the opposite of ordinary usage was followed on **0.950** of 200 items.
+Ten examples in the state moved calibration error from 0.069 to **0.065**. The trade-off people expect did not appear — in the state. In the instruction field it did: 0.086 at one example, 0.076 at three and 0.078 at ten, and the one-example interval excludes zero. A rubric written to mean the opposite of ordinary usage was followed on **0.950** of 200 items.
 
-> Where the examples go matters for a duller reason. There is no request-level instruction field on this endpoint, so the instruction field also holds the question, and examples put there compete with it for space. The state has a field of its own.
+> So where the examples go is the whole of it, and the reason is duller than the effect. There is no request-level instruction field on this endpoint, so the instruction field also holds the question, and examples put there compete with it for space. The state has a field of its own.
 
 *Produced by [8. Learning from examples](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE8) — [`e8_icl.py`](jeveval/experiments/e8_icl.py). Problems and their answers come from [`semantic.py`](jeveval/generators/semantic.py).*
 
@@ -346,7 +346,7 @@ if refund > 0.5 and replace > 0.5:
     chosen = max(refund, replace)   # a tie-break you invented
 ```
 
-On states where two outcomes cannot both hold, the combined form placed **0.049** of its probability on the impossible combination, against **0.191** implied by the model's own separate answers. The joint carries 0.87 nats of structure the separate questions never express — which is the structure a reconciliation written by hand is forced to invent.
+On states where the outcomes constrain each other, the combined form placed **0.049** of its probability on the impossible combination, against **0.191** implied by the model's own separate answers. On the exclusive states alone those figures are 0.087 and 0.216. The joint carries 0.13 nats of dependence the separate answers cannot express, within 0.64 nats of divergence from their product — which is the structure a reconciliation written by hand is forced to invent.
 
 > This rule is about outcomes that constrain each other *within one decision*. For a fact reused *across* decisions, see the rule on recording derived facts. The common principle is that questions which must agree with each other belong in the same request. The 0.191 figure above was itself measured with the separate questions batched into one request; asked as separate requests they would also carry the incoherence that rule describes.
 
@@ -482,7 +482,7 @@ Over 3,600 repeats per condition, renaming every question key shifted **0.0%** o
 
 ## 10. Do not read confidence as whether the model could answer
 
-Confidence predicts whether an answer is right. It does not predict whether the state contained the answer at all, and on fluent nonsense it does not move.
+Confidence predicts whether an answer is right. It does not predict whether the state contained the answer at all. On a choice question it falls when the state is incomplete or self-contradictory and not when it is fluent nonsense; on a score question that pattern reverses. There is no single threshold.
 
 **Don't** — Act when confident, escalate when not
 
@@ -497,10 +497,11 @@ else:
 **Don't** — Expect nonsense to lower it
 
 ```python
-# invented words in grammatical English:
+# invented words in grammatical English, asked as a choice:
 #   "The plemtor korbanes whenever the junavo is voskar."
-# mean confidence 0.977, and 0 of 60 fell below 0.8 --
-# indistinguishable from a real ticket at 0.985
+# mean confidence 0.977, 0 of 60 below 0.8 -- as a real ticket.
+# Asked as a score the same states separate by 0.245, so this
+# depends on the question type as much as on the state.
 ```
 
 **Don't** — Write a threshold finer than the model can express
@@ -529,7 +530,7 @@ review_queue = sorted(answers, key=lambda a: a.confidence)[:budget]
 
 Confidence on answerable states averaged **0.985**. On states missing what the question needs it fell to 0.532, and on self-contradictory states to 0.603 — separations of 0.461 and 0.389, with 95% and 73% of those answers below 0.8. A threshold catches most of both.
 
-On fluent nonsense it did not move at all: mean **0.977**, a separation of **0.009**, and not one answer in sixty below 0.8. The pooled separation of 0.202 that the evaluation reports is the average of a signal that works and a signal that is absent.
+On fluent nonsense it did not move at all: mean **0.977**, a separation of **0.009**, and not one answer in sixty below 0.8. Those are choice questions. Asked as a score, the same nonsense separates by 0.245 while an underspecified state inverts to −0.066 — the model more confident on it than on an answerable one. The pooled separation of 0.202 that the evaluation reports is the average of a signal that works and a signal that is absent.
 
 What confidence does track is whether the answer is right. Over **34,200** answers carrying one, it ranks correct above wrong at AUROC **0.878** and is roughly calibrated as a probability of correctness, with an expected calibration error of 0.037: answers returned at 0.9 were right 88% of the time, and at 0.5, 51%.
 
@@ -541,7 +542,7 @@ What confidence does track is whether the answer is right. Over **34,200** answe
 | 0.9 | 0.883 |
 | 1.0 | 0.976 |
 
-> So the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains.
+> Of the nine cells formed by three kinds of unanswerable state and three question types, six separate, one is flat and two run backwards, so the arm you ask matters as much as the state. Past that, the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains.
 >
 > A yes/no question returns no confidence field, so none of this applies to it. The only substitute is the probability's distance from one half, which is weaker still. And the correctness result is measured where a right answer exists to be ranked; it says nothing about the nonsense case, where there is no correct department to be confident about.
 

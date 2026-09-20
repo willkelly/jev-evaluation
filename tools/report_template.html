@@ -710,7 +710,9 @@
       '<div class="atk">'+rows+'</div>'+
       '<div style="max-width:68ch">'+ab.analysis+ab.second+'</div>'+
       calib+
-      '<div style="max-width:68ch">'+(ab.caveat||'')+'</div></div>';
+      '<div style="max-width:68ch">'+(ab.caveat||'')+'</div>'+
+      simpleTable(ab.by_arm,'ruletable')+
+      '<div style="max-width:68ch">'+(ab.caveat_after||'')+'</div></div>';
   }
 
   function simpleTable(t,cls){

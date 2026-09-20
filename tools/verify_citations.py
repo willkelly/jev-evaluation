@@ -118,7 +118,10 @@ class Index:
         for i, (pa, a) in enumerate(nums):
             for pb, b in nums[i + 1 : i + 60]:
                 if abs(b) > 1e-9:
-                    for val, how in ((a / b, "/"), (b / a, "/"), (a - b, "-"), (b - a, "-")):
+                    # Sums matter as much as ratios: a population stated as a
+                    # total is often two measured arms added together.
+                    for val, how in ((a / b, "/"), (b / a, "/"), (a - b, "-"),
+                                     (b - a, "-"), (a + b, "+")):
                         if math.isfinite(val) and abs(val) < 1e7:
                             self.derived[round(val, 10)].append(f"{pa} {how} {pb}")
         for p, v in vals:
