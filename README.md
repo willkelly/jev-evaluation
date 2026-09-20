@@ -145,7 +145,16 @@ probing:
   measured on those.
 
 `choice` accepts at most 255 options; 256 is rejected. `score` returns an
-undocumented `legend` mapping rubric indices to labels. Every probability
+undocumented `legend` mapping rubric indices to labels.
+
+The documented context limits are 64k tokens per request and 32k for the state
+plus the longest question, and both held up when measured. A request reporting
+28,844 input tokens was answered and the next size up was refused with
+`max_tokens_exceeded`; separately, 255 questions over an 8,000-token state
+totalled 32,720 input tokens and was answered, which shows the 32k bound is on
+the state plus one question rather than on the whole request. Worth knowing:
+this harness's own token estimate ran about 20% low against the count the
+endpoint reports, so budget against `usage.input_tokens` from a real response. Every probability
 observed, across 3.19 million of them, lies exactly on a two-decimal grid, and the
 value carrying the decision was exactly 1.0 on 52% of one experiment's answers.
 `confidence` differs from the largest returned probability on 47% of choice and

@@ -24,7 +24,7 @@ The full report, with figures, is at <https://willkelly.github.io/jev-evaluation
 
 2. [One subject per request, and as many questions as you like](#2-one-subject-per-request-and-as-many-questions-as-you-like)
 3. [Send the source, not something derived from it](#3-send-the-source-not-something-derived-from-it)
-4. [Send as much state as you need, up to about 24,000 tokens](#4-send-as-much-state-as-you-need-up-to-about-24-000-tokens)
+4. [Budget state against reported tokens, not your own estimate](#4-budget-state-against-reported-tokens-not-your-own-estimate)
 5. [Put worked examples in the state, and say what your terms mean](#5-put-worked-examples-in-the-state-and-say-what-your-terms-mean)
 ### How to write the question
 
@@ -207,29 +207,39 @@ The same programs sent three ways, **1,600 paired instances**: source **0.894**,
 
 *Produced by [7. State size and form](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE4) — [`e4_input_size.py`](jeveval/experiments/e4_input_size.py). Problems and their answers come from [`filler.py`](jeveval/generators/filler.py), [`progreach.py`](jeveval/generators/progreach.py), [`semantic.py`](jeveval/generators/semantic.py).*
 
-## 4. Send as much state as you need, up to about 24,000 tokens
+## 4. Budget state against reported tokens, not your own estimate
 
-Length and position within the state had no measurable effect. There is a hard limit, and it is not documented.
+Length and position within the state had no measurable effect. The documented limits are 64k tokens per request and 32k for the state plus the longest question, and your estimate of where you sit will be wrong.
 
 **Do** — Send the whole thing, and stop worrying about where in it the answer sits
 
 ```python
 state = {"ticket": ticket, "history": history, "account": account}
-# no measured penalty for length up to 10,000 tokens,
-# and none for where in the state the relevant fact sits
+# no measured penalty for length up to 10,000 tokens, and none
+# for where in the state the relevant fact sits
 ```
 
-**Don't** — Assuming a 50,000-token state will be accepted
+**Do** — Read the true size back off the response
 
 ```python
-# HTTP 400  max_tokens_exceeded
-# The endpoint refuses states this large. The error is not in the docs,
-# so budget against the true input_tokens the response reports.
+resp = post(request)
+used = resp["usage"]["input_tokens"]   # the only figure that counts
+# a word- or character-based estimate undercounted this by about 20%
 ```
 
-Accuracy lost between the smallest state and a 10,000-token state: **0.000**, over 1,000 problems. Moving the relevant fact to 0, 25, 50, 75 or 100 percent of the way through, holding length constant, also cost **0.000**. The middle-of-state penalty other models show did not appear.
+**Don't** — Trusting your own token count to stay inside the limit
 
-> The condition targeting 50,000 tokens could not be run: the first four requests were all rejected with `max_tokens_exceeded`, so the sweep stopped there. The largest size that did answer averaged **24,313** true input tokens. Size your states against the `input_tokens` the response reports, not against an estimate.
+```python
+if estimate_tokens(state) < 32_000:   # the documented state limit
+    post(request)                     # but the estimate ran ~20% low,
+# HTTP 400 max_tokens_exceeded        # so this clears it and still fails
+```
+
+Accuracy lost between the smallest state and a 10,000-token state: **0.000**, over 1,000 problems. Moving the relevant fact to 0, 25, 50, 75 or 100 percent of the way through, holding length constant, also cost **0.000**. The middle-of-state penalty other models show did not appear, so a long state is safe up to the limit.
+
+The limit measured where the documentation says it is. Growing one state until it was refused: a request reporting **28,844** input tokens was answered, and the next size up was refused with `max_tokens_exceeded`. Separately, 255 questions over an 8,000-token state totalled **32,720** input tokens and was answered — which is how you can tell the 32k bound applies to the state plus the longest single question rather than to the whole request, with 64k as the separate per-request ceiling.
+
+> The evaluation first read this as an undocumented limit, because its own sweep jumped from about 24,000 tokens straight to 50,000 and saw only the refusal. It is documented, and the measurements above agree with it. What is worth carrying is the gap between an estimate and the truth: a state this harness targeted at 24,000 tokens was reported by the endpoint as 28,844, about 20 percent higher. Budget against `usage.input_tokens` from a real response, and leave room.
 
 *Produced by [7. State size and form](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE4) — [`e4_input_size.py`](jeveval/experiments/e4_input_size.py). Problems and their answers come from [`filler.py`](jeveval/generators/filler.py), [`progreach.py`](jeveval/generators/progreach.py), [`semantic.py`](jeveval/generators/semantic.py).*
 
@@ -634,7 +644,7 @@ Text added to an otherwise ordinary support ticket:
 |---|---|---|
 | press | press | **account_access** |
 
-> Measured on 60 paired tickets per technique, each against the same ticket clean. *Noise control* inserts the same quantity of text carrying no instruction and is the floor. The crude command is the one everyone writes a filter for, and it is the one that never worked; a claim that someone senior has already decided is the one that did. Confidence fell on the successful example below, from 1.00 to 0.62, but this run did not test a confidence threshold as a detector, so treat that as a lead to measure on your own traffic rather than as a control.
+> Measured on 60 paired tickets per technique, each against the same ticket clean. *Noise control* inserts the same quantity of text carrying no instruction and is the comparison point. The crude command is the one everyone writes a filter for, and it is the one that never worked; a claim that someone senior has already decided is the one that did. Confidence fell on the successful example below, from 1.00 to 0.62, but this run did not test a confidence threshold as a detector, so treat that as a lead to measure on your own traffic rather than as a control.
 
 *Produced by [9. Limits and attacks](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE9) — [`e9_edges.py`](jeveval/experiments/e9_edges.py). Problems and their answers come from [`adversarial.py`](jeveval/generators/adversarial.py), [`dyck.py`](jeveval/generators/dyck.py), [`graphreach.py`](jeveval/generators/graphreach.py), [`numeric.py`](jeveval/generators/numeric.py).*
 
