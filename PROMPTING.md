@@ -494,7 +494,7 @@ Over 3,600 repeats per condition, renaming every question key shifted **0.0%** o
 
 ## 10. Do not read confidence as whether the model could answer
 
-Confidence predicts whether an answer is right. It does not predict whether the state contained the answer at all. On a choice question it falls when the state is incomplete or self-contradictory and not when it is fluent nonsense; on a score question that pattern reverses. There is no single threshold.
+Confidence does detect a state that cannot answer the question, but not at one threshold. Ask as a choice: a missing fact or a contradiction drops it below 0.8, while fluent nonsense only pulls it off 1.00.
 
 **Don't** — Act when confident, escalate when not
 
@@ -506,14 +506,14 @@ else:
 # admits 47% of unanswerable states, nearly all of the nonsense ones
 ```
 
-**Don't** — Expect nonsense to lower it
+**Don't** — Ask as a score when you need to know a fact is missing
 
-```python
-# invented words in grammatical English, asked as a choice:
-#   "The plemtor korbanes whenever the junavo is voskar."
-# mean confidence 0.977, 0 of 60 below 0.8 -- as a real ticket.
-# Asked as a score the same states separate by 0.245, so this
-# depends on the question type as much as on the state.
+```json
+{"type": "score", "instructions": "How urgent is this?"}
+# on a state that omits the fact the question needs, a score's
+# confidence goes UP: 0.987 against 0.921 on an answerable one,
+# ranking at 0.300 -- worse than a coin. The choice arm ranks
+# the same states at 0.992.
 ```
 
 **Don't** — Write a threshold finer than the model can express
@@ -542,9 +542,21 @@ if not required <= set(state):
 queue = sorted(answers_of_one_kind, key=lambda a: a.confidence)[:budget]
 ```
 
+**Do** — Gate twice on a choice, because the two failures sit at different heights
+
+```python
+# 200 states of each kind, against 200 answerable tickets
+if answer.confidence < 0.8:      # missing fact 95.5%, contradiction 77.0%
+    escalate(answer)             # false alarms 3.0%
+elif answer.confidence < 1.0:    # fluent nonsense 97.5%
+    review(answer)               # false alarms 14.0%
+```
+
 Confidence on answerable states averaged **0.985**. On states missing what the question needs it fell to 0.532, and on self-contradictory states to 0.603 — separations of 0.461 and 0.389, with 95% and 73% of those answers below 0.8. A threshold catches most of both.
 
-On fluent nonsense it did not move at all: mean **0.977**, a separation of **0.009**, and not one answer in sixty below 0.8. Those are choice questions. Asked as a score, the same nonsense separates by 0.245 while an underspecified state inverts to −0.066 — the model more confident on it than on an answerable one. The pooled separation of 0.202 that the evaluation reports is the average of a signal that works and a signal that is absent.
+On fluent nonsense the mean barely moves: **0.974** against 0.983, a separation of **0.009**, and not one of the 200 falls below 0.8. The evaluation first read that as no signal, and that was wrong. Confidence on an answerable ticket is not spread over the range — it is exactly 1.00 on **86%** of them — so nonsense can pull it off that ceiling nearly every time without moving the mean at all. Ranked instead of averaged, confidence puts an answerable state above a nonsense one on **0.893** of pairs, and a gate at anything short of 1.00 catches **97.5%** of nonsense while flagging 14.0% of real tickets. The separation is there; the mean cannot see it.
+
+Asked as a score the arrangement changes. Nonsense does move the mean, by 0.245, but an underspecified state inverts: confidence rises by 0.066, and it ranks at **0.300**, worse than a coin. The model is more certain about a state that omits the fact than about one that carries it. The pooled separation of 0.202 averages over all of this and describes none of it.
 
 What confidence does track is whether the answer is right. Over **34,200** answers carrying one, it ranks correct above wrong at AUROC **0.878** and is roughly calibrated as a probability of correctness, with an expected calibration error of 0.037: answers returned at 0.9 were right 88% of the time, and at 0.5, 51%.
 
@@ -562,7 +574,7 @@ On satisfiability there is no signal to lose. Over 2,700 answers the pooled figu
 | 0.9 | 0.883 |
 | 1.0 | 0.976 |
 
-> Of the nine cells formed by three kinds of unanswerable state and three question types, six separate, one is flat and two run backwards, so the arm you ask matters as much as the state. Past that, the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains — within a population of comparable difficulty, on a subject you already know the model handles. Ranking by confidence is not a way to find out whether it handles the subject, because on the subjects it does not the ranking is chance.
+> Of the nine cells formed by three kinds of unanswerable state and three question types, six rank usefully, two carry nothing, and one runs backwards. The arm decides it: a choice works on all three kinds, a score on two, and the yes/no proxy on one. That is the reason to ask as a choice. Past that, the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains — within a population of comparable difficulty, on a subject you already know the model handles. Ranking by confidence is not a way to find out whether it handles the subject, because on the subjects it does not the ranking is chance.
 >
 > A yes/no question returns no confidence field, so none of this applies to it. The only substitute is the probability's distance from one half, which is weaker still. And the correctness result is measured where a right answer exists to be ranked; it says nothing about the nonsense case, where there is no correct department to be confident about.
 

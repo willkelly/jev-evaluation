@@ -37,15 +37,17 @@ and finished 8× sooner than the same questions asked one per request, with
 identical answers. This is the result the plan expected to be its biggest
 surprise, and it produced none.
 
-**Confidence predicts whether an answer is right, but not whether the question
-could be answered.** Over 34,200 answers it ranks correct above wrong at AUROC
-0.878 and is roughly calibrated as a probability of correctness (ECE 0.037).
-But it barely moves on an unanswerable state: the pooled separation is 0.202,
-and that average hides the real result. Missing information drops it 0.461 and
-self-contradiction 0.389, while **fluent nonsense drops it 0.009** — invented
-words in grammatical English draw the same confidence as a real ticket. The
-recommended pattern, act when confident and escalate when not, catches wrong
-answers and misses unanswerable inputs.
+**Confidence detects an unanswerable state, but not at one threshold.** Over
+34,200 answers it ranks correct above wrong at AUROC 0.878 — a figure inflated
+by pooling easy conditions with hard ones, and 0.699 measured inside a single
+condition. On whether the state can answer the question at all, the mean
+separation of 0.202 is misleading: confidence is exactly **1.00 on 86%** of
+answerable tickets, so an unanswerable state pulls it off that ceiling without
+moving the mean. Ranked rather than averaged, a choice question separates all
+three kinds — a missing fact at 0.992, a self-contradiction at 0.985, fluent
+nonsense at **0.893**. What differs is the height: missing facts fall below
+0.8, nonsense only falls short of 1.00. One gate at 0.8 catches 95.5% of the
+first and **none** of the last.
 
 **Doing the model's work in advance makes it worse.** The same programs, asked
 the same reachability question, scored 0.894 as source text, 0.598 as a syntax

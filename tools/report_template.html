@@ -564,9 +564,12 @@
         <p class="claim">That if confidence fails to track ignorance, the recommended way of
           deploying the model — act when confident, escalate when not — stops working, however
           good the accuracy figures look.</p>
-        <p class="out">Confidence separates answerable from unanswerable states by 0.199, below
-          the 0.30 the plan set as the threshold for a usable signal. There is no reliable
-          trigger to threshold on.</p>
+        <p class="out">By the measure the plan named this holds: the mean separation is 0.199,
+          below the 0.30 set for a usable signal. But a mean is the wrong statistic for a
+          quantity that sits at exactly 1.00 on 86% of answerable states. Ranked instead,
+          confidence on a choice question separates every kind of unanswerable state, at 0.893
+          to 0.992. The deployment pattern works — at two gates rather than one, and only if
+          you ask as a choice. The abstention section above has the detail.</p>
       </div>
     </div>
 
