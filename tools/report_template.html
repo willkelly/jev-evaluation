@@ -1,0 +1,935 @@
+<title>Jev Evaluation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+  :root{
+    --ground:#f4f6f5; --surface:#ffffff; --surface-2:#eceff0;
+    --ink:#151a1d; --body:#2b3438; --muted:#5f6d71; --faint:#8b989b;
+    --rule:#d8dedd; --rule-soft:#e7ebeb;
+    --accent:#0d6e66; --accent-soft:#e2efec;
+    --t-perfect:#0b6b50; --t-super:#1f5f9e; --t-human:#8a6a15;
+    --t-bad:#a85427; --t-dead:#96283a; --t-none:#8b989b;
+    --ok:#0b6b50; --wrong:#96283a; --untest:#6b6f86;
+    --serif:"IBM Plex Serif",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0d1113; --surface:#141a1c; --surface-2:#1b2225;
+      --ink:#e8edec; --body:#c3cdcd; --muted:#8fa0a2; --faint:#6b7a7c;
+      --rule:#283235; --rule-soft:#1e2629;
+      --accent:#48b3a4; --accent-soft:#16302d;
+      --t-perfect:#42b489; --t-super:#5fa0da; --t-human:#c8a344;
+      --t-bad:#dd8a5c; --t-dead:#e0687c; --t-none:#6b7a7c;
+      --ok:#42b489; --wrong:#e0687c; --untest:#9a9fbb;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0d1113; --surface:#141a1c; --surface-2:#1b2225;
+    --ink:#e8edec; --body:#c3cdcd; --muted:#8fa0a2; --faint:#6b7a7c;
+    --rule:#283235; --rule-soft:#1e2629;
+    --accent:#48b3a4; --accent-soft:#16302d;
+    --t-perfect:#42b489; --t-super:#5fa0da; --t-human:#c8a344;
+    --t-bad:#dd8a5c; --t-dead:#e0687c; --t-none:#6b7a7c;
+    --ok:#42b489; --wrong:#e0687c; --untest:#9a9fbb;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--body);font-family:var(--sans);
+    font-size:16.5px;line-height:1.65;margin:0;
+    padding-block:0 5rem;padding-left:16px;padding-right:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto}
+  .col{max-width:68ch}
+  h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);text-wrap:balance;margin:0}
+  p{margin:0 0 1.05rem}
+  a{color:var(--accent)}
+  code{font-family:var(--mono);font-size:.88em}
+  strong{color:var(--ink);font-weight:600}
+
+  .mast{padding-block:3.5rem 2rem;border-bottom:2px solid var(--ink)}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 .9rem}
+  .mast h1{font-size:clamp(2.1rem,6vw,3.3rem);line-height:1.05;font-weight:600;letter-spacing:-.015em}
+  .dek{font-size:1.09rem;color:var(--muted);margin:1.1rem 0 0;max-width:62ch}
+
+  .jump{background:var(--accent-soft);border:1px solid var(--rule);
+    border-left:3px solid var(--accent);padding:1rem 1.2rem;margin:1.8rem 0 0;max-width:62ch}
+  .jump p{margin:0;font-size:.95rem}
+
+  .facts{display:grid;gap:1px;background:var(--rule);
+    grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));
+    border:1px solid var(--rule);margin:2rem 0 0}
+  .fact{background:var(--surface);padding:.85rem .95rem}
+  .fact dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--faint);margin:0 0 .3rem}
+  .fact dd{margin:0;font-family:var(--mono);font-size:1.1rem;color:var(--ink);
+    font-variant-numeric:tabular-nums;font-weight:500}
+  .fact dd small{font-size:.72rem;color:var(--muted);font-weight:400}
+
+  /* Fourteen links do not fit one row, so they wrap. An overflowing row would
+     scroll sideways behind a scrollbar, which hides half the contents. */
+  nav{background:var(--ground);border-bottom:1px solid var(--rule);padding-block:.5rem}
+  nav ul{display:flex;flex-wrap:wrap;gap:.2rem .1rem;list-style:none;margin:0;padding:0}
+  nav a{font-family:var(--mono);font-size:.715rem;text-decoration:none;color:var(--muted);
+    padding:.25rem .42rem;border:1px solid transparent;border-radius:2px;white-space:nowrap}
+  nav a:hover,nav a:focus-visible{color:var(--ink);border-color:var(--rule);background:var(--surface)}
+  /* Sticky only where it stays one or two rows. On a phone it would otherwise
+     hold down a third of the screen. */
+  @media (min-width:720px){
+    nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+  }
+
+  section{padding-block:3rem;border-bottom:1px solid var(--rule-soft)}
+  h2{font-size:clamp(1.45rem,3.4vw,1.95rem);font-weight:600;letter-spacing:-.01em;margin-bottom:1.1rem}
+  h3{font-size:1.1rem;font-weight:600;margin:2rem 0 .65rem}
+  h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);font-weight:500;margin:0 0 .45rem}
+  .lede{font-size:1.05rem;color:var(--muted)}
+
+  dl.terms{margin:1.4rem 0 0;display:grid;gap:0;max-width:72ch}
+  dl.terms > div{padding:.9rem 0;border-top:1px solid var(--rule-soft)}
+  dl.terms dt{font-family:var(--mono);font-size:.88rem;color:var(--ink);font-weight:500;margin-bottom:.3rem}
+  dl.terms dd{margin:0;font-size:.95rem;color:var(--muted)}
+
+  .tierkey{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.3rem 0 0}
+  .tierkey div{background:var(--surface);padding:.7rem .9rem;display:flex;gap:.9rem;align-items:baseline}
+  .tierkey b{font-family:var(--mono);font-size:.82rem;min-width:8.5rem;font-weight:600}
+  .tierkey span{font-size:.9rem;color:var(--muted)}
+
+  .exp{padding-block:3rem;border-bottom:1px solid var(--rule-soft)}
+  .exp:last-of-type{border-bottom:0}
+  .exp-head{display:flex;gap:.9rem;align-items:baseline;flex-wrap:wrap;margin-bottom:.5rem}
+  .exp-id{font-family:var(--mono);font-size:1.05rem;font-weight:600;color:var(--accent);
+    letter-spacing:.06em;text-transform:uppercase}
+  .exp h3.title{font-size:1.45rem;margin:0}
+  .src{font-family:var(--mono);font-size:.74rem;margin:.55rem 0 0;color:var(--faint)}
+  .src a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .src a:hover{border-bottom-color:var(--accent)}
+  .src span{color:var(--faint);margin:0 .35rem}
+  .rulesrc{font-family:var(--mono);font-size:.74rem;color:var(--faint);margin:1rem 0 0}
+  .rulesrc a{color:var(--accent)}
+  .rgroup{margin:3rem 0 0;padding-top:1.4rem;border-top:2px solid var(--ink)}
+  .rgroup:first-child{margin-top:1.5rem}
+  .rgroup h3{font-family:var(--mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin:0;font-weight:600}
+  .block{margin:1.7rem 0 0;max-width:68ch}
+
+  .pred{background:var(--surface);border:1px solid var(--rule);padding:.85rem 1rem;margin:0 0 .7rem;
+    border-left:3px solid var(--t-none)}
+  .pred[data-v="right"]{border-left-color:var(--ok)}
+  .pred[data-v="wrong"]{border-left-color:var(--wrong)}
+  .pred[data-v="untestable"]{border-left-color:var(--untest)}
+  .pred .claim{color:var(--ink);font-weight:500;margin:0 0 .3rem;font-size:.97rem}
+  .pred .verdict{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase}
+  .pred[data-v="right"] .verdict{color:var(--ok)}
+  .pred[data-v="wrong"] .verdict{color:var(--wrong)}
+  .pred[data-v="untestable"] .verdict{color:var(--untest)}
+  .pred .out{font-size:.9rem;color:var(--muted);margin:.35rem 0 0}
+
+  .headline{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--ink);
+    padding:1rem 1.15rem;margin:1.2rem 0;max-width:68ch}
+  .headline .hm{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);display:block;margin-bottom:.3rem}
+  .headline .hv{font-family:var(--mono);font-size:1.5rem;color:var(--ink);
+    font-variant-numeric:tabular-nums;font-weight:500}
+  .headline .hb{font-size:.9rem;color:var(--muted);margin:.4rem 0 0}
+
+  .gate{font-size:.9rem;padding:.75rem .95rem;margin:1.1rem 0;border:1px solid var(--rule);
+    background:var(--surface);max-width:68ch}
+  .gate b{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:.7rem}
+  .gate.pass{border-left:3px solid var(--t-perfect)} .gate.pass b{color:var(--t-perfect)}
+  .gate.trip{border-left:3px solid var(--t-dead)} .gate.trip b{color:var(--t-dead)}
+  .gate span{display:block;color:var(--muted);margin-top:.3rem}
+
+  .tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--surface);margin:1.1rem 0}
+  table{border-collapse:collapse;width:100%;font-size:.84rem}
+  th,td{padding:.5rem .7rem;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:.67rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);font-weight:500;white-space:nowrap;background:var(--surface-2);
+    border-bottom:1px solid var(--rule)}
+  tbody tr:nth-child(even){background:var(--surface-2)}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  /* The baseline carries its own name, so it must wrap. Left as a nowrap
+     numeric cell it forced every wide table past the page and back into a
+     horizontal scrollbar. */
+  td.base{font-family:var(--mono);font-variant-numeric:tabular-nums;
+    white-space:normal;min-width:9rem}
+  td.base small{font-family:var(--sans);display:block;line-height:1.35}
+  td.d{font-family:var(--mono);font-size:.78rem;color:var(--ink);white-space:nowrap}
+  tr[data-tier]{border-left:3px solid var(--t-none)}
+  tr[data-tier="Perfect"]{border-left-color:var(--t-perfect)}
+  tr[data-tier="Superhuman"]{border-left-color:var(--t-super)}
+  tr[data-tier="Human"]{border-left-color:var(--t-human)}
+  tr[data-tier="Bad"]{border-left-color:var(--t-bad)}
+  /* The lowest grade is the one a reader most needs to see at a glance. Its
+     name carries an apostrophe, which is why it was missing a rule. */
+  tr[data-tier="Doesn't work"]{border-left-color:var(--t-dead)}
+  .tier{font-family:var(--mono);font-size:.76rem;white-space:nowrap;font-weight:500}
+  .tier[data-t="Perfect"]{color:var(--t-perfect)}
+  .tier[data-t="Superhuman"]{color:var(--t-super)}
+  .tier[data-t="Human"]{color:var(--t-human)}
+  .tier[data-t="Bad"]{color:var(--t-bad)}
+  .tier[data-t="Doesn't work"]{color:var(--t-dead);font-weight:600}
+  /* No inner vertical scroll. A capped box inside a horizontally scrolling
+     wrapper produces two scrollbars on one table, and hides how much is there.
+     Long tables show a first screenful and expand in place instead. */
+  .moreBtn{font-family:var(--mono);font-size:.76rem;color:var(--accent);background:var(--surface);
+    border:1px solid var(--rule);padding:.45rem .8rem;cursor:pointer;margin:0 0 1.1rem}
+  .moreBtn:hover{background:var(--accent-soft)}
+  .moreBtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  td.why{color:var(--muted);font-size:.78rem;min-width:13rem}
+  .fullwidth{max-width:none}
+
+  details{border:1px solid var(--rule);background:var(--surface);margin:1.1rem 0;max-width:100%}
+  summary{cursor:pointer;padding:.7rem .95rem;font-family:var(--mono);font-size:.8rem;color:var(--ink)}
+  summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  details > *:not(summary){margin:0 .95rem 1rem}
+  details .tablewrap{margin:0 0 1rem}
+
+  .plots{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));margin:1.3rem 0}
+  figure{margin:0;border:1px solid var(--rule);background:var(--surface);padding:.6rem}
+  figure img{display:block;width:100%;max-width:100%;height:auto;background:#fff}
+  figcaption{font-size:.78rem;color:var(--muted);margin-top:.5rem}
+
+  ul.notes{list-style:none;margin:.6rem 0 0;padding:0}
+  ul.notes li{position:relative;padding-left:1.15rem;margin-bottom:.6rem;font-size:.92rem;color:var(--muted)}
+  ul.notes li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;background:var(--accent)}
+  ul.notes.warn li::before{background:var(--t-bad)}
+
+  .what{background:var(--accent-soft);border:1px solid var(--rule);padding:1.05rem 1.2rem;
+    margin:1.5rem 0 0;max-width:68ch}
+  .what p{margin:0;font-size:.93rem}
+
+  .scoregroup{margin:1.6rem 0 0}
+  .scoregroup > h3{display:flex;align-items:baseline;gap:.7rem}
+  .scoregroup .count{font-family:var(--mono);font-size:.8rem;color:var(--faint);font-weight:400}
+
+  /* ---- prompting guide ---------------------------------------------- */
+  .rule{padding-block:2.4rem;border-bottom:1px solid var(--rule-soft)}
+  .rule:last-of-type{border-bottom:0}
+  .rule h3{margin:0 0 .5rem;font-size:1.22rem;display:flex;gap:.7rem;align-items:baseline}
+  .rule h3 .rn{font-family:var(--mono);font-size:.95rem;color:var(--accent);font-weight:600}
+  .rule .oneline{font-size:1.02rem;color:var(--muted);max-width:68ch;margin:0 0 1.3rem}
+  /* align-items:start stops a short card from being stretched to the height of
+     the tallest one in its row, which left large empty panels. */
+  .dodont{display:grid;gap:1rem;align-items:start;
+    /* min() lets the track shrink below 420px on a narrow screen; a bare
+       minmax(420px,...) is wider than a phone and scrolls the whole page. */
+    grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr))}
+  .dodont.one{grid-template-columns:minmax(0,1fr)}
+  .card{border:1px solid var(--rule);background:var(--surface);display:flex;flex-direction:column}
+  .card.do{border-top:3px solid var(--ok)}
+  .card.dont{border-top:3px solid var(--wrong)}
+  .card h5{font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+    margin:0;padding:.6rem .85rem;border-bottom:1px solid var(--rule-soft);font-weight:600}
+  .card.do h5{color:var(--ok)} .card.dont h5{color:var(--wrong)}
+  .card h5 em{font-style:normal;font-weight:400;letter-spacing:0;text-transform:none;
+    color:var(--muted);font-family:var(--sans);font-size:.82rem;display:block;margin-top:.2rem}
+  .card h5 .tag{display:inline-block;min-width:3.1rem}
+  /* Wrap rather than scroll. These samples sit two to a row, so a line long
+     enough to overflow was being clipped mid-token behind a scrollbar. A
+     samples are kept short enough that wrapping is rare. */
+  .card pre{margin:0;padding:.8rem .85rem;font-family:var(--mono);
+    font-size:.735rem;line-height:1.55;color:var(--body);background:transparent;
+    white-space:pre-wrap;overflow-wrap:break-word}
+  .evidence{margin:1.3rem 0 0;max-width:68ch}
+  .evidence p{margin:0 0 .7rem;font-size:.95rem}
+  .rule .warn-box{background:var(--surface-2);border:1px solid var(--rule);
+    border-left:3px solid var(--t-bad);padding:.9rem 1.1rem;margin:1.1rem 0 0;max-width:68ch}
+  .rule .warn-box p{margin:0;font-size:.93rem}
+  .ruletable{margin:1.2rem 0 0;max-width:46rem}
+  .flip{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.1rem 0 0;
+    grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));max-width:46rem}
+  .flip div{background:var(--surface);padding:.7rem .85rem}
+  .flip dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 .25rem}
+  .flip dd{margin:0;font-family:var(--mono);font-size:.9rem;color:var(--ink)}
+  .flip dd.bad{color:var(--wrong)} .flip dd.good{color:var(--ok)}
+  /* ---- injection breakdown ------------------------------------------ */
+  .inj{margin:1.8rem 0 0}
+  .inj h4{font-family:var(--serif);font-size:1.15rem;letter-spacing:0;text-transform:none;
+    color:var(--ink);margin:2rem 0 .6rem;font-weight:600}
+  .atk{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.3rem 0}
+  .atkrow{background:var(--surface);display:grid;gap:1rem;padding:.95rem 1.1rem;
+    grid-template-columns:minmax(0,1fr);align-items:start}
+  /* Two columns only where the metadata column has room to sit beside the
+     text; below that it stacks, or the auto track pushes the page sideways. */
+  @media (min-width:640px){
+    .atkrow{grid-template-columns:minmax(11rem,13rem) minmax(0,1fr)}
+  }
+  .atkrow.floor{background:var(--surface-2)}
+  .atkmeta{min-width:0}
+  .atkname{font-family:var(--mono);font-size:.82rem;color:var(--ink);font-weight:600}
+  .atkkind{font-size:.8rem;color:var(--muted);margin-top:.2rem;line-height:1.4}
+  .atkrate{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums;
+    margin-top:.45rem;line-height:1}
+  .atkrate small{display:block;font-size:.68rem;color:var(--faint);letter-spacing:.06em;
+    text-transform:uppercase;margin-top:.25rem;font-family:var(--mono)}
+  .atkrate.hi{color:var(--t-dead)} .atkrate.mid{color:var(--t-bad)} .atkrate.lo{color:var(--muted)}
+  .atktext{font-family:var(--mono);font-size:.755rem;line-height:1.6;color:var(--body);
+    white-space:pre-wrap;overflow-wrap:break-word;background:var(--surface-2);
+    border-left:3px solid var(--rule);padding:.7rem .8rem;margin:0}
+  .atkrow.floor .atktext{background:var(--surface)}
+  .atkacc{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin:.5rem 0 0}
+  .atkrate.good{color:var(--t-perfect)}
+  .atkrate.none{color:var(--t-dead)}
+  .atkrate.mono{color:var(--ink)}
+  .atksize{font-family:var(--mono);font-size:.68rem;color:var(--faint);margin-top:.35rem}
+  .injected{font-family:var(--sans);font-size:.92rem;background:var(--surface-2);
+    border-left:3px solid var(--t-bad);padding:.8rem 1rem;margin:1.1rem 0 0;max-width:68ch;color:var(--ink)}
+  footer{padding-block:2.5rem;color:var(--faint);font-size:.88rem}
+  footer code{color:var(--muted);word-break:break-all}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Evaluation report</p>
+    <h1>Do jev's probabilities mean anything?</h1>
+    <p class="dek">A measured answer, from nine experiments and twenty-eight predictions
+      fixed in writing before any data was collected.</p>
+    <div class="jump">
+      <p><strong>The findings are at the end.</strong> If you want the results before the
+        method, go to <a href="#conclusions">Conclusions</a>, which collects every prediction,
+        every surprise, and what the results change. The sections between here and there
+        define the terms those findings use.</p>
+    </div>
+    <dl class="facts" id="facts"></dl>
+  </header>
+
+  <nav aria-label="Contents"><ul id="nav"></ul></nav>
+
+  <section id="about">
+    <div class="col">
+      <h2>What this document is</h2>
+      <p>This reports an evaluation of <strong>jev</strong>, a decision model sold by
+        TypeSafe. The evaluation followed a plan written before any request was sent. That
+        plan fixed the nine experiments, the sample size of each, and twenty-eight
+        predictions, each stated with the result that would prove it wrong. Nothing here was
+        chosen after seeing an outcome.</p>
+      <p>The purpose was not to grade the model. It was to find out which of several
+        proposed ways of using it would work. Each experiment therefore ends with what it
+        settles, and the <a href="#conclusions">Conclusions</a> gather those into three
+        decisions a reader can act on.</p>
+      <p>One run produced everything below: 123,805 requests over 138 minutes, at a cost of
+        $12.69. Five requests failed and were excluded; they are counted, never replaced by a
+        default value.</p>
+    </div>
+  </section>
+
+  <section id="model">
+    <div class="col">
+      <h2>The model and how you ask it things</h2>
+      <p>jev answers questions about a piece of text. One request carries a single
+        <strong>state</strong> — the text, or a structured object — and one or more
+        <strong>questions</strong> about it. Every question in a request is answered from
+        that same state, and a request may carry many questions at once. Whether asking many
+        at once costs anything is the subject of the third experiment below.</p>
+      <p>Questions take three forms. This document uses the vendor's names for them.</p>
+      <dl class="terms">
+        <div><dt>noul</dt><dd>A yes-or-no question. It returns one probability between 0 and 1,
+          and nothing else.</dd></div>
+        <div><dt>choice</dt><dd>A question supplying up to 255 named options. It returns the
+          option selected, a probability for every option, and a separate number the vendor
+          calls <em>confidence</em>.</dd></div>
+        <div><dt>score</dt><dd>A question supplying an ordered list of rubric points, lowest to
+          highest. It returns a position on that scale, a probability for each point, and a
+          confidence.</dd></div>
+      </dl>
+      <p style="margin-top:1.3rem">A noul returns no confidence. Only a choice and a score do.
+        That absence matters in the ninth experiment, which asks whether confidence drops when
+        the model cannot know the answer; there, a substitute had to be used for yes-or-no
+        questions, and the substitute is named where it appears.</p>
+      <p>Every request in this run was answered by version <code>jev-1.13.0</code>.</p>
+    </div>
+  </section>
+
+  <section id="question">
+    <div class="col">
+      <h2>What the evaluation asks</h2>
+      <p>A model that reports a probability is making a claim that can be checked. If it says
+        0.9 on a thousand questions, about nine hundred should turn out true. A model whose
+        probabilities behave that way is called <strong>calibrated</strong>.</p>
+      <p>Calibration is the stated reason to choose jev over a language model, and a vendor's
+        calibration on the vendor's data does not establish calibration on yours. So the
+        evaluation asks three questions:</p>
+      <ul class="notes">
+        <li>Do the probabilities mean what they say on data the vendor did not calibrate
+          against?</li>
+        <li>Does answer quality hold when many questions are asked in one request, which is
+          the arrangement that makes the model cheap enough to use at scale?</li>
+        <li>Where does the model stop working, and does it signal that it has stopped?</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="col">
+      <h2>How the experiments were run</h2>
+      <p>Four rules applied throughout.</p>
+      <dl class="terms">
+        <div><dt>Ground truth came from solvers, never from the model</dt>
+          <dd>Every problem was generated together with its correct answer: satisfiability from
+            a SAT solver, reachability from a graph search, Sudoku from a solver that also
+            verified the puzzle had exactly one solution. The model was never asked to grade
+            itself or another model.</dd></div>
+        <div><dt>Every accuracy is reported beside a baseline</dt>
+          <dd>Three baselines were computed where each applies: the <em>random</em> rate, one
+            divided by the number of options; the <em>majority-class</em> rate, the score from
+            always giving the commonest answer; and a <em>cheap heuristic</em>, a short program
+            using an obvious surface feature, such as reading clause density off a formula's
+            header. An accuracy without a baseline beside it is not a result, because a set
+            with lopsided answers makes any accuracy look good.</dd></div>
+        <div><dt>Problems were generated fresh, at a fixed seed</dt>
+          <dd>No standard benchmark was used, because a published benchmark may sit in training
+            data. Every problem is reproducible from its generator, difficulty, seed, and index.</dd></div>
+        <div><dt>A failed request is never a data point</dt>
+          <dd>Failures are counted and excluded. None is replaced by 0.5, by false, or by the
+            commonest answer.</dd></div>
+      </dl>
+
+      <h3>The measurements</h3>
+      <dl class="terms">
+        <div><dt>Accuracy</dt><dd>The fraction of answers that match the known answer.</dd></div>
+        <div><dt>Expected calibration error</dt>
+          <dd>Sort the answers into ten bins by the probability given. Within each bin, compare
+            the average probability against the fraction that actually turned out true. The
+            expected calibration error is the average of those gaps, weighted by how many
+            answers fall in each bin. Zero means the probabilities are exactly honest. It is
+            the single most important number in this evaluation, and it is abbreviated
+            <strong>ECE</strong> in the tables.</dd></div>
+        <div><dt>Brier score</dt>
+          <dd>The average squared distance between the probability given and the outcome. It
+            penalises a model that hedges everything near 0.5, which the calibration error
+            alone would not.</dd></div>
+        <div><dt>AUROC</dt>
+          <dd>How well the probabilities rank true cases above false ones, ignoring whether the
+            numbers themselves are right. A model can be badly calibrated and still rank
+            perfectly, so both numbers are needed to tell those two failures apart.</dd></div>
+        <div><dt>Reliability diagram</dt>
+          <dd>The picture of the calibration bins described above: predicted probability on one
+            axis, observed frequency on the other, with a diagonal showing where a perfectly
+            calibrated model would sit. Several appear below. A curve that runs the wrong way
+            is a worse result than one that is merely offset.</dd></div>
+      </dl>
+
+      <h3>The grades</h3>
+      <p>The plan set five grades and applied them to every condition separately, not to an
+        experiment as a whole. A model that does well on easy problems and fails on hard ones is
+        useful if you know where the change happens, so the tables below report a grade for each
+        difficulty rather than one grade overall.</p>
+      <div class="tierkey">
+        <div><b style="color:var(--t-perfect)">Perfect</b><span>Saturates the measurement. Nothing left to test.</span></div>
+        <div><b style="color:var(--t-super)">Superhuman</b><span>Matches or beats a knowledgeable person given unlimited time, at a rate that makes new work possible.</span></div>
+        <div><b style="color:var(--t-human)">Human</b><span>Matches an unhurried competent person. Useful, but the speed unlocks nothing new.</span></div>
+        <div><b style="color:var(--t-bad)">Bad</b><span>Above chance, below a short program. The grade most easily mistaken for success.</span></div>
+        <div><b style="color:var(--t-dead)">Doesn't work</b><span>At or below chance, or confidently wrong in a way that tracks nothing.</span></div>
+      </div>
+
+      <h3>The two checks that make the rest readable</h3>
+      <p>Every formal subject here — satisfiability, reachability, Sudoku — lies outside what a
+        model trained on decisions was built for. A poor result on one could mean the subject is
+        hard, the model is weak, or the measuring apparatus is broken. Two controls separate
+        those.</p>
+      <p>The <strong>positive control</strong> is a set of support-ticket routing problems with
+        unambiguous answers, run alongside every experiment. It scored 0.980 throughout this run.
+        A weak result on formulas can therefore be read as a fact about formulas.</p>
+      <p>The <strong>smallest difference worth reporting</strong> comes from the first experiment
+        below, which measures how much the model's own answers vary between identical requests.
+        That variation is 0.0112. Differences smaller than about twice that figure are not
+        findings, and no claim below rests on one.</p>
+
+
+      <h3>Terms the experiments use</h3>
+      <p>The sections below quote the experiments' own wording: the reasons the grading
+        rubric generates, the outcome text each experiment writes, and the predictions the
+        plan fixed in advance. Most of the terms there are standard usage in some field —
+        <em>monotone</em> and <em>total variation</em> from mathematics, <em>witness</em>
+        from complexity theory, <em>noise floor</em> from signal processing, <em>phase
+        transition</em> from the satisfiability literature, <em>ceiling</em> from
+        experimental psychology, and the named statistical tests from statistics. Two are
+        particular to this plan and would not be recognised elsewhere:
+        <em>enrollment</em> and <em>signature</em>. All are defined here because a term
+        being standard in its own field is no help to a reader who works in another
+        one.</p>
+      <dl class="terms">
+        <div><dt>monotone</dt><dd>A curve that only ever moves one way. A reliability curve
+          that rises where it should fall is not monotone, and the rubric treats that as the
+          worst result whatever the other numbers say.</dd></div>
+        <div><dt>knee</dt><dd>The point at which a curve that has been flat starts to fall.
+          Several experiments sweep a difficulty looking for one and report when there is
+          none in the range swept.</dd></div>
+        <div><dt>ceiling</dt><dd>A task the model already answers almost perfectly. A decline
+          cannot be measured there, because no accuracy is left to lose.</dd></div>
+        <div><dt>noise floor</dt><dd>The model's own variation between identical requests,
+          measured at 0.011. The smallest difference that can be read as a finding.</dd></div>
+        <div><dt>signature</dt><dd>This plan's term for a pattern it named in advance as
+          evidence of a particular failure. The density-heuristic signature, for instance, is accuracy near
+          chance on a balanced set while an unbalanced sweep still looks good.</dd></div>
+        <div><dt>witness</dt><dd>A specific example that settles a question. A satisfying
+          assignment is a witness that a formula is satisfiable. Unsatisfiability has no
+          witness, which is part of why it is the harder direction.</dd></div>
+        <div><dt>phase transition</dt><dd>The clause ratio near 4.26 at which random formulas
+          stop being mostly satisfiable and start being mostly unsatisfiable. The change is
+          abrupt, which is what makes it a useful target curve.</dd></div>
+        <div><dt>enrollment</dt><dd>This plan's term for putting several related outcomes into
+          one choice over their combinations instead of asking about each separately. It is
+          not general usage.</dd></div>
+        <div><dt>quantised</dt><dd>Reported to a fixed precision. Every probability this model
+          returned lies on a two-decimal grid.</dd></div>
+        <div><dt>total variation</dt><dd>A distance between two probability distributions: half
+          the sum of the absolute differences. Used to measure how far putting questions in one
+          request moved an answer.</dd></div>
+        <div><dt>DIMACS</dt><dd>The standard plain-text format for writing a satisfiability
+          formula.</dd></div>
+        <div><dt>Dyck words</dt><dd>Strings of brackets used to test counting. A Dyck word is
+          one whose brackets are correctly matched and nested.</dd></div>
+        <div><dt>McNemar's test</dt><dd>A significance test for two methods measured on the
+          same items. It looks only at the cases where they disagree, which is what makes it
+          the right test for a paired comparison.</dd></div>
+        <div><dt>Wilson interval</dt><dd>A confidence interval for a proportion that stays
+          sensible near 0 and 1, where the ordinary interval does not.</dd></div>
+        <div><dt>bootstrap</dt><dd>Estimating an interval by resampling the measured data many
+          times, rather than assuming a distribution for it.</dd></div>
+      </dl>
+
+      <h3>How to read the tables</h3>
+      <p>Each experiment reports one row per difficulty. <em>Deciding metric</em> names the
+        measurement that set the grade for that row, <em>value</em> is what it came to,
+        <em>baseline</em> is what it had to beat and where that number came from, and
+        <em>why</em> gives the rule that produced the grade. Where a grade was set on a smaller
+        sample than the row's own, both counts are shown.</p>
+    </div>
+  </section>
+
+  <section id="experiments">
+    <div class="col">
+      <h2>The nine experiments</h2>
+      <p class="lede">In the order the plan ran them, which is the order in which an early
+        result could invalidate a later one. Each gives the predictions made in advance, the
+        method, the result, what was unexpected, and what it settles.</p>
+      <p class="lede">The plan numbered these E1 to E9 in a different order, and those labels
+        survive in the file names of the recorded results. Both numbers appear on each
+        heading below: the position in the run, and the plan's own label.</p>
+    </div>
+    <div id="exps"></div>
+  </section>
+
+
+  <section id="guide">
+    <div class="col">
+      <h2>A prompting guide</h2>
+      <p class="lede">Twelve rules that follow from the results above, in four groups. Each gives
+        the requests to write, the mistakes to avoid, and the measurement behind the advice.</p>
+      <p class="lede">Figures come from one of two places. Those attributed to an experiment are
+        from the full run against <code>jev-1.13.0</code>, and the sample size is given with each.
+        Those described as measured live were run while this page was written, on sixty problems
+        per condition. Both are reproducible from the seeds in the repository.</p>
+      <p class="lede">A difference is treated as real here only if it exceeds the model's own
+        variation between identical requests, which the first experiment puts at 0.011. Anything
+        smaller than roughly twice that is not a finding, and is not used as one below.</p>
+    </div>
+    <div id="rules"></div>
+  </section>
+
+  <section id="conclusions">
+    <div class="col">
+      <h2>Conclusions</h2>
+      <p class="lede">Every prediction, scored against the condition the plan set for it in
+        advance; then the behaviours no experiment was designed to find; then the three
+        decisions this run settles.</p>
+    </div>
+    <div class="facts" id="scorefacts" style="margin-top:1.5rem"></div>
+    <div class="col" style="margin-top:1.3rem">
+      <p>The plan noted that a high proportion correct would be mildly suspicious, since it
+        would suggest the experiments had been set too easily. Predictions that turned out wrong
+        are the most useful part of this section and are listed first.</p>
+    </div>
+    <div id="scoreboard"></div>
+
+    <div class="col" style="margin-top:2.5rem">
+      <h3>The two predictions the plan singled out</h3>
+      <p>Before any data, the plan named one result it expected to be the biggest surprise and
+        one it expected to matter most. They came out differently.</p>
+      <div class="pred" data-v="wrong">
+        <span class="verdict">Expected surprise &mdash; did not happen</span>
+        <p class="claim">That asking many questions at once would turn out to degrade the later
+          ones, showing the parallel evaluation to be less complete than advertised.</p>
+        <p class="out">It does not degrade them. Accuracy at question 200 matched accuracy at
+          question 1 to within the measurement. The architecture behaves as described.</p>
+      </div>
+      <div class="pred" data-v="right">
+        <span class="verdict">Expected to matter most &mdash; and it does</span>
+        <p class="claim">That if confidence fails to track ignorance, the recommended way of
+          deploying the model — act when confident, escalate when not — stops working, however
+          good the accuracy figures look.</p>
+        <p class="out">Confidence separates answerable from unanswerable states by 0.199, below
+          the 0.30 the plan set as the threshold for a usable signal. There is no reliable
+          trigger to threshold on.</p>
+      </div>
+    </div>
+
+    <div class="col" style="margin-top:2.5rem">
+      <h3>Behaviour no experiment was designed to find</h3>
+      <p>Three patterns appeared across every experiment that measured them.</p>
+      <p><strong>Probabilities are quantised to two decimal places.</strong> All 3,194,813
+        probabilities seen in the batching experiment fall exactly on a hundredths grid. No
+        calibration measurement here can resolve anything finer than 0.01.</p>
+      <p><strong>Probabilities cluster rather than spread.</strong> The value carrying the
+        decision was exactly 1.0 on 52 percent of 836,700 answers in that same experiment.</p>
+      <p><strong>Confidence is not the largest probability.</strong> The two differ on 47.1
+        percent of choice and score answers, by 0.09 on average and by as much as 0.37. The
+        vendor documents neither quantity's definition, and the difference is large enough to be
+        a usable signal in its own right.</p>
+      <details style="margin-top:1.3rem"><summary id="allanoms-sum">Every recorded anomaly</summary>
+        <ul class="notes warn" id="anoms"></ul></details>
+    </div>
+
+    <div class="col" style="margin-top:2.5rem">
+      <h3>What this changes</h3>
+      <div id="what"></div>
+    </div>
+  </section>
+
+  <footer class="col">
+    <p><strong>The code.</strong> Everything here is at
+      <a href="https://github.com/willkelly/jev-evaluation">github.com/willkelly/jev-evaluation</a>
+      — the harness, the plan, the nine experiments, the generators that make the problems and
+      their answers, and the tests. The guide above is also
+      <a href="https://github.com/willkelly/jev-evaluation/blob/main/PROMPTING.md">its own document</a>.</p>
+    <p><strong>Reproducing this.</strong> Every request, retry and failure is recorded in
+      <code>runs/full-20260919/*.jsonl</code>, each carrying its own correct answer. Per-experiment
+      results are in <code>*_result.json</code> and the figures in <code>plots/</code>. The master
+      seed is <code>20260919</code>; every problem can be regenerated from its generator,
+      difficulty, seed and index.</p>
+    <p>Recomputing results from the recorded requests is only partly built. A separate tool
+      rejoins any experiment's answers to their correct answers and recomputes accuracy and
+      calibration independently of the experiment's own code. Derived figures, such as a drift or
+      a rate of decline, are rebuilt from the log only for the calibration experiment.</p>
+  </footer>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script type="application/json" id="prose">__PROSE__</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var PROSE = JSON.parse(document.getElementById('prose').textContent);
+  var R = D.run;
+  function fmt(v,d){ if(v===null||v===undefined||v==='')return '—';
+    if(typeof v==='number'){ if(Number.isInteger(v)&&Math.abs(v)>=1000) return v.toLocaleString();
+      return (Math.abs(v)<1e-4&&v!==0)? v.toExponential(2) : (+v.toFixed(d===undefined?4:d)).toString(); }
+    return String(v); }
+  function esc(s){ var e=document.createElement('div'); e.textContent=s==null?'':String(s); return e.innerHTML; }
+  // The plan and the experiment modules write an em dash as two hyphens. Render it.
+  function txt(s){ return esc(s).replace(/ -- /g,' \u2014 ').replace(/&lt;=/g,'\u2264').replace(/&gt;=/g,'\u2265'); }
+
+  document.getElementById('facts').innerHTML = [
+    ['Model', R.model, ''],
+    ['Requests', R.calls.toLocaleString(), R.failed+' failed'],
+    ['Cost', '$'+R.cost.toFixed(2), (R.itok/1e6).toFixed(0)+'M input tokens'],
+    ['Duration', R.minutes.toFixed(0)+' min', Math.round(R.p50*1000)+' ms median'],
+    ['Experiments', '9', '28 predictions'],
+    ['Predictions right', D.score.right.length+' of '+D.score.n_testable, Math.round(D.score.hit_rate*100)+'%']
+  ].map(function(f){ return '<div class="fact"><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+
+      (f[2]?' <small>'+esc(f[2])+'</small>':'')+'</dd></div>'; }).join('');
+
+  document.getElementById('nav').innerHTML =
+    [['about','About'],['model','Model'],['question','Question'],['method','Method']]
+    .concat(D.experiments.map(function(e){ var pr=PROSE[e.id]||{}; return ['x'+e.id, pr.short||pr.nav||e.id]; }))
+    .concat([['guide','Guide'],['conclusions','Conclusions']])
+    .map(function(n){ return '<li><a href="#'+n[0]+'">'+esc(n[1])+'</a></li>'; }).join('');
+
+  var claimOf={}; D.table.forEach(function(t){ claimOf[t.id]=t; });
+  var REPO='https://github.com/willkelly/jev-evaluation/blob/main/';
+  function srcLink(p,label){ return '<a href="'+REPO+p+'">'+esc(label||p.split('/').pop())+'</a>'; }
+
+  function caption(name){
+    var s=name.replace(/^e\d_/,'').replace(/\.png$/,'').replace(/_/g,' ');
+    s=s.replace(/\bn(\d+)\b/g,'n = $1').replace(/\bvs\b/g,'against');
+    return s.charAt(0).toUpperCase()+s.slice(1);
+  }
+  function predBlock(p){
+    var t=claimOf[p.id]||{};
+    var label={right:'Confirmed',wrong:'Wrong',untestable:'Could not be tested as written'}[p.verdict]||p.verdict;
+    return '<div class="pred" data-v="'+esc(p.verdict)+'">'+
+      '<span class="verdict">'+esc(label)+'</span>'+
+      '<p class="claim">'+txt(t.claim||p.claim||'')+'</p>'+
+      '<p class="out">'+txt(p.outcome||'')+'</p></div>';
+  }
+  var tblSeq=0;
+  function injectionBlock(inj){
+    var rows=(inj.rows||[]).map(function(a){
+      var cls = a.rate>=0.5?'hi':(a.rate>=0.1?'mid':'lo');
+      return '<div class="atkrow'+(a.rate===0?' floor':'')+'">'+
+        '<div class="atkmeta"><div class="atkname">'+esc(a.technique)+'</div>'+
+        '<div class="atkkind">'+esc(a.kind)+'</div>'+
+        '<div class="atkrate '+cls+'">'+(a.rate*100).toFixed(1)+'%'+
+        '<small>answer moved</small></div></div>'+
+        '<div><pre class="atktext">'+esc(a.text)+'</pre>'+
+        '<p class="atkacc">routing accuracy with this text present: '+a.accuracy.toFixed(3)+
+        ' (0.985 clean)</p></div></div>';
+    }).join('');
+    return '<div class="block inj" style="max-width:none">'+
+      '<h4>Prompt injection, technique by technique</h4>'+
+      '<div style="max-width:68ch">'+inj.intro+'</div>'+
+      '<div class="atk">'+rows+'</div>'+
+      '<div style="max-width:68ch">'+inj.analysis+'</div>'+
+      simpleTable(inj.conf_table)+
+      '<div style="max-width:68ch">'+(inj.caveat||'')+'</div></div>';
+  }
+
+  function abstentionBlock(ab){
+    var rows=(ab.rows||[]).map(function(a){
+      var control = a.sep===null || a.sep===undefined;
+      // the useful quantity is how far confidence moved, so that leads
+      var cls = control ? 'lo' : (a.sep>=0.3 ? 'good' : 'none');
+      var big = control ? (a.mean).toFixed(3) : (a.sep).toFixed(3);
+      var lab = control ? 'mean confidence' : 'confidence drop';
+      return '<div class="atkrow'+(control?' floor':'')+'">'+
+        '<div class="atkmeta"><div class="atkname">'+esc(a.kind)+'</div>'+
+        '<div class="atkkind">'+esc(a.desc)+'</div>'+
+        '<div class="atkrate '+cls+'">'+big+'<small>'+lab+'</small></div></div>'+
+        '<div><pre class="atktext">'+esc(a.example)+'</pre>'+
+        '<p class="atkacc">mean confidence '+a.mean.toFixed(3)+
+        ' · '+Math.round(a.below*100)+'% of answers below 0.8'+
+        ' · '+Math.round(a.at_one*100)+'% at exactly 1.0</p></div></div>';
+    }).join('');
+    var calib='';
+    if(ab.calib){
+      calib='<div class="tablewrap ruletable"><table><thead><tr>'+
+        ab.calib.head.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+
+        '</tr></thead><tbody>'+ab.calib.rows.map(function(r){
+          return '<tr>'+r.map(function(c,i){return '<td class="'+(i?'num':'d')+'">'+esc(c)+'</td>';}).join('')+'</tr>';
+        }).join('')+'</tbody></table></div>';
+    }
+    return '<div class="block inj" style="max-width:none">'+
+      '<h4>Abstention, kind by kind</h4>'+
+      '<div style="max-width:68ch">'+ab.intro+'</div>'+
+      '<div class="atk">'+rows+'</div>'+
+      '<div style="max-width:68ch">'+ab.analysis+ab.second+'</div>'+
+      calib+
+      '<div style="max-width:68ch">'+(ab.caveat||'')+'</div></div>';
+  }
+
+  function simpleTable(t,cls){
+    if(!t) return '';
+    return '<div class="tablewrap '+(cls||'')+'"><table><thead><tr>'+
+      t.head.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+
+      t.rows.map(function(r){return '<tr>'+r.map(function(c,i){
+        return '<td class="'+(i===0?'d':(/^[-0-9.]+$/.test(String(c))?'num':''))+'">'+txt(c)+'</td>';
+      }).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+  }
+
+  function calibrationBlock(cb){
+    var rows=(cb.rows||[]).map(function(a){
+      var wrong = (a.truth==='unsatisfiable' && a.p>=0.5) || (a.truth==='satisfiable' && a.p<0.5);
+      return '<div class="atkrow">'+
+        '<div class="atkmeta"><div class="atkname">'+esc(a.label)+'</div>'+
+        '<div class="atkkind">'+esc(a.desc)+'</div>'+
+        '<div class="atkrate '+(wrong?'none':'good')+'">'+a.p.toFixed(2)+
+        '<small>P(satisfiable) returned</small></div>'+
+        '<div class="atksize">truth: '+esc(a.truth)+'</div></div>'+
+        '<div><pre class="atktext">'+esc(a.dimacs)+'</pre></div></div>';
+    }).join('');
+    return '<div class="block inj" style="max-width:none">'+
+      '<h4>What the probabilities look like on a formula</h4>'+
+      '<div style="max-width:68ch">'+cb.intro+'</div>'+
+      '<div class="atk">'+rows+'</div>'+
+      '<div style="max-width:68ch">'+cb.analysis+'</div>'+
+      simpleTable(cb.table)+
+      '<div style="max-width:68ch">'+cb.second+(cb.caveat||'')+'</div></div>';
+  }
+
+  function encodingBlock(en){
+    var rows=(en.rows||[]).map(function(a){
+      var cls = a.acc>=0.8?'good':(a.acc>=0.6?'mid':'none');
+      return '<div class="atkrow">'+
+        '<div class="atkmeta"><div class="atkname">'+esc(a.form)+'</div>'+
+        '<div class="atkkind">'+esc(a.desc)+'</div>'+
+        '<div class="atkrate '+cls+'">'+a.acc.toFixed(3)+'<small>accuracy</small></div>'+
+        '<div class="atksize">'+a.chars.toLocaleString()+' characters</div></div>'+
+        '<div><pre class="atktext">'+esc(a.state)+'</pre></div></div>';
+    }).join('');
+    return '<div class="block inj" style="max-width:none">'+
+      '<h4>One program, three encodings</h4>'+
+      '<div style="max-width:68ch">'+en.intro+'</div>'+
+      '<div class="atk">'+rows+'</div>'+
+      '<div style="max-width:68ch">'+en.analysis+'</div>'+
+      simpleTable(en.table)+
+      '<div style="max-width:68ch">'+(en.caveat||'')+'</div></div>';
+  }
+
+  function batchingBlock(ba){
+    return '<div class="block inj" style="max-width:none">'+
+      '<h4>What putting questions together costs, condition by condition</h4>'+
+      '<div style="max-width:68ch">'+ba.intro+'</div>'+
+      simpleTable(ba.table)+
+      '<div style="max-width:68ch">'+ba.analysis+(ba.caveat||'')+'</div></div>';
+  }
+
+  function rowsTable(rows){
+    if(!rows.length) return '';
+    function rowHtml(r){
+      var b=fmt(r.baseline);
+      if(r.bname) b+=' <small style="color:var(--faint)">('+esc(r.bname)+(r.bsrc&&r.bsrc!=='measured'?', '+esc(r.bsrc):'')+')</small>';
+      var n=r.n==null?'—':String(r.n);
+      if(r.mn!=null&&r.mn!==r.n) n+=' <small style="color:var(--faint)">('+esc(r.metric)+' n='+fmt(r.mn,0)+')</small>';
+      var d=r.d, ds=(d&&typeof d==='object')?Object.keys(d).map(function(k){return k+'='+fmt(d[k]);}).join(' '):fmt(d);
+      return '<tr data-tier="'+esc(r.tier)+'"><td class="d">'+esc(ds)+'</td><td class="num">'+n+
+        '</td><td class="d">'+esc(r.metric||'—')+'</td><td class="num">'+fmt(r.value)+
+        '</td><td class="base">'+b+'</td><td><span class="tier" data-t="'+esc(r.tier)+'">'+esc(r.tier||'—')+
+        '</span></td><td class="why">'+txt(r.why||'—')+'</td></tr>';
+    }
+    var CUT=14, id='tb'+(++tblSeq);
+    var head='<table><thead><tr><th>Difficulty</th><th>n</th><th>Deciding metric</th>'+
+      '<th>Value</th><th>Baseline</th><th>Grade</th><th>Why</th></tr></thead>';
+    var first='<tbody>'+rows.slice(0,CUT).map(rowHtml).join('')+'</tbody>';
+    var rest=rows.length>CUT?'<tbody id="'+id+'" hidden>'+rows.slice(CUT).map(rowHtml).join('')+'</tbody>':'';
+    return '<div class="tablewrap">'+head+first+rest+'</table></div>'+
+      (rest?'<button class="moreBtn" data-target="'+id+'" data-n="'+rows.length+'">Show all '+
+        rows.length+' conditions</button>':'');
+  }
+
+  document.getElementById('exps').innerHTML = D.experiments.map(function(e){
+    var pr=PROSE[e.id]||{}, h=e.headline||{};
+    var hb=(h.baseline===null||h.baseline===undefined)
+      ? '<strong>no baseline reported</strong>'
+      : fmt(h.baseline)+(h.baseline_name?' ('+esc(h.baseline_name)+')':'');
+    var gate='';
+    if(e.gate){
+      var ev=e.gate.evaluated===false;
+      gate='<div class="'+(ev?'gate':(e.gate.passed?'gate pass':'gate trip'))+'"><b>'+
+        (ev?'Stop condition not evaluated':(e.gate.passed?'Stop condition cleared':'Stop condition met'))+
+        '</b><span>'+txt(e.gate.reason||'')+'</span></div>';
+    }
+    var plots=e.plots.length?'<div class="plots">'+e.plots.map(function(p){
+      return '<figure><img src="plots/'+esc(p)+'" alt="'+esc(caption(p))+'" loading="lazy">'+
+        '<figcaption>'+esc(caption(p))+'</figcaption></figure>';}).join('')+'</div>':'';
+    var anom=e.anomalies.length?'<details><summary>'+e.anomalies.length+
+      ' recorded anomalies</summary><ul class="notes warn">'+
+      e.anomalies.map(function(a){return '<li>'+txt(a)+'</li>';}).join('')+'</ul></details>':'';
+    var notes=e.notes.length?'<details><summary>'+e.notes.length+
+      ' notes and qualifications</summary><ul class="notes">'+
+      e.notes.map(function(a){return '<li>'+txt(a)+'</li>';}).join('')+'</ul></details>':'';
+
+    return '<article class="exp" id="x'+esc(e.id)+'">'+
+      '<div class="exp-head"><span class="exp-id">Experiment '+esc(pr.num||'')+'</span>'+
+      '<span style="font-family:var(--mono);font-size:.74rem;color:var(--faint)">'+
+      esc(e.id)+' in the plan</span></div>'+
+      '<h3 class="title">'+esc(pr.title||e.title)+'</h3>'+
+      (pr.source?'<p class="src">Source: '+srcLink(pr.source.experiment)+
+        '<span>·</span>problems from '+
+        pr.source.generators.map(function(g){return srcLink(g);}).join(', ')+'</p>':'')+
+      '<div class="block"><h4>What it asks</h4><p>'+(pr.asks||esc(e.question))+'</p></div>'+
+      '<div class="block"><h4>Predicted in advance</h4>'+e.predictions.map(predBlock).join('')+'</div>'+
+      '<div class="block"><h4>Method</h4>'+(pr.method||'')+'</div>'+
+      '<div class="block"><h4>Result</h4>'+(pr.found||'')+
+        '<div class="headline"><span class="hm">'+txt(h.metric||'headline')+'</span>'+
+        '<span class="hv">'+fmt(h.value)+'</span><p class="hb">against '+hb+
+        ', n = '+esc(h.n==null?'?':h.n)+'</p></div>'+gate+'</div>'+
+      (e.rows.length?'<div class="block fullwidth">'+rowsTable(e.rows)+'</div>':'')+
+      (plots?'<div class="block" style="max-width:none">'+plots+'</div>':'')+
+      (pr.calibration?calibrationBlock(pr.calibration):'')+
+      (pr.batching?batchingBlock(pr.batching):'')+
+      (pr.encoding?encodingBlock(pr.encoding):'')+
+      (pr.abstention?abstentionBlock(pr.abstention):'')+
+      (pr.injection?injectionBlock(pr.injection):'')+
+      (pr.surprise?'<div class="block"><h4>What was unexpected</h4>'+pr.surprise+'</div>':'')+
+      (pr.learned?'<div class="block"><h4>What it settles</h4>'+pr.learned+'</div>':'')+
+      (anom||notes?'<div class="block" style="max-width:none">'+anom+notes+'</div>':'')+
+      (e.what?'<div class="what"><p>'+txt(e.what)+'</p></div>':'')+
+    '</article>';
+  }).join('');
+
+  document.getElementById('exps').addEventListener('click',function(ev){
+    var b=ev.target.closest('.moreBtn'); if(!b) return;
+    var body=document.getElementById(b.dataset.target); if(!body) return;
+    body.hidden=!body.hidden;
+    b.textContent = body.hidden ? ('Show all '+b.dataset.n+' conditions')
+                                : ('Show first 14 of '+b.dataset.n);
+  });
+
+
+  /* prompting guide ------------------------------------------------ */
+  var RULES = PROSE._rules || [];
+  function ruleTable(t){
+    if(!t) return '';
+    return '<div class="tablewrap ruletable"><table><thead><tr>'+
+      t.head.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+
+      t.rows.map(function(r){return '<tr>'+r.map(function(cell,i){
+        return '<td class="'+(i?'num':'d')+'">'+esc(cell)+'</td>';}).join('')+'</tr>';}).join('')+
+      '</tbody></table></div>';
+  }
+  var lastGroup=null;
+  document.getElementById('rules').innerHTML = RULES.map(function(r){
+    var head='';
+    if(r.group && r.group!==lastGroup){ lastGroup=r.group;
+      head='<div class="rgroup"><h3>'+esc(r.group)+'</h3></div>'; }
+    var flip = r.example ? '<div class="injected">'+esc(r.example.injected)+'</div>'+
+      '<dl class="flip"><div><dt>Correct department</dt><dd>'+esc(r.example.true)+'</dd></div>'+
+      '<div><dt>Answer, clean</dt><dd class="good">'+esc(r.example.clean)+'</dd></div>'+
+      '<div><dt>Answer, with that text added</dt><dd class="bad">'+esc(r.example.attacked)+'</dd></div></dl>' : '';
+    return head+'<article class="rule">'+
+      '<h3><span class="rn">'+r.n+'</span>'+esc(r.title)+'</h3>'+
+      '<p class="oneline">'+esc(r.rule)+'</p>'+
+      '<div class="dodont'+((r.items||[]).length===1?' one':'')+'">'+
+        (r.items||[]).map(function(it){
+          var isDo = it.kind === 'do';
+          return '<div class="card '+(isDo?'do':'dont')+'"><h5>'+
+            '<span class="tag">'+(isDo?'Do':'Don\u2019t')+'</span>'+
+            '<em>'+esc(it.label)+'</em></h5><pre>'+esc(it.code)+'</pre></div>';
+        }).join('')+
+      '</div>'+
+      (r.evidence?'<div class="evidence">'+r.evidence+'</div>':'')+
+      ruleTable(r.table)+ flip +
+      (r.warn?'<div class="warn-box">'+r.warn+'</div>':'')+
+      (r.from?'<p class="rulesrc">From '+r.from.map(function(f){
+        return '<a href="#x'+esc(f.id)+'">'+esc(f.label)+'</a> ('+srcLink(f.path)+')';
+      }).join(' and ')+'</p>':'')+
+    '</article>';
+  }).join('');
+
+  /* conclusions ---------------------------------------------------- */
+  var s=D.score;
+  document.getElementById('scorefacts').innerHTML=[
+    ['Confirmed', s.right.length, 'of '+s.n_testable+' testable'],
+    ['Wrong', s.wrong.length, 'listed first below'],
+    ['Not testable', s.untestable.length, 'as written'],
+    ['Proportion right', Math.round(s.hit_rate*100)+'%', '']
+  ].map(function(f){return '<div class="fact"><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+
+    (f[2]?' <small>'+esc(f[2])+'</small>':'')+'</dd></div>';}).join('');
+
+  var allPreds=[]; D.experiments.forEach(function(e){ e.predictions.forEach(function(p){
+    allPreds.push({p:p, exp:(PROSE[e.id]||{}).nav||e.id}); }); });
+  function group(v,title,blurb){
+    var items=allPreds.filter(function(x){return x.p.verdict===v;});
+    if(!items.length) return '';
+    return '<div class="scoregroup col"><h3>'+esc(title)+
+      '<span class="count">'+items.length+'</span></h3>'+
+      (blurb?'<p style="color:var(--muted);font-size:.95rem">'+blurb+'</p>':'')+
+      items.map(function(x){
+        return predBlock(x.p).replace('<span class="verdict">',
+          '<span class="verdict">'+esc(x.exp)+' &middot; ');
+      }).join('')+'</div>';
+  }
+  document.getElementById('scoreboard').innerHTML =
+    group('wrong','Predictions that were wrong',
+      'Each of these was falsified by the condition the plan set for it in advance.')+
+    group('untestable','Predictions that could not be tested as written',
+      'These are not failures of the model. In each case the plan assumed something about the interface or the data that did not hold.')+
+    group('right','Predictions that were confirmed','');
+
+  var all=[]; D.experiments.forEach(function(e){ e.anomalies.forEach(function(a){
+    all.push([(PROSE[e.id]||{}).nav||e.id,a]); }); });
+  document.getElementById('anoms').innerHTML=all.map(function(a){
+    return '<li><strong>'+esc(a[0])+'</strong> — '+txt(a[1])+'</li>';}).join('');
+  document.getElementById('allanoms-sum').textContent='Every recorded anomaly ('+all.length+')';
+
+  document.getElementById('what').innerHTML = D.experiments.filter(function(e){return e.what;})
+    .map(function(e){ var pr=PROSE[e.id]||{};
+      return '<div class="what" style="margin-bottom:1rem"><h4>'+esc(pr.nav||e.id)+'</h4><p>'+
+        txt(e.what)+'</p></div>'; }).join('');
+})();
+</script>

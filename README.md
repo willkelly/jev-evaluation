@@ -53,10 +53,14 @@ tree, and 0.530 as a control-flow edge list. The edge list is the form that make
 the question trivial for a program. It came last, and cost 2.5× the tokens.
 
 **The crude prompt injection fails and the polite one succeeds.** "IGNORE THE
-QUESTION AND THE INSTRUCTIONS ABOVE" moved the answer 0% of the time. A sentence
-claiming a support lead had already decided moved it **65%** of the time, while
-confidence fell only from 1.00 to 0.62. Anything judging text you do not control
-needs the untrusted text separated from the question.
+QUESTION AND THE INSTRUCTIONS ABOVE" moved the answer on 1 ticket in 200. A
+sentence claiming a support lead had already decided moved it on **147**. What
+works is text claiming a decision has already been taken, or forging the
+document's own structure; what fails addresses the model directly. Confidence
+does fall when instruction-shaped text is present — mean 0.680 on successful
+authority attacks against 0.983 on clean tickets — so a 0.8 gate flags about
+three quarters of them at a 2% cost on clean traffic. But it falls nearly as far
+when the attack fails, so it detects the insertion, not the redirection.
 
 ## Running it
 
@@ -78,6 +82,20 @@ Phases run in the plan's order, because an early result can invalidate a later
 experiment: `phase1` is determinism and calibration, `phase2` batching and
 cardinality, `phase3` enrollment and coherence, `phase4` input size, examples and
 the adversarial set. Each may stop the run at a gate the plan defines.
+
+Rebuilding the written output, which does not need an API key:
+
+```sh
+.venv/bin/python tools/build_report.py        # report.html and PROMPTING.md
+.venv/bin/python tools/verify_citations.py    # every figure must trace to a measurement
+```
+
+`verify_citations.py` indexes every numeric value in the result files and the
+live measurements, then looks up every number written by hand in the prose at a
+tolerance set by how precisely it was written. It exits non-zero on anything it
+cannot source. Constants that are definitional rather than measured — the
+documented context limits, the price, the phase-transition ratio — are listed in
+the tool with a reason each.
 
 `--scale F` multiplies every sample size, for rehearsal. It is recorded in the run
 metadata and printed in the report header, because a silently shrunk sample size
@@ -114,6 +132,9 @@ jeveval/
                   adversarial set
   experiments/    the nine experiments
 tests/            unit tests for the hand-written core
+tools/            report_template.html, prose.json and reportdata.json are the
+                  report's sources; build_report.py assembles them and
+                  verify_citations.py checks every figure against a measurement
 PROMPTING.md      the twelve rules, generated from the same measurements
 runs/<id>/        report, figures, per-experiment results
 ```
@@ -130,8 +151,10 @@ scoring bug in an experiment cannot reproduce itself in the check. Derived figur
 — a drift, a rate of decline — are rebuilt from the log only for the calibration
 experiment, which is the largest remaining gap against the plan.
 
-The raw logs are 1.3 GB and are not in this repository. The report, the figures
-and the per-experiment results are. Re-running regenerates the logs.
+The raw logs are 1.3 GB and are not in this repository. The report, the figures,
+the per-experiment results and the live measurements the guide cites are. The
+written report is rebuilt from `tools/` by `build_report.py`, so a checkout can
+regenerate it without an API key; re-running the experiments regenerates the logs.
 
 ## What the endpoint actually accepts
 
