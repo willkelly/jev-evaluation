@@ -532,12 +532,14 @@ if not required <= set(state):
                         # not something to infer from the response
 ```
 
-**Do** — Use confidence to rank answers by how likely they are right
+**Do** — Use confidence to rank answers within one kind of request
 
 ```python
-# among requests that passed the check above, confidence ranks
-# correct answers over wrong ones at AUROC 0.878 (n=34,200)
-review_queue = sorted(answers, key=lambda a: a.confidence)[:budget]
+# Within one condition at one difficulty, confidence ranks correct
+# answers over wrong ones at AUROC 0.699 across the run, and 0.997
+# on the batched ticket questions. Across a mixed pool it reads
+# higher (0.994) because it is partly ranking difficulty.
+queue = sorted(answers_of_one_kind, key=lambda a: a.confidence)[:budget]
 ```
 
 Confidence on answerable states averaged **0.985**. On states missing what the question needs it fell to 0.532, and on self-contradictory states to 0.603 — separations of 0.461 and 0.389, with 95% and 73% of those answers below 0.8. A threshold catches most of both.
@@ -545,6 +547,12 @@ Confidence on answerable states averaged **0.985**. On states missing what the q
 On fluent nonsense it did not move at all: mean **0.977**, a separation of **0.009**, and not one answer in sixty below 0.8. Those are choice questions. Asked as a score, the same nonsense separates by 0.245 while an underspecified state inverts to −0.066 — the model more confident on it than on an answerable one. The pooled separation of 0.202 that the evaluation reports is the average of a signal that works and a signal that is absent.
 
 What confidence does track is whether the answer is right. Over **34,200** answers carrying one, it ranks correct above wrong at AUROC **0.878** and is roughly calibrated as a probability of correctness, with an expected calibration error of 0.037: answers returned at 0.9 were right 88% of the time, and at 0.5, 51%.
+
+That ranking is measured over a pool that mixes easy conditions with hard ones, and most of it comes from the mixture rather than from the signal. Confidence tracks how hard a problem looks as well as whether this answer is right, so a pool of easy cells answered correctly at high confidence and hard cells answered wrongly at low confidence will rank well even if, inside any one cell, confidence separates nothing. Recomputed inside each cell — one condition at one difficulty, so nothing is left for a pool to mix — the same statistic over all **309,522** choice answers falls from 0.994 to **0.699**.
+
+Where the model works, the two agree and the advice stands: ticket questions batched into one request rank at 0.997 within a cell, the ticket rubric at 0.983, the option-count sweep at 0.936. Where it does not, the ranking was the mixture. Sudoku falls from 0.677 pooled to **0.502** within a cell, which is chance. The adversarial tickets fall from 0.929 to 0.631.
+
+On satisfiability there is no signal to lose. Over 2,700 answers the pooled figure is **0.519**. Holding the clause ratio fixed, six of the nine cells contain no disagreement to rank at all: at ratio 2.0 the model is right on every formula and reports a mean confidence of 0.555, and at ratio 8.0 it is wrong on every formula and reports **0.571** — higher where it is wrong on all of them than where it is right on all of them. Only at 4.5, the phase transition, is it sometimes right, and there confidence ranks at 0.675. Measured in `runs/full-20260919/confidence_within.json`, written by `tools/confidence_within.py`.
 
 | Confidence returned | Fraction actually correct |
 |---|---|
@@ -554,7 +562,7 @@ What confidence does track is whether the answer is right. Over **34,200** answe
 | 0.9 | 0.883 |
 | 1.0 | 0.976 |
 
-> Of the nine cells formed by three kinds of unanswerable state and three question types, six separate, one is flat and two run backwards, so the arm you ask matters as much as the state. Past that, the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains.
+> Of the nine cells formed by three kinds of unanswerable state and three question types, six separate, one is flat and two run backwards, so the arm you ask matters as much as the state. Past that, the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains — within a population of comparable difficulty, on a subject you already know the model handles. Ranking by confidence is not a way to find out whether it handles the subject, because on the subjects it does not the ranking is chance.
 >
 > A yes/no question returns no confidence field, so none of this applies to it. The only substitute is the probability's distance from one half, which is weaker still. And the correctness result is measured where a right answer exists to be ranked; it says nothing about the nonsense case, where there is no correct department to be confident about.
 
