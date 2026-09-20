@@ -22,7 +22,7 @@ The full report, with figures, is at <https://willkelly.github.io/jev-evaluation
 1. [Decide formal constraints in code, never with the model](#1-decide-formal-constraints-in-code-never-with-the-model)
 ### What goes in one request
 
-2. [One subject per request, and as many questions as you like](#2-one-subject-per-request-and-as-many-questions-as-you-like)
+2. [Keep one subject per request, and ask as many questions as you like](#2-keep-one-subject-per-request-and-ask-as-many-questions-as-you-like)
 3. [Send the source, not something derived from it](#3-send-the-source-not-something-derived-from-it)
 4. [Budget state against reported tokens, not your own estimate](#4-budget-state-against-reported-tokens-not-your-own-estimate)
 5. [Put worked examples in the state, and say what your terms mean](#5-put-worked-examples-in-the-state-and-say-what-your-terms-mean)
@@ -34,7 +34,7 @@ The full report, with figures, is at <https://willkelly.github.io/jev-evaluation
 9. [Do not spend effort randomising keys or order](#9-do-not-spend-effort-randomising-keys-or-order)
 ### What you can rely on from the answer
 
-10. [Confidence does not tell you whether the model could answer](#10-confidence-does-not-tell-you-whether-the-model-could-answer)
+10. [Do not read confidence as whether the model could answer](#10-do-not-read-confidence-as-whether-the-model-could-answer)
 11. [Record each derived fact the first time; never ask twice](#11-record-each-derived-fact-the-first-time-never-ask-twice)
 12. [Filter for an invented ruling, not for imperative phrasing](#12-filter-for-an-invented-ruling-not-for-imperative-phrasing)
 
@@ -46,7 +46,7 @@ The full report, with figures, is at <https://willkelly.github.io/jev-evaluation
 
 The model does not evaluate constraints. Compute them yourself and ask it only for the judgement that remains.
 
-**Don't** — Asking whether a constraint holds
+**Don't** — Ask whether a constraint holds
 
 ```json
 {
@@ -61,7 +61,7 @@ The model does not evaluate constraints. Compute them yourself and ask it only f
 }
 ```
 
-**Don't** — Using it to check that something else satisfies a constraint
+**Don't** — Use it to check that something else satisfies a constraint
 
 ```json
 {
@@ -78,7 +78,7 @@ The model does not evaluate constraints. Compute them yourself and ask it only f
 }
 ```
 
-**Do** — Solve the constraint, ask for the judgement that is left
+**Do** — Solve the constraint, then ask for the judgement that is left
 
 ```python
 legal = solver.legal_moves(board)   # computed, never asked
@@ -97,11 +97,11 @@ Asked whether `x AND NOT x` is satisfiable — false by inspection — the model
 
 # What goes in one request
 
-## 2. One subject per request, and as many questions as you like
+## 2. Keep one subject per request, and ask as many questions as you like
 
 Questions about the same subject cost about 90 input tokens each and lose no accuracy. Several subjects in one request lose a great deal.
 
-**Do** — One subject, as many questions as you need
+**Do** — Put every question about one subject in one request
 
 ```json
 {
@@ -131,7 +131,7 @@ Questions about the same subject cost about 90 input tokens each and lose no acc
 # many subjects: this same request, once per subject
 ```
 
-**Don't** — One request carrying several subjects, numbered to match
+**Don't** — Carry several subjects in one request, numbered to match
 
 ```json
 {
@@ -176,7 +176,7 @@ The saving is in tokens. Sixty questions about one state, measured live: **60 re
 
 Adding fields around the source is fine. Replacing the source with a derived representation makes the answer worse.
 
-**Do** — The source as your system already holds it, with line numbers
+**Do** — Send the source as your system already holds it, with line numbers
 
 ```json
 {
@@ -191,7 +191,7 @@ Adding fields around the source is fine. Replacing the source with a derived rep
 }
 ```
 
-**Don't** — A preprocessing step that replaces it with a derived form
+**Don't** — Replace it with a derived form in a preprocessing step
 
 ```python
 def prepare(src):                    # you write this, run it every
@@ -211,7 +211,7 @@ The same programs sent three ways, **1,600 paired instances**: source **0.894**,
 
 Length and position within the state had no measurable effect. The documented limits are 64k tokens per request and 32k for the state plus the longest question, and your estimate of where you sit will be wrong.
 
-**Do** — Send the whole thing, and stop worrying about where in it the answer sits
+**Do** — Send the whole thing, and stop worrying about where the answer sits in it
 
 ```python
 state = {"ticket": ticket, "history": history, "account": account}
@@ -227,7 +227,7 @@ used = resp["usage"]["input_tokens"]   # the only figure that counts
 # a word- or character-based estimate undercounted this by about 20%
 ```
 
-**Don't** — Trusting your own token count to stay inside the limit
+**Don't** — Trust your own token count to stay inside the limit
 
 ```python
 if estimate_tokens(state) < 32_000:   # the documented state limit
@@ -247,7 +247,7 @@ The limit measured where the documentation says it is. Growing one state until i
 
 Examples did not degrade calibration, and a definition of your own is followed even against ordinary usage.
 
-**Don't** — Withholding examples to protect calibration
+**Don't** — Withhold examples to protect calibration
 
 ```python
 # "Few-shot examples will sharpen the answers and ruin the
@@ -255,7 +255,7 @@ Examples did not degrade calibration, and a definition of your own is followed e
 # Reasonable, widely believed, and not what happened here.
 ```
 
-**Do** — Labelled examples at the front of the state
+**Do** — Put labelled examples at the front of the state
 
 ```json
 {
@@ -317,7 +317,7 @@ Ten examples in the state moved calibration error from 0.069 to **0.065**. The t
 
 Separate yes/no questions cannot express that two outcomes are mutually exclusive. One choice over the combinations can.
 
-**Do** — One choice over the combinations that can occur
+**Do** — Ask one choice over the combinations that can occur
 
 ```json
 {
@@ -334,7 +334,7 @@ Separate yes/no questions cannot express that two outcomes are mutually exclusiv
 }
 ```
 
-**Don't** — Asking separately, then reconciling the contradictions yourself
+**Don't** — Ask separately, then reconcile the contradictions yourself
 
 ```python
 refund  = ask("A refund is owed.").p
@@ -354,7 +354,7 @@ On states where two outcomes cannot both hold, the combined form placed **0.049*
 
 The model reads the option names and descriptions. Identifiers from your own system carry nothing it can use.
 
-**Do** — Ids and descriptions that say what the option means
+**Do** — Give ids and descriptions that say what the option means
 
 ```json
 {
@@ -370,7 +370,7 @@ The model reads the option names and descriptions. Identifiers from your own sys
 }
 ```
 
-**Don't** — Passing your own identifiers straight through
+**Don't** — Pass your own identifiers straight through
 
 ```json
 {
@@ -394,7 +394,7 @@ The same problems asked both ways scored **0.953** with names that describe the 
 
 Accuracy held from 2 options to 255. What costs accuracy is options that resemble each other, not how many there are.
 
-**Do** — Every candidate in one choice
+**Do** — Put every candidate in one choice
 
 ```json
 {
@@ -413,7 +413,7 @@ Accuracy held from 2 options to 255. What costs accuracy is options that resembl
 }
 ```
 
-**Don't** — Spending requests to shorten the list first
+**Don't** — Spend requests to shorten the list first
 
 ```python
 survivors = [c for c in candidates      # a filter pass over 255,
@@ -460,7 +460,7 @@ Question names, question order and option order changed no answer at all. Work s
 }
 ```
 
-**Don't** — Shuffling options on every request to defeat position bias
+**Don't** — Shuffle options on every request to defeat position bias
 
 ```python
 opts = list(options)
@@ -478,7 +478,7 @@ Over 3,600 repeats per condition, renaming every question key shifted **0.0%** o
 
 # What you can rely on from the answer
 
-## 10. Confidence does not tell you whether the model could answer
+## 10. Do not read confidence as whether the model could answer
 
 On states that cannot be answered from the information given, confidence barely moves. No threshold separates them.
 
@@ -492,7 +492,7 @@ else:
 # admits 47% of states that cannot be answered at all
 ```
 
-**Don't** — Falling back to the probability for yes/no questions
+**Don't** — Fall back to the probability for yes/no questions
 
 ```python
 margin = abs(answer.p - 0.5) * 2   # a noul returns no confidence,
@@ -500,7 +500,7 @@ if margin >= 0.9:                  # so this is the only stand-in
     act(answer.predicted)
 ```
 
-**Don't** — Writing a threshold finer than the model can express
+**Don't** — Write a threshold finer than the model can express
 
 ```python
 if answer.p >= 0.905:   # identical to >= 0.91, and to >= 0.902:
@@ -537,7 +537,7 @@ Confidence on answerable states averaged **0.986**; on states that cannot be ans
 
 Separate requests share no memory and can return answers that cannot all be true.
 
-**Don't** — Using the model as a comparator
+**Don't** — Use the model as a comparator
 
 ```python
 ranked = sorted(items, key=cmp_to_key(
@@ -564,7 +564,7 @@ ranked = sorted(items, key=cmp_to_key(
 }
 ```
 
-**Do** — Or derive it once and read the record
+**Do** — Derive it once, then read the record
 
 ```python
 if pair not in table:
@@ -584,7 +584,7 @@ Asking for the whole ordering at once is measurably better, not merely tidier: o
 
 Imperative jailbreak phrasing moved the answer on 0 of 60 tickets. An invented supervisor's decision moved it on 65%.
 
-**Don't** — Filtering for imperative jailbreak phrasing
+**Don't** — Filter for imperative jailbreak phrasing
 
 ```python
 if re.search(r"ignore (the )?(above|previous)", text, re.I):
@@ -593,7 +593,7 @@ if re.search(r"ignore (the )?(above|previous)", text, re.I):
 # it was written for, and none of the three that actually worked
 ```
 
-**Don't** — Treating a low-confidence answer as merely a hard case
+**Don't** — Treat a low-confidence answer as merely a hard case
 
 ```python
 if answer.confidence < 0.8:
