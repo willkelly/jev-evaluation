@@ -15,3 +15,5 @@ runs/full-20260919/*
 !runs/full-20260919/e2_conditions.json
 !runs/full-20260919/*_result.json
 !runs/full-20260919/plots/
+!runs/guide-demos/
+!runs/guide-demos/*

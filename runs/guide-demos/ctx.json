@@ -1,0 +1,132 @@
+{
+ "state_sweep": [
+  {
+   "target": 20000,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 24135
+  },
+  {
+   "target": 24000,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 28844
+  },
+  {
+   "target": 28000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 30000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 31000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 32000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 33000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 34000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 36000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 40000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 48000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  },
+  {
+   "target": 60000,
+   "ok": false,
+   "status": "max_tokens_exceeded",
+   "input_tokens": 0
+  }
+ ],
+ "question_sweep": [
+  {
+   "n_questions": 1,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 9982
+  },
+  {
+   "n_questions": 64,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 15629
+  },
+  {
+   "n_questions": 128,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 21641
+  },
+  {
+   "n_questions": 200,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 28477
+  },
+  {
+   "n_questions": 255,
+   "ok": true,
+   "status": "ok",
+   "input_tokens": 32720
+  }
+ ],
+ "_run": {
+  "total_calls": 17,
+  "failed_calls": 10,
+  "total_retries": 0,
+  "input_tokens": 161428,
+  "output_tokens": 32757,
+  "cost_usd": 0.006779976,
+  "model_versions": [
+   "jev-1.13.0"
+  ],
+  "elapsed_s": 2.8024280071258545,
+  "sustained_req_per_s": 6.0661683214603075,
+  "peak_concurrency": 5,
+  "final_concurrency": 5,
+  "throttle_events": 0,
+  "throttle_episodes": 0,
+  "aborted": null,
+  "status_counts": {
+   "200": 7,
+   "400": 10
+  },
+  "log_path": "/tmp/ctx-7qad6flc/calls.jsonl",
+  "log_records": 17
+ }
+}

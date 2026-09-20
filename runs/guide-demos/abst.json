@@ -1,0 +1,57 @@
+{
+ "answerable": {
+  "n": 60,
+  "mean": 0.9846666666666667,
+  "median": 1.0,
+  "below_0_8": 0.03333333333333333,
+  "at_1_0": 0.8666666666666667,
+  "example": "Hi, I made an erasure request a month ago and have heard nothing; the statutory deadline falls tomorrow morning. I would rather not take this to the regulator, but I will have to if the deadline passes. Please treat this as same-day: I cannot carry on until it"
+ },
+ "nonsense": {
+  "n": 60,
+  "mean": 0.9765,
+  "median": 0.98,
+  "below_0_8": 0.0,
+  "at_1_0": 0.05,
+  "example": "Regarding the plemtor: it korbanes whenever the junavo is voskar. Regarding the quorish: it selvanes whenever the fantel is junavo. Regarding the quorish: it wubrins whenever the trenval is gribble. The vashil has been voskar since the junavo was dolvash. The "
+ },
+ "contradictory": {
+  "n": 60,
+  "mean": 0.603,
+  "median": 0.53,
+  "below_0_8": 0.7333333333333333,
+  "at_1_0": 0.0,
+  "example": "I am applying for the engineer role and have attached my CV; this is a recruiting matter. None of that applies. I am a journalist on deadline and I need a comment for a story, and this is a press enquiry. Both of the paragraphs above are equally true of this m"
+ },
+ "underspecified": {
+  "n": 60,
+  "mean": 0.532,
+  "median": 0.485,
+  "below_0_8": 0.95,
+  "at_1_0": 0.0,
+  "example": "My colleague passed your address along and said it was the right one to use. I will be away for a few days but there is no hurry on anything here. I said I would follow up, so I am following up as promised. That is really all I wanted to say for the moment."
+ },
+ "_run": {
+  "total_calls": 240,
+  "failed_calls": 0,
+  "total_retries": 0,
+  "input_tokens": 131247,
+  "output_tokens": 18266,
+  "cost_usd": 0.005512374,
+  "model_versions": [
+   "jev-1.13.0"
+  ],
+  "elapsed_s": 4.694625377655029,
+  "sustained_req_per_s": 51.12229000046012,
+  "peak_concurrency": 27,
+  "final_concurrency": 27,
+  "throttle_events": 0,
+  "throttle_episodes": 0,
+  "aborted": null,
+  "status_counts": {
+   "200": 240
+  },
+  "log_path": "/tmp/abst-mnk9_7c7/calls.jsonl",
+  "log_records": 240
+ }
+}
