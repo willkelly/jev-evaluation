@@ -168,7 +168,7 @@ Questions about the same subject cost about 90 input tokens each and lose no acc
 
 Asking the same questions batched and one per request agreed on **3,000 paired questions**: 0.9777 batched against 0.9780 individually. Position does not matter either — the target question scored 0.803 at position 1 and 0.810 at position 255, 300 problems per position.
 
-The saving is in tokens. Sixty questions about one state, measured live: **60 requests and 160,310 input tokens** against **1 request and 7,972**, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.
+That is not a ceiling effect hiding a loss: 1,800 of the paired questions concern unrelated facts and sit at 1.000 in both arms, but the 1,200 about related facts sit at 0.944 batched and 0.945 individually, where a loss had room to show and none did. The saving is in tokens. Sixty questions about one state, measured live: **60 requests and 160,310 input tokens** against **1 request and 7,972**, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.
 
 > Numbering the questions to match a list of subjects looks like the same saving and is not. Sixty tickets in one state scored **0.367** against **1.000** for the same tickets one per request, and it saves only 1.7 times the tokens rather than 20, because the whole list is sent whatever you ask. Every question is answered from the entire state, and the model does not reliably bind question *n* to item *n*.
 
@@ -358,7 +358,7 @@ On states where the outcomes constrain each other, the combined form placed **0.
 
 ## 7. Name options in words, not codes
 
-The model reads the option names and descriptions. Identifiers from your own system carry nothing it can use.
+The model reads the words in an option's id and description. Identifiers from your own system carry nothing it can use.
 
 **Do** — Give ids and descriptions that say what the option means
 
@@ -384,15 +384,21 @@ The model reads the option names and descriptions. Identifiers from your own sys
     "route": {
       "type": "choice",
       "criteria": {
-        "dept_1041": "",
-        "dept_1042": ""
+        "dept_1041": "dept_1041",
+        "dept_1042": "dept_1042"
       }
     }
   }
 }
 ```
 
-The same problems asked both ways, 1,500 instances each, scored **0.953** with option ids and descriptions that say what the option means against **0.935** with opaque bitstrings. The 0.017 gap is small — smaller than twice the model's own variation between identical requests, which is the screen this guide applies everywhere else — but this is a paired comparison and it is significant at *p* = 0.015. Read it as a real effect of a size not worth optimising against. The reason to follow the rule anyway is that it costs nothing: the description field is otherwise empty, and a few words fit in a few tokens.
+The same 500 problems asked both ways at each of three constraint counts: options named in words that describe them, against the same options named by bitstrings. With two constraints both arms score above 0.99. That cell is at the ceiling defined above, where no gap has room to appear, and averaging it in with the others is what made this rule look like noise.
+
+Where there is room, there is a gap. Over the thousand paired problems at three and four constraints, described options scored **0.930** against **0.907** for bitstrings: right where the bitstring was wrong on 62 problems, wrong where it was right on 39, McNemar *p* = 0.028. That 0.023 clears the screen this guide applies everywhere else. Neither cell reaches significance on its own, at *p* = 0.119 and 0.161; pooled across the two they do. Pooling all three cells gives 0.953 against 0.935, and the smaller gap there is the ceiling's doing rather than a weaker effect.
+
+One limit on what this shows. Both the option id and its description carried the same text in each arm, so the comparison is between text that means something and text that does not. Which of the two fields the model reads was not separately measured.
+
+> This says meaningful text beats meaningless text. It does not say more text is better: every option here was named in a short phrase, and nothing was measured at greater length.
 
 *Produced by [5. Asking about combinations](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE5) — [`e5_enrollment.py`](jeveval/experiments/e5_enrollment.py). Problems and their answers come from [`dfa.py`](jeveval/generators/dfa.py), [`sudoku.py`](jeveval/generators/sudoku.py).*
 

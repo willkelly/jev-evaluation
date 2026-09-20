@@ -1293,7 +1293,7 @@
      "code": "{\n  \"model\": \"jev-latest\",\n  \"state\": {\n    \"tickets\": [\n      \"…ticket 1…\",\n      \"…ticket 2…\",\n      \"…ticket 60…\"\n    ]\n  },\n  \"questions\": {\n    \"t001\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Ticket 1: which department?\",\n      \"criteria\": {\n        \"billing\": \"Payment and invoices\",\n        \"shipping\": \"Delivery\"\n      }\n    },\n    \"t002\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Ticket 2: which department?\",\n      \"criteria\": {\n        \"billing\": \"Payment and invoices\",\n        \"shipping\": \"Delivery\"\n      }\n    }\n  }\n}"
     }
    ],
-   "evidence": "<p>Asking the same questions batched and one per request agreed on <strong>3,000 paired questions<\/strong>: 0.9777 batched against 0.9780 individually. Position does not matter either — the target question scored 0.803 at position 1 and 0.810 at position 255, 300 problems per position.<\/p><p>The saving is in tokens. Sixty questions about one state, measured live: <strong>60 requests and 160,310 input tokens<\/strong> against <strong>1 request and 7,972<\/strong>, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.<\/p>",
+   "evidence": "<p>Asking the same questions batched and one per request agreed on <strong>3,000 paired questions<\/strong>: 0.9777 batched against 0.9780 individually. Position does not matter either — the target question scored 0.803 at position 1 and 0.810 at position 255, 300 problems per position.<\/p><p>That is not a ceiling effect hiding a loss: 1,800 of the paired questions concern unrelated facts and sit at 1.000 in both arms, but the 1,200 about related facts sit at 0.944 batched and 0.945 individually, where a loss had room to show and none did. The saving is in tokens. Sixty questions about one state, measured live: <strong>60 requests and 160,310 input tokens<\/strong> against <strong>1 request and 7,972<\/strong>, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.<\/p>",
    "table": null,
    "warn": "<p>Numbering the questions to match a list of subjects looks like the same saving and is not. Sixty tickets in one state scored <strong>0.367<\/strong> against <strong>1.000<\/strong> for the same tickets one per request, and it saves only 1.7 times the tokens rather than 20, because the whole list is sent whatever you ask. Every question is answered from the entire state, and the model does not reliably bind question <em>n<\/em> to item <em>n<\/em>.<\/p>",
    "example": null,
@@ -1435,7 +1435,7 @@
    "n": 7,
    "group": "How to write the question",
    "title": "Name options in words, not codes",
-   "rule": "The model reads the option names and descriptions. Identifiers from your own system carry nothing it can use.",
+   "rule": "The model reads the words in an option's id and description. Identifiers from your own system carry nothing it can use.",
    "items": [
     {
      "kind": "do",
@@ -1445,12 +1445,12 @@
     {
      "kind": "dont",
      "label": "Pass your own identifiers straight through",
-     "code": "{\n  \"questions\": {\n    \"route\": {\n      \"type\": \"choice\",\n      \"criteria\": {\n        \"dept_1041\": \"\",\n        \"dept_1042\": \"\"\n      }\n    }\n  }\n}"
+     "code": "{\n  \"questions\": {\n    \"route\": {\n      \"type\": \"choice\",\n      \"criteria\": {\n        \"dept_1041\": \"dept_1041\",\n        \"dept_1042\": \"dept_1042\"\n      }\n    }\n  }\n}"
     }
    ],
-   "evidence": "<p>The same problems asked both ways, 1,500 instances each, scored <strong>0.953<\/strong> with option ids and descriptions that say what the option means against <strong>0.935<\/strong> with opaque bitstrings. The 0.017 gap is small — smaller than twice the model's own variation between identical requests, which is the screen this guide applies everywhere else — but this is a paired comparison and it is significant at <em>p<\/em> = 0.015. Read it as a real effect of a size not worth optimising against. The reason to follow the rule anyway is that it costs nothing: the description field is otherwise empty, and a few words fit in a few tokens.<\/p>",
+   "evidence": "<p>The same 500 problems asked both ways at each of three constraint counts: options named in words that describe them, against the same options named by bitstrings. With two constraints both arms score above 0.99. That cell is at the ceiling defined above, where no gap has room to appear, and averaging it in with the others is what made this rule look like noise.<\/p><p>Where there is room, there is a gap. Over the thousand paired problems at three and four constraints, described options scored <strong>0.930<\/strong> against <strong>0.907<\/strong> for bitstrings: right where the bitstring was wrong on 62 problems, wrong where it was right on 39, McNemar <em>p<\/em> = 0.028. That 0.023 clears the screen this guide applies everywhere else. Neither cell reaches significance on its own, at <em>p<\/em> = 0.119 and 0.161; pooled across the two they do. Pooling all three cells gives 0.953 against 0.935, and the smaller gap there is the ceiling's doing rather than a weaker effect.<\/p><p>One limit on what this shows. Both the option id and its description carried the same text in each arm, so the comparison is between text that means something and text that does not. Which of the two fields the model reads was not separately measured.<\/p>",
    "table": null,
-   "warn": "",
+   "warn": "<p>This says meaningful text beats meaningless text. It does not say more text is better: every option here was named in a short phrase, and nothing was measured at greater length.<\/p>",
    "example": null,
    "from": [
     {

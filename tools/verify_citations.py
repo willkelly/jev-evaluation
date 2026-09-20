@@ -203,14 +203,15 @@ def main(argv: list[str]) -> int:
 
     idx = Index()
     sources = 0
-    for f in sorted((ROOT / "runs" / "full-20260919").glob("*_result.json")):
+    # Everything the run recorded except its own metadata: the nine experiment
+    # results, and the files in tools/ that re-read the raw logs for a figure an
+    # experiment did not compute cleanly itself.
+    run_files = [f for f in sorted((ROOT / "runs" / "full-20260919").glob("*.json"))
+                 if f.name != "run_meta.json"]
+    for f in run_files:
         sources += idx.add_file(f, f.stem)
     for f in sorted((ROOT / "runs" / "guide-demos").glob("*.json")):
         sources += idx.add_file(f, f"demo:{f.stem}")
-    # Derived from the raw logs rather than by an experiment, so it matches
-    # neither glob above, but the guide cites it and it must be checkable.
-    sources += idx.add_file(ROOT / "runs" / "full-20260919" / "position_bias.json",
-                            "position_bias")
 
     matched, derived, unmatched, allowed = [], [], [], []
     for where, ctx, val, dec in claims(prose):
@@ -226,8 +227,7 @@ def main(argv: list[str]) -> int:
         (matched if kind == "direct" else derived if kind == "derived" else unmatched).append(rec)
 
     total = len(matched) + len(derived) + len(unmatched) + len(allowed)
-    print(f"indexed {sources:,} measured values from "
-          f"{len(list((ROOT/'runs'/'full-20260919').glob('*_result.json')))} result files "
+    print(f"indexed {sources:,} measured values from {len(run_files)} recorded files "
           f"and {len(list((ROOT/'runs'/'guide-demos').glob('*.json')))} live-measurement files")
     print(f"checked {total} numbers written by hand\n")
     print(f"  {len(matched):>4}  match a measured value directly")
