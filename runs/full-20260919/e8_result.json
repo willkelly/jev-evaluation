@@ -1,0 +1,5304 @@
+{
+  "experiment": "E8",
+  "question": "Can worked examples steer the model, and does steering cost it the calibration that is the reason to use it?",
+  "headline": {
+    "metric": "ECE delta at 10 examples, routing arm, state channel (probability against outcome)",
+    "value": -0.00392,
+    "baseline": 0.06861999999999983,
+    "baseline_name": "zero-shot ECE on the same items",
+    "n": 500
+  },
+  "by_difficulty": [
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "instructions",
+        "examples": 1
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.968,
+        "accuracy_gain": -0.0020000000000000018,
+        "ece": 0.0861,
+        "ece_delta": 0.01748,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.0861,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "instructions",
+        "examples": 3
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.98,
+        "accuracy_gain": 0.010000000000000009,
+        "ece": 0.07631999999999989,
+        "ece_delta": 0.0077,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.07631999999999989,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "instructions",
+        "examples": 10
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.98,
+        "accuracy_gain": 0.010000000000000009,
+        "ece": 0.0780199999999998,
+        "ece_delta": 0.0094,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.0780199999999998,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "state",
+        "examples": 1
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.984,
+        "accuracy_gain": 0.014000000000000012,
+        "ece": 0.06852000000000016,
+        "ece_delta": -0.0001,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.06852000000000016,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "state",
+        "examples": 3
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.988,
+        "accuracy_gain": 0.018000000000000016,
+        "ece": 0.06337999999999996,
+        "ece_delta": -0.00524,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.06337999999999996,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "state",
+        "examples": 10
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.994,
+        "accuracy_gain": 0.02400000000000002,
+        "ece": 0.06470000000000017,
+        "ece_delta": -0.00392,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.06470000000000017,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "instructions",
+        "examples": 10,
+        "poisoned": true
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.974,
+        "accuracy_gain": 0.0040000000000000036,
+        "ece": 0.09413999999999988,
+        "ece_delta": 0.02552,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.09413999999999988,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "routing",
+        "channel": "state",
+        "examples": 10,
+        "poisoned": true
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.99,
+        "accuracy_gain": 0.020000000000000018,
+        "ece": 0.08349999999999982,
+        "ece_delta": 0.01488,
+        "zeroshot_accuracy": 0.97,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.688,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece",
+      "value": 0.08349999999999982,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "instructions",
+        "examples": 1
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.902,
+        "accuracy_gain": 0.010000000000000009,
+        "ece": 0.026059999999999004,
+        "ece_delta": 0.00518,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": 0.00518,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: gains with ECE degrading 0.02-0.08.",
+      "reasons": [
+        "Human: gains with ECE degrading 0.02-0.08."
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "instructions",
+        "examples": 3
+      },
+      "tier": "Perfect",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.916,
+        "accuracy_gain": 0.02400000000000002,
+        "ece": 0.020139999999998374,
+        "ece_delta": -0.00074,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": -0.00074,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+      "reasons": [
+        "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+        "ece_delta <= 0.005 ('unchanged' read as <= 0.005)",
+        "Perfect rests on part of its rule: novel_rubric_following, inverted_rubric_following were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "instructions",
+        "examples": 10
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.92,
+        "accuracy_gain": 0.028000000000000025,
+        "ece": 0.03517999999999945,
+        "ece_delta": 0.0143,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": 0.0143,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Superhuman: meaningful gains from few-shot with ECE degrading <0.02.",
+      "reasons": [
+        "Superhuman: meaningful gains from few-shot with ECE degrading <0.02.",
+        "accuracy_gain >= 0.02 (the plan's 'meaningful gains'; 0.02 is the harness's floor)"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "state",
+        "examples": 1
+      },
+      "tier": "Perfect",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.922,
+        "accuracy_gain": 0.030000000000000027,
+        "ece": 0.02109999999999917,
+        "ece_delta": 0.00022,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": 0.00022,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+      "reasons": [
+        "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+        "ece_delta <= 0.005 ('unchanged' read as <= 0.005)",
+        "Perfect rests on part of its rule: novel_rubric_following, inverted_rubric_following were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "state",
+        "examples": 3
+      },
+      "tier": "Perfect",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.914,
+        "accuracy_gain": 0.02200000000000002,
+        "ece": 0.024259999999998668,
+        "ece_delta": 0.00338,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": 0.00338,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+      "reasons": [
+        "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+        "ece_delta <= 0.005 ('unchanged' read as <= 0.005)",
+        "Perfect rests on part of its rule: novel_rubric_following, inverted_rubric_following were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "state",
+        "examples": 10
+      },
+      "tier": "Perfect",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.936,
+        "accuracy_gain": 0.04400000000000004,
+        "ece": 0.017939999999998985,
+        "ece_delta": -0.00294,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": -0.00294,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+      "reasons": [
+        "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+        "ece_delta <= 0.005 ('unchanged' read as <= 0.005)",
+        "Perfect rests on part of its rule: novel_rubric_following, inverted_rubric_following were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "instructions",
+        "examples": 10,
+        "poisoned": true
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.924,
+        "accuracy_gain": 0.03200000000000003,
+        "ece": 0.04063999999999892,
+        "ece_delta": 0.01976,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": 0.01976,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Superhuman: meaningful gains from few-shot with ECE degrading <0.02.",
+      "reasons": [
+        "Superhuman: meaningful gains from few-shot with ECE degrading <0.02.",
+        "accuracy_gain >= 0.02 (the plan's 'meaningful gains'; 0.02 is the harness's floor)"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "task": "urgency",
+        "channel": "state",
+        "examples": 10,
+        "poisoned": true
+      },
+      "tier": "Perfect",
+      "n": 500,
+      "metrics": {
+        "accuracy": 0.93,
+        "accuracy_gain": 0.038000000000000034,
+        "ece": 0.02525999999999908,
+        "ece_delta": 0.00438,
+        "zeroshot_accuracy": 0.892,
+        "chance_baseline": 0.25,
+        "n": 500,
+        "reliability_monotone": true
+      },
+      "metric": "ece_delta",
+      "value": 0.00438,
+      "baseline": 0.892,
+      "baseline_name": "zero-shot accuracy",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+      "reasons": [
+        "Perfect: examples improve accuracy and leave ECE unchanged; follows novel and inverted rubrics exactly.",
+        "ece_delta <= 0.005 ('unchanged' read as <= 0.005)",
+        "Perfect rests on part of its rule: novel_rubric_following, inverted_rubric_following were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline",
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "unevaluated": [
+        "inverted_rubric_following",
+        "novel_rubric_following"
+      ],
+      "undefined": []
+    }
+  ],
+  "boundary_crossings": {
+    "routing/instructions: Perfect->Superhuman": {
+      "task": "routing",
+      "channel": "instructions",
+      "examples": 1
+    },
+    "routing/instructions: Superhuman->Human": {
+      "task": "routing",
+      "channel": "instructions",
+      "examples": 1
+    },
+    "routing/state: Perfect->Superhuman": {
+      "task": "routing",
+      "channel": "state",
+      "examples": 1
+    },
+    "routing/state: Superhuman->Human": {
+      "task": "routing",
+      "channel": "state",
+      "examples": 1
+    },
+    "urgency/instructions: Perfect->Superhuman": {
+      "task": "urgency",
+      "channel": "instructions",
+      "examples": 1
+    },
+    "urgency/instructions: Superhuman->Human": {
+      "task": "urgency",
+      "channel": "instructions",
+      "examples": 1
+    }
+  },
+  "plots": [
+    "plots/e8_ece_vs_examples_routing.png",
+    "plots/e8_accuracy_vs_examples_routing.png",
+    "plots/e8_ece_vs_examples_urgency.png",
+    "plots/e8_accuracy_vs_examples_urgency.png",
+    "plots/e8_reliability_routing_zeroshot.png",
+    "plots/e8_reliability_routing_state_10.png",
+    "plots/e8_reliability_urgency_zeroshot.png",
+    "plots/e8_reliability_urgency_state_10.png",
+    "plots/e8_reliability_urgency_state_10_poisoned.png"
+  ],
+  "predictions": [
+    {
+      "id": "P22",
+      "claim": "ICL degrades calibration: ECE +0.03-0.10 with 10 examples",
+      "outcome": "On the routing arm, where a noul answer gives the plan's own ECE, it went from 0.0686 zero-shot to 0.0647 with 10 examples in the state channel, a change of -0.0039 (bootstrap 95% CI [-0.0203, +0.0022]). Accuracy there is pinned at 0.9700 zero-shot, so whatever the examples cost in calibration on this arm they buy nothing. On the urgency arm, where accuracy can move, ECE (top-label) went -0.0029 while accuracy went +0.0440. Calibration was unchanged -- within the 0.005 this harness treats as a change it cannot resolve, and about the floor 2-decimal quantization puts under any ECE -- or improved, which is the plan's stated falsification condition.",
+      "verdict": "wrong",
+      "evidence": {
+        "routing_zeroshot_ece": 0.06861999999999983,
+        "routing_ece": 0.06470000000000017,
+        "routing_ece_delta": -0.00392,
+        "routing_ece_delta_ci": [
+          -0.020320499999999617,
+          0.0021610000000000153
+        ],
+        "routing_ece_delta_p": 0.102,
+        "routing_accuracy_gain": 0.02400000000000002,
+        "predicted_band": [
+          0.03,
+          0.1
+        ],
+        "in_predicted_band": false,
+        "falsification_clause": "ECE unchanged or improved",
+        "falsifier_met": true,
+        "urgency_zeroshot_ece": 0.02087999999999926,
+        "urgency_ece_delta": -0.00294,
+        "urgency_accuracy_gain": 0.04400000000000004,
+        "headline_cell": "routing/state-10",
+        "per_cell": {
+          "routing/instructions-1": {
+            "ece_delta": 0.01748,
+            "accuracy_gain": -0.0020000000000000018
+          },
+          "routing/instructions-3": {
+            "ece_delta": 0.0077,
+            "accuracy_gain": 0.010000000000000009
+          },
+          "routing/instructions-10": {
+            "ece_delta": 0.0094,
+            "accuracy_gain": 0.010000000000000009
+          },
+          "routing/state-1": {
+            "ece_delta": -0.0001,
+            "accuracy_gain": 0.014000000000000012
+          },
+          "routing/state-3": {
+            "ece_delta": -0.00524,
+            "accuracy_gain": 0.018000000000000016
+          },
+          "routing/state-10": {
+            "ece_delta": -0.00392,
+            "accuracy_gain": 0.02400000000000002
+          },
+          "routing/instructions-10-poisoned": {
+            "ece_delta": 0.02552,
+            "accuracy_gain": 0.0040000000000000036
+          },
+          "routing/state-10-poisoned": {
+            "ece_delta": 0.01488,
+            "accuracy_gain": 0.020000000000000018
+          },
+          "urgency/instructions-1": {
+            "ece_delta": 0.00518,
+            "accuracy_gain": 0.010000000000000009
+          },
+          "urgency/instructions-3": {
+            "ece_delta": -0.00074,
+            "accuracy_gain": 0.02400000000000002
+          },
+          "urgency/instructions-10": {
+            "ece_delta": 0.0143,
+            "accuracy_gain": 0.028000000000000025
+          },
+          "urgency/state-1": {
+            "ece_delta": 0.00022,
+            "accuracy_gain": 0.030000000000000027
+          },
+          "urgency/state-3": {
+            "ece_delta": 0.00338,
+            "accuracy_gain": 0.02200000000000002
+          },
+          "urgency/state-10": {
+            "ece_delta": -0.00294,
+            "accuracy_gain": 0.04400000000000004
+          },
+          "urgency/instructions-10-poisoned": {
+            "ece_delta": 0.01976,
+            "accuracy_gain": 0.03200000000000003
+          },
+          "urgency/state-10-poisoned": {
+            "ece_delta": 0.00438,
+            "accuracy_gain": 0.038000000000000034
+          }
+        }
+      }
+    },
+    {
+      "id": "P23",
+      "claim": "State-channel examples beat instructions-channel",
+      "outcome": "There is no request-level instructions field on this endpoint, so the instructions channel tested here is the per-question instructions string, not a system prompt; the plan's expectation was about a channel that does not exist, and this scores the narrower claim. The comparison is made on the urgency arm because the routing arm is at ceiling in both channels. At 10 examples the state channel scored 0.9360 and the instructions channel 0.9200 on the same 500 items (McNemar p=0.1338); top-label ECE 0.0179 against 0.0352. On the routing arm the same comparison is 0.9940 against 0.9800, both at or near ceiling. State wins, as predicted. McNemar p=0.134 does not resolve the channels apart on this sample, so the verdict rests on a point estimate that could go either way.",
+      "verdict": "right",
+      "evidence": {
+        "compared_on": "urgency arm (the routing arm is at ceiling in both channels)",
+        "state_accuracy": 0.936,
+        "instructions_accuracy": 0.92,
+        "n_paired": 500,
+        "mcnemar_p": 0.13380050659179688,
+        "state_ece": 0.017939999999998985,
+        "instructions_ece": 0.03517999999999945,
+        "by_example_count": {
+          "routing/1": {
+            "state_accuracy": 0.984,
+            "instructions_accuracy": 0.968
+          },
+          "routing/3": {
+            "state_accuracy": 0.988,
+            "instructions_accuracy": 0.98
+          },
+          "routing/10": {
+            "state_accuracy": 0.994,
+            "instructions_accuracy": 0.98
+          },
+          "urgency/1": {
+            "state_accuracy": 0.922,
+            "instructions_accuracy": 0.902
+          },
+          "urgency/3": {
+            "state_accuracy": 0.914,
+            "instructions_accuracy": 0.916
+          },
+          "urgency/10": {
+            "state_accuracy": 0.936,
+            "instructions_accuracy": 0.92
+          }
+        },
+        "channel_caveat": "per-question instructions, not a request-level prompt"
+      }
+    },
+    {
+      "id": "P24",
+      "claim": "Inverted rubric followed ~70%, prior leaks through",
+      "outcome": "The inverted rubric was followed on 0.950 of 200 items (95% CI 0.910-0.973); the prior won on 0.050. The control arm, an identical request differing only in that it states the conventional scopes, scored 0.955, so the task itself is doable and the shortfall is definition-following. The yes-rate in the inverted arm was 0.470, so the result is not a yes-bias reading as definition-following. Within the plan's 0.30-0.95 window. The interval also covers the falsification region, so this sample cannot separate the prediction from its own falsification condition.",
+      "verdict": "right",
+      "evidence": {
+        "following_rate": 0.95,
+        "following_ci": [
+          0.9104218518612239,
+          0.972617354399236
+        ],
+        "prior_rate": 0.050000000000000044,
+        "yes_rate": 0.47,
+        "following_when_prior_says_yes": 0.98,
+        "following_when_prior_says_no": 0.92,
+        "conventional_control_accuracy": 0.955,
+        "n": 200
+      }
+    }
+  ],
+  "anomalies": [
+    "urgency/instructions falls through Perfect->Superhuman at {'task': 'urgency', 'channel': 'instructions', 'examples': 1} and climbs back at {'task': 'urgency', 'channel': 'instructions', 'examples': 3}; the knee is not clean, so treat the crossing point as approximate.",
+    "urgency/instructions falls through Superhuman->Human at {'task': 'urgency', 'channel': 'instructions', 'examples': 1} and climbs back at {'task': 'urgency', 'channel': 'instructions', 'examples': 3}; the knee is not clean, so treat the crossing point as approximate.",
+    "Every noul probability E8 saw (4900 of them, 97 distinct values) lies on a 2-decimal grid. Consistent with quantization to 2dp, which the plan flags as a thing to watch; it also puts a floor of roughly 0.005 under any ECE.",
+    "On choice and score answers, confidence differs from the maximum option probability on 0.256 of 4900 answers (mean difference -0.0036, largest 0.2000). The plan lists this as a behaviour to watch for.",
+    "4 cell(s) fall below the plan's 500-item minimum for a reported ECE: rubric-novel (n=200), rubric-conventional (n=200), override-inverted (n=200), override-conventional (n=200). Their ECE is reported but is under-sampled. Below 100 items monotonicity is not assessed either, so a thin cell cannot be sent to the worst tier by a curve that is ragged only because it is thin.",
+    "The headline ECE delta (-0.0039) has a bootstrap 95% interval of [-0.0203, +0.0022], which contains zero. The direction is not resolved by this sample."
+  ],
+  "failures": {
+    "calls": 0,
+    "excluded": 0,
+    "reasons": {}
+  },
+  "notes": [
+    "There is no request-level instructions field on this endpoint -- sending one is a 400 -- so the 'examples in instructions' channel is the per-question instructions string. The plan's channel comparison is therefore narrower than written: per-question instructions against state, not a system prompt against state. P23 is scored on that.",
+    "The semantic control is saturated for this model at its hard level: 40/40 on the yes/no routing question and 40/40 on the 8-way routing choice in a pre-run probe, against keyword-heuristic baselines of 0.60 and 0.43. The ICL sweep therefore runs on two questions from that generator -- routing for calibration, where a noul answer gives the plan's own ECE, and 4-point urgency for steerability, where 0.90 zero-shot against a 0.25 chance baseline leaves accuracy room to move.",
+    "The routing arm's rows are graded by the calibration rubric and the urgency arm's by the E8 rubric. The E8 ladder is written in terms of accuracy_gain, and on a task at ceiling its 'examples have no effect' disqualifier would fire on the ceiling rather than on a model ignoring its examples.",
+    "Each arm's zero-shot cell is run once and is the shared baseline for both channels, because with no examples the two channels emit an identical request. Every gain and delta is paired against it on the same items.",
+    "What a state-channel delta contains. Examples cannot be put in the state without changing the state's shape: the zero-shot state is the bare ticket, and a state-channel state at k>0 is {'examples': [...], 'ticket': <that same bare ticket, unaltered>}. So a state-channel delta against zero-shot is the examples plus that wrapper, and cannot separate them. The instructions channel leaves the state untouched at every k, which makes it the cleaner arm for reading a delta against zero-shot; the two channels are only ever compared to each other at equal k, where both carry their examples.",
+    "The two arms report different kinds of ECE and the numbers are not interchangeable: the routing arm's is a probability against the outcome it is a probability of, the urgency arm's is top-label calibration.",
+    "The overall E8 tier is a composite: its accuracy_gain comes from the urgency arm, the only one where accuracy can move, and its ece, ece_delta and reliability_monotone from the routing arm, the only one with a clean probability ECE. The rubric's rungs are written as 'examples improve accuracy and leave ECE unchanged', and neither arm on its own can answer both halves. The calibration half is taken from one arm entire because the rubric's non-monotone rule is a disqualifier: it sends an experiment to \"Doesn't work\" outright, so it has to read the curve the ece_delta was measured on rather than the urgency arm's weaker top-label one. The row records which cell each half came from."
+  ],
+  "overall_tier": {
+    "difficulty": {
+      "condition": "overall",
+      "accuracy_from": "urgency/state-10",
+      "ece_from": "routing/state-10"
+    },
+    "tier": "Superhuman",
+    "n": 500,
+    "metrics": {
+      "accuracy": 0.936,
+      "accuracy_gain": 0.04400000000000004,
+      "ece": 0.06470000000000017,
+      "ece_delta": -0.00392,
+      "zeroshot_accuracy": 0.892,
+      "chance_baseline": 0.25,
+      "n": 500,
+      "reliability_monotone": true,
+      "novel_rubric_following": 0.995,
+      "inverted_rubric_following": 0.95,
+      "poison_sensitivity": 0.006000000000000005
+    },
+    "metric": "ece_delta",
+    "value": -0.00392,
+    "baseline": 0.892,
+    "baseline_name": "zero-shot accuracy",
+    "baseline_source": "measured",
+    "reportable": true,
+    "fully_evaluated": true,
+    "matched_rule": "Superhuman: meaningful gains from few-shot with ECE degrading <0.02.",
+    "reasons": [
+      "Superhuman: meaningful gains from few-shot with ECE degrading <0.02.",
+      "accuracy_gain >= 0.02 (the plan's 'meaningful gains'; 0.02 is the harness's floor)"
+    ],
+    "signatures": [],
+    "missing": [
+      "heuristic_baseline"
+    ],
+    "unevaluated": [],
+    "undefined": []
+  },
+  "routing_calibration_tier": {
+    "difficulty": {
+      "condition": "routing/state-10"
+    },
+    "tier": "Human",
+    "n": 500,
+    "metrics": {
+      "accuracy": 0.994,
+      "accuracy_gain": 0.02400000000000002,
+      "ece": 0.06470000000000017,
+      "ece_delta": -0.00392,
+      "zeroshot_accuracy": 0.97,
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n": 500,
+      "reliability_monotone": true
+    },
+    "metric": "ece",
+    "value": 0.06470000000000017,
+    "baseline": 0.0,
+    "baseline_name": "base-rate predictor ECE",
+    "baseline_source": "assumed",
+    "reportable": true,
+    "fully_evaluated": true,
+    "matched_rule": "config.ECE_TIERS",
+    "reasons": [
+      "config.ECE_TIERS"
+    ],
+    "signatures": [],
+    "missing": [],
+    "unevaluated": [],
+    "undefined": []
+  },
+  "tier_rubrics": {
+    "routing": "calibration",
+    "urgency": "E8"
+  },
+  "headline_cell": "routing/state-10",
+  "steerability_cell": "urgency/state-10",
+  "tasks": {
+    "routing": {
+      "question_type": "noul",
+      "chance_baseline": 0.5,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "role": "calibration arm; accuracy is at ceiling zero-shot, so no ICL gain is possible here"
+    },
+    "urgency": {
+      "question_type": "score",
+      "chance_baseline": 0.25,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "role": "steerability arm; 0.90 zero-shot against 0.25 chance leaves room for examples to move accuracy"
+    }
+  },
+  "sample_sizes": {
+    "icl_cell": 500,
+    "rubric_arm": 200,
+    "scale": 1.0,
+    "ece_sample_floor": 500,
+    "min_n_for_monotonicity": 100,
+    "calls_at_this_scale": 9800,
+    "calls_at_scale_1": 9800
+  },
+  "conditions": {
+    "routing/zeroshot": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.97,
+      "accuracy_ci": [
+        0.9510963331640543,
+        0.9817367868020865
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.16959655284881592,
+        "p95": 0.2899495005607603
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.06861999999999983,
+      "brier": 0.030369399999999987,
+      "auroc": 0.99476,
+      "mean_p": 0.4731,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 199,
+          "weight": 0.398,
+          "mean_predicted": 0.03522613065326626,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.018938233056634935,
+          "gap": 0.03522613065326626
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 32,
+          "weight": 0.064,
+          "mean_predicted": 0.138125,
+          "observed": 0.03125,
+          "observed_lo": 0.005537860164003122,
+          "observed_hi": 0.15744263820012555,
+          "gap": 0.106875
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 8,
+          "weight": 0.016,
+          "mean_predicted": 0.23875,
+          "observed": 0.25,
+          "observed_lo": 0.07147921275210906,
+          "observed_hi": 0.5907245696898311,
+          "gap": 0.01125000000000001
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 8,
+          "weight": 0.016,
+          "mean_predicted": 0.34625,
+          "observed": 0.375,
+          "observed_lo": 0.13684428582359742,
+          "observed_hi": 0.6942576053973726,
+          "gap": 0.028749999999999998
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.475,
+          "observed": 0.5,
+          "observed_lo": 0.15003898915214958,
+          "observed_hi": 0.8499610108478504,
+          "gap": 0.025000000000000022
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.5425,
+          "observed": 1.0,
+          "observed_lo": 0.5101091635454027,
+          "observed_hi": 1.0,
+          "gap": 0.4575
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 11,
+          "weight": 0.022,
+          "mean_predicted": 0.6481818181818181,
+          "observed": 0.8181818181818182,
+          "observed_lo": 0.5230194380391561,
+          "observed_hi": 0.948632310253915,
+          "gap": 0.17000000000000015
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 18,
+          "weight": 0.036,
+          "mean_predicted": 0.7394444444444445,
+          "observed": 0.8333333333333334,
+          "observed_lo": 0.6077796189608428,
+          "observed_hi": 0.9416342319413854,
+          "gap": 0.09388888888888891
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 76,
+          "weight": 0.152,
+          "mean_predicted": 0.8585526315789478,
+          "observed": 0.9736842105263158,
+          "observed_lo": 0.9090337890134194,
+          "observed_hi": 0.9927533409248718,
+          "gap": 0.11513157894736803
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 140,
+          "weight": 0.28,
+          "mean_predicted": 0.9334285714285717,
+          "observed": 1.0,
+          "observed_lo": 0.9732937996305869,
+          "observed_hi": 1.0,
+          "gap": 0.06657142857142828
+        }
+      ],
+      "reliability_monotone": true
+    },
+    "routing/instructions-1": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.968,
+      "accuracy_ci": [
+        0.9486551309545582,
+        0.9802084863734289
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.17475175857543945,
+        "p95": 0.2987554311752319
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.0861,
+      "brier": 0.030124599999999963,
+      "auroc": 0.996808,
+      "mean_p": 0.4729400000000002,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 196,
+          "weight": 0.392,
+          "mean_predicted": 0.04801020408163261,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.019222531917868137,
+          "gap": 0.04801020408163261
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 28,
+          "weight": 0.056,
+          "mean_predicted": 0.13357142857142856,
+          "observed": 0.07142857142857142,
+          "observed_lo": 0.01981206411530574,
+          "observed_hi": 0.22645362568399047,
+          "gap": 0.06214285714285714
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 15,
+          "weight": 0.03,
+          "mean_predicted": 0.2406666666666667,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.20388330103584854,
+          "gap": 0.2406666666666667
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 7,
+          "weight": 0.014,
+          "mean_predicted": 0.34142857142857147,
+          "observed": 0.5714285714285714,
+          "observed_lo": 0.25045836452765724,
+          "observed_hi": 0.8417801447485302,
+          "gap": 0.22999999999999993
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 8,
+          "weight": 0.016,
+          "mean_predicted": 0.44125000000000003,
+          "observed": 0.5,
+          "observed_lo": 0.21521606221387762,
+          "observed_hi": 0.7847839377861223,
+          "gap": 0.05874999999999997
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 9,
+          "weight": 0.018,
+          "mean_predicted": 0.5277777777777778,
+          "observed": 0.5555555555555556,
+          "observed_lo": 0.26665129349549316,
+          "observed_hi": 0.8112214789023353,
+          "gap": 0.02777777777777779
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 9,
+          "weight": 0.018,
+          "mean_predicted": 0.6499999999999999,
+          "observed": 0.8888888888888888,
+          "observed_lo": 0.5650002944233441,
+          "observed_hi": 0.9801091123614551,
+          "gap": 0.23888888888888893
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 27,
+          "weight": 0.054,
+          "mean_predicted": 0.7544444444444444,
+          "observed": 1.0,
+          "observed_lo": 0.8754449702581331,
+          "observed_hi": 1.0,
+          "gap": 0.24555555555555564
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 65,
+          "weight": 0.13,
+          "mean_predicted": 0.8581538461538462,
+          "observed": 0.9846153846153847,
+          "observed_lo": 0.9178671527044854,
+          "observed_hi": 0.9972790553979766,
+          "gap": 0.12646153846153851
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 136,
+          "weight": 0.272,
+          "mean_predicted": 0.9341176470588235,
+          "observed": 1.0,
+          "observed_lo": 0.9725299002664176,
+          "observed_hi": 1.0,
+          "gap": 0.0658823529411765
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": -0.0020000000000000018,
+      "mcnemar_p": 1.0,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.01748,
+      "ece_delta_ci": [
+        0.005438500000000152,
+        0.027063499999999956
+      ],
+      "ece_delta_p": 0.0
+    },
+    "routing/instructions-3": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.98,
+      "accuracy_ci": [
+        0.9635798167531208,
+        0.9891008164037892
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.1826716661453247,
+        "p95": 0.32107273340225195
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.07631999999999989,
+      "brier": 0.024276399999999955,
+      "auroc": 0.997104,
+      "mean_p": 0.4755600000000001,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 205,
+          "weight": 0.41,
+          "mean_predicted": 0.04258536585365853,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.018394138991302014,
+          "gap": 0.04258536585365853
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 30,
+          "weight": 0.06,
+          "mean_predicted": 0.13833333333333334,
+          "observed": 0.06666666666666667,
+          "observed_lo": 0.01847702379127039,
+          "observed_hi": 0.21323458362616918,
+          "gap": 0.07166666666666667
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 9,
+          "weight": 0.018,
+          "mean_predicted": 0.23222222222222222,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.299145048419544,
+          "gap": 0.23222222222222222
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.3225,
+          "observed": 0.5,
+          "observed_lo": 0.15003898915214958,
+          "observed_hi": 0.8499610108478504,
+          "gap": 0.1775
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.455,
+          "observed": 0.5,
+          "observed_lo": 0.15003898915214958,
+          "observed_hi": 0.8499610108478504,
+          "gap": 0.044999999999999984
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 7,
+          "weight": 0.014,
+          "mean_predicted": 0.5285714285714286,
+          "observed": 0.8571428571428571,
+          "observed_lo": 0.48687217072568123,
+          "observed_hi": 0.9743203756552564,
+          "gap": 0.3285714285714285
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 6,
+          "weight": 0.012,
+          "mean_predicted": 0.6649999999999999,
+          "observed": 0.8333333333333334,
+          "observed_lo": 0.4364971778135299,
+          "observed_hi": 0.9699466302516934,
+          "gap": 0.16833333333333345
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 24,
+          "weight": 0.048,
+          "mean_predicted": 0.7549999999999999,
+          "observed": 0.9583333333333334,
+          "observed_lo": 0.7975819352134407,
+          "observed_hi": 0.9926065438344941,
+          "gap": 0.20333333333333348
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 48,
+          "weight": 0.096,
+          "mean_predicted": 0.857916666666667,
+          "observed": 1.0,
+          "observed_lo": 0.9258998703338824,
+          "observed_hi": 1.0,
+          "gap": 0.142083333333333
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 163,
+          "weight": 0.326,
+          "mean_predicted": 0.936871165644172,
+          "observed": 0.9938650306748467,
+          "observed_lo": 0.9660717609349152,
+          "observed_hi": 0.9989162051139073,
+          "gap": 0.056993865030674606
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.010000000000000009,
+      "mcnemar_p": 0.125,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.0077,
+      "ece_delta_ci": [
+        -0.00510049999999983,
+        0.014380500000000098
+      ],
+      "ece_delta_p": 0.375
+    },
+    "routing/instructions-10": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.98,
+      "accuracy_ci": [
+        0.9635798167531208,
+        0.9891008164037892
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.20234358310699463,
+        "p95": 0.3509282231330871
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.0780199999999998,
+      "brier": 0.023238599999999936,
+      "auroc": 0.99824,
+      "mean_p": 0.4645400000000004,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 225,
+          "weight": 0.45,
+          "mean_predicted": 0.04471111111111108,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.01678655100562023,
+          "gap": 0.04471111111111108
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 20,
+          "weight": 0.04,
+          "mean_predicted": 0.12900000000000003,
+          "observed": 0.1,
+          "observed_lo": 0.027866481213768224,
+          "observed_hi": 0.30103364522848725,
+          "gap": 0.029000000000000026
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 1,
+          "weight": 0.002,
+          "mean_predicted": 0.27,
+          "observed": 1.0,
+          "observed_lo": 0.20654931437723745,
+          "observed_hi": 1.0,
+          "gap": 0.73
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 2,
+          "weight": 0.004,
+          "mean_predicted": 0.33999999999999997,
+          "observed": 0.5,
+          "observed_lo": 0.09453120573423074,
+          "observed_hi": 0.9054687942657693,
+          "gap": 0.16000000000000003
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.45,
+          "observed": 0.5,
+          "observed_lo": 0.15003898915214958,
+          "observed_hi": 0.8499610108478504,
+          "gap": 0.04999999999999999
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 6,
+          "weight": 0.012,
+          "mean_predicted": 0.5583333333333332,
+          "observed": 0.6666666666666666,
+          "observed_lo": 0.2999933151383921,
+          "observed_hi": 0.9032285888942196,
+          "gap": 0.10833333333333339
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 13,
+          "weight": 0.026,
+          "mean_predicted": 0.6538461538461537,
+          "observed": 0.9230769230769231,
+          "observed_lo": 0.6668604907890041,
+          "observed_hi": 0.9862895787574433,
+          "gap": 0.2692307692307694
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 25,
+          "weight": 0.05,
+          "mean_predicted": 0.7504000000000001,
+          "observed": 1.0,
+          "observed_lo": 0.8668077490609516,
+          "observed_hi": 1.0,
+          "gap": 0.24959999999999993
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 56,
+          "weight": 0.112,
+          "mean_predicted": 0.8580357142857143,
+          "observed": 0.9821428571428571,
+          "observed_lo": 0.9055436285060243,
+          "observed_hi": 0.9968407896580254,
+          "gap": 0.12410714285714275
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 148,
+          "weight": 0.296,
+          "mean_predicted": 0.9339189189189195,
+          "observed": 1.0,
+          "observed_lo": 0.9747008567322154,
+          "observed_hi": 1.0,
+          "gap": 0.06608108108108046
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.010000000000000009,
+      "mcnemar_p": 0.1796875,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.0094,
+      "ece_delta_ci": [
+        -0.0019405000000000663,
+        0.017220999999999976
+      ],
+      "ece_delta_p": 0.128
+    },
+    "routing/state-1": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.984,
+      "accuracy_ci": [
+        0.9687488914666058,
+        0.9918707469666117
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.18109679222106934,
+        "p95": 0.3384352803230282
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.06852000000000016,
+      "brier": 0.021478399999999984,
+      "auroc": 0.996056,
+      "mean_p": 0.48428000000000043,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 211,
+          "weight": 0.422,
+          "mean_predicted": 0.0359241706161137,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.017880435376768644,
+          "gap": 0.0359241706161137
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 22,
+          "weight": 0.044,
+          "mean_predicted": 0.13818181818181818,
+          "observed": 0.09090909090909091,
+          "observed_lo": 0.025295428990995295,
+          "observed_hi": 0.27814946841605814,
+          "gap": 0.04727272727272727
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 5,
+          "weight": 0.01,
+          "mean_predicted": 0.236,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.43448246478317465,
+          "gap": 0.236
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 5,
+          "weight": 0.01,
+          "mean_predicted": 0.33999999999999997,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.43448246478317465,
+          "gap": 0.33999999999999997
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 3,
+          "weight": 0.006,
+          "mean_predicted": 0.4533333333333333,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.5614970317550454,
+          "gap": 0.4533333333333333
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 6,
+          "weight": 0.012,
+          "mean_predicted": 0.5566666666666666,
+          "observed": 0.5,
+          "observed_lo": 0.18761630648265054,
+          "observed_hi": 0.8123836935173494,
+          "gap": 0.05666666666666664
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 9,
+          "weight": 0.018,
+          "mean_predicted": 0.6633333333333333,
+          "observed": 1.0,
+          "observed_lo": 0.7008549515804562,
+          "observed_hi": 1.0,
+          "gap": 0.33666666666666667
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 7,
+          "weight": 0.014,
+          "mean_predicted": 0.76,
+          "observed": 0.8571428571428571,
+          "observed_lo": 0.48687217072568123,
+          "observed_hi": 0.9743203756552564,
+          "gap": 0.09714285714285709
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 56,
+          "weight": 0.112,
+          "mean_predicted": 0.8524999999999998,
+          "observed": 0.9821428571428571,
+          "observed_lo": 0.9055436285060243,
+          "observed_hi": 0.9968407896580254,
+          "gap": 0.12964285714285728
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 176,
+          "weight": 0.352,
+          "mean_predicted": 0.9369886363636358,
+          "observed": 0.9943181818181818,
+          "observed_lo": 0.9685225276336739,
+          "observed_hi": 0.9989963144675896,
+          "gap": 0.05732954545454594
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.014000000000000012,
+      "mcnemar_p": 0.015625,
+      "n_paired_with_probability": 500,
+      "ece_delta": -0.0001,
+      "ece_delta_ci": [
+        -0.013599999999999739,
+        0.008641000000000228
+      ],
+      "ece_delta_p": 0.526
+    },
+    "routing/state-3": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.988,
+      "accuracy_ci": [
+        0.9740696388835527,
+        0.9944890048259724
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.18326449394226074,
+        "p95": 0.31740843057632434
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.06337999999999996,
+      "brier": 0.017177799999999962,
+      "auroc": 0.99684,
+      "mean_p": 0.48034000000000054,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 222,
+          "weight": 0.444,
+          "mean_predicted": 0.03477477477477473,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.017009537756059366,
+          "gap": 0.03477477477477473
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 14,
+          "weight": 0.028,
+          "mean_predicted": 0.13071428571428576,
+          "observed": 0.07142857142857142,
+          "observed_lo": 0.012722215247890939,
+          "observed_hi": 0.31468704424151117,
+          "gap": 0.05928571428571433
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 6,
+          "weight": 0.012,
+          "mean_predicted": 0.23166666666666666,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.39033428790216523,
+          "gap": 0.23166666666666666
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 6,
+          "weight": 0.012,
+          "mean_predicted": 0.3316666666666667,
+          "observed": 0.16666666666666666,
+          "observed_lo": 0.030053369748306635,
+          "observed_hi": 0.5635028221864702,
+          "gap": 0.16500000000000006
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.665,
+          "observed": 0.75,
+          "observed_lo": 0.300641842582402,
+          "observed_hi": 0.9544127391902995,
+          "gap": 0.08499999999999996
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 22,
+          "weight": 0.044,
+          "mean_predicted": 0.7527272727272725,
+          "observed": 0.9090909090909091,
+          "observed_lo": 0.7218505315839419,
+          "observed_hi": 0.9747045710090048,
+          "gap": 0.1563636363636366
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 46,
+          "weight": 0.092,
+          "mean_predicted": 0.8539130434782609,
+          "observed": 1.0,
+          "observed_lo": 0.9229264369144196,
+          "observed_hi": 1.0,
+          "gap": 0.1460869565217391
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 180,
+          "weight": 0.36,
+          "mean_predicted": 0.9374444444444445,
+          "observed": 0.9944444444444445,
+          "observed_lo": 0.9692069292336208,
+          "observed_hi": 0.9990186339327839,
+          "gap": 0.05699999999999994
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.018000000000000016,
+      "mcnemar_p": 0.00390625,
+      "n_paired_with_probability": 500,
+      "ece_delta": -0.00524,
+      "ece_delta_ci": [
+        -0.018863499999999683,
+        0.0003815000000002982
+      ],
+      "ece_delta_p": 0.061
+    },
+    "routing/state-10": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.994,
+      "accuracy_ci": [
+        0.9825097478959467,
+        0.9979574037280398
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.1634763479232788,
+        "p95": 0.29267706871032684
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.06470000000000017,
+      "brier": 0.012170999999999961,
+      "auroc": 0.999416,
+      "mean_p": 0.4733000000000001,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 236,
+          "weight": 0.472,
+          "mean_predicted": 0.03055084745762708,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.016016658836143942,
+          "gap": 0.03055084745762708
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 9,
+          "weight": 0.018,
+          "mean_predicted": 0.15555555555555556,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.299145048419544,
+          "gap": 0.15555555555555556
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 2,
+          "weight": 0.004,
+          "mean_predicted": 0.26,
+          "observed": 0.5,
+          "observed_lo": 0.09453120573423074,
+          "observed_hi": 0.9054687942657693,
+          "gap": 0.24
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 2,
+          "weight": 0.004,
+          "mean_predicted": 0.445,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.6576197724933468,
+          "gap": 0.445
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 4,
+          "weight": 0.008,
+          "mean_predicted": 0.675,
+          "observed": 1.0,
+          "observed_lo": 0.5101091635454027,
+          "observed_hi": 1.0,
+          "gap": 0.32499999999999996
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 14,
+          "weight": 0.028,
+          "mean_predicted": 0.7521428571428571,
+          "observed": 0.9285714285714286,
+          "observed_lo": 0.6853129557584889,
+          "observed_hi": 0.987277784752109,
+          "gap": 0.1764285714285715
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 71,
+          "weight": 0.142,
+          "mean_predicted": 0.8569014084507045,
+          "observed": 0.9859154929577465,
+          "observed_lo": 0.92443949479751,
+          "observed_hi": 0.9975093967294558,
+          "gap": 0.129014084507042
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 162,
+          "weight": 0.324,
+          "mean_predicted": 0.9417283950617277,
+          "observed": 1.0,
+          "observed_lo": 0.9768365591570956,
+          "observed_hi": 1.0,
+          "gap": 0.058271604938272326
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.02400000000000002,
+      "mcnemar_p": 0.00048828125,
+      "n_paired_with_probability": 500,
+      "ece_delta": -0.00392,
+      "ece_delta_ci": [
+        -0.020320499999999617,
+        0.0021610000000000153
+      ],
+      "ece_delta_p": 0.102
+    },
+    "routing/instructions-10-poisoned": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.974,
+      "accuracy_ci": [
+        0.9560285091657758,
+        0.9847436160766728
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.18737292289733887,
+        "p95": 0.33450006246566744
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.09413999999999988,
+      "brier": 0.028317799999999952,
+      "auroc": 0.997688,
+      "mean_p": 0.45842000000000005,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 210,
+          "weight": 0.42,
+          "mean_predicted": 0.04933333333333333,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.01796405075928323,
+          "gap": 0.04933333333333333
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 33,
+          "weight": 0.066,
+          "mean_predicted": 0.13,
+          "observed": 0.06060606060606061,
+          "observed_lo": 0.01678088308719189,
+          "observed_hi": 0.19606244808647807,
+          "gap": 0.0693939393939394
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 2,
+          "weight": 0.004,
+          "mean_predicted": 0.245,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.6576197724933468,
+          "gap": 0.245
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 3,
+          "weight": 0.006,
+          "mean_predicted": 0.3466666666666667,
+          "observed": 0.6666666666666666,
+          "observed_lo": 0.20765960080204782,
+          "observed_hi": 0.9385080552796038,
+          "gap": 0.31999999999999995
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 5,
+          "weight": 0.01,
+          "mean_predicted": 0.466,
+          "observed": 0.8,
+          "observed_lo": 0.3755346297625255,
+          "observed_hi": 0.9637758913675698,
+          "gap": 0.334
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 10,
+          "weight": 0.02,
+          "mean_predicted": 0.5439999999999999,
+          "observed": 0.7,
+          "observed_lo": 0.39677814746114537,
+          "observed_hi": 0.8922087325936989,
+          "gap": 0.15600000000000003
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 17,
+          "weight": 0.034,
+          "mean_predicted": 0.6594117647058824,
+          "observed": 0.9411764705882353,
+          "observed_lo": 0.730179693624246,
+          "observed_hi": 0.9895395990150022,
+          "gap": 0.2817647058823529
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 29,
+          "weight": 0.058,
+          "mean_predicted": 0.7565517241379311,
+          "observed": 0.9655172413793104,
+          "observed_lo": 0.8282447812067973,
+          "observed_hi": 0.9938867857072374,
+          "gap": 0.20896551724137924
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 74,
+          "weight": 0.148,
+          "mean_predicted": 0.8558108108108109,
+          "observed": 1.0,
+          "observed_lo": 0.9506502206036141,
+          "observed_hi": 1.0,
+          "gap": 0.1441891891891891
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 117,
+          "weight": 0.234,
+          "mean_predicted": 0.9297435897435902,
+          "observed": 1.0,
+          "observed_lo": 0.9682107543372667,
+          "observed_hi": 1.0,
+          "gap": 0.07025641025640983
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.0040000000000000036,
+      "mcnemar_p": 0.75390625,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.02552,
+      "ece_delta_ci": [
+        0.010978000000000033,
+        0.03024449999999991
+      ],
+      "ece_delta_p": 0.0
+    },
+    "routing/state-10-poisoned": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "probability against outcome, the plan's definition",
+      "accuracy": 0.99,
+      "accuracy_ci": [
+        0.9768069002442693,
+        0.9957212461034096
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.1709812879562378,
+        "p95": 0.29180002212524386
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.688,
+      "n_with_probability": 500,
+      "ece": 0.08349999999999982,
+      "brier": 0.017169399999999977,
+      "auroc": 0.999224,
+      "mean_p": 0.46286000000000027,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 228,
+          "weight": 0.456,
+          "mean_predicted": 0.03592105263157892,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.016569335097503433,
+          "gap": 0.03592105263157892
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 12,
+          "weight": 0.024,
+          "mean_predicted": 0.125,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.2424940066552408,
+          "gap": 0.125
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 6,
+          "weight": 0.012,
+          "mean_predicted": 0.21666666666666667,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.39033428790216523,
+          "gap": 0.21666666666666667
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 1,
+          "weight": 0.002,
+          "mean_predicted": 0.3,
+          "observed": 1.0,
+          "observed_lo": 0.20654931437723745,
+          "observed_hi": 1.0,
+          "gap": 0.7
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 3,
+          "weight": 0.006,
+          "mean_predicted": 0.5333333333333333,
+          "observed": 0.3333333333333333,
+          "observed_lo": 0.06149194472039632,
+          "observed_hi": 0.7923403991979523,
+          "gap": 0.2
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 9,
+          "weight": 0.018,
+          "mean_predicted": 0.6544444444444445,
+          "observed": 1.0,
+          "observed_lo": 0.7008549515804562,
+          "observed_hi": 1.0,
+          "gap": 0.3455555555555555
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 33,
+          "weight": 0.066,
+          "mean_predicted": 0.7566666666666667,
+          "observed": 0.9393939393939394,
+          "observed_lo": 0.803937551913522,
+          "observed_hi": 0.983219116912808,
+          "gap": 0.18272727272727274
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 82,
+          "weight": 0.164,
+          "mean_predicted": 0.8517073170731709,
+          "observed": 1.0,
+          "observed_lo": 0.9552493763098998,
+          "observed_hi": 1.0,
+          "gap": 0.14829268292682907
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 126,
+          "weight": 0.252,
+          "mean_predicted": 0.9352380952380958,
+          "observed": 1.0,
+          "observed_lo": 0.9704142355178014,
+          "observed_hi": 1.0,
+          "gap": 0.06476190476190424
+        }
+      ],
+      "reliability_monotone": true,
+      "n_paired": 500,
+      "accuracy_gain": 0.020000000000000018,
+      "mcnemar_p": 0.001953125,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.01488,
+      "ece_delta_ci": [
+        -0.0016635000000001972,
+        0.021083000000000025
+      ],
+      "ece_delta_p": 0.103
+    },
+    "urgency/zeroshot": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.892,
+      "accuracy_ci": [
+        0.8617453267151934,
+        0.9162771903629497
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.16324234008789062,
+        "p95": 0.2826878547668456
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.02087999999999926,
+      "brier": 0.06562359999999993,
+      "auroc": 0.9224796545424349,
+      "mean_p": 0.9055200000000014,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 39,
+          "weight": 0.078,
+          "mean_predicted": 0.5435897435897434,
+          "observed": 0.4358974358974359,
+          "observed_lo": 0.2930475387568963,
+          "observed_hi": 0.5902430835133052,
+          "gap": 0.10769230769230753
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 26,
+          "weight": 0.052,
+          "mean_predicted": 0.6457692307692308,
+          "observed": 0.5,
+          "observed_lo": 0.32060593525759046,
+          "observed_hi": 0.6793940647424095,
+          "gap": 0.14576923076923076
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 38,
+          "weight": 0.076,
+          "mean_predicted": 0.7528947368421052,
+          "observed": 0.7368421052631579,
+          "observed_lo": 0.5799115381253364,
+          "observed_hi": 0.8502837874520186,
+          "gap": 0.01605263157894732
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 37,
+          "weight": 0.074,
+          "mean_predicted": 0.8489189189189189,
+          "observed": 0.8918918918918919,
+          "observed_lo": 0.7529146845587398,
+          "observed_hi": 0.9571481005958853,
+          "gap": 0.04297297297297298
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 360,
+          "weight": 0.72,
+          "mean_predicted": 0.9854166666666677,
+          "observed": 0.9861111111111112,
+          "observed_lo": 0.9679041504124477,
+          "observed_hi": 0.9940532942791003,
+          "gap": 0.0006944444444434428
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.108,
+      "ece_from_confidence": 0.01855999999999928
+    },
+    "urgency/instructions-1": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.902,
+      "accuracy_ci": [
+        0.8727939491335183,
+        0.9250760811353939
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.17403292655944824,
+        "p95": 0.31129903793334945
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.026059999999999004,
+      "brier": 0.062229799999999946,
+      "auroc": 0.9174170776958234,
+      "mean_p": 0.9033400000000019,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 27,
+          "weight": 0.054,
+          "mean_predicted": 0.5507407407407408,
+          "observed": 0.4074074074074074,
+          "observed_lo": 0.24514757074395566,
+          "observed_hi": 0.5927329903193531,
+          "gap": 0.14333333333333337
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 45,
+          "weight": 0.09,
+          "mean_predicted": 0.6440000000000001,
+          "observed": 0.5777777777777777,
+          "observed_lo": 0.4330078870920313,
+          "observed_hi": 0.710312975327297,
+          "gap": 0.0662222222222224
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 27,
+          "weight": 0.054,
+          "mean_predicted": 0.7440740740740741,
+          "observed": 0.8518518518518519,
+          "observed_lo": 0.6752131457218702,
+          "observed_hi": 0.9408407222375568,
+          "gap": 0.10777777777777775
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 50,
+          "weight": 0.1,
+          "mean_predicted": 0.8489999999999999,
+          "observed": 0.86,
+          "observed_lo": 0.7381380628941446,
+          "observed_hi": 0.9304916657298371,
+          "gap": 0.01100000000000012
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 351,
+          "weight": 0.702,
+          "mean_predicted": 0.9837037037037052,
+          "observed": 0.9914529914529915,
+          "observed_lo": 0.9751761222236639,
+          "observed_hi": 0.99708907234125,
+          "gap": 0.007749287749286293
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.098,
+      "ece_from_confidence": 0.02693999999999916,
+      "n_paired": 500,
+      "accuracy_gain": 0.010000000000000009,
+      "mcnemar_p": 0.332305908203125,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.00518,
+      "ece_delta_ci": [
+        -0.019424999999999828,
+        0.02484299999999844
+      ],
+      "ece_delta_p": 0.808
+    },
+    "urgency/instructions-3": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.916,
+      "accuracy_ci": [
+        0.888400685539819,
+        0.9372558631961696
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.17696356773376465,
+        "p95": 0.36546958684921255
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.020139999999998374,
+      "brier": 0.05977499999999992,
+      "auroc": 0.9012008733624454,
+      "mean_p": 0.9018200000000015,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 33,
+          "weight": 0.066,
+          "mean_predicted": 0.5481818181818182,
+          "observed": 0.5757575757575758,
+          "observed_lo": 0.4080726333731245,
+          "observed_hi": 0.7276440336658979,
+          "gap": 0.027575757575757587
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 32,
+          "weight": 0.064,
+          "mean_predicted": 0.6471875000000002,
+          "observed": 0.6875,
+          "observed_lo": 0.5143332169904459,
+          "observed_hi": 0.8204745836639026,
+          "gap": 0.04031249999999975
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 29,
+          "weight": 0.058,
+          "mean_predicted": 0.7410344827586204,
+          "observed": 0.6896551724137931,
+          "observed_lo": 0.5076986576690685,
+          "observed_hi": 0.8272438325551679,
+          "gap": 0.051379310344827234
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 56,
+          "weight": 0.112,
+          "mean_predicted": 0.8508928571428571,
+          "observed": 0.9107142857142857,
+          "observed_lo": 0.8074399861448884,
+          "observed_hi": 0.9612578515504131,
+          "gap": 0.05982142857142858
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 350,
+          "weight": 0.7,
+          "mean_predicted": 0.979914285714288,
+          "observed": 0.9885714285714285,
+          "observed_lo": 0.9709876402615107,
+          "observed_hi": 0.9955469233813135,
+          "gap": 0.008657142857140587
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.084,
+      "ece_from_confidence": 0.021679999999998513,
+      "n_paired": 500,
+      "accuracy_gain": 0.02400000000000002,
+      "mcnemar_p": 0.03569813817739487,
+      "n_paired_with_probability": 500,
+      "ece_delta": -0.00074,
+      "ece_delta_ci": [
+        -0.02472100000000131,
+        0.020508999999998657
+      ],
+      "ece_delta_p": 0.928
+    },
+    "urgency/instructions-10": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.92,
+      "accuracy_ci": [
+        0.8928936834221488,
+        0.9407018705901475
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.17829596996307373,
+        "p95": 0.3348108887672424
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.03517999999999945,
+      "brier": 0.05534139999999995,
+      "auroc": 0.9141304347826087,
+      "mean_p": 0.8960600000000011,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 36,
+          "weight": 0.072,
+          "mean_predicted": 0.5502777777777779,
+          "observed": 0.4722222222222222,
+          "observed_lo": 0.31986041515179064,
+          "observed_hi": 0.6299406197701239,
+          "gap": 0.07805555555555566
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 30,
+          "weight": 0.06,
+          "mean_predicted": 0.6446666666666668,
+          "observed": 0.7333333333333333,
+          "observed_lo": 0.555520383048111,
+          "observed_hi": 0.8581733668040368,
+          "gap": 0.08866666666666645
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 32,
+          "weight": 0.064,
+          "mean_predicted": 0.748125,
+          "observed": 0.84375,
+          "observed_lo": 0.6824585040246961,
+          "observed_hi": 0.931355797174943,
+          "gap": 0.09562499999999996
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 58,
+          "weight": 0.116,
+          "mean_predicted": 0.8501724137931035,
+          "observed": 0.896551724137931,
+          "observed_lo": 0.7921189700751577,
+          "observed_hi": 0.951718592576371,
+          "gap": 0.04637931034482756
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 344,
+          "weight": 0.688,
+          "mean_predicted": 0.9756686046511636,
+          "observed": 0.9941860465116279,
+          "observed_lo": 0.9790526485582872,
+          "observed_hi": 0.9984041536087706,
+          "gap": 0.018517441860464334
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.08,
+      "ece_from_confidence": 0.03443999999999883,
+      "n_paired": 500,
+      "accuracy_gain": 0.028000000000000025,
+      "mcnemar_p": 0.04355852192384191,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.0143,
+      "ece_delta_ci": [
+        -0.01584250000000124,
+        0.03276099999999965
+      ],
+      "ece_delta_p": 0.468
+    },
+    "urgency/state-1": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.922,
+      "accuracy_ci": [
+        0.8951464501266115,
+        0.9424186065238385
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.17100822925567627,
+        "p95": 0.3182384729385376
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.02109999999999917,
+      "brier": 0.05804179999999996,
+      "auroc": 0.8899827576617164,
+      "mean_p": 0.902460000000001,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 1,
+          "weight": 0.002,
+          "mean_predicted": 0.49,
+          "observed": 1.0,
+          "observed_lo": 0.20654931437723745,
+          "observed_hi": 1.0,
+          "gap": 0.51
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 26,
+          "weight": 0.052,
+          "mean_predicted": 0.5469230769230771,
+          "observed": 0.5384615384615384,
+          "observed_lo": 0.35457938746858797,
+          "observed_hi": 0.7124414646960878,
+          "gap": 0.008461538461538631
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 39,
+          "weight": 0.078,
+          "mean_predicted": 0.6412820512820513,
+          "observed": 0.717948717948718,
+          "observed_lo": 0.5622468051697919,
+          "observed_hi": 0.8345650791115232,
+          "gap": 0.07666666666666666
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 28,
+          "weight": 0.056,
+          "mean_predicted": 0.7539285714285714,
+          "observed": 0.7857142857142857,
+          "observed_lo": 0.6046141434627813,
+          "observed_hi": 0.8978753966710212,
+          "gap": 0.031785714285714306
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 51,
+          "weight": 0.102,
+          "mean_predicted": 0.8464705882352942,
+          "observed": 0.8431372549019608,
+          "observed_lo": 0.7198955322701224,
+          "observed_hi": 0.9183077677995128,
+          "gap": 0.0033333333333334103
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 355,
+          "weight": 0.71,
+          "mean_predicted": 0.9781126760563392,
+          "observed": 0.9943661971830986,
+          "observed_lo": 0.9796941999905108,
+          "observed_hi": 0.9984536460068149,
+          "gap": 0.016253521126759374
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.078,
+      "ece_from_confidence": 0.022959999999998853,
+      "n_paired": 500,
+      "accuracy_gain": 0.030000000000000027,
+      "mcnemar_p": 0.01667384780012071,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.00022,
+      "ece_delta_ci": [
+        -0.02098050000000146,
+        0.025462000000000373
+      ],
+      "ece_delta_p": 0.796
+    },
+    "urgency/state-3": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.914,
+      "accuracy_ci": [
+        0.8861601885014426,
+        0.9355268575963923
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.17836475372314453,
+        "p95": 0.3215203285217285
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.024259999999998668,
+      "brier": 0.061519799999999944,
+      "auroc": 0.8942293013078215,
+      "mean_p": 0.9053400000000021,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 21,
+          "weight": 0.042,
+          "mean_predicted": 0.5476190476190477,
+          "observed": 0.5714285714285714,
+          "observed_lo": 0.36546554369306716,
+          "observed_hi": 0.7553003107462404,
+          "gap": 0.023809523809523725
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 35,
+          "weight": 0.07,
+          "mean_predicted": 0.6542857142857144,
+          "observed": 0.5428571428571428,
+          "observed_lo": 0.38189725068483754,
+          "observed_hi": 0.6953398071159278,
+          "gap": 0.11142857142857154
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 32,
+          "weight": 0.064,
+          "mean_predicted": 0.7387499999999999,
+          "observed": 0.875,
+          "observed_lo": 0.7193169451834979,
+          "observed_hi": 0.9502986561251993,
+          "gap": 0.1362500000000001
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 66,
+          "weight": 0.132,
+          "mean_predicted": 0.8478787878787879,
+          "observed": 0.8787878787878788,
+          "observed_lo": 0.7786256097735968,
+          "observed_hi": 0.9372815440040234,
+          "gap": 0.030909090909090886
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 346,
+          "weight": 0.692,
+          "mean_predicted": 0.978815028901736,
+          "observed": 0.9826589595375722,
+          "observed_lo": 0.9626893525028232,
+          "observed_hi": 0.992028825056534,
+          "gap": 0.0038439306358362124
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.086,
+      "ece_from_confidence": 0.02249999999999878,
+      "n_paired": 500,
+      "accuracy_gain": 0.02200000000000002,
+      "mcnemar_p": 0.09887174959294498,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.00338,
+      "ece_delta_ci": [
+        -0.022129500000000173,
+        0.025582500000000237
+      ],
+      "ece_delta_p": 0.859
+    },
+    "urgency/state-10": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.936,
+      "accuracy_ci": [
+        0.911047591162316,
+        0.9543039839552107
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.19420647621154785,
+        "p95": 0.3048809766769409
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.017939999999998985,
+      "brier": 0.04519979999999994,
+      "auroc": 0.9240785256410257,
+      "mean_p": 0.9203000000000011,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 23,
+          "weight": 0.046,
+          "mean_predicted": 0.5447826086956521,
+          "observed": 0.5217391304347826,
+          "observed_lo": 0.3296273733642741,
+          "observed_hi": 0.7076284258335335,
+          "gap": 0.0230434782608695
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 25,
+          "weight": 0.05,
+          "mean_predicted": 0.6412,
+          "observed": 0.64,
+          "observed_lo": 0.44518497748164865,
+          "observed_hi": 0.7975211922554178,
+          "gap": 0.0011999999999999789
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 20,
+          "weight": 0.04,
+          "mean_predicted": 0.7525,
+          "observed": 0.9,
+          "observed_lo": 0.6989663547715128,
+          "observed_hi": 0.9721335187862319,
+          "gap": 0.14750000000000008
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 44,
+          "weight": 0.088,
+          "mean_predicted": 0.8431818181818184,
+          "observed": 0.8636363636363636,
+          "observed_lo": 0.7329054695148456,
+          "observed_hi": 0.9359704550244412,
+          "gap": 0.02045454545454528
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 388,
+          "weight": 0.776,
+          "mean_predicted": 0.9779381443298982,
+          "observed": 0.9896907216494846,
+          "observed_lo": 0.9737961511019336,
+          "observed_hi": 0.9959838235430855,
+          "gap": 0.011752577319586344
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.064,
+      "ece_from_confidence": 0.022399999999998598,
+      "n_paired": 500,
+      "accuracy_gain": 0.04400000000000004,
+      "mcnemar_p": 0.0020881073339964473,
+      "n_paired_with_probability": 500,
+      "ece_delta": -0.00294,
+      "ece_delta_ci": [
+        -0.025220500000001648,
+        0.017825499999999488
+      ],
+      "ece_delta_p": 0.904
+    },
+    "urgency/instructions-10-poisoned": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.924,
+      "accuracy_ci": [
+        0.8974035863260316,
+        0.9441309729625723
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.1683412790298462,
+        "p95": 0.3126036286354064
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.04063999999999892,
+      "brier": 0.056916399999999985,
+      "auroc": 0.9023695602642972,
+      "mean_p": 0.8872000000000013,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 2,
+          "weight": 0.004,
+          "mean_predicted": 0.48,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.6576197724933468,
+          "gap": 0.48
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 29,
+          "weight": 0.058,
+          "mean_predicted": 0.5420689655172414,
+          "observed": 0.6551724137931034,
+          "observed_lo": 0.4734510409047614,
+          "observed_hi": 0.80059281473325,
+          "gap": 0.11310344827586205
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 39,
+          "weight": 0.078,
+          "mean_predicted": 0.6430769230769231,
+          "observed": 0.6666666666666666,
+          "observed_lo": 0.5097739439934599,
+          "observed_hi": 0.7936704381040163,
+          "gap": 0.023589743589743528
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 42,
+          "weight": 0.084,
+          "mean_predicted": 0.7426190476190475,
+          "observed": 0.8809523809523809,
+          "observed_lo": 0.7499960973799032,
+          "observed_hi": 0.9480619667224176,
+          "gap": 0.13833333333333342
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 58,
+          "weight": 0.116,
+          "mean_predicted": 0.8501724137931035,
+          "observed": 0.8793103448275862,
+          "observed_lo": 0.7712064595403911,
+          "observed_hi": 0.9402903395175928,
+          "gap": 0.0291379310344827
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 330,
+          "weight": 0.66,
+          "mean_predicted": 0.9737575757575774,
+          "observed": 0.996969696969697,
+          "observed_lo": 0.9830374199487918,
+          "observed_hi": 0.9994648766762914,
+          "gap": 0.023212121212119574
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.076,
+      "ece_from_confidence": 0.04449999999999883,
+      "n_paired": 500,
+      "accuracy_gain": 0.03200000000000003,
+      "mcnemar_p": 0.022628841205914796,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.01976,
+      "ece_delta_ci": [
+        -0.006026000000001831,
+        0.03926049999999943
+      ],
+      "ece_delta_p": 0.155
+    },
+    "urgency/state-10-poisoned": {
+      "n": 500,
+      "failures": 0,
+      "underpowered_for_ece": false,
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "accuracy": 0.93,
+      "accuracy_ci": [
+        0.9042028101480832,
+        0.949240257054982
+      ],
+      "majority_baseline": 0.252,
+      "latency_p50_p95": {
+        "p50": 0.1791764497756958,
+        "p95": 0.3035891890525817
+      },
+      "chance_baseline": 0.25,
+      "n_with_probability": 500,
+      "ece": 0.02525999999999908,
+      "brier": 0.050264599999999944,
+      "auroc": 0.9132718894009216,
+      "mean_p": 0.9061800000000018,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 30,
+          "weight": 0.06,
+          "mean_predicted": 0.5523333333333333,
+          "observed": 0.6,
+          "observed_lo": 0.42320360253322487,
+          "observed_hi": 0.7540937188319814,
+          "gap": 0.047666666666666635
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 24,
+          "weight": 0.048,
+          "mean_predicted": 0.6383333333333334,
+          "observed": 0.625,
+          "observed_lo": 0.42709962442674276,
+          "observed_hi": 0.7884063244045122,
+          "gap": 0.01333333333333342
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 32,
+          "weight": 0.064,
+          "mean_predicted": 0.75125,
+          "observed": 0.75,
+          "observed_lo": 0.5789344100575552,
+          "observed_hi": 0.8674759908149096,
+          "gap": 0.0012499999999999734
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 49,
+          "weight": 0.098,
+          "mean_predicted": 0.8508163265306125,
+          "observed": 0.9591836734693877,
+          "observed_lo": 0.8628696769391992,
+          "observed_hi": 0.9887343666338142,
+          "gap": 0.10836734693877526
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 365,
+          "weight": 0.73,
+          "mean_predicted": 0.9738904109589054,
+          "observed": 0.989041095890411,
+          "observed_lo": 0.9721652600722704,
+          "observed_hi": 0.995730271903568,
+          "gap": 0.01515068493150562
+        }
+      ],
+      "reliability_monotone": true,
+      "mean_abs_rank_error": 0.07,
+      "ece_from_confidence": 0.03431999999999872,
+      "n_paired": 500,
+      "accuracy_gain": 0.038000000000000034,
+      "mcnemar_p": 0.01634810389737615,
+      "n_paired_with_probability": 500,
+      "ece_delta": 0.00438,
+      "ece_delta_ci": [
+        -0.018021500000001415,
+        0.026060499999999702
+      ],
+      "ece_delta_p": 0.635
+    },
+    "rubric-novel": {
+      "n": 200,
+      "failures": 0,
+      "underpowered_for_ece": true,
+      "accuracy": 0.995,
+      "accuracy_ci": [
+        0.9722262956021069,
+        0.9991168312843989
+      ],
+      "majority_baseline": 0.375,
+      "latency_p50_p95": {
+        "p50": 0.17724978923797607,
+        "p95": 0.3175035953521727
+      },
+      "chance_baseline": 0.3333333333333333,
+      "heuristic_baseline": 0.585,
+      "n_with_probability": 200,
+      "ece": 0.01115000000000035,
+      "brier": 0.0027104999999999994,
+      "auroc": 1.0,
+      "mean_p": 0.9899499999999998,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 1,
+          "weight": 0.005,
+          "mean_predicted": 0.61,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.7934506856227626,
+          "gap": 0.61
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 1,
+          "weight": 0.005,
+          "mean_predicted": 0.78,
+          "observed": 1.0,
+          "observed_lo": 0.20654931437723745,
+          "observed_hi": 1.0,
+          "gap": 0.21999999999999997
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 4,
+          "weight": 0.02,
+          "mean_predicted": 0.86,
+          "observed": 1.0,
+          "observed_lo": 0.5101091635454027,
+          "observed_hi": 1.0,
+          "gap": 0.14
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 194,
+          "weight": 0.97,
+          "mean_predicted": 0.9956701030927831,
+          "observed": 1.0,
+          "observed_lo": 0.9805831454964365,
+          "observed_hi": 1.0,
+          "gap": 0.004329896907216857
+        }
+      ],
+      "reliability_monotone": true,
+      "ece_from_confidence": 0.014550000000000125
+    },
+    "rubric-conventional": {
+      "n": 200,
+      "failures": 0,
+      "underpowered_for_ece": true,
+      "accuracy": 0.98,
+      "accuracy_ci": [
+        0.9497129130941735,
+        0.9921955735836505
+      ],
+      "majority_baseline": 0.125,
+      "latency_p50_p95": {
+        "p50": 0.19564735889434814,
+        "p95": 0.31826226711273187
+      },
+      "chance_baseline": 0.125,
+      "heuristic_baseline": 0.435,
+      "n_with_probability": 200,
+      "ece": 0.006000000000000007,
+      "brier": 0.013324000000000004,
+      "auroc": 0.9834183673469388,
+      "mean_p": 0.9774999999999998,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 2,
+          "weight": 0.01,
+          "mean_predicted": 0.445,
+          "observed": 0.5,
+          "observed_lo": 0.09453120573423074,
+          "observed_hi": 0.9054687942657693,
+          "gap": 0.05499999999999999
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 2,
+          "weight": 0.01,
+          "mean_predicted": 0.61,
+          "observed": 0.5,
+          "observed_lo": 0.09453120573423074,
+          "observed_hi": 0.9054687942657693,
+          "gap": 0.10999999999999999
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 4,
+          "weight": 0.02,
+          "mean_predicted": 0.73,
+          "observed": 0.75,
+          "observed_lo": 0.300641842582402,
+          "observed_hi": 0.9544127391902995,
+          "gap": 0.020000000000000018
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 5,
+          "weight": 0.025,
+          "mean_predicted": 0.826,
+          "observed": 0.8,
+          "observed_lo": 0.3755346297625255,
+          "observed_hi": 0.9637758913675698,
+          "gap": 0.025999999999999912
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 187,
+          "weight": 0.935,
+          "mean_predicted": 0.9964705882352941,
+          "observed": 1.0,
+          "observed_lo": 0.9798709418570134,
+          "observed_hi": 1.0,
+          "gap": 0.003529411764705892
+        }
+      ],
+      "reliability_monotone": true,
+      "ece_from_confidence": 0.00749999999999973
+    },
+    "override-inverted": {
+      "n": 200,
+      "failures": 0,
+      "underpowered_for_ece": true,
+      "accuracy": 0.95,
+      "accuracy_ci": [
+        0.9104218518612239,
+        0.972617354399236
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.1869204044342041,
+        "p95": 0.32880885601043697
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.5,
+      "n_with_probability": 200,
+      "ece": 0.08165000000000015,
+      "brier": 0.029950499999999974,
+      "auroc": 0.9963,
+      "mean_p": 0.47425000000000006,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 84,
+          "weight": 0.42,
+          "mean_predicted": 0.04857142857142855,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.04373172841465986,
+          "gap": 0.04857142857142855
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 7,
+          "weight": 0.035,
+          "mean_predicted": 0.12142857142857143,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.3543304350666873,
+          "gap": 0.12142857142857143
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.22,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.5614970317550454,
+          "gap": 0.22
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 4,
+          "weight": 0.02,
+          "mean_predicted": 0.375,
+          "observed": 0.75,
+          "observed_lo": 0.300641842582402,
+          "observed_hi": 0.9544127391902995,
+          "gap": 0.375
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 8,
+          "weight": 0.04,
+          "mean_predicted": 0.43875,
+          "observed": 0.625,
+          "observed_lo": 0.3057423946026274,
+          "observed_hi": 0.8631557141764026,
+          "gap": 0.18625000000000003
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 5,
+          "weight": 0.025,
+          "mean_predicted": 0.546,
+          "observed": 0.6,
+          "observed_lo": 0.23072428127601297,
+          "observed_hi": 0.8823792257673521,
+          "gap": 0.05399999999999994
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 0,
+          "weight": 0.0,
+          "mean_predicted": null,
+          "observed": null,
+          "observed_lo": null,
+          "observed_hi": null,
+          "gap": null
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 4,
+          "weight": 0.02,
+          "mean_predicted": 0.765,
+          "observed": 1.0,
+          "observed_lo": 0.5101091635454027,
+          "observed_hi": 1.0,
+          "gap": 0.235
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 13,
+          "weight": 0.065,
+          "mean_predicted": 0.8546153846153847,
+          "observed": 1.0,
+          "observed_lo": 0.7719046276458016,
+          "observed_hi": 1.0,
+          "gap": 0.14538461538461533
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 72,
+          "weight": 0.36,
+          "mean_predicted": 0.9354166666666662,
+          "observed": 1.0,
+          "observed_lo": 0.9493488274035422,
+          "observed_hi": 1.0,
+          "gap": 0.06458333333333377
+        }
+      ],
+      "reliability_monotone": true
+    },
+    "override-conventional": {
+      "n": 200,
+      "failures": 0,
+      "underpowered_for_ece": true,
+      "accuracy": 0.955,
+      "accuracy_ci": [
+        0.9167032959981803,
+        0.976147456998507
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.1837247610092163,
+        "p95": 0.28850240707397456
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.5,
+      "n_with_probability": 200,
+      "ece": 0.07089999999999995,
+      "brier": 0.029270999999999988,
+      "auroc": 0.999,
+      "mean_p": 0.45630000000000026,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 93,
+          "weight": 0.465,
+          "mean_predicted": 0.025268817204301075,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.03966750261173513,
+          "gap": 0.025268817204301075
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 2,
+          "weight": 0.01,
+          "mean_predicted": 0.185,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.6576197724933468,
+          "gap": 0.185
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 4,
+          "weight": 0.02,
+          "mean_predicted": 0.2575,
+          "observed": 0.5,
+          "observed_lo": 0.15003898915214958,
+          "observed_hi": 0.8499610108478504,
+          "gap": 0.2425
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 7,
+          "weight": 0.035,
+          "mean_predicted": 0.33571428571428574,
+          "observed": 0.5714285714285714,
+          "observed_lo": 0.25045836452765724,
+          "observed_hi": 0.8417801447485302,
+          "gap": 0.23571428571428565
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.4166666666666667,
+          "observed": 1.0,
+          "observed_lo": 0.4385029682449546,
+          "observed_hi": 1.0,
+          "gap": 0.5833333333333333
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.5466666666666667,
+          "observed": 1.0,
+          "observed_lo": 0.4385029682449546,
+          "observed_hi": 1.0,
+          "gap": 0.45333333333333325
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.6666666666666666,
+          "observed": 1.0,
+          "observed_lo": 0.4385029682449546,
+          "observed_hi": 1.0,
+          "gap": 0.33333333333333337
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 2,
+          "weight": 0.01,
+          "mean_predicted": 0.76,
+          "observed": 1.0,
+          "observed_lo": 0.3423802275066532,
+          "observed_hi": 1.0,
+          "gap": 0.24
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 6,
+          "weight": 0.03,
+          "mean_predicted": 0.8450000000000001,
+          "observed": 1.0,
+          "observed_lo": 0.6096657120978348,
+          "observed_hi": 1.0,
+          "gap": 0.15499999999999992
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 77,
+          "weight": 0.385,
+          "mean_predicted": 0.956883116883117,
+          "observed": 1.0,
+          "observed_lo": 0.9524815747175658,
+          "observed_hi": 1.0,
+          "gap": 0.043116883116883
+        }
+      ],
+      "reliability_monotone": true
+    }
+  },
+  "calibration_under_icl": {
+    "routing": {
+      "calibration_is": "probability against outcome, the plan's definition",
+      "zeroshot_ece": 0.06861999999999983,
+      "zeroshot_accuracy": 0.97,
+      "by_cell": {
+        "routing/instructions-1": {
+          "n": 500,
+          "accuracy": 0.968,
+          "accuracy_gain": -0.0020000000000000018,
+          "ece": 0.0861,
+          "ece_delta": 0.01748,
+          "ece_delta_ci": [
+            0.005438500000000152,
+            0.027063499999999956
+          ],
+          "brier": 0.030124599999999963,
+          "auroc": 0.996808,
+          "mcnemar_p": 1.0,
+          "underpowered_for_ece": false
+        },
+        "routing/instructions-3": {
+          "n": 500,
+          "accuracy": 0.98,
+          "accuracy_gain": 0.010000000000000009,
+          "ece": 0.07631999999999989,
+          "ece_delta": 0.0077,
+          "ece_delta_ci": [
+            -0.00510049999999983,
+            0.014380500000000098
+          ],
+          "brier": 0.024276399999999955,
+          "auroc": 0.997104,
+          "mcnemar_p": 0.125,
+          "underpowered_for_ece": false
+        },
+        "routing/instructions-10": {
+          "n": 500,
+          "accuracy": 0.98,
+          "accuracy_gain": 0.010000000000000009,
+          "ece": 0.0780199999999998,
+          "ece_delta": 0.0094,
+          "ece_delta_ci": [
+            -0.0019405000000000663,
+            0.017220999999999976
+          ],
+          "brier": 0.023238599999999936,
+          "auroc": 0.99824,
+          "mcnemar_p": 0.1796875,
+          "underpowered_for_ece": false
+        },
+        "routing/state-1": {
+          "n": 500,
+          "accuracy": 0.984,
+          "accuracy_gain": 0.014000000000000012,
+          "ece": 0.06852000000000016,
+          "ece_delta": -0.0001,
+          "ece_delta_ci": [
+            -0.013599999999999739,
+            0.008641000000000228
+          ],
+          "brier": 0.021478399999999984,
+          "auroc": 0.996056,
+          "mcnemar_p": 0.015625,
+          "underpowered_for_ece": false
+        },
+        "routing/state-3": {
+          "n": 500,
+          "accuracy": 0.988,
+          "accuracy_gain": 0.018000000000000016,
+          "ece": 0.06337999999999996,
+          "ece_delta": -0.00524,
+          "ece_delta_ci": [
+            -0.018863499999999683,
+            0.0003815000000002982
+          ],
+          "brier": 0.017177799999999962,
+          "auroc": 0.99684,
+          "mcnemar_p": 0.00390625,
+          "underpowered_for_ece": false
+        },
+        "routing/state-10": {
+          "n": 500,
+          "accuracy": 0.994,
+          "accuracy_gain": 0.02400000000000002,
+          "ece": 0.06470000000000017,
+          "ece_delta": -0.00392,
+          "ece_delta_ci": [
+            -0.020320499999999617,
+            0.0021610000000000153
+          ],
+          "brier": 0.012170999999999961,
+          "auroc": 0.999416,
+          "mcnemar_p": 0.00048828125,
+          "underpowered_for_ece": false
+        },
+        "routing/instructions-10-poisoned": {
+          "n": 500,
+          "accuracy": 0.974,
+          "accuracy_gain": 0.0040000000000000036,
+          "ece": 0.09413999999999988,
+          "ece_delta": 0.02552,
+          "ece_delta_ci": [
+            0.010978000000000033,
+            0.03024449999999991
+          ],
+          "brier": 0.028317799999999952,
+          "auroc": 0.997688,
+          "mcnemar_p": 0.75390625,
+          "underpowered_for_ece": false
+        },
+        "routing/state-10-poisoned": {
+          "n": 500,
+          "accuracy": 0.99,
+          "accuracy_gain": 0.020000000000000018,
+          "ece": 0.08349999999999982,
+          "ece_delta": 0.01488,
+          "ece_delta_ci": [
+            -0.0016635000000001972,
+            0.021083000000000025
+          ],
+          "brier": 0.017169399999999977,
+          "auroc": 0.999224,
+          "mcnemar_p": 0.001953125,
+          "underpowered_for_ece": false
+        }
+      }
+    },
+    "urgency": {
+      "calibration_is": "top-label: probability on the chosen rubric point against whether it was right",
+      "zeroshot_ece": 0.02087999999999926,
+      "zeroshot_accuracy": 0.892,
+      "by_cell": {
+        "urgency/instructions-1": {
+          "n": 500,
+          "accuracy": 0.902,
+          "accuracy_gain": 0.010000000000000009,
+          "ece": 0.026059999999999004,
+          "ece_delta": 0.00518,
+          "ece_delta_ci": [
+            -0.019424999999999828,
+            0.02484299999999844
+          ],
+          "brier": 0.062229799999999946,
+          "auroc": 0.9174170776958234,
+          "mcnemar_p": 0.332305908203125,
+          "underpowered_for_ece": false
+        },
+        "urgency/instructions-3": {
+          "n": 500,
+          "accuracy": 0.916,
+          "accuracy_gain": 0.02400000000000002,
+          "ece": 0.020139999999998374,
+          "ece_delta": -0.00074,
+          "ece_delta_ci": [
+            -0.02472100000000131,
+            0.020508999999998657
+          ],
+          "brier": 0.05977499999999992,
+          "auroc": 0.9012008733624454,
+          "mcnemar_p": 0.03569813817739487,
+          "underpowered_for_ece": false
+        },
+        "urgency/instructions-10": {
+          "n": 500,
+          "accuracy": 0.92,
+          "accuracy_gain": 0.028000000000000025,
+          "ece": 0.03517999999999945,
+          "ece_delta": 0.0143,
+          "ece_delta_ci": [
+            -0.01584250000000124,
+            0.03276099999999965
+          ],
+          "brier": 0.05534139999999995,
+          "auroc": 0.9141304347826087,
+          "mcnemar_p": 0.04355852192384191,
+          "underpowered_for_ece": false
+        },
+        "urgency/state-1": {
+          "n": 500,
+          "accuracy": 0.922,
+          "accuracy_gain": 0.030000000000000027,
+          "ece": 0.02109999999999917,
+          "ece_delta": 0.00022,
+          "ece_delta_ci": [
+            -0.02098050000000146,
+            0.025462000000000373
+          ],
+          "brier": 0.05804179999999996,
+          "auroc": 0.8899827576617164,
+          "mcnemar_p": 0.01667384780012071,
+          "underpowered_for_ece": false
+        },
+        "urgency/state-3": {
+          "n": 500,
+          "accuracy": 0.914,
+          "accuracy_gain": 0.02200000000000002,
+          "ece": 0.024259999999998668,
+          "ece_delta": 0.00338,
+          "ece_delta_ci": [
+            -0.022129500000000173,
+            0.025582500000000237
+          ],
+          "brier": 0.061519799999999944,
+          "auroc": 0.8942293013078215,
+          "mcnemar_p": 0.09887174959294498,
+          "underpowered_for_ece": false
+        },
+        "urgency/state-10": {
+          "n": 500,
+          "accuracy": 0.936,
+          "accuracy_gain": 0.04400000000000004,
+          "ece": 0.017939999999998985,
+          "ece_delta": -0.00294,
+          "ece_delta_ci": [
+            -0.025220500000001648,
+            0.017825499999999488
+          ],
+          "brier": 0.04519979999999994,
+          "auroc": 0.9240785256410257,
+          "mcnemar_p": 0.0020881073339964473,
+          "underpowered_for_ece": false
+        },
+        "urgency/instructions-10-poisoned": {
+          "n": 500,
+          "accuracy": 0.924,
+          "accuracy_gain": 0.03200000000000003,
+          "ece": 0.04063999999999892,
+          "ece_delta": 0.01976,
+          "ece_delta_ci": [
+            -0.006026000000001831,
+            0.03926049999999943
+          ],
+          "brier": 0.056916399999999985,
+          "auroc": 0.9023695602642972,
+          "mcnemar_p": 0.022628841205914796,
+          "underpowered_for_ece": false
+        },
+        "urgency/state-10-poisoned": {
+          "n": 500,
+          "accuracy": 0.93,
+          "accuracy_gain": 0.038000000000000034,
+          "ece": 0.02525999999999908,
+          "ece_delta": 0.00438,
+          "ece_delta_ci": [
+            -0.018021500000001415,
+            0.026060499999999702
+          ],
+          "brier": 0.050264599999999944,
+          "auroc": 0.9132718894009216,
+          "mcnemar_p": 0.01634810389737615,
+          "underpowered_for_ece": false
+        }
+      }
+    }
+  },
+  "poisoning": {
+    "routing": {
+      "channel": "state",
+      "fraction_mislabelled": 0.2,
+      "n_paired": 500,
+      "accuracy_drop": 0.0040000000000000036,
+      "mcnemar_p": 0.5,
+      "ece_change": 0.01879999999999965,
+      "headroom": 0.006000000000000005
+    },
+    "urgency": {
+      "channel": "state",
+      "fraction_mislabelled": 0.2,
+      "n_paired": 500,
+      "accuracy_drop": 0.006000000000000005,
+      "mcnemar_p": 0.60723876953125,
+      "ece_change": 0.007320000000000094,
+      "headroom": 0.06399999999999995
+    },
+    "note": "Poisoning swaps the labels of two examples that carry different labels, so the block's label marginal is unchanged and the drop measures the example-to-label mapping rather than a shifted prior. On the routing arm, where accuracy is already at ceiling, only a drop is informative: no drop is consistent with the examples being ignored and with the task being too easy to perturb, and those cannot be told apart there."
+  },
+  "novel_rubric": {
+    "n": 200,
+    "failures": 0,
+    "underpowered_for_ece": true,
+    "accuracy": 0.995,
+    "accuracy_ci": [
+      0.9722262956021069,
+      0.9991168312843989
+    ],
+    "majority_baseline": 0.375,
+    "latency_p50_p95": {
+      "p50": 0.17724978923797607,
+      "p95": 0.3175035953521727
+    },
+    "chance_baseline": 0.3333333333333333,
+    "heuristic_baseline": 0.585,
+    "n_with_probability": 200,
+    "ece": 0.01115000000000035,
+    "brier": 0.0027104999999999994,
+    "auroc": 1.0,
+    "mean_p": 0.9899499999999998,
+    "reliability_bins": [
+      {
+        "bin": 0,
+        "lo_edge": 0.0,
+        "hi_edge": 0.1,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 1,
+        "lo_edge": 0.1,
+        "hi_edge": 0.2,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 2,
+        "lo_edge": 0.2,
+        "hi_edge": 0.3,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 3,
+        "lo_edge": 0.3,
+        "hi_edge": 0.4,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 4,
+        "lo_edge": 0.4,
+        "hi_edge": 0.5,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 5,
+        "lo_edge": 0.5,
+        "hi_edge": 0.6,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 6,
+        "lo_edge": 0.6,
+        "hi_edge": 0.7,
+        "count": 1,
+        "weight": 0.005,
+        "mean_predicted": 0.61,
+        "observed": 0.0,
+        "observed_lo": 0.0,
+        "observed_hi": 0.7934506856227626,
+        "gap": 0.61
+      },
+      {
+        "bin": 7,
+        "lo_edge": 0.7,
+        "hi_edge": 0.8,
+        "count": 1,
+        "weight": 0.005,
+        "mean_predicted": 0.78,
+        "observed": 1.0,
+        "observed_lo": 0.20654931437723745,
+        "observed_hi": 1.0,
+        "gap": 0.21999999999999997
+      },
+      {
+        "bin": 8,
+        "lo_edge": 0.8,
+        "hi_edge": 0.9,
+        "count": 4,
+        "weight": 0.02,
+        "mean_predicted": 0.86,
+        "observed": 1.0,
+        "observed_lo": 0.5101091635454027,
+        "observed_hi": 1.0,
+        "gap": 0.14
+      },
+      {
+        "bin": 9,
+        "lo_edge": 0.9,
+        "hi_edge": 1.0,
+        "count": 194,
+        "weight": 0.97,
+        "mean_predicted": 0.9956701030927831,
+        "observed": 1.0,
+        "observed_lo": 0.9805831454964365,
+        "observed_hi": 1.0,
+        "gap": 0.004329896907216857
+      }
+    ],
+    "reliability_monotone": true,
+    "ece_from_confidence": 0.014550000000000125,
+    "consistency_with_own_routing": 0.98,
+    "n_paired_with_routing": 200,
+    "routing_accuracy": 0.98,
+    "scheme": {
+      "names": [
+        "DRESKOTH",
+        "SKERNEILK",
+        "VRIRNEIMP"
+      ],
+      "members": {
+        "DRESKOTH": [
+          "account_access",
+          "careers",
+          "sales"
+        ],
+        "SKERNEILK": [
+          "press",
+          "privacy",
+          "shipping"
+        ],
+        "VRIRNEIMP": [
+          "billing",
+          "technical"
+        ]
+      },
+      "category_of": {
+        "account_access": "DRESKOTH",
+        "careers": "DRESKOTH",
+        "sales": "DRESKOTH",
+        "press": "SKERNEILK",
+        "privacy": "SKERNEILK",
+        "shipping": "SKERNEILK",
+        "billing": "VRIRNEIMP",
+        "technical": "VRIRNEIMP"
+      },
+      "novelty_checks": {
+        "names_absent_from_corpus": true,
+        "names_share_no_four_character_run_with_task_vocabulary": true,
+        "names_start_with_distinct_letters": true,
+        "every_category_spans_two_families": true,
+        "corpus_chars": 22546,
+        "vocabulary_chars_checked": 1090,
+        "families": {
+          "DRESKOTH": [
+            "commerce",
+            "external",
+            "systems"
+          ],
+          "SKERNEILK": [
+            "commerce",
+            "external"
+          ],
+          "VRIRNEIMP": [
+            "commerce",
+            "systems"
+          ]
+        }
+      }
+    }
+  },
+  "inverted_rubric": {
+    "n": 200,
+    "failures": 0,
+    "underpowered_for_ece": true,
+    "accuracy": 0.95,
+    "accuracy_ci": [
+      0.9104218518612239,
+      0.972617354399236
+    ],
+    "majority_baseline": 0.5,
+    "latency_p50_p95": {
+      "p50": 0.1869204044342041,
+      "p95": 0.32880885601043697
+    },
+    "chance_baseline": 0.5,
+    "heuristic_baseline": 0.5,
+    "n_with_probability": 200,
+    "ece": 0.08165000000000015,
+    "brier": 0.029950499999999974,
+    "auroc": 0.9963,
+    "mean_p": 0.47425000000000006,
+    "reliability_bins": [
+      {
+        "bin": 0,
+        "lo_edge": 0.0,
+        "hi_edge": 0.1,
+        "count": 84,
+        "weight": 0.42,
+        "mean_predicted": 0.04857142857142855,
+        "observed": 0.0,
+        "observed_lo": 0.0,
+        "observed_hi": 0.04373172841465986,
+        "gap": 0.04857142857142855
+      },
+      {
+        "bin": 1,
+        "lo_edge": 0.1,
+        "hi_edge": 0.2,
+        "count": 7,
+        "weight": 0.035,
+        "mean_predicted": 0.12142857142857143,
+        "observed": 0.0,
+        "observed_lo": 0.0,
+        "observed_hi": 0.3543304350666873,
+        "gap": 0.12142857142857143
+      },
+      {
+        "bin": 2,
+        "lo_edge": 0.2,
+        "hi_edge": 0.3,
+        "count": 3,
+        "weight": 0.015,
+        "mean_predicted": 0.22,
+        "observed": 0.0,
+        "observed_lo": 0.0,
+        "observed_hi": 0.5614970317550454,
+        "gap": 0.22
+      },
+      {
+        "bin": 3,
+        "lo_edge": 0.3,
+        "hi_edge": 0.4,
+        "count": 4,
+        "weight": 0.02,
+        "mean_predicted": 0.375,
+        "observed": 0.75,
+        "observed_lo": 0.300641842582402,
+        "observed_hi": 0.9544127391902995,
+        "gap": 0.375
+      },
+      {
+        "bin": 4,
+        "lo_edge": 0.4,
+        "hi_edge": 0.5,
+        "count": 8,
+        "weight": 0.04,
+        "mean_predicted": 0.43875,
+        "observed": 0.625,
+        "observed_lo": 0.3057423946026274,
+        "observed_hi": 0.8631557141764026,
+        "gap": 0.18625000000000003
+      },
+      {
+        "bin": 5,
+        "lo_edge": 0.5,
+        "hi_edge": 0.6,
+        "count": 5,
+        "weight": 0.025,
+        "mean_predicted": 0.546,
+        "observed": 0.6,
+        "observed_lo": 0.23072428127601297,
+        "observed_hi": 0.8823792257673521,
+        "gap": 0.05399999999999994
+      },
+      {
+        "bin": 6,
+        "lo_edge": 0.6,
+        "hi_edge": 0.7,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 7,
+        "lo_edge": 0.7,
+        "hi_edge": 0.8,
+        "count": 4,
+        "weight": 0.02,
+        "mean_predicted": 0.765,
+        "observed": 1.0,
+        "observed_lo": 0.5101091635454027,
+        "observed_hi": 1.0,
+        "gap": 0.235
+      },
+      {
+        "bin": 8,
+        "lo_edge": 0.8,
+        "hi_edge": 0.9,
+        "count": 13,
+        "weight": 0.065,
+        "mean_predicted": 0.8546153846153847,
+        "observed": 1.0,
+        "observed_lo": 0.7719046276458016,
+        "observed_hi": 1.0,
+        "gap": 0.14538461538461533
+      },
+      {
+        "bin": 9,
+        "lo_edge": 0.9,
+        "hi_edge": 1.0,
+        "count": 72,
+        "weight": 0.36,
+        "mean_predicted": 0.9354166666666662,
+        "observed": 1.0,
+        "observed_lo": 0.9493488274035422,
+        "observed_hi": 1.0,
+        "gap": 0.06458333333333377
+      }
+    ],
+    "reliability_monotone": true,
+    "following_rate": 0.95,
+    "following_ci": [
+      0.9104218518612239,
+      0.972617354399236
+    ],
+    "prior_rate": 0.050000000000000044,
+    "yes_rate": 0.47,
+    "when_prior_says_yes": 0.98,
+    "when_prior_says_yes_n": 100,
+    "when_prior_says_no": 0.92,
+    "when_prior_says_no_n": 100,
+    "swap_pairs": [
+      [
+        "account_access",
+        "privacy"
+      ],
+      [
+        "billing",
+        "technical"
+      ],
+      [
+        "careers",
+        "shipping"
+      ],
+      [
+        "press",
+        "sales"
+      ]
+    ],
+    "control": {
+      "n": 200,
+      "failures": 0,
+      "underpowered_for_ece": true,
+      "accuracy": 0.955,
+      "accuracy_ci": [
+        0.9167032959981803,
+        0.976147456998507
+      ],
+      "majority_baseline": 0.5,
+      "latency_p50_p95": {
+        "p50": 0.1837247610092163,
+        "p95": 0.28850240707397456
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.5,
+      "n_with_probability": 200,
+      "ece": 0.07089999999999995,
+      "brier": 0.029270999999999988,
+      "auroc": 0.999,
+      "mean_p": 0.45630000000000026,
+      "reliability_bins": [
+        {
+          "bin": 0,
+          "lo_edge": 0.0,
+          "hi_edge": 0.1,
+          "count": 93,
+          "weight": 0.465,
+          "mean_predicted": 0.025268817204301075,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.03966750261173513,
+          "gap": 0.025268817204301075
+        },
+        {
+          "bin": 1,
+          "lo_edge": 0.1,
+          "hi_edge": 0.2,
+          "count": 2,
+          "weight": 0.01,
+          "mean_predicted": 0.185,
+          "observed": 0.0,
+          "observed_lo": 0.0,
+          "observed_hi": 0.6576197724933468,
+          "gap": 0.185
+        },
+        {
+          "bin": 2,
+          "lo_edge": 0.2,
+          "hi_edge": 0.3,
+          "count": 4,
+          "weight": 0.02,
+          "mean_predicted": 0.2575,
+          "observed": 0.5,
+          "observed_lo": 0.15003898915214958,
+          "observed_hi": 0.8499610108478504,
+          "gap": 0.2425
+        },
+        {
+          "bin": 3,
+          "lo_edge": 0.3,
+          "hi_edge": 0.4,
+          "count": 7,
+          "weight": 0.035,
+          "mean_predicted": 0.33571428571428574,
+          "observed": 0.5714285714285714,
+          "observed_lo": 0.25045836452765724,
+          "observed_hi": 0.8417801447485302,
+          "gap": 0.23571428571428565
+        },
+        {
+          "bin": 4,
+          "lo_edge": 0.4,
+          "hi_edge": 0.5,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.4166666666666667,
+          "observed": 1.0,
+          "observed_lo": 0.4385029682449546,
+          "observed_hi": 1.0,
+          "gap": 0.5833333333333333
+        },
+        {
+          "bin": 5,
+          "lo_edge": 0.5,
+          "hi_edge": 0.6,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.5466666666666667,
+          "observed": 1.0,
+          "observed_lo": 0.4385029682449546,
+          "observed_hi": 1.0,
+          "gap": 0.45333333333333325
+        },
+        {
+          "bin": 6,
+          "lo_edge": 0.6,
+          "hi_edge": 0.7,
+          "count": 3,
+          "weight": 0.015,
+          "mean_predicted": 0.6666666666666666,
+          "observed": 1.0,
+          "observed_lo": 0.4385029682449546,
+          "observed_hi": 1.0,
+          "gap": 0.33333333333333337
+        },
+        {
+          "bin": 7,
+          "lo_edge": 0.7,
+          "hi_edge": 0.8,
+          "count": 2,
+          "weight": 0.01,
+          "mean_predicted": 0.76,
+          "observed": 1.0,
+          "observed_lo": 0.3423802275066532,
+          "observed_hi": 1.0,
+          "gap": 0.24
+        },
+        {
+          "bin": 8,
+          "lo_edge": 0.8,
+          "hi_edge": 0.9,
+          "count": 6,
+          "weight": 0.03,
+          "mean_predicted": 0.8450000000000001,
+          "observed": 1.0,
+          "observed_lo": 0.6096657120978348,
+          "observed_hi": 1.0,
+          "gap": 0.15499999999999992
+        },
+        {
+          "bin": 9,
+          "lo_edge": 0.9,
+          "hi_edge": 1.0,
+          "count": 77,
+          "weight": 0.385,
+          "mean_predicted": 0.956883116883117,
+          "observed": 1.0,
+          "observed_lo": 0.9524815747175658,
+          "observed_hi": 1.0,
+          "gap": 0.043116883116883
+        }
+      ],
+      "reliability_monotone": true
+    }
+  },
+  "rubric_conventional_control": {
+    "n": 200,
+    "failures": 0,
+    "underpowered_for_ece": true,
+    "accuracy": 0.98,
+    "accuracy_ci": [
+      0.9497129130941735,
+      0.9921955735836505
+    ],
+    "majority_baseline": 0.125,
+    "latency_p50_p95": {
+      "p50": 0.19564735889434814,
+      "p95": 0.31826226711273187
+    },
+    "chance_baseline": 0.125,
+    "heuristic_baseline": 0.435,
+    "n_with_probability": 200,
+    "ece": 0.006000000000000007,
+    "brier": 0.013324000000000004,
+    "auroc": 0.9834183673469388,
+    "mean_p": 0.9774999999999998,
+    "reliability_bins": [
+      {
+        "bin": 0,
+        "lo_edge": 0.0,
+        "hi_edge": 0.1,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 1,
+        "lo_edge": 0.1,
+        "hi_edge": 0.2,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 2,
+        "lo_edge": 0.2,
+        "hi_edge": 0.3,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 3,
+        "lo_edge": 0.3,
+        "hi_edge": 0.4,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 4,
+        "lo_edge": 0.4,
+        "hi_edge": 0.5,
+        "count": 2,
+        "weight": 0.01,
+        "mean_predicted": 0.445,
+        "observed": 0.5,
+        "observed_lo": 0.09453120573423074,
+        "observed_hi": 0.9054687942657693,
+        "gap": 0.05499999999999999
+      },
+      {
+        "bin": 5,
+        "lo_edge": 0.5,
+        "hi_edge": 0.6,
+        "count": 0,
+        "weight": 0.0,
+        "mean_predicted": null,
+        "observed": null,
+        "observed_lo": null,
+        "observed_hi": null,
+        "gap": null
+      },
+      {
+        "bin": 6,
+        "lo_edge": 0.6,
+        "hi_edge": 0.7,
+        "count": 2,
+        "weight": 0.01,
+        "mean_predicted": 0.61,
+        "observed": 0.5,
+        "observed_lo": 0.09453120573423074,
+        "observed_hi": 0.9054687942657693,
+        "gap": 0.10999999999999999
+      },
+      {
+        "bin": 7,
+        "lo_edge": 0.7,
+        "hi_edge": 0.8,
+        "count": 4,
+        "weight": 0.02,
+        "mean_predicted": 0.73,
+        "observed": 0.75,
+        "observed_lo": 0.300641842582402,
+        "observed_hi": 0.9544127391902995,
+        "gap": 0.020000000000000018
+      },
+      {
+        "bin": 8,
+        "lo_edge": 0.8,
+        "hi_edge": 0.9,
+        "count": 5,
+        "weight": 0.025,
+        "mean_predicted": 0.826,
+        "observed": 0.8,
+        "observed_lo": 0.3755346297625255,
+        "observed_hi": 0.9637758913675698,
+        "gap": 0.025999999999999912
+      },
+      {
+        "bin": 9,
+        "lo_edge": 0.9,
+        "hi_edge": 1.0,
+        "count": 187,
+        "weight": 0.935,
+        "mean_predicted": 0.9964705882352941,
+        "observed": 1.0,
+        "observed_lo": 0.9798709418570134,
+        "observed_hi": 1.0,
+        "gap": 0.003529411764705892
+      }
+    ],
+    "reliability_monotone": true,
+    "ece_from_confidence": 0.00749999999999973
+  },
+  "run": {
+    "total_calls": 9800,
+    "failed_calls": 0,
+    "total_retries": 1045,
+    "input_tokens": 17077313,
+    "output_tokens": 199824,
+    "cost_usd": 0.717247146,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "elapsed_s": 172.62650084495544,
+    "sustained_req_per_s": 56.76996261890214,
+    "peak_concurrency": 128,
+    "final_concurrency": 128,
+    "throttle_events": 1045,
+    "throttle_episodes": 9,
+    "aborted": null,
+    "status_counts": {
+      "200": 9800,
+      "429": 1045
+    },
+    "log_path": "/home/wkelly/src/typesafe/jev/eval/runs/full-20260919/e8.jsonl",
+    "log_records": 10845
+  }
+}

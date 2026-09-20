@@ -1,0 +1,1413 @@
+{
+  "experiment": "E5",
+  "question": "Four nouls give four marginals and one choice over the combinations gives a joint; does enrolling the outcome space buy coherence the separate questions cannot express?",
+  "headline": {
+    "metric": "forbidden-cell mass in the enrolled joint",
+    "value": 0.049031818181819134,
+    "baseline": 0.19123710000000005,
+    "baseline_name": "outer product of the model's own standalone nouls (the plan's nominal figure is 0.25)",
+    "n": 2000
+  },
+  "by_difficulty": [
+    {
+      "difficulty": {
+        "condition": "exclusion",
+        "constraint": "stated"
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "forbidden_mass": 0.10116282828282844,
+        "forbidden_mass_baseline": 0.23940519999999985,
+        "marginal_disagreement": 0.31049151515151496,
+        "kl_joint_product": 0.6577364760236657,
+        "impossible_mass": 0.15121333333333353,
+        "entropy_gap_nats": 0.6814132609529733,
+        "accuracy": 0.964,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 1.0,
+        "off_menu_selections": 0,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": 0.10116282828282844,
+      "baseline": 0.23940519999999985,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: joint marginals contradict standalone nouls by >0.2, meaning the two encodings are querying different things.",
+      "reasons": [
+        "Doesn't work: joint marginals contradict standalone nouls by >0.2, meaning the two encodings are querying different things."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "exclusion",
+        "constraint": "structural"
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "forbidden_mass": 0.07202161616161637,
+        "forbidden_mass_baseline": 0.19224259999999962,
+        "marginal_disagreement": 0.31046848484848494,
+        "kl_joint_product": 0.6260843532879196,
+        "impossible_mass": 0.2900862626262629,
+        "entropy_gap_nats": 0.646178823482741,
+        "accuracy": 0.73,
+        "chance_baseline": 0.5,
+        "majority_baseline": 1.0,
+        "off_menu_selections": 0,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": 0.07202161616161637,
+      "baseline": 0.19224259999999962,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: joint marginals contradict standalone nouls by >0.2, meaning the two encodings are querying different things.",
+      "reasons": [
+        "Doesn't work: joint marginals contradict standalone nouls by >0.2, meaning the two encodings are querying different things."
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "implication",
+        "constraint": "stated"
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "forbidden_mass": 0.009900404040403963,
+        "forbidden_mass_baseline": 0.15246860000000018,
+        "marginal_disagreement": 0.1676456565656564,
+        "kl_joint_product": 0.3307590459873727,
+        "impossible_mass": 0.009900404040403963,
+        "entropy_gap_nats": 0.34362763322685486,
+        "accuracy": 1.0,
+        "chance_baseline": 0.75,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 1.0,
+        "off_menu_selections": 0,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": 0.009900404040403963,
+      "baseline": 0.15246860000000018,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: sudoku_forced_accuracy was not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "implication",
+        "constraint": "structural"
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "forbidden_mass": 0.013042424242424168,
+        "forbidden_mass_baseline": 0.18083199999999963,
+        "marginal_disagreement": 0.21945929292929311,
+        "kl_joint_product": 0.4093114529112573,
+        "impossible_mass": 0.013042424242424168,
+        "entropy_gap_nats": 0.43879923568674195,
+        "accuracy": 1.0,
+        "chance_baseline": 0.75,
+        "majority_baseline": 1.0,
+        "off_menu_selections": 0,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": 0.013042424242424168,
+      "baseline": 0.18083199999999963,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: joint marginals contradict standalone nouls by >0.2, meaning the two encodings are querying different things.",
+      "reasons": [
+        "Doesn't work: joint marginals contradict standalone nouls by >0.2, meaning the two encodings are querying different things."
+      ],
+      "signatures": [],
+      "missing": [
+        "heuristic_baseline"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "enrolled-joint-16",
+        "n_constraints": 2
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "marginal_disagreement": 0.166338585858586,
+        "kl_joint_product": 0.7674254574526563,
+        "kl_reference": 0.4315231086776738,
+        "impossible_mass": 0.05867676767676765,
+        "entropy_gap_nats": 0.6910469724069215,
+        "accuracy": 0.998,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.594,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: forbidden_mass, sudoku_forced_accuracy were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "forbidden_mass",
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "enrolled-joint-16",
+        "n_constraints": 3
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "marginal_disagreement": 0.17229277777777777,
+        "kl_joint_product": 0.8853752123955392,
+        "kl_reference": 0.6203547087796958,
+        "impossible_mass": 0.16253232323232322,
+        "entropy_gap_nats": 0.7907475785464728,
+        "accuracy": 0.932,
+        "chance_baseline": 0.374,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.432,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: forbidden_mass, sudoku_forced_accuracy were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "forbidden_mass",
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "enrolled-joint-16",
+        "n_constraints": 4
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "marginal_disagreement": 0.1821550000000001,
+        "kl_joint_product": 0.9565302317725992,
+        "kl_reference": 0.6994195483255041,
+        "impossible_mass": 0.1560133333333335,
+        "entropy_gap_nats": 0.890381827748284,
+        "accuracy": 0.928,
+        "chance_baseline": 0.318,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.402,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: forbidden_mass, sudoku_forced_accuracy were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "forbidden_mass",
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "labelling-bitstring",
+        "n_constraints": 2
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "marginal_disagreement": 0.18313287878787898,
+        "kl_joint_product": 0.7572786397903237,
+        "impossible_mass": 0.09222404040404043,
+        "accuracy": 0.992,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.594,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: forbidden_mass, sudoku_forced_accuracy were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "forbidden_mass",
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "labelling-bitstring",
+        "n_constraints": 3
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "marginal_disagreement": 0.17287383838383838,
+        "kl_joint_product": 0.7910085450366939,
+        "impossible_mass": 0.21113111111111138,
+        "accuracy": 0.908,
+        "chance_baseline": 0.374,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.432,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: forbidden_mass, sudoku_forced_accuracy were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "forbidden_mass",
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "labelling-bitstring",
+        "n_constraints": 4
+      },
+      "tier": "Superhuman",
+      "n": 500,
+      "metrics": {
+        "marginal_disagreement": 0.17947308080808078,
+        "kl_joint_product": 0.8060947797970095,
+        "impossible_mass": 0.215041414141414,
+        "accuracy": 0.906,
+        "chance_baseline": 0.318,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.402,
+        "n": 500
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+      "reasons": [
+        "Superhuman: forbidden mass <0.10 vs 0.25 baseline, KL from product >0.3, forced moves >=0.98.",
+        "Superhuman rests on part of its rule: forbidden_mass, sudoku_forced_accuracy were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [
+        "forbidden_mass",
+        "sudoku_forced_accuracy"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 1
+      },
+      "tier": "Bad",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.855,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.14,
+        "n": 200,
+        "sudoku_forced_accuracy": 0.855
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "",
+      "reasons": [],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "kl_joint_product",
+        "marginal_disagreement",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 2
+      },
+      "tier": "Doesn't work",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.43,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.555,
+        "majority_baseline": 0.16,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: At or below chance.",
+      "reasons": [
+        "Doesn't work: At or below chance."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "kl_joint_product",
+        "marginal_disagreement"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 3
+      },
+      "tier": "Doesn't work",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.285,
+        "chance_baseline": 0.333333333333334,
+        "heuristic_baseline": 0.46,
+        "majority_baseline": 0.155,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: At or below chance.",
+      "reasons": [
+        "Doesn't work: At or below chance."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "kl_joint_product",
+        "marginal_disagreement"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 4
+      },
+      "tier": "Doesn't work",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.235,
+        "chance_baseline": 0.25,
+        "heuristic_baseline": 0.41,
+        "majority_baseline": 0.145,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: At or below chance.",
+      "reasons": [
+        "Doesn't work: At or below chance."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "kl_joint_product",
+        "marginal_disagreement"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 5
+      },
+      "tier": "Doesn't work",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.145,
+        "chance_baseline": 0.20000000000000015,
+        "heuristic_baseline": 0.36,
+        "majority_baseline": 0.13,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: At or below chance.",
+      "reasons": [
+        "Doesn't work: At or below chance."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "kl_joint_product",
+        "marginal_disagreement"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 6
+      },
+      "tier": "Doesn't work",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.115,
+        "chance_baseline": 0.166666666666667,
+        "heuristic_baseline": 0.28,
+        "majority_baseline": 0.125,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: At or below chance.",
+      "reasons": [
+        "Doesn't work: At or below chance."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "kl_joint_product",
+        "marginal_disagreement"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "sudoku",
+        "n_options": 7
+      },
+      "tier": "Doesn't work",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.05,
+        "chance_baseline": 0.14285714285714254,
+        "heuristic_baseline": 0.285,
+        "majority_baseline": 0.15,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: At or below chance.",
+      "reasons": [
+        "Doesn't work: At or below chance."
+      ],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "kl_joint_product",
+        "marginal_disagreement"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "reachable-successors",
+        "n_props": 20
+      },
+      "tier": "Bad",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.94,
+        "chance_baseline": 0.0333329999999999,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.06,
+        "n_reachable_successors": 30.0,
+        "n_invariant_satisfying": 16807.0,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "",
+      "reasons": [],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "kl_joint_product",
+        "marginal_disagreement",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "reachable-successors",
+        "n_props": 24
+      },
+      "tier": "Bad",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.905,
+        "chance_baseline": 0.027777999999999938,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.06,
+        "n_reachable_successors": 36.0,
+        "n_invariant_satisfying": 117649.0,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "",
+      "reasons": [],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "kl_joint_product",
+        "marginal_disagreement",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "condition": "reachable-successors",
+        "n_props": 28
+      },
+      "tier": "Bad",
+      "n": 200,
+      "metrics": {
+        "accuracy": 0.93,
+        "chance_baseline": 0.028571000000000055,
+        "heuristic_baseline": 1.0,
+        "majority_baseline": 0.05,
+        "n_reachable_successors": 35.0,
+        "n_invariant_satisfying": 279936.0,
+        "n": 200
+      },
+      "metric": "forbidden_mass",
+      "value": null,
+      "baseline": 0.25,
+      "baseline_name": "independent marginals imply",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "",
+      "reasons": [],
+      "signatures": [
+        "below cheap baseline"
+      ],
+      "missing": [
+        "forbidden_mass",
+        "kl_joint_product",
+        "marginal_disagreement",
+        "reliability_monotone",
+        "sudoku_forced_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    }
+  ],
+  "boundary_crossings": {
+    "Perfect->Superhuman": {
+      "condition": "exclusion",
+      "constraint": "stated"
+    },
+    "Superhuman->Human": {
+      "condition": "exclusion",
+      "constraint": "stated"
+    },
+    "Human->Bad": {
+      "condition": "exclusion",
+      "constraint": "stated"
+    },
+    "Bad->Doesn't work": {
+      "condition": "exclusion",
+      "constraint": "stated"
+    }
+  },
+  "boundary_crossings_by_condition": {
+    "exclusion": {
+      "Perfect->Superhuman": {
+        "condition": "exclusion",
+        "constraint": "stated"
+      },
+      "Superhuman->Human": {
+        "condition": "exclusion",
+        "constraint": "stated"
+      },
+      "Human->Bad": {
+        "condition": "exclusion",
+        "constraint": "stated"
+      },
+      "Bad->Doesn't work": {
+        "condition": "exclusion",
+        "constraint": "stated"
+      }
+    },
+    "implication": {
+      "Perfect->Superhuman": {
+        "condition": "implication",
+        "constraint": "stated"
+      },
+      "Superhuman->Human": {
+        "condition": "implication",
+        "constraint": "structural"
+      },
+      "Human->Bad": {
+        "condition": "implication",
+        "constraint": "structural"
+      },
+      "Bad->Doesn't work": {
+        "condition": "implication",
+        "constraint": "structural"
+      }
+    },
+    "enrolled-joint-16": {
+      "Perfect->Superhuman": {
+        "condition": "enrolled-joint-16",
+        "n_constraints": 2
+      }
+    },
+    "labelling-bitstring": {
+      "Perfect->Superhuman": {
+        "condition": "labelling-bitstring",
+        "n_constraints": 2
+      }
+    },
+    "sudoku": {
+      "Perfect->Superhuman": {
+        "condition": "sudoku",
+        "n_options": 1
+      },
+      "Superhuman->Human": {
+        "condition": "sudoku",
+        "n_options": 1
+      },
+      "Human->Bad": {
+        "condition": "sudoku",
+        "n_options": 1
+      },
+      "Bad->Doesn't work": {
+        "condition": "sudoku",
+        "n_options": 2
+      }
+    },
+    "reachable-successors": {
+      "Perfect->Superhuman": {
+        "condition": "reachable-successors",
+        "n_props": 20
+      },
+      "Superhuman->Human": {
+        "condition": "reachable-successors",
+        "n_props": 20
+      },
+      "Human->Bad": {
+        "condition": "reachable-successors",
+        "n_props": 20
+      }
+    }
+  },
+  "boundary_crossings_axis": "E5's conditions in order of the size and difficulty of the enrolled outcome space: 4-cell exclusion and implication, then the 16-cell joint and its bit-string relabelling, then Sudoku by number of legal digits, then reachable-successor enumeration. Only the Sudoku rungs form a single monotone ladder, so the per-condition crossings are the ones to read.",
+  "plots": [
+    "plots/e5_forbidden_mass.png",
+    "plots/e5_joint_vs_product.png",
+    "plots/e5_labelling.png",
+    "plots/e5_sudoku.png"
+  ],
+  "predictions": [
+    {
+      "id": "P12",
+      "claim": "Enrollment helps: forbidden-cell mass 0.08-0.15 vs 0.25 product baseline",
+      "outcome": "Forbidden-cell mass 0.0490, below the predicted band -- enrollment helped more than predicted, against a product-of-marginals baseline of 0.1912 computed from the model's own standalone nouls (the plan's nominal figure is 0.25). Pooled over both relations; separately, exclusion 0.0866 and implication 0.0115. Counting every impossible cell rather than only the one the plan designates -- which for exclusion means (false, false) as well as (true, true) -- the mass is 0.2206 on exclusion and 0.0115 on implication. n=2000.",
+      "verdict": "wrong",
+      "evidence": {
+        "forbidden_mass": 0.049031818181819134,
+        "product_baseline": 0.19123710000000005,
+        "nominal_baseline": 0.25,
+        "n": 2000,
+        "forbidden_mass_exclusion": 0.08659222222222274,
+        "forbidden_mass_implication": 0.01147141414141399,
+        "impossible_mass_exclusion": 0.22064979797979842,
+        "impossible_mass_implication": 0.01147141414141399
+      }
+    },
+    {
+      "id": "P13",
+      "claim": "KL(joint || product) in 0.2-0.5 -- meaningfully non-independent",
+      "outcome": "KL(joint || product of the standalone marginals) = 0.8698 nats, against 0.5838 nats of dependence actually present in the uniform-over-consistent-worlds reference. Of the measured KL, 0.4811 is the joint's own total correlation and the remainder is disagreement between the two encodings' marginals. n=1500.",
+      "verdict": "wrong",
+      "evidence": {
+        "kl_joint_product": 0.869776967206933,
+        "kl_reference": 0.583765788594281,
+        "total_correlation": 0.4811472262299838,
+        "n": 1500
+      }
+    },
+    {
+      "id": "P14",
+      "claim": "Labeled option ids beat bit strings by >=15%",
+      "outcome": "Legible option ids scored 0.9527 and bit strings 0.9353 on the same instances, a gap of 1.7 percentage points (McNemar p=0.014779410517038355). The prediction's 15% is read as 15 percentage points of accuracy, not a 15% relative improvement. Accuracy here is the chosen cell being logically consistent with the state. n=1500. The plan's falsification condition (gap under 5 points) is met.",
+      "verdict": "wrong",
+      "evidence": {
+        "gap": 0.01733333333333331,
+        "labelled": 0.9526666666666667,
+        "bitstring": 0.9353333333333333,
+        "n": 1500
+      }
+    },
+    {
+      "id": "P15",
+      "claim": "Sudoku near-perfect on forced moves, near-random by 5 options",
+      "outcome": "Forced moves (one legal digit) scored 0.8550 against a 0.50 chance baseline; five legal digits scored 0.1450 against 0.2000 chance. Near-perfect at one: False. Near-random at five: True. n=200 forced, 200 at five. The generator cannot ask a literal one-option choice -- `instances.choice` requires two -- so a forced cell is asked as the legal digit plus one eliminated decoy, which puts chance at 0.50 rather than 1.00 and makes the forced condition an elimination test. P15 assumed the literal version.",
+      "verdict": "wrong",
+      "evidence": {
+        "forced_accuracy": 0.855,
+        "five_accuracy": 0.145,
+        "five_chance": 0.20000000000000015,
+        "forced_n": 200,
+        "five_n": 200
+      }
+    }
+  ],
+  "anomalies": [
+    "Every one of the 93600 probabilities E5 saw -- noul answers and choice distributions alike -- was an exact multiple of 0.01. The plan's quantization watch item is confirmed here.",
+    "`confidence` differed from max-probability by 0.097 on average (worst 0.500) over 7200 choice answers; 7029 were below the max probability. The two are not the same quantity.",
+    "The plan's predicted surprise appears: the 16-way joint carries 1.838 nats of entropy while the four standalone nouls imply 2.629 nats, a gap of 0.791. The joint is sharper than the marginals, against 1.822 nats in the reference.",
+    "Across the two-proposition conditions the joint placed 0.1161 of its mass on cells the state rules out altogether, counting every impossible cell rather than only the one the plan designates.",
+    "Reachable-successor enumeration at 20 propositions: 2^20 = 1048576 assignments in principle, 16807 satisfying the invariants, 30.0 reachable in one move. The 255-option cap binds on reachable states, not on propositions.",
+    "Reachable-successor enumeration at 24 propositions: 2^24 = 16777216 assignments in principle, 117649 satisfying the invariants, 36.0 reachable in one move. The 255-option cap binds on reachable states, not on propositions.",
+    "Reachable-successor enumeration at 28 propositions: 2^28 = 268435456 assignments in principle, 279936 satisfying the invariants, 35.0 reachable in one move. The 255-option cap binds on reachable states, not on propositions."
+  ],
+  "failures": {
+    "calls": 0,
+    "excluded": 0,
+    "reasons": {
+      "http_and_transport": {
+        "200": 10700,
+        "429": 27
+      },
+      "paired_call_failed": 0,
+      "unreadable_distribution": 0,
+      "selections_not_among_the_options": 0,
+      "applied_condition_failures": 0
+    }
+  },
+  "overall_tier": {
+    "difficulty": {
+      "condition": "all E5"
+    },
+    "tier": "Human",
+    "n": 3500,
+    "metrics": {
+      "forbidden_mass": 0.049031818181819134,
+      "forbidden_mass_baseline": 0.19123710000000005,
+      "marginal_disagreement": 0.1735954545454547,
+      "kl_joint_product": 0.869776967206933,
+      "sudoku_forced_accuracy": 0.855,
+      "labeled_vs_bitstring_gap": 0.01733333333333331,
+      "n": 3500
+    },
+    "metric": "forbidden_mass",
+    "value": 0.049031818181819134,
+    "baseline": 0.19123710000000005,
+    "baseline_name": "independent marginals imply",
+    "baseline_source": "measured",
+    "reportable": true,
+    "fully_evaluated": true,
+    "matched_rule": "Human: forbidden mass 0.10-0.18, some correlation structure.",
+    "reasons": [
+      "Human: forbidden mass 0.10-0.18, some correlation structure.",
+      "kl_joint_product > 0.05 (the plan's 'some correlation structure'; 0.05 is the harness's floor for meaningfully non-independent)"
+    ],
+    "signatures": [],
+    "missing": [
+      "accuracy",
+      "reliability_monotone"
+    ],
+    "unevaluated": [],
+    "undefined": []
+  },
+  "aggregate": {
+    "forbidden_mass": 0.049031818181819134,
+    "forbidden_mass_baseline": 0.19123710000000005,
+    "forbidden_reference_baseline": 0.1774504555555524,
+    "forbidden_n": 2000,
+    "forbidden_mass_exclusion": 0.08659222222222274,
+    "forbidden_mass_implication": 0.01147141414141399,
+    "impossible_mass_exclusion": 0.22064979797979842,
+    "impossible_mass_implication": 0.01147141414141399,
+    "impossible_mass": 0.11606060606060553,
+    "marginal_disagreement": 0.1735954545454547,
+    "kl_joint_product": 0.869776967206933,
+    "kl_joint_product_median": 0.8083875101004108,
+    "total_correlation": 0.4811472262299838,
+    "kl_reference": 0.583765788594281,
+    "joint_entropy": 1.8380517209177543,
+    "marginal_implied_entropy": 2.628777180484985,
+    "reference_entropy": 1.8224277784506797,
+    "world_n": 1500,
+    "labelled_accuracy": 0.9526666666666667,
+    "bitstring_accuracy": 0.9353333333333333,
+    "labelling_n": 1500,
+    "labelling_p": 0.014779410517038355,
+    "sudoku_forced_accuracy": 0.855,
+    "sudoku_forced_n": 200,
+    "sudoku_five": 0.145,
+    "sudoku_five_chance": 0.20000000000000015,
+    "sudoku_five_n": 200,
+    "labeled_vs_bitstring_gap": 0.01733333333333331,
+    "entropy_gap_nats": 0.7907254595672308
+  },
+  "conditions": {
+    "marginal-consistency": {
+      "2": {
+        "n": 500,
+        "marginal_disagreement": 0.166338585858586,
+        "max_marginal_disagreement": 0.3047139393939394,
+        "kl_joint_product": 0.7674254574526563,
+        "total_correlation": 0.40440728130655296,
+        "kl_reference": 0.4315231086776738,
+        "joint_entropy": 1.963036653098506,
+        "marginal_implied_entropy": 2.6540836255054274,
+        "reference_entropy": 2.079441541679814,
+        "impossible_mass": 0.05867676767676765,
+        "chance": 0.5
+      },
+      "3": {
+        "n": 500,
+        "marginal_disagreement": 0.17229277777777777,
+        "max_marginal_disagreement": 0.2894620202020201,
+        "kl_joint_product": 0.8853752123955392,
+        "total_correlation": 0.5098071487971884,
+        "kl_reference": 0.6203547087796958,
+        "joint_entropy": 1.8515479388628429,
+        "marginal_implied_entropy": 2.6422955174093157,
+        "reference_entropy": 1.7635991028267037,
+        "impossible_mass": 0.16253232323232322,
+        "chance": 0.374
+      },
+      "4": {
+        "n": 500,
+        "marginal_disagreement": 0.1821550000000001,
+        "max_marginal_disagreement": 0.3014008080808086,
+        "kl_joint_product": 0.9565302317725992,
+        "total_correlation": 0.5292272485862092,
+        "kl_reference": 0.6994195483255041,
+        "joint_entropy": 1.699570570791933,
+        "marginal_implied_entropy": 2.589952398540217,
+        "reference_entropy": 1.6242426908454455,
+        "impossible_mass": 0.1560133333333335,
+        "chance": 0.318
+      }
+    },
+    "labelling-bitstring": {
+      "2": {
+        "n": 500,
+        "marginal_disagreement": 0.18313287878787898,
+        "max_marginal_disagreement": 0.29729979797979833,
+        "kl_joint_product": 0.7572786397903237,
+        "total_correlation": 0.3406877737631329,
+        "kl_reference": 0.4315231086776738,
+        "joint_entropy": 1.810966869944682,
+        "marginal_implied_entropy": 2.6540836255054274,
+        "reference_entropy": 2.079441541679814,
+        "impossible_mass": 0.09222404040404043,
+        "chance": 0.5
+      },
+      "3": {
+        "n": 500,
+        "marginal_disagreement": 0.17287383838383838,
+        "max_marginal_disagreement": 0.27708848484848503,
+        "kl_joint_product": 0.7910085450366939,
+        "total_correlation": 0.3954500932856231,
+        "kl_reference": 0.6203547087796958,
+        "joint_entropy": 1.7760371990157455,
+        "marginal_implied_entropy": 2.6422955174093157,
+        "reference_entropy": 1.7635991028267037,
+        "impossible_mass": 0.21113111111111138,
+        "chance": 0.374
+      },
+      "4": {
+        "n": 500,
+        "marginal_disagreement": 0.17947308080808078,
+        "max_marginal_disagreement": 0.282810909090909,
+        "kl_joint_product": 0.8060947797970095,
+        "total_correlation": 0.37618518226710285,
+        "kl_reference": 0.6994195483255041,
+        "joint_entropy": 1.7004672577908624,
+        "marginal_implied_entropy": 2.589952398540217,
+        "reference_entropy": 1.6242426908454455,
+        "impossible_mass": 0.215041414141414,
+        "chance": 0.318
+      }
+    },
+    "exclusion": {
+      "stated": {
+        "n": 500,
+        "marginal_disagreement": 0.31049151515151496,
+        "max_marginal_disagreement": 0.35421494949495025,
+        "kl_joint_product": 0.6577364760236657,
+        "total_correlation": 0.1718885803952983,
+        "kl_reference": 0.6905905969524312,
+        "joint_entropy": 0.7027362450440784,
+        "marginal_implied_entropy": 1.3841495059970517,
+        "reference_entropy": 0.6905905969524312,
+        "impossible_mass": 0.15121333333333353,
+        "chance": 0.5,
+        "forbidden_mass": 0.10116282828282844,
+        "forbidden_product_baseline": 0.23940519999999985
+      },
+      "structural": {
+        "n": 500,
+        "marginal_disagreement": 0.31046848484848494,
+        "max_marginal_disagreement": 0.3886084848484855,
+        "kl_joint_product": 0.6260843532879196,
+        "total_correlation": 0.09190674003282022,
+        "kl_reference": 0.690974821708029,
+        "joint_entropy": 0.7209931734715824,
+        "marginal_implied_entropy": 1.3671719969543235,
+        "reference_entropy": 0.690974821708029,
+        "impossible_mass": 0.2900862626262629,
+        "chance": 0.5,
+        "forbidden_mass": 0.07202161616161637,
+        "forbidden_product_baseline": 0.19224259999999962
+      }
+    },
+    "implication": {
+      "stated": {
+        "n": 500,
+        "marginal_disagreement": 0.1676456565656564,
+        "max_marginal_disagreement": 0.2097656565656566,
+        "kl_joint_product": 0.3307590459873727,
+        "total_correlation": 0.1505637691264818,
+        "kl_reference": 0.17334048066584914,
+        "joint_entropy": 0.9244640410273042,
+        "marginal_implied_entropy": 1.268091674254159,
+        "reference_entropy": 1.0486476111723126,
+        "impossible_mass": 0.009900404040403963,
+        "chance": 0.75,
+        "forbidden_mass": 0.009900404040403963,
+        "forbidden_product_baseline": 0.15246860000000018
+      },
+      "structural": {
+        "n": 500,
+        "marginal_disagreement": 0.21945929292929311,
+        "max_marginal_disagreement": 0.2600761616161619,
+        "kl_joint_product": 0.4093114529112573,
+        "total_correlation": 0.13701976104345753,
+        "kl_reference": 0.17417905383182944,
+        "joint_entropy": 0.875143638793202,
+        "marginal_implied_entropy": 1.313942874479944,
+        "reference_entropy": 1.054369821261017,
+        "impossible_mass": 0.013042424242424168,
+        "chance": 0.75,
+        "forbidden_mass": 0.013042424242424168,
+        "forbidden_product_baseline": 0.18083199999999963
+      }
+    },
+    "sudoku": {
+      "1": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.855,
+        "wilson_95": [
+          0.7995133246921847,
+          0.8971064935799559
+        ],
+        "chance_baseline": 0.5,
+        "majority_baseline": 0.14,
+        "heuristic_baseline": 1.0,
+        "heuristic_n": 200,
+        "mean_confidence": 0.40789999999999976,
+        "selections_not_among_the_options": 0
+      },
+      "2": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.43,
+        "wilson_95": [
+          0.36334322333434416,
+          0.4992951223584731
+        ],
+        "chance_baseline": 0.5,
+        "majority_baseline": 0.16,
+        "heuristic_baseline": 0.555,
+        "heuristic_n": 200,
+        "mean_confidence": 0.19175,
+        "selections_not_among_the_options": 0
+      },
+      "3": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.285,
+        "wilson_95": [
+          0.22695003004617292,
+          0.3511534602960517
+        ],
+        "chance_baseline": 0.333333333333334,
+        "majority_baseline": 0.155,
+        "heuristic_baseline": 0.46,
+        "heuristic_n": 200,
+        "mean_confidence": 0.14459999999999995,
+        "selections_not_among_the_options": 0
+      },
+      "4": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.235,
+        "wilson_95": [
+          0.18157433415232588,
+          0.29841368882762537
+        ],
+        "chance_baseline": 0.25,
+        "majority_baseline": 0.145,
+        "heuristic_baseline": 0.41,
+        "heuristic_n": 200,
+        "mean_confidence": 0.12039999999999994,
+        "selections_not_among_the_options": 0
+      },
+      "5": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.145,
+        "wilson_95": [
+          0.10289350642004402,
+          0.20048667530781522
+        ],
+        "chance_baseline": 0.20000000000000015,
+        "majority_baseline": 0.13,
+        "heuristic_baseline": 0.36,
+        "heuristic_n": 200,
+        "mean_confidence": 0.09534999999999993,
+        "selections_not_among_the_options": 0
+      },
+      "6": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.115,
+        "wilson_95": [
+          0.07786373232561954,
+          0.1666471689848757
+        ],
+        "chance_baseline": 0.166666666666667,
+        "majority_baseline": 0.125,
+        "heuristic_baseline": 0.28,
+        "heuristic_n": 200,
+        "mean_confidence": 0.08585000000000001,
+        "selections_not_among_the_options": 0
+      },
+      "7": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.05,
+        "wilson_95": [
+          0.02738264560076393,
+          0.08957814813877599
+        ],
+        "chance_baseline": 0.14285714285714254,
+        "majority_baseline": 0.15,
+        "heuristic_baseline": 0.285,
+        "heuristic_n": 200,
+        "mean_confidence": 0.07970000000000002,
+        "selections_not_among_the_options": 0
+      }
+    },
+    "reachable-successors": {
+      "20": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.94,
+        "wilson_95": [
+          0.8980683070423372,
+          0.9653478057456681
+        ],
+        "chance_baseline": 0.0333329999999999,
+        "majority_baseline": 0.06,
+        "heuristic_baseline": 1.0,
+        "heuristic_n": 200,
+        "mean_confidence": 0.7317000000000005,
+        "selections_not_among_the_options": 0,
+        "n_props": 20,
+        "n_assignments_total": 1048576,
+        "mean_invariant_satisfying": 16807.0,
+        "mean_reachable_successors": 30.0
+      },
+      "24": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.905,
+        "wilson_95": [
+          0.8563983883518006,
+          0.9383368972826135
+        ],
+        "chance_baseline": 0.027777999999999938,
+        "majority_baseline": 0.06,
+        "heuristic_baseline": 1.0,
+        "heuristic_n": 200,
+        "mean_confidence": 0.68655,
+        "selections_not_among_the_options": 0,
+        "n_props": 24,
+        "n_assignments_total": 16777216,
+        "mean_invariant_satisfying": 117649.0,
+        "mean_reachable_successors": 36.0
+      },
+      "28": {
+        "n": 200,
+        "failures": 0,
+        "accuracy": 0.93,
+        "wilson_95": [
+          0.8859451911438936,
+          0.9578478281716571
+        ],
+        "chance_baseline": 0.028571000000000055,
+        "majority_baseline": 0.05,
+        "heuristic_baseline": 1.0,
+        "heuristic_n": 200,
+        "mean_confidence": 0.6863999999999999,
+        "selections_not_among_the_options": 0,
+        "n_props": 28,
+        "n_assignments_total": 268435456,
+        "mean_invariant_satisfying": 279936.0,
+        "mean_reachable_successors": 35.0
+      }
+    }
+  },
+  "positive_control": {
+    "n": 200,
+    "failures": 0,
+    "accuracy": 0.985,
+    "wilson_95": [
+      0.9568342712073097,
+      0.9948857622067417
+    ],
+    "chance_baseline": 0.125,
+    "majority_baseline": 0.125,
+    "heuristic_baseline": 0.435,
+    "heuristic_n": 200,
+    "mean_confidence": 0.9731499999999998,
+    "selections_not_among_the_options": 0
+  },
+  "notes": [
+    "The four nouls of a state share one call. Asked as four calls, any disagreement with the joint would mix this experiment's question with E6's; batched, `marginal_disagreement` measures the two encodings only.",
+    "Exclusion and implication states are verified at construction: the possible (A, B) cells are computed by evaluating both propositions over the scenario's enumerated worlds, and a scene whose possible set is not exactly {(true, false), (false, true)} -- or, for implication, that permits (true, false) or leaves a proposition determined -- raises.",
+    "Accuracy on the constructed states is 'the chosen cell is logically possible given the state', not 'the chosen cell is the one true configuration': the states deliberately leave residual uncertainty so that KL from the product has something real to measure.",
+    "Marginals are clamped to [0.005, 0.995] before the outer product is formed, because a returned 0.00 is a two-decimal rounding of something below 0.005 rather than an impossibility, and an exact zero in the product sends KL to infinity.",
+    "The reference joint is uniform over the combinations the state permits. The states are written so that nothing distinguishes those combinations, but it is an assumption and every reference-derived number depends on it."
+  ],
+  "sample_sizes": {
+    "scale": 1.0,
+    "enrolled_joint_states_per_level": 500,
+    "pair_states_per_mode": 500,
+    "applied_instances_per_level": 200,
+    "positive_control": 200
+  },
+  "run": {
+    "total_calls": 10700,
+    "failed_calls": 0,
+    "total_retries": 27,
+    "input_tokens": 8524913,
+    "output_tokens": 1480649,
+    "cost_usd": 0.358046346,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "elapsed_s": 29.49100112915039,
+    "sustained_req_per_s": 362.8225421423073,
+    "peak_concurrency": 128,
+    "final_concurrency": 128,
+    "throttle_events": 27,
+    "throttle_episodes": 1,
+    "aborted": null,
+    "status_counts": {
+      "200": 10700,
+      "429": 27
+    },
+    "log_path": "/home/wkelly/src/typesafe/jev/eval/runs/full-20260919/e5.jsonl",
+    "log_records": 10727
+  }
+}

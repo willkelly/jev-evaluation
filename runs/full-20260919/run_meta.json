@@ -1,0 +1,9 @@
+{
+  "run_id": "full-20260919",
+  "started": 1789860671.2384615,
+  "command": "phase4",
+  "scale": 1.0,
+  "master_seed": 20260919,
+  "model_alias": "jev-latest",
+  "api_url": "https://api.typesafe.ai/v1/systemone"
+}

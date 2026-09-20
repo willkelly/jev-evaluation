@@ -1,0 +1,879 @@
+{
+  "experiment": "E6",
+  "question": "How incoherent do answers get across separate calls, which share no state and no memory?",
+  "headline": {
+    "metric": "cycle_rate_close",
+    "value": 0.05333333333333334,
+    "baseline": 0.25,
+    "baseline_name": "independent answers imply 0.25",
+    "n": 300
+  },
+  "by_difficulty": [
+    {
+      "difficulty": {
+        "distance": "far",
+        "min_gap": 40,
+        "max_gap": 58
+      },
+      "tier": "Superhuman",
+      "n": 100,
+      "metrics": {
+        "cycle_rate": 0.0,
+        "cycle_rate_close": 0.0,
+        "cycle_rate_far": 0.0,
+        "random_cycle_rate": 0.25,
+        "product_rule_error": 0.059506000000000024,
+        "negation_sum_error": 0.06339999999999989,
+        "pairwise_accuracy": 1.0,
+        "pairwise_chance_baseline": 0.5,
+        "enrolled_cycle_rate": 0.0,
+        "n": 100
+      },
+      "metric": "cycle_rate_close",
+      "value": 0.0,
+      "baseline": 0.25,
+      "baseline_name": "independent answers imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Superhuman: <1% cycles on close pairs, <0.1% on far pairs.",
+      "reasons": [
+        "Superhuman: <1% cycles on close pairs, <0.1% on far pairs."
+      ],
+      "signatures": [
+        "negation sums off 1"
+      ],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "small_n": false
+    },
+    {
+      "difficulty": {
+        "distance": "far",
+        "min_gap": 20,
+        "max_gap": 39
+      },
+      "tier": "Superhuman",
+      "n": 100,
+      "metrics": {
+        "cycle_rate": 0.0,
+        "cycle_rate_close": 0.0,
+        "cycle_rate_far": 0.0,
+        "random_cycle_rate": 0.25,
+        "product_rule_error": 0.059506000000000024,
+        "negation_sum_error": 0.06339999999999989,
+        "pairwise_accuracy": 0.9866666666666667,
+        "pairwise_chance_baseline": 0.5,
+        "enrolled_cycle_rate": 0.0,
+        "n": 100
+      },
+      "metric": "cycle_rate_close",
+      "value": 0.0,
+      "baseline": 0.25,
+      "baseline_name": "independent answers imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Superhuman: <1% cycles on close pairs, <0.1% on far pairs.",
+      "reasons": [
+        "Superhuman: <1% cycles on close pairs, <0.1% on far pairs."
+      ],
+      "signatures": [
+        "negation sums off 1"
+      ],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "small_n": false
+    },
+    {
+      "difficulty": {
+        "distance": "close",
+        "min_gap": 5,
+        "max_gap": 10
+      },
+      "tier": "Human",
+      "n": 100,
+      "metrics": {
+        "cycle_rate": 0.03,
+        "cycle_rate_close": 0.03,
+        "cycle_rate_far": 0.0,
+        "random_cycle_rate": 0.25,
+        "product_rule_error": 0.059506000000000024,
+        "negation_sum_error": 0.06339999999999989,
+        "pairwise_accuracy": 0.8733333333333333,
+        "pairwise_chance_baseline": 0.5,
+        "enrolled_cycle_rate": 0.0,
+        "n": 100
+      },
+      "metric": "cycle_rate_close",
+      "value": 0.03,
+      "baseline": 0.25,
+      "baseline_name": "independent answers imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: 3-8% cycles on close pairs.",
+      "reasons": [
+        "Human: 3-8% cycles on close pairs."
+      ],
+      "signatures": [
+        "negation sums off 1"
+      ],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "small_n": false
+    },
+    {
+      "difficulty": {
+        "distance": "close",
+        "min_gap": 2,
+        "max_gap": 4
+      },
+      "tier": "Human",
+      "n": 100,
+      "metrics": {
+        "cycle_rate": 0.06,
+        "cycle_rate_close": 0.06,
+        "cycle_rate_far": 0.0,
+        "random_cycle_rate": 0.25,
+        "product_rule_error": 0.059506000000000024,
+        "negation_sum_error": 0.06339999999999989,
+        "pairwise_accuracy": 0.8366666666666667,
+        "pairwise_chance_baseline": 0.5,
+        "enrolled_cycle_rate": 0.0,
+        "n": 100
+      },
+      "metric": "cycle_rate_close",
+      "value": 0.06,
+      "baseline": 0.25,
+      "baseline_name": "independent answers imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: 3-8% cycles on close pairs.",
+      "reasons": [
+        "Human: 3-8% cycles on close pairs."
+      ],
+      "signatures": [
+        "negation sums off 1"
+      ],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "small_n": false
+    },
+    {
+      "difficulty": {
+        "distance": "close",
+        "min_gap": 1,
+        "max_gap": 1
+      },
+      "tier": "Human",
+      "n": 100,
+      "metrics": {
+        "cycle_rate": 0.07,
+        "cycle_rate_close": 0.07,
+        "cycle_rate_far": 0.0,
+        "random_cycle_rate": 0.25,
+        "product_rule_error": 0.059506000000000024,
+        "negation_sum_error": 0.06339999999999989,
+        "pairwise_accuracy": 0.7733333333333333,
+        "pairwise_chance_baseline": 0.5,
+        "enrolled_cycle_rate": 0.0,
+        "n": 100
+      },
+      "metric": "cycle_rate_close",
+      "value": 0.07,
+      "baseline": 0.25,
+      "baseline_name": "independent answers imply",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: 3-8% cycles on close pairs.",
+      "reasons": [
+        "Human: 3-8% cycles on close pairs."
+      ],
+      "signatures": [
+        "negation sums off 1"
+      ],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "small_n": false
+    }
+  ],
+  "boundary_crossings": {
+    "Perfect->Superhuman": {
+      "distance": "far",
+      "min_gap": 40,
+      "max_gap": 58
+    },
+    "Superhuman->Human": {
+      "distance": "close",
+      "min_gap": 5,
+      "max_gap": 10
+    }
+  },
+  "plots": [
+    "plots/e6_cycle_rate_by_distance.png",
+    "plots/e6_product_rule.png",
+    "plots/e6_negation_symmetry.png"
+  ],
+  "predictions": [
+    {
+      "id": "P16",
+      "claim": "3-10% transitivity violations on close pairs",
+      "outcome": "Cycle rate on close pairs was 0.053 (95% CI 0.033-0.085, n=300 triples), inside the predicted 3-10% band and well under the 0.25 rate independent answers imply.",
+      "verdict": "right",
+      "evidence": {
+        "cycle_rate_close": 0.05333333333333334,
+        "ci95": [
+          0.033091912519096475,
+          0.08486914177483132
+        ],
+        "n_triples_close": 300,
+        "random_cycle_rate": 0.25,
+        "constant_answerer_cycle_rate": 0.25,
+        "falsified_if": ">20% or ~=0%"
+      }
+    },
+    {
+      "id": "P17",
+      "claim": "Enrolled triples cut violations below 2%",
+      "outcome": "Untestable as specified. A choice over the 6 total orderings has no cyclic option, so the enrolled violation rate is 0.000 by construction rather than by measurement, and 'cut violations below 2%' cannot discriminate between a model that reasons well and one that does not. Scoring it 'right' would put a fact about the encoding into the prediction hit rate. The testable content of the claim -- that enrolling the outcome space beats making cross-calls -- is the paired order-recovery comparison. On the same 500 triples, one enrolled call recovered the true order 0.832 of the time against 0.754 for the three separate calls (McNemar p=6.47e-05).",
+      "verdict": "untestable",
+      "evidence": {
+        "enrolled_cycle_rate": 0.0,
+        "enrolled_order_accuracy": 0.832,
+        "separate_order_accuracy": 0.754,
+        "n_paired_triples": 500,
+        "mcnemar_p": 6.467045262218053e-05,
+        "paired_bootstrap": {
+          "statistic_a": 0.832,
+          "statistic_b": 0.754,
+          "difference": 0.07799999999999996,
+          "ci_lo": 0.039999999999999925,
+          "ci_hi": 0.11599999999999999,
+          "conf": 0.95,
+          "p_value": 0.0,
+          "n": 500,
+          "n_boot": 2000,
+          "seed": 3111311687
+        },
+        "why_untestable": "the enrolled option set contains only total orders, so a cycle is unrepresentable"
+      }
+    },
+    {
+      "id": "P18",
+      "claim": "Product rule violated by 0.1-0.2",
+      "outcome": "Mean |P(A)P(B|A) - P(A and B)| was 0.060 over 200 units, outside the predicted 0.1-0.2 band but above the 0.05 that would have falsified it. The claim is not supported; it is not falsified on the plan's own terms.",
+      "verdict": "wrong",
+      "evidence": {
+        "product_rule_error": 0.059506000000000024,
+        "n_units": 200,
+        "permutation_null": 0.35190715499999997,
+        "tabled_baseline_error": 0.0,
+        "conditioning_shift": 0.012949999999999982,
+        "conjunction_fallacy_rate": 0.605,
+        "by_level": {
+          "clean": {
+            "n": 100,
+            "product_rule_error": 0.066138,
+            "product_rule_signed_error": -0.066138,
+            "conditioning_shift": 0.014599999999999995,
+            "conjunction_fallacy_rate": 0.61,
+            "frechet_violation_rate": 0.61,
+            "mean_p_a": 0.46340000000000026,
+            "mean_p_b": 0.5391,
+            "mean_p_b_given_a": 0.5330999999999999,
+            "mean_p_ab": 0.3386000000000001
+          },
+          "hard": {
+            "n": 100,
+            "product_rule_error": 0.052874,
+            "product_rule_signed_error": -0.052874,
+            "conditioning_shift": 0.011299999999999994,
+            "conjunction_fallacy_rate": 0.6,
+            "frechet_violation_rate": 0.6,
+            "mean_p_a": 0.4699000000000001,
+            "mean_p_b": 0.5185,
+            "mean_p_b_given_a": 0.519,
+            "mean_p_ab": 0.28359999999999985
+          }
+        },
+        "falsified_if": "Within 0.05"
+      }
+    }
+  ],
+  "anomalies": [
+    "Every noul probability in E6 (2750 answers, 99 distinct values) was an exact multiple of 0.01. Consistent with the 2-decimal quantization on the plan's watch list; no counter-evidence seen here.",
+    "6 of 2750 noul answers came back exactly 0.5. This module resolves those to 'yes' via the p >= 0.5 convention, which biases the induced tournament; the count is reported so the effect can be bounded.",
+    "`confidence` diverged from max-probability on choice/score answers by 0.021 on average (max 0.150, n=650). The two are not the same quantity.",
+    "Triples that cycled were answered with a mean distance from 0.5 of 0.319 against 0.433 for triples that did not. Since noul carries no confidence field, that distance is the only confidence-like signal available, and it is what would have to be thresholded to filter cycles.",
+    "On 6.5% of propositions the model answered above 0.5 to both 'is X true' and 'is X false' in separate calls."
+  ],
+  "failures": {
+    "calls": 0,
+    "excluded": 0,
+    "reasons": {}
+  },
+  "conditions": {
+    "transitivity": {
+      "by_rung": [
+        {
+          "n_triples": 100,
+          "n_triples_excluded": 0,
+          "cycles": 0,
+          "cycle_rate": 0.0,
+          "cycle_rate_ci95": [
+            0.0,
+            0.03699349820698566
+          ],
+          "separate_order_correct_rate": 1.0,
+          "pairwise_accuracy": 1.0,
+          "pairwise_n": 300,
+          "pairwise_accuracy_ci95": [
+            0.9873570287754538,
+            1.0
+          ],
+          "mean_noul_margin": 0.4877666666666668,
+          "exact_half_answers": 0,
+          "n_enrolled": 100,
+          "n_enrolled_excluded": 0,
+          "enrolled_accuracy": 1.0,
+          "enrolled_cycle_rate": 0.0,
+          "rung": "far-gap40to58",
+          "difficulty": {
+            "distance": "far",
+            "min_gap": 40,
+            "max_gap": 58
+          },
+          "distance_class": "far",
+          "constant_answerer_cycle_rate": 0.3,
+          "random_cycle_rate": 0.25,
+          "pairwise_chance_baseline": 0.5,
+          "pairwise_majority_baseline": 0.52,
+          "table_lookup_baseline_accuracy": 1.0
+        },
+        {
+          "n_triples": 100,
+          "n_triples_excluded": 0,
+          "cycles": 0,
+          "cycle_rate": 0.0,
+          "cycle_rate_ci95": [
+            0.0,
+            0.03699349820698566
+          ],
+          "separate_order_correct_rate": 0.96,
+          "pairwise_accuracy": 0.9866666666666667,
+          "pairwise_n": 300,
+          "pairwise_accuracy_ci95": [
+            0.9662244697474675,
+            0.9948030382606411
+          ],
+          "mean_noul_margin": 0.4714666666666665,
+          "exact_half_answers": 0,
+          "n_enrolled": 100,
+          "n_enrolled_excluded": 0,
+          "enrolled_accuracy": 0.99,
+          "enrolled_cycle_rate": 0.0,
+          "rung": "far-gap20to39",
+          "difficulty": {
+            "distance": "far",
+            "min_gap": 20,
+            "max_gap": 39
+          },
+          "distance_class": "far",
+          "constant_answerer_cycle_rate": 0.26,
+          "random_cycle_rate": 0.25,
+          "pairwise_chance_baseline": 0.5,
+          "pairwise_majority_baseline": 0.5166666666666667,
+          "table_lookup_baseline_accuracy": 1.0
+        },
+        {
+          "n_triples": 100,
+          "n_triples_excluded": 0,
+          "cycles": 3,
+          "cycle_rate": 0.03,
+          "cycle_rate_ci95": [
+            0.010254524024038925,
+            0.08451936429052759
+          ],
+          "separate_order_correct_rate": 0.71,
+          "pairwise_accuracy": 0.8733333333333333,
+          "pairwise_n": 300,
+          "pairwise_accuracy_ci95": [
+            0.8309188299507383,
+            0.9063077515349339
+          ],
+          "mean_noul_margin": 0.38756666666666656,
+          "exact_half_answers": 2,
+          "n_enrolled": 100,
+          "n_enrolled_excluded": 0,
+          "enrolled_accuracy": 0.83,
+          "enrolled_cycle_rate": 0.0,
+          "rung": "close-gap5to10",
+          "difficulty": {
+            "distance": "close",
+            "min_gap": 5,
+            "max_gap": 10
+          },
+          "distance_class": "close",
+          "constant_answerer_cycle_rate": 0.22,
+          "random_cycle_rate": 0.25,
+          "pairwise_chance_baseline": 0.5,
+          "pairwise_majority_baseline": 0.5166666666666667,
+          "table_lookup_baseline_accuracy": 1.0
+        },
+        {
+          "n_triples": 100,
+          "n_triples_excluded": 0,
+          "cycles": 6,
+          "cycle_rate": 0.06,
+          "cycle_rate_ci95": [
+            0.027786123963188185,
+            0.12476815445895917
+          ],
+          "separate_order_correct_rate": 0.59,
+          "pairwise_accuracy": 0.8366666666666667,
+          "pairwise_n": 300,
+          "pairwise_accuracy_ci95": [
+            0.7906268325698749,
+            0.8741935668055973
+          ],
+          "mean_noul_margin": 0.38969999999999977,
+          "exact_half_answers": 1,
+          "n_enrolled": 100,
+          "n_enrolled_excluded": 0,
+          "enrolled_accuracy": 0.72,
+          "enrolled_cycle_rate": 0.0,
+          "rung": "close-gap2to4",
+          "difficulty": {
+            "distance": "close",
+            "min_gap": 2,
+            "max_gap": 4
+          },
+          "distance_class": "close",
+          "constant_answerer_cycle_rate": 0.26,
+          "random_cycle_rate": 0.25,
+          "pairwise_chance_baseline": 0.5,
+          "pairwise_majority_baseline": 0.5066666666666667,
+          "table_lookup_baseline_accuracy": 1.0
+        },
+        {
+          "n_triples": 100,
+          "n_triples_excluded": 0,
+          "cycles": 7,
+          "cycle_rate": 0.07,
+          "cycle_rate_ci95": [
+            0.03431926106727268,
+            0.13749514739073498
+          ],
+          "separate_order_correct_rate": 0.51,
+          "pairwise_accuracy": 0.7733333333333333,
+          "pairwise_n": 300,
+          "pairwise_accuracy_ci95": [
+            0.7226746795338672,
+            0.8170804961967142
+          ],
+          "mean_noul_margin": 0.4082333333333335,
+          "exact_half_answers": 0,
+          "n_enrolled": 100,
+          "n_enrolled_excluded": 0,
+          "enrolled_accuracy": 0.62,
+          "enrolled_cycle_rate": 0.0,
+          "rung": "close-gap1to1",
+          "difficulty": {
+            "distance": "close",
+            "min_gap": 1,
+            "max_gap": 1
+          },
+          "distance_class": "close",
+          "constant_answerer_cycle_rate": 0.27,
+          "random_cycle_rate": 0.25,
+          "pairwise_chance_baseline": 0.5,
+          "pairwise_majority_baseline": 0.5133333333333333,
+          "table_lookup_baseline_accuracy": 1.0
+        }
+      ],
+      "close": {
+        "n_triples": 300,
+        "n_triples_excluded": 0,
+        "cycles": 16,
+        "cycle_rate": 0.05333333333333334,
+        "cycle_rate_ci95": [
+          0.033091912519096475,
+          0.08486914177483132
+        ],
+        "separate_order_correct_rate": 0.6033333333333334,
+        "pairwise_accuracy": 0.8277777777777777,
+        "pairwise_n": 900,
+        "pairwise_accuracy_ci95": [
+          0.8017300802035217,
+          0.8510392680512204
+        ],
+        "mean_noul_margin": 0.39516666666666667,
+        "exact_half_answers": 3,
+        "n_enrolled": 300,
+        "n_enrolled_excluded": 0,
+        "enrolled_accuracy": 0.7233333333333334,
+        "enrolled_cycle_rate": 0.0,
+        "distance_class": "close",
+        "rungs": [
+          "close-gap1to1",
+          "close-gap2to4",
+          "close-gap5to10"
+        ],
+        "constant_answerer_cycle_rate": 0.25,
+        "random_cycle_rate": 0.25
+      },
+      "far": {
+        "n_triples": 200,
+        "n_triples_excluded": 0,
+        "cycles": 0,
+        "cycle_rate": 0.0,
+        "cycle_rate_ci95": [
+          0.0,
+          0.018845326377266564
+        ],
+        "separate_order_correct_rate": 0.98,
+        "pairwise_accuracy": 0.9933333333333333,
+        "pairwise_n": 600,
+        "pairwise_accuracy_ci95": [
+          0.9829852895846635,
+          0.9974044987484852
+        ],
+        "mean_noul_margin": 0.47961666666666686,
+        "exact_half_answers": 0,
+        "n_enrolled": 200,
+        "n_enrolled_excluded": 0,
+        "enrolled_accuracy": 0.995,
+        "enrolled_cycle_rate": 0.0,
+        "distance_class": "far",
+        "rungs": [
+          "far-gap20to39",
+          "far-gap40to58"
+        ],
+        "constant_answerer_cycle_rate": 0.28,
+        "random_cycle_rate": 0.25
+      },
+      "baselines": {
+        "random_cycle_rate": 0.25,
+        "constant_answerer_cycle_rate": {
+          "far-gap40to58": 0.3,
+          "far-gap20to39": 0.26,
+          "close-gap5to10": 0.22,
+          "close-gap2to4": 0.26,
+          "close-gap1to1": 0.27
+        },
+        "pairwise_chance": 0.5,
+        "table_lookup_accuracy": 1.0,
+        "table_lookup_cycle_rate": 0.0
+      },
+      "baseline_note": "The cheap deterministic baseline for ordering elements by atomic number is a sorted lookup table: accuracy 1.0, cycle rate 0.0. It is reported here rather than fed to the tier rubric, because E6 grades coherence and the rubric's accuracy rows would otherwise assign a tier on a property this experiment is not measuring.",
+      "confidence_note": "noul answers carry no confidence field, so `mean_noul_margin` is the mean distance of the probability from 0.5 and is reported under that name."
+    },
+    "enrolled_triples": {
+      "n_paired": 500,
+      "separate_order_correct_rate": 0.754,
+      "enrolled_accuracy": 0.832,
+      "enrolled_random_baseline": 0.16666666666666666,
+      "separate_random_baseline": 0.125,
+      "cycle_rate_separate": 0.032,
+      "enrolled_cycle_rate": 0.0,
+      "enrolled_cycle_rate_note": "0 by construction: the 6 options are total orders, so a cycle cannot be selected. This is a property of the encoding, not a measurement of the model.",
+      "by_distance": {
+        "close": {
+          "n": 300,
+          "separate_order_correct_rate": 0.6033333333333334,
+          "enrolled_accuracy": 0.7233333333333334,
+          "cycle_rate_separate": 0.05333333333333334
+        },
+        "far": {
+          "n": 200,
+          "separate_order_correct_rate": 0.98,
+          "enrolled_accuracy": 0.995,
+          "cycle_rate_separate": 0.0
+        }
+      },
+      "mcnemar_p": 6.467045262218053e-05,
+      "paired_bootstrap": {
+        "statistic_a": 0.832,
+        "statistic_b": 0.754,
+        "difference": 0.07799999999999996,
+        "ci_lo": 0.039999999999999925,
+        "ci_hi": 0.11599999999999999,
+        "conf": 0.95,
+        "p_value": 0.0,
+        "n": 500,
+        "n_boot": 2000,
+        "seed": 3111311687
+      },
+      "confidence_minus_max_probability": -0.022939999999999964
+    },
+    "product_rule": {
+      "n": 200,
+      "product_rule_error": 0.059506000000000024,
+      "product_rule_signed_error": -0.059506000000000024,
+      "conditioning_shift": 0.012949999999999982,
+      "conjunction_fallacy_rate": 0.605,
+      "frechet_violation_rate": 0.605,
+      "mean_p_a": 0.4666500000000003,
+      "mean_p_b": 0.5287999999999997,
+      "mean_p_b_given_a": 0.5260500000000001,
+      "mean_p_ab": 0.31110000000000027,
+      "n_excluded": 0,
+      "by_level": {
+        "clean": {
+          "n": 100,
+          "product_rule_error": 0.066138,
+          "product_rule_signed_error": -0.066138,
+          "conditioning_shift": 0.014599999999999995,
+          "conjunction_fallacy_rate": 0.61,
+          "frechet_violation_rate": 0.61,
+          "mean_p_a": 0.46340000000000026,
+          "mean_p_b": 0.5391,
+          "mean_p_b_given_a": 0.5330999999999999,
+          "mean_p_ab": 0.3386000000000001
+        },
+        "hard": {
+          "n": 100,
+          "product_rule_error": 0.052874,
+          "product_rule_signed_error": -0.052874,
+          "conditioning_shift": 0.011299999999999994,
+          "conjunction_fallacy_rate": 0.6,
+          "frechet_violation_rate": 0.6,
+          "mean_p_a": 0.4699000000000001,
+          "mean_p_b": 0.5185,
+          "mean_p_b_given_a": 0.519,
+          "mean_p_ab": 0.28359999999999985
+        }
+      },
+      "permutation_null": 0.35190715499999997,
+      "tabled_baseline_error": 0.0
+    },
+    "temporal_stability": {
+      "n_queries": 100,
+      "question_kinds": [
+        "ordering_choice",
+        "ordering_noul",
+        "semantic_choice",
+        "semantic_score"
+      ],
+      "question_kinds_not_covered": [],
+      "passes_run": 1,
+      "passes": [
+        {
+          "index": 0,
+          "label": "t=0",
+          "started_iso": "2026-09-19T17:31:09",
+          "elapsed_hours": 0.0,
+          "model_versions": [
+            "jev-1.13.0"
+          ],
+          "n_answered": 100,
+          "n_repeat_answered": 100,
+          "failures": {
+            "calls": 0,
+            "reasons": {}
+          },
+          "within_pass_repeat": {
+            "n": 100,
+            "noul_mean_abs_delta": 0.026799999999999997,
+            "noul_max_abs_delta": 0.16000000000000003,
+            "noul_flip_rate": 0.04,
+            "choice_change_rate": 0.04,
+            "choice_mean_tv": 0.017799999999999996,
+            "score_mean_abs_delta": 0.010799999999999978,
+            "score_change_rate": 0.04,
+            "by_kind": {
+              "ordering_choice": {
+                "n": 25,
+                "noul_mean_abs_delta": null,
+                "noul_max_abs_delta": null,
+                "noul_flip_rate": null,
+                "choice_change_rate": 0.08,
+                "choice_mean_tv": 0.03439999999999999,
+                "score_mean_abs_delta": null,
+                "score_change_rate": null
+              },
+              "ordering_noul": {
+                "n": 25,
+                "noul_mean_abs_delta": 0.026799999999999997,
+                "noul_max_abs_delta": 0.16000000000000003,
+                "noul_flip_rate": 0.04,
+                "choice_change_rate": null,
+                "choice_mean_tv": null,
+                "score_mean_abs_delta": null,
+                "score_change_rate": null
+              },
+              "semantic_choice": {
+                "n": 25,
+                "noul_mean_abs_delta": null,
+                "noul_max_abs_delta": null,
+                "noul_flip_rate": null,
+                "choice_change_rate": 0.0,
+                "choice_mean_tv": 0.0012000000000000003,
+                "score_mean_abs_delta": null,
+                "score_change_rate": null
+              },
+              "semantic_score": {
+                "n": 25,
+                "noul_mean_abs_delta": null,
+                "noul_max_abs_delta": null,
+                "noul_flip_rate": null,
+                "choice_change_rate": null,
+                "choice_mean_tv": null,
+                "score_mean_abs_delta": 0.010799999999999978,
+                "score_change_rate": 0.04
+              }
+            }
+          },
+          "drift_vs_t0": null
+        }
+      ],
+      "model_versions_across_passes": [
+        "jev-1.13.0"
+      ],
+      "model_version_changed": false,
+      "baseline_file": "e6_temporal_passes.json",
+      "fresh_baseline": true,
+      "how_to_run_later_passes": "Run `JEV_E6_TEMPORAL_ONLY=1 python run.py e6 --run-id <this run id>` about an hour after the first pass and again about a day after. It replays the queries saved in e6_temporal_passes.json, scores them against the t=0 answers, merges the refreshed temporal section into e6_result.json without touching the other conditions, and spends 200 calls per pass.",
+      "interpretation": "Drift is only readable against the within-pass repeat noise measured in the same pass, which is reported beside it. Drift at or below that noise is sampling variation, not a model change.",
+      "note": "Only the t=0 pass has run, so no drift is measurable yet. The within-pass repeat figures are the noise floor a later pass will be read against."
+    },
+    "negation_symmetry": {
+      "n": 200,
+      "negation_sum_error": 0.06339999999999989,
+      "negation_signed_error": 0.03380000000000002,
+      "yes_to_both_rate": 0.065,
+      "no_to_both_rate": 0.015,
+      "accuracy_positive_framing": 0.85,
+      "accuracy_negated_framing": 0.88,
+      "n_excluded": 0,
+      "by_domain": {
+        "ordering-close": {
+          "n": 100,
+          "negation_sum_error": 0.07839999999999996,
+          "negation_signed_error": 0.05020000000000004,
+          "yes_to_both_rate": 0.12,
+          "no_to_both_rate": 0.0,
+          "accuracy_positive_framing": 0.76,
+          "accuracy_negated_framing": 0.81
+        },
+        "semantic": {
+          "n": 100,
+          "negation_sum_error": 0.04840000000000003,
+          "negation_signed_error": 0.017400000000000013,
+          "yes_to_both_rate": 0.01,
+          "no_to_both_rate": 0.03,
+          "accuracy_positive_framing": 0.94,
+          "accuracy_negated_framing": 0.95
+        }
+      },
+      "permutation_null": 0.4391445000000001
+    }
+  },
+  "per_condition": {
+    "enrolled-triples": {
+      "calls": 500,
+      "latency_p50_s": 0.17565762996673584,
+      "latency_p95_s": 0.3333625197410583,
+      "input_tokens": 261294,
+      "cost_usd": 0.010974348,
+      "cost_per_decision_usd": 2.1948696e-05
+    },
+    "negation-symmetry": {
+      "calls": 400,
+      "latency_p50_s": 0.17617785930633545,
+      "latency_p95_s": 0.31099718809127785,
+      "input_tokens": 148904,
+      "cost_usd": 0.0062539679999999995,
+      "cost_per_decision_usd": 1.563492e-05
+    },
+    "product-rule": {
+      "calls": 800,
+      "latency_p50_s": 0.16769206523895264,
+      "latency_p95_s": 0.31033211946487405,
+      "input_tokens": 377611,
+      "cost_usd": 0.015859662,
+      "cost_per_decision_usd": 1.9824577500000002e-05
+    },
+    "temporal-stability": {
+      "calls": 200,
+      "latency_p50_s": 0.1986863613128662,
+      "latency_p95_s": 0.32889423370361326,
+      "input_tokens": 93870,
+      "cost_usd": 0.00394254,
+      "cost_per_decision_usd": 1.97127e-05
+    },
+    "transitivity": {
+      "calls": 1500,
+      "latency_p50_s": 0.17881560325622559,
+      "latency_p95_s": 0.311231780052185,
+      "input_tokens": 470386,
+      "cost_usd": 0.019756212,
+      "cost_per_decision_usd": 1.3170808e-05
+    }
+  },
+  "sample_sizes": {
+    "triples_per_rung": 100,
+    "n_rungs": 5,
+    "triples_total": 500,
+    "product_rule_units_per_level": 100,
+    "negation_props_per_domain": 100,
+    "temporal_queries": 100,
+    "scale": 1.0,
+    "planned_calls": {
+      "transitivity": 1500,
+      "enrolled_triples": 500,
+      "product_rule": 800,
+      "negation_symmetry": 400,
+      "temporal_stability_per_pass": 200
+    }
+  },
+  "notes": [],
+  "run": {
+    "total_calls": 3400,
+    "failed_calls": 0,
+    "total_retries": 248,
+    "input_tokens": 1352065,
+    "output_tokens": 129212,
+    "cost_usd": 0.05678673,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "elapsed_s": 15.54830002784729,
+    "sustained_req_per_s": 218.6734237125948,
+    "peak_concurrency": 128,
+    "final_concurrency": 72,
+    "throttle_events": 248,
+    "throttle_episodes": 3,
+    "aborted": null,
+    "status_counts": {
+      "200": 3400,
+      "429": 248
+    },
+    "log_path": "/home/wkelly/src/typesafe/jev/eval/runs/full-20260919/e6.jsonl",
+    "log_records": 3648
+  },
+  "what_this_changes": "Close-pair triples cycled at 0.053 and far-pair triples at 0.000, against the 0.25 independent answers imply; the product rule was off by 0.060 across separate calls, and P(X) + P(not X) missed 1 by 0.063. Those numbers support the plan's tabling requirement: anything that needs a consistent model theory -- a Prolog-style fact store, a ranking used as ground truth, a derived knowledge graph -- must table every derived fact on first use and read the table thereafter, because asking twice can return answers that cannot both be true. At the measured rate a ranking built from pairwise calls over about 6 items is more likely than not to contain at least one cycle, so the requirement binds at small scale, not only in the limit. The reason is soundness rather than cost: the tabled value is the only thing that makes two derivations of the same fact agree, and the cheap alternative on this task -- a sorted lookup table -- is both exact and free. Enrollment removes the problem only where the whole question fits in one call; a choice over the 6 orderings of three items cannot express a cycle, but the same trick does not scale to a fact store, and 255 options is the ceiling."
+}

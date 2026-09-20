@@ -1,0 +1,2060 @@
+{
+  "experiment": "E1",
+  "title": "Determinism and the noise floor",
+  "question": "Does the same state and question produce the same answer, and if not, what is the variance?",
+  "headline": {
+    "metric": "prob_sigma (identical condition)",
+    "value": 0.011217265595851835,
+    "baseline": 0.0,
+    "baseline_name": "a deterministic system, sigma",
+    "n": 1500
+  },
+  "by_difficulty": [
+    {
+      "difficulty": {
+        "domain": "semantic",
+        "level": "clean"
+      },
+      "tier": "Superhuman",
+      "n": 900,
+      "metrics": {
+        "prob_sigma": 0.002529233246918028,
+        "choice_agreement": 1.0,
+        "option_order_flip_rate": 0.0,
+        "key_rename_shift": 0.0,
+        "question_order_shift": 0.0,
+        "bit_identical": false,
+        "n": 900
+      },
+      "metric": "prob_sigma",
+      "value": 0.002529233246918028,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Superhuman: sigma <=0.01 on probabilities, >=0.99 choice agreement.",
+      "reasons": [
+        "Superhuman: sigma <=0.01 on probabilities, >=0.99 choice agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "label": "semantic/clean",
+      "accuracy": {
+        "choice": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.125,
+          "majority_baseline": 0.2
+        },
+        "noul": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 0.5
+        },
+        "score": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.25,
+          "majority_baseline": 0.3
+        },
+        "cheap_heuristic": {
+          "accuracy": 1.0,
+          "n": 10,
+          "description": "keyword argmax on the semantic control, clause density on 3SAT"
+        }
+      },
+      "measured": true
+    },
+    {
+      "difficulty": {
+        "domain": "semantic",
+        "level": "hard"
+      },
+      "tier": "Superhuman",
+      "n": 900,
+      "metrics": {
+        "prob_sigma": 0.003811371314895711,
+        "choice_agreement": 1.0,
+        "option_order_flip_rate": 0.0,
+        "key_rename_shift": 0.0,
+        "question_order_shift": 0.0,
+        "bit_identical": false,
+        "n": 900
+      },
+      "metric": "prob_sigma",
+      "value": 0.003811371314895711,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Superhuman: sigma <=0.01 on probabilities, >=0.99 choice agreement.",
+      "reasons": [
+        "Superhuman: sigma <=0.01 on probabilities, >=0.99 choice agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "label": "semantic/hard",
+      "accuracy": {
+        "choice": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.125,
+          "majority_baseline": 0.2
+        },
+        "noul": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 0.5
+        },
+        "score": {
+          "accuracy": 0.9,
+          "n": 10,
+          "wilson95": [
+            0.5958499732047616,
+            0.982123786904927
+          ],
+          "random_baseline": 0.25,
+          "majority_baseline": 0.3
+        },
+        "cheap_heuristic": {
+          "accuracy": 0.5,
+          "n": 10,
+          "description": "keyword argmax on the semantic control, clause density on 3SAT"
+        }
+      },
+      "measured": true
+    },
+    {
+      "difficulty": {
+        "domain": "sat3",
+        "n": 20,
+        "ratio": 2.0
+      },
+      "tier": "Human",
+      "n": 600,
+      "metrics": {
+        "prob_sigma": 0.01585614034023331,
+        "choice_agreement": 1.0,
+        "option_order_flip_rate": 0.0,
+        "key_rename_shift": 0.0,
+        "question_order_shift": 0.0,
+        "bit_identical": false,
+        "n": 600
+      },
+      "metric": "prob_sigma",
+      "value": 0.01585614034023331,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "label": "sat3/ratio2.0",
+      "accuracy": {
+        "choice": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 1.0
+        },
+        "noul": {
+          "accuracy": 1.0,
+          "n": 10,
+          "wilson95": [
+            0.7224672001371109,
+            1.0
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 1.0
+        },
+        "cheap_heuristic": {
+          "accuracy": 1.0,
+          "n": 20,
+          "description": "keyword argmax on the semantic control, clause density on 3SAT"
+        }
+      },
+      "measured": true
+    },
+    {
+      "difficulty": {
+        "domain": "sat3",
+        "n": 20,
+        "ratio": 8.0
+      },
+      "tier": "Human",
+      "n": 600,
+      "metrics": {
+        "prob_sigma": 0.016160968768683084,
+        "choice_agreement": 1.0,
+        "option_order_flip_rate": 0.0,
+        "key_rename_shift": 0.0,
+        "question_order_shift": 0.0,
+        "bit_identical": false,
+        "n": 600
+      },
+      "metric": "prob_sigma",
+      "value": 0.016160968768683084,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "label": "sat3/ratio8.0",
+      "accuracy": {
+        "choice": {
+          "accuracy": 0.0,
+          "n": 10,
+          "wilson95": [
+            0.0,
+            0.27753279986288915
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 1.0
+        },
+        "noul": {
+          "accuracy": 0.0,
+          "n": 10,
+          "wilson95": [
+            0.0,
+            0.27753279986288915
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 1.0
+        },
+        "cheap_heuristic": {
+          "accuracy": 1.0,
+          "n": 20,
+          "description": "keyword argmax on the semantic control, clause density on 3SAT"
+        }
+      },
+      "measured": true
+    },
+    {
+      "difficulty": {
+        "domain": "sat3",
+        "n": 20,
+        "ratio": 4.5
+      },
+      "tier": "Human",
+      "n": 600,
+      "metrics": {
+        "prob_sigma": 0.017728614308529025,
+        "choice_agreement": 1.0,
+        "option_order_flip_rate": 0.0,
+        "key_rename_shift": 0.0,
+        "question_order_shift": 0.0,
+        "bit_identical": false,
+        "n": 600
+      },
+      "metric": "prob_sigma",
+      "value": 0.017728614308529025,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "label": "sat3/ratio4.5",
+      "accuracy": {
+        "choice": {
+          "accuracy": 0.6,
+          "n": 10,
+          "wilson95": [
+            0.3126737697336583,
+            0.8318196702937637
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 0.6
+        },
+        "noul": {
+          "accuracy": 0.6,
+          "n": 10,
+          "wilson95": [
+            0.3126737697336583,
+            0.8318196702937637
+          ],
+          "random_baseline": 0.5,
+          "majority_baseline": 0.6
+        },
+        "cheap_heuristic": {
+          "accuracy": 0.4,
+          "n": 20,
+          "description": "keyword argmax on the semantic control, clause density on 3SAT"
+        }
+      },
+      "measured": true
+    }
+  ],
+  "boundary_crossings": {
+    "Perfect->Superhuman": {
+      "domain": "semantic",
+      "level": "clean"
+    },
+    "Superhuman->Human": {
+      "domain": "sat3",
+      "n": 20,
+      "ratio": 2.0
+    }
+  },
+  "plots": [
+    "plots/e1_variance_by_condition.png",
+    "plots/e1_sigma_by_difficulty.png",
+    "plots/e1_probability_spectrum.png"
+  ],
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "sigma <=0.02 on probabilities, >=0.98 choice agreement",
+      "verdict": "right",
+      "outcome": "sigma = 0.0112 on noul probabilities and choice agreement = 1.0000 over 30 repetitions of the identical condition. The claim's own thresholds are sigma <=0.02 and agreement >=0.98, both met. The plan's stated falsifier, sigma >0.05, did not fire.",
+      "evidence": {
+        "prob_sigma": 0.011217265595851835,
+        "choice_agreement": 1.0,
+        "spread_max": 0.10999999999999999,
+        "bit_identical": false,
+        "explicit_falsifier_fired": false
+      }
+    },
+    {
+      "id": "P2",
+      "claim": "Key renaming has no effect",
+      "verdict": "right",
+      "outcome": "Renaming the question keys moved +0.00% of answers net of the model's own variance (0.00% of repetitions disagreed with the identical condition's modal answer, against 0.00% within the identical condition itself measured leave-one-out, n=3600). Not distinguishable from zero by non-overlapping Wilson intervals; McNemar p=1. Falsification threshold is a shift of more than 2% in either direction. By scheme: opaque=+0.00%, positional=+0.00%, rotated=+0.00%.",
+      "evidence": {
+        "key_rename": {
+          "condition": "key_rename",
+          "excess": 0.0,
+          "rate": 0.0,
+          "reference_rate": 0.0,
+          "rate_ci95": [
+            0.0,
+            0.0010659344659271406
+          ],
+          "reference_rate_ci95": [
+            0.0,
+            0.0010659344659271406
+          ],
+          "distinguishable_from_zero": false,
+          "mcnemar_p": 1.0,
+          "modal_shift": 0.0,
+          "modal_n": 120,
+          "distribution_shift_tv": 0.002533333333333335,
+          "n": 3600,
+          "reference_n": 3600,
+          "resolution": 0.0002777777777777778
+        },
+        "by_scheme": {
+          "opaque": {
+            "disagreements": 0,
+            "n": 1200,
+            "rate": 0.0,
+            "excess": 0.0
+          },
+          "rotated": {
+            "disagreements": 0,
+            "n": 1200,
+            "rate": 0.0,
+            "excess": 0.0
+          },
+          "positional": {
+            "disagreements": 0,
+            "n": 1200,
+            "rate": 0.0,
+            "excess": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "P3",
+      "claim": "Option order has a small effect, 1-3%",
+      "verdict": "wrong",
+      "outcome": "Shuffling choice option order changed the chosen option on +0.00% of repetitions net of the model's own variance (0.00% against 0.00% measured leave-one-out, n=1500). The effect is not distinguishable from zero by non-overlapping Wilson intervals, and P3 is falsified by a zero effect as well as by a large one.",
+      "evidence": {
+        "condition": "option_order",
+        "excess": 0.0,
+        "rate": 0.0,
+        "reference_rate": 0.0,
+        "rate_ci95": [
+          0.0,
+          0.0025544307201814873
+        ],
+        "reference_rate_ci95": [
+          0.0,
+          0.0025544307201814873
+        ],
+        "distinguishable_from_zero": false,
+        "mcnemar_p": 1.0,
+        "modal_shift": 0.0,
+        "modal_n": 50,
+        "distribution_shift_tv": 0.005113333333333311,
+        "n": 1500,
+        "reference_n": 1500,
+        "resolution": 0.0006666666666666666
+      }
+    }
+  ],
+  "anomalies": [
+    "Returned noul probabilities: 42 distinct values over 6000 answers, range 0.01-0.96, smallest gap between adjacent values 0.01. Every value is a multiple of 0.01, so the probability is quantized at that granularity.",
+    "One probability value, 0.7, accounts for 10.2% of all noul answers. The plan asks specifically about probabilities clustering rather than spreading.",
+    "`confidence` differs from the maximum returned probability on 47.1% of choice and score answers (mean signed gap -0.0921, largest absolute gap 0.3700, and it exceeds the maximum probability on 0.1% of them). The two are therefore not the same quantity."
+  ],
+  "failures": {
+    "calls": 0,
+    "excluded": 0,
+    "reasons": {}
+  },
+  "gate": {
+    "passed": true,
+    "reason": "Worst per-condition sigma is 0.0114 (question_order); the identical condition alone is 0.0112. The gate trips above 0.15. Differences larger than roughly twice this are outside the noise floor and may be read as findings.",
+    "sigma_by_condition": {
+      "identical": 0.011217265595851835,
+      "question_order": 0.011382903998468813,
+      "key_rename": 0.01118459782080373,
+      "option_order": 0.01117059031039006
+    },
+    "threshold": 0.15
+  },
+  "conditions": [
+    {
+      "difficulty": {
+        "condition": "identical"
+      },
+      "tier": "Human",
+      "n": 3600,
+      "metrics": {
+        "prob_sigma": 0.011217265595851835,
+        "choice_agreement": 1.0,
+        "bit_identical": false,
+        "n": 3600
+      },
+      "metric": "prob_sigma",
+      "value": 0.011217265595851835,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "key_rename_shift",
+        "option_order_flip_rate",
+        "question_order_shift",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "condition": "identical",
+      "detail": {
+        "condition": "identical",
+        "prob_sigma": 0.011217265595851835,
+        "prob_spread_mean": 0.04559999999999999,
+        "prob_spread_max": 0.10999999999999999,
+        "choice_agreement": 1.0,
+        "choice_exact_match_rate": 1.0,
+        "choice_agreement_if_sampling": 0.7991790666666625,
+        "score_sigma": 0.005784487830835796,
+        "bit_identical": false,
+        "n_states": 50,
+        "n_noul_states": 50,
+        "n_choice_states": 50,
+        "single_repetition_cells": 0,
+        "n": 3600,
+        "n_noul": 1500,
+        "distinct_noul_values": 37,
+        "position_bias": [
+          {
+            "n_options": 2,
+            "n": 900,
+            "counts": {
+              "0": 540,
+              "1": 360
+            },
+            "uniform_rate": 0.5,
+            "order_randomized": false,
+            "note": "option order is fixed per state in this condition, so position is confounded with option identity and is not tested against uniform"
+          },
+          {
+            "n_options": 8,
+            "n": 600,
+            "counts": {
+              "0": 60,
+              "2": 90,
+              "3": 150,
+              "4": 30,
+              "5": 30,
+              "6": 60,
+              "7": 180
+            },
+            "uniform_rate": 0.125,
+            "order_randomized": false,
+            "note": "option order is fixed per state in this condition, so position is confounded with option identity and is not tested against uniform"
+          }
+        ]
+      },
+      "shift_vs_identical": null
+    },
+    {
+      "difficulty": {
+        "condition": "question_order"
+      },
+      "tier": "Human",
+      "n": 3600,
+      "metrics": {
+        "prob_sigma": 0.011382903998468813,
+        "choice_agreement": 1.0,
+        "question_order_shift": 0.0,
+        "bit_identical": false,
+        "n": 3600
+      },
+      "metric": "prob_sigma",
+      "value": 0.011382903998468813,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "key_rename_shift",
+        "option_order_flip_rate",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "condition": "question_order",
+      "detail": {
+        "condition": "question_order",
+        "prob_sigma": 0.011382903998468813,
+        "prob_spread_mean": 0.04359999999999998,
+        "prob_spread_max": 0.08999999999999997,
+        "choice_agreement": 1.0,
+        "choice_exact_match_rate": 1.0,
+        "choice_agreement_if_sampling": 0.8000230666666596,
+        "score_sigma": 0.005808504750117043,
+        "bit_identical": false,
+        "n_states": 50,
+        "n_noul_states": 50,
+        "n_choice_states": 50,
+        "single_repetition_cells": 0,
+        "n": 3600,
+        "n_noul": 1500,
+        "distinct_noul_values": 37,
+        "position_bias": [
+          {
+            "n_options": 2,
+            "n": 900,
+            "counts": {
+              "0": 540,
+              "1": 360
+            },
+            "uniform_rate": 0.5,
+            "order_randomized": false,
+            "note": "option order is fixed per state in this condition, so position is confounded with option identity and is not tested against uniform"
+          },
+          {
+            "n_options": 8,
+            "n": 600,
+            "counts": {
+              "0": 60,
+              "2": 90,
+              "3": 150,
+              "4": 30,
+              "5": 30,
+              "6": 60,
+              "7": 180
+            },
+            "uniform_rate": 0.125,
+            "order_randomized": false,
+            "note": "option order is fixed per state in this condition, so position is confounded with option identity and is not tested against uniform"
+          }
+        ]
+      },
+      "shift_vs_identical": {
+        "condition": "question_order",
+        "excess": 0.0,
+        "rate": 0.0,
+        "reference_rate": 0.0,
+        "rate_ci95": [
+          0.0,
+          0.0010659344659271406
+        ],
+        "reference_rate_ci95": [
+          0.0,
+          0.0010659344659271406
+        ],
+        "distinguishable_from_zero": false,
+        "mcnemar_p": 1.0,
+        "modal_shift": 0.0,
+        "modal_n": 120,
+        "distribution_shift_tv": 0.0022013888888888955,
+        "n": 3600,
+        "reference_n": 3600,
+        "resolution": 0.0002777777777777778
+      }
+    },
+    {
+      "difficulty": {
+        "condition": "key_rename"
+      },
+      "tier": "Human",
+      "n": 3600,
+      "metrics": {
+        "prob_sigma": 0.01118459782080373,
+        "choice_agreement": 1.0,
+        "key_rename_shift": 0.0,
+        "bit_identical": false,
+        "n": 3600
+      },
+      "metric": "prob_sigma",
+      "value": 0.01118459782080373,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "option_order_flip_rate",
+        "question_order_shift",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "condition": "key_rename",
+      "detail": {
+        "condition": "key_rename",
+        "prob_sigma": 0.01118459782080373,
+        "prob_spread_mean": 0.044599999999999994,
+        "prob_spread_max": 0.09999999999999998,
+        "choice_agreement": 1.0,
+        "choice_exact_match_rate": 1.0,
+        "choice_agreement_if_sampling": 0.7997809333333306,
+        "score_sigma": 0.005707632576737983,
+        "bit_identical": false,
+        "n_states": 50,
+        "n_noul_states": 50,
+        "n_choice_states": 50,
+        "single_repetition_cells": 0,
+        "n": 3600,
+        "n_noul": 1500,
+        "distinct_noul_values": 39,
+        "position_bias": [
+          {
+            "n_options": 2,
+            "n": 900,
+            "counts": {
+              "0": 540,
+              "1": 360
+            },
+            "uniform_rate": 0.5,
+            "order_randomized": false,
+            "note": "option order is fixed per state in this condition, so position is confounded with option identity and is not tested against uniform"
+          },
+          {
+            "n_options": 8,
+            "n": 600,
+            "counts": {
+              "0": 60,
+              "2": 90,
+              "3": 150,
+              "4": 30,
+              "5": 30,
+              "6": 60,
+              "7": 180
+            },
+            "uniform_rate": 0.125,
+            "order_randomized": false,
+            "note": "option order is fixed per state in this condition, so position is confounded with option identity and is not tested against uniform"
+          }
+        ]
+      },
+      "shift_vs_identical": {
+        "condition": "key_rename",
+        "excess": 0.0,
+        "rate": 0.0,
+        "reference_rate": 0.0,
+        "rate_ci95": [
+          0.0,
+          0.0010659344659271406
+        ],
+        "reference_rate_ci95": [
+          0.0,
+          0.0010659344659271406
+        ],
+        "distinguishable_from_zero": false,
+        "mcnemar_p": 1.0,
+        "modal_shift": 0.0,
+        "modal_n": 120,
+        "distribution_shift_tv": 0.002533333333333335,
+        "n": 3600,
+        "reference_n": 3600,
+        "resolution": 0.0002777777777777778
+      }
+    },
+    {
+      "difficulty": {
+        "condition": "option_order"
+      },
+      "tier": "Human",
+      "n": 3600,
+      "metrics": {
+        "prob_sigma": 0.01117059031039006,
+        "choice_agreement": 1.0,
+        "option_order_flip_rate": 0.0,
+        "bit_identical": false,
+        "n": 3600
+      },
+      "metric": "prob_sigma",
+      "value": 0.01117059031039006,
+      "baseline": 0.0,
+      "baseline_name": "a deterministic system, sigma",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+      "reasons": [
+        "Human: sigma <=0.05, >=0.95 agreement."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "key_rename_shift",
+        "question_order_shift",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": [],
+      "condition": "option_order",
+      "detail": {
+        "condition": "option_order",
+        "prob_sigma": 0.01117059031039006,
+        "prob_spread_mean": 0.04479999999999996,
+        "prob_spread_max": 0.08999999999999997,
+        "choice_agreement": 1.0,
+        "choice_exact_match_rate": 1.0,
+        "choice_agreement_if_sampling": 0.8003647999999945,
+        "score_sigma": 0.006015547115414461,
+        "bit_identical": false,
+        "n_states": 50,
+        "n_noul_states": 50,
+        "n_choice_states": 50,
+        "single_repetition_cells": 0,
+        "n": 3600,
+        "n_noul": 1500,
+        "distinct_noul_values": 38,
+        "position_bias": [
+          {
+            "n_options": 2,
+            "n": 900,
+            "counts": {
+              "0": 459,
+              "1": 441
+            },
+            "uniform_rate": 0.5,
+            "order_randomized": true,
+            "max_position": 0,
+            "max_rate": 0.51,
+            "max_rate_ci": [
+              0.47269901662091174,
+              0.5471899612002489
+            ],
+            "ci_confidence": 0.975,
+            "ci_note": "97.50% interval: 95% Bonferroni-corrected for the 2 positions the maximum was selected from",
+            "excludes_uniform": false,
+            "max_deviation": 0.010000000000000009
+          },
+          {
+            "n_options": 8,
+            "n": 600,
+            "counts": {
+              "0": 77,
+              "1": 70,
+              "2": 83,
+              "3": 72,
+              "4": 84,
+              "5": 77,
+              "6": 78,
+              "7": 59
+            },
+            "uniform_rate": 0.125,
+            "order_randomized": true,
+            "max_position": 4,
+            "max_rate": 0.14,
+            "max_rate_ci": [
+              0.10568158591661493,
+              0.18318011309481114
+            ],
+            "ci_confidence": 0.99375,
+            "ci_note": "99.38% interval: 95% Bonferroni-corrected for the 8 positions the maximum was selected from",
+            "excludes_uniform": false,
+            "max_deviation": 0.026666666666666672
+          }
+        ]
+      },
+      "shift_vs_identical": {
+        "condition": "option_order",
+        "excess": 0.0,
+        "rate": 0.0,
+        "reference_rate": 0.0,
+        "rate_ci95": [
+          0.0,
+          0.0025544307201814873
+        ],
+        "reference_rate_ci95": [
+          0.0,
+          0.0025544307201814873
+        ],
+        "distinguishable_from_zero": false,
+        "mcnemar_p": 1.0,
+        "modal_shift": 0.0,
+        "modal_n": 50,
+        "distribution_shift_tv": 0.005113333333333311,
+        "n": 1500,
+        "reference_n": 1500,
+        "resolution": 0.0006666666666666666
+      }
+    }
+  ],
+  "overall_tier": {
+    "difficulty": null,
+    "tier": "Human",
+    "n": 3600,
+    "metrics": {
+      "prob_sigma": 0.011217265595851835,
+      "choice_agreement": 1.0,
+      "option_order_flip_rate": 0.0,
+      "key_rename_shift": 0.0,
+      "question_order_shift": 0.0,
+      "bit_identical": false,
+      "n": 3600
+    },
+    "metric": "prob_sigma",
+    "value": 0.011217265595851835,
+    "baseline": 0.0,
+    "baseline_name": "a deterministic system, sigma",
+    "baseline_source": "assumed",
+    "reportable": true,
+    "fully_evaluated": true,
+    "matched_rule": "Human: sigma <=0.05, >=0.95 agreement.",
+    "reasons": [
+      "Human: sigma <=0.05, >=0.95 agreement."
+    ],
+    "signatures": [],
+    "missing": [
+      "accuracy",
+      "reliability_monotone"
+    ],
+    "unevaluated": [],
+    "undefined": []
+  },
+  "rename_schemes": {
+    "opaque": {
+      "disagreements": 0,
+      "n": 1200,
+      "rate": 0.0,
+      "excess": 0.0
+    },
+    "rotated": {
+      "disagreements": 0,
+      "n": 1200,
+      "rate": 0.0,
+      "excess": 0.0
+    },
+    "positional": {
+      "disagreements": 0,
+      "n": 1200,
+      "rate": 0.0,
+      "excess": 0.0
+    }
+  },
+  "quantization": {
+    "noul_probability": {
+      "n": 6000,
+      "distinct": 42,
+      "min": 0.01,
+      "max": 0.96,
+      "min_gap": 0.009999999999999898,
+      "multiples_of_0.01": true,
+      "multiples_of_0.001": true,
+      "most_common": [
+        {
+          "value": 0.7,
+          "count": 612,
+          "share": 0.102
+        },
+        {
+          "value": 0.71,
+          "count": 547,
+          "share": 0.09116666666666666
+        },
+        {
+          "value": 0.69,
+          "count": 547,
+          "share": 0.09116666666666666
+        },
+        {
+          "value": 0.02,
+          "count": 435,
+          "share": 0.0725
+        },
+        {
+          "value": 0.72,
+          "count": 430,
+          "share": 0.07166666666666667
+        },
+        {
+          "value": 0.68,
+          "count": 385,
+          "share": 0.06416666666666666
+        },
+        {
+          "value": 0.95,
+          "count": 345,
+          "share": 0.0575
+        },
+        {
+          "value": 0.03,
+          "count": 338,
+          "share": 0.05633333333333333
+        }
+      ],
+      "values": [
+        0.01,
+        0.02,
+        0.03,
+        0.04,
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.63,
+        0.64,
+        0.65,
+        0.66,
+        0.67,
+        0.68,
+        0.69,
+        0.7,
+        0.71,
+        0.72,
+        0.73,
+        0.74,
+        0.75,
+        0.76,
+        0.77,
+        0.78,
+        0.79,
+        0.8,
+        0.81,
+        0.82,
+        0.83,
+        0.84,
+        0.85,
+        0.86,
+        0.87,
+        0.88,
+        0.89,
+        0.9,
+        0.91,
+        0.92,
+        0.93,
+        0.94,
+        0.95,
+        0.96
+      ],
+      "value_counts": {
+        "0.01": 120,
+        "0.02": 435,
+        "0.03": 338,
+        "0.04": 187,
+        "0.1": 2,
+        "0.11": 67,
+        "0.12": 50,
+        "0.13": 1,
+        "0.63": 1,
+        "0.64": 8,
+        "0.65": 21,
+        "0.66": 87,
+        "0.67": 216,
+        "0.68": 385,
+        "0.69": 547,
+        "0.7": 612,
+        "0.71": 547,
+        "0.72": 430,
+        "0.73": 263,
+        "0.74": 212,
+        "0.75": 126,
+        "0.76": 68,
+        "0.77": 47,
+        "0.78": 23,
+        "0.79": 4,
+        "0.8": 3,
+        "0.81": 3,
+        "0.82": 27,
+        "0.83": 60,
+        "0.84": 29,
+        "0.85": 1,
+        "0.86": 13,
+        "0.87": 83,
+        "0.88": 24,
+        "0.89": 17,
+        "0.9": 83,
+        "0.91": 60,
+        "0.92": 81,
+        "0.93": 142,
+        "0.94": 137,
+        "0.95": 345,
+        "0.96": 95
+      }
+    },
+    "choice_probability": {
+      "n": 26400,
+      "distinct": 56,
+      "min": 0.0,
+      "max": 1.0,
+      "min_gap": 0.009999999999999898,
+      "multiples_of_0.01": true,
+      "multiples_of_0.001": true,
+      "most_common": [
+        {
+          "value": 0.0,
+          "count": 16726,
+          "share": 0.633560606060606
+        },
+        {
+          "value": 1.0,
+          "count": 2326,
+          "share": 0.0881060606060606
+        },
+        {
+          "value": 0.21,
+          "count": 392,
+          "share": 0.014848484848484849
+        },
+        {
+          "value": 0.79,
+          "count": 392,
+          "share": 0.014848484848484849
+        },
+        {
+          "value": 0.8,
+          "count": 381,
+          "share": 0.014431818181818181
+        },
+        {
+          "value": 0.2,
+          "count": 381,
+          "share": 0.014431818181818181
+        },
+        {
+          "value": 0.22,
+          "count": 378,
+          "share": 0.014318181818181818
+        },
+        {
+          "value": 0.78,
+          "count": 378,
+          "share": 0.014318181818181818
+        }
+      ],
+      "values": [
+        0.0,
+        0.01,
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.14,
+        0.15,
+        0.16,
+        0.17,
+        0.18,
+        0.19,
+        0.2,
+        0.21,
+        0.22,
+        0.23,
+        0.24,
+        0.25,
+        0.26,
+        0.27,
+        0.28,
+        0.29,
+        0.3,
+        0.31,
+        0.32,
+        0.33,
+        0.34,
+        0.36,
+        0.64,
+        0.66,
+        0.67,
+        0.68,
+        0.69,
+        0.7,
+        0.71,
+        0.72,
+        0.73,
+        0.74,
+        0.75,
+        0.76,
+        0.77,
+        0.78,
+        0.79,
+        0.8,
+        0.81,
+        0.82,
+        0.83,
+        0.84,
+        0.85,
+        0.86,
+        0.87,
+        0.88,
+        0.89,
+        0.9,
+        0.99,
+        1.0
+      ],
+      "value_counts": {
+        "0.0": 16726,
+        "0.01": 74,
+        "0.1": 1,
+        "0.11": 2,
+        "0.12": 14,
+        "0.13": 42,
+        "0.14": 49,
+        "0.15": 81,
+        "0.16": 152,
+        "0.17": 183,
+        "0.18": 278,
+        "0.19": 343,
+        "0.2": 381,
+        "0.21": 392,
+        "0.22": 378,
+        "0.23": 316,
+        "0.24": 253,
+        "0.25": 231,
+        "0.26": 162,
+        "0.27": 127,
+        "0.28": 81,
+        "0.29": 61,
+        "0.3": 38,
+        "0.31": 17,
+        "0.32": 11,
+        "0.33": 4,
+        "0.34": 2,
+        "0.36": 1,
+        "0.64": 1,
+        "0.66": 2,
+        "0.67": 4,
+        "0.68": 11,
+        "0.69": 17,
+        "0.7": 38,
+        "0.71": 61,
+        "0.72": 81,
+        "0.73": 127,
+        "0.74": 162,
+        "0.75": 231,
+        "0.76": 253,
+        "0.77": 316,
+        "0.78": 378,
+        "0.79": 392,
+        "0.8": 381,
+        "0.81": 343,
+        "0.82": 278,
+        "0.83": 183,
+        "0.84": 152,
+        "0.85": 81,
+        "0.86": 49,
+        "0.87": 42,
+        "0.88": 14,
+        "0.89": 2,
+        "0.9": 1,
+        "0.99": 74,
+        "1.0": 2326
+      }
+    },
+    "choice_confidence": {
+      "n": 6000,
+      "distinct": 51,
+      "min": 0.27,
+      "max": 1.0,
+      "min_gap": 0.009999999999999898,
+      "multiples_of_0.01": true,
+      "multiples_of_0.001": true,
+      "most_common": [
+        {
+          "value": 1.0,
+          "count": 2301,
+          "share": 0.3835
+        },
+        {
+          "value": 0.59,
+          "count": 210,
+          "share": 0.035
+        },
+        {
+          "value": 0.58,
+          "count": 193,
+          "share": 0.03216666666666667
+        },
+        {
+          "value": 0.6,
+          "count": 190,
+          "share": 0.03166666666666667
+        },
+        {
+          "value": 0.56,
+          "count": 188,
+          "share": 0.03133333333333333
+        },
+        {
+          "value": 0.62,
+          "count": 187,
+          "share": 0.031166666666666665
+        },
+        {
+          "value": 0.57,
+          "count": 183,
+          "share": 0.0305
+        },
+        {
+          "value": 0.55,
+          "count": 181,
+          "share": 0.030166666666666668
+        }
+      ],
+      "values": [
+        0.27,
+        0.31,
+        0.33,
+        0.35,
+        0.36,
+        0.37,
+        0.38,
+        0.39,
+        0.4,
+        0.41,
+        0.42,
+        0.43,
+        0.44,
+        0.45,
+        0.46,
+        0.47,
+        0.48,
+        0.49,
+        0.5,
+        0.51,
+        0.52,
+        0.53,
+        0.54,
+        0.55,
+        0.56,
+        0.57,
+        0.58,
+        0.59,
+        0.6,
+        0.61,
+        0.62,
+        0.63,
+        0.64,
+        0.65,
+        0.66,
+        0.67,
+        0.68,
+        0.69,
+        0.7,
+        0.71,
+        0.72,
+        0.73,
+        0.74,
+        0.75,
+        0.76,
+        0.77,
+        0.78,
+        0.81,
+        0.98,
+        0.99,
+        1.0
+      ],
+      "value_counts": {
+        "0.27": 1,
+        "0.31": 1,
+        "0.33": 2,
+        "0.35": 4,
+        "0.36": 6,
+        "0.37": 9,
+        "0.38": 8,
+        "0.39": 9,
+        "0.4": 19,
+        "0.41": 33,
+        "0.42": 28,
+        "0.43": 31,
+        "0.44": 42,
+        "0.45": 54,
+        "0.46": 63,
+        "0.47": 71,
+        "0.48": 81,
+        "0.49": 92,
+        "0.5": 132,
+        "0.51": 100,
+        "0.52": 130,
+        "0.53": 148,
+        "0.54": 151,
+        "0.55": 181,
+        "0.56": 188,
+        "0.57": 183,
+        "0.58": 193,
+        "0.59": 210,
+        "0.6": 190,
+        "0.61": 173,
+        "0.62": 187,
+        "0.63": 140,
+        "0.64": 139,
+        "0.65": 115,
+        "0.66": 91,
+        "0.67": 98,
+        "0.68": 78,
+        "0.69": 45,
+        "0.7": 51,
+        "0.71": 26,
+        "0.72": 25,
+        "0.73": 33,
+        "0.74": 11,
+        "0.75": 14,
+        "0.76": 9,
+        "0.77": 3,
+        "0.78": 1,
+        "0.81": 1,
+        "0.98": 1,
+        "0.99": 98,
+        "1.0": 2301
+      }
+    },
+    "score_probability": {
+      "n": 9600,
+      "distinct": 75,
+      "min": 0.0,
+      "max": 1.0,
+      "min_gap": 0.009999999999999898,
+      "multiples_of_0.01": true,
+      "multiples_of_0.001": true,
+      "most_common": [
+        {
+          "value": 0.0,
+          "count": 5769,
+          "share": 0.6009375
+        },
+        {
+          "value": 1.0,
+          "count": 1126,
+          "share": 0.11729166666666667
+        },
+        {
+          "value": 0.01,
+          "count": 261,
+          "share": 0.0271875
+        },
+        {
+          "value": 0.02,
+          "count": 260,
+          "share": 0.027083333333333334
+        },
+        {
+          "value": 0.99,
+          "count": 200,
+          "share": 0.020833333333333332
+        },
+        {
+          "value": 0.98,
+          "count": 191,
+          "share": 0.019895833333333335
+        },
+        {
+          "value": 0.03,
+          "count": 171,
+          "share": 0.0178125
+        },
+        {
+          "value": 0.97,
+          "count": 151,
+          "share": 0.015729166666666666
+        }
+      ],
+      "values": [
+        0.0,
+        0.01,
+        0.02,
+        0.03,
+        0.04,
+        0.05,
+        0.06,
+        0.07,
+        0.08,
+        0.09,
+        0.1,
+        0.11,
+        0.12,
+        0.13,
+        0.14,
+        0.15,
+        0.16,
+        0.17,
+        0.18,
+        0.19,
+        0.2,
+        0.33,
+        0.34,
+        0.35,
+        0.36,
+        0.37,
+        0.38,
+        0.39,
+        0.4,
+        0.41,
+        0.42,
+        0.43,
+        0.44,
+        0.45,
+        0.46,
+        0.54,
+        0.55,
+        0.56,
+        0.57,
+        0.58,
+        0.59,
+        0.6,
+        0.61,
+        0.62,
+        0.63,
+        0.64,
+        0.65,
+        0.66,
+        0.67,
+        0.78,
+        0.79,
+        0.8,
+        0.8099999999999999,
+        0.81,
+        0.82,
+        0.83,
+        0.84,
+        0.85,
+        0.86,
+        0.87,
+        0.88,
+        0.89,
+        0.9,
+        0.91,
+        0.92,
+        0.9299999999999999,
+        0.93,
+        0.94,
+        0.9400000000000001,
+        0.95,
+        0.96,
+        0.97,
+        0.98,
+        0.99,
+        1.0
+      ],
+      "value_counts": {
+        "0.0": 5769,
+        "0.01": 261,
+        "0.02": 260,
+        "0.03": 171,
+        "0.04": 42,
+        "0.05": 88,
+        "0.06": 128,
+        "0.07": 81,
+        "0.08": 31,
+        "0.09": 6,
+        "0.1": 4,
+        "0.11": 13,
+        "0.12": 31,
+        "0.13": 42,
+        "0.14": 49,
+        "0.15": 47,
+        "0.16": 25,
+        "0.17": 21,
+        "0.18": 6,
+        "0.19": 4,
+        "0.2": 1,
+        "0.33": 1,
+        "0.34": 2,
+        "0.35": 2,
+        "0.36": 8,
+        "0.37": 10,
+        "0.38": 10,
+        "0.39": 17,
+        "0.4": 18,
+        "0.41": 11,
+        "0.42": 14,
+        "0.43": 14,
+        "0.44": 8,
+        "0.45": 3,
+        "0.46": 2,
+        "0.54": 2,
+        "0.55": 3,
+        "0.56": 8,
+        "0.57": 14,
+        "0.58": 14,
+        "0.59": 11,
+        "0.6": 18,
+        "0.61": 17,
+        "0.62": 10,
+        "0.63": 10,
+        "0.64": 8,
+        "0.65": 2,
+        "0.66": 2,
+        "0.67": 1,
+        "0.78": 4,
+        "0.79": 7,
+        "0.8": 5,
+        "0.8099999999999999": 1,
+        "0.81": 16,
+        "0.82": 16,
+        "0.83": 32,
+        "0.84": 28,
+        "0.85": 27,
+        "0.86": 35,
+        "0.87": 33,
+        "0.88": 22,
+        "0.89": 13,
+        "0.9": 4,
+        "0.91": 6,
+        "0.92": 40,
+        "0.9299999999999999": 6,
+        "0.93": 87,
+        "0.94": 98,
+        "0.9400000000000001": 15,
+        "0.95": 82,
+        "0.96": 35,
+        "0.97": 151,
+        "0.98": 191,
+        "0.99": 200,
+        "1.0": 1126
+      }
+    },
+    "score_confidence": {
+      "n": 2400,
+      "distinct": 42,
+      "min": 0.54,
+      "max": 1.0,
+      "min_gap": 0.009999999999999898,
+      "multiples_of_0.01": true,
+      "multiples_of_0.001": true,
+      "most_common": [
+        {
+          "value": 1.0,
+          "count": 1001,
+          "share": 0.4170833333333333
+        },
+        {
+          "value": 0.99,
+          "count": 323,
+          "share": 0.13458333333333333
+        },
+        {
+          "value": 0.98,
+          "count": 181,
+          "share": 0.07541666666666667
+        },
+        {
+          "value": 0.97,
+          "count": 163,
+          "share": 0.06791666666666667
+        },
+        {
+          "value": 0.94,
+          "count": 107,
+          "share": 0.044583333333333336
+        },
+        {
+          "value": 0.93,
+          "count": 97,
+          "share": 0.04041666666666666
+        },
+        {
+          "value": 0.95,
+          "count": 78,
+          "share": 0.0325
+        },
+        {
+          "value": 0.92,
+          "count": 37,
+          "share": 0.015416666666666667
+        }
+      ],
+      "values": [
+        0.54,
+        0.55,
+        0.56,
+        0.57,
+        0.58,
+        0.59,
+        0.6,
+        0.61,
+        0.62,
+        0.63,
+        0.64,
+        0.65,
+        0.66,
+        0.67,
+        0.73,
+        0.74,
+        0.75,
+        0.76,
+        0.77,
+        0.78,
+        0.79,
+        0.8,
+        0.81,
+        0.82,
+        0.83,
+        0.84,
+        0.85,
+        0.86,
+        0.87,
+        0.88,
+        0.89,
+        0.9,
+        0.91,
+        0.92,
+        0.93,
+        0.94,
+        0.95,
+        0.96,
+        0.97,
+        0.98,
+        0.99,
+        1.0
+      ],
+      "value_counts": {
+        "0.54": 2,
+        "0.55": 3,
+        "0.56": 8,
+        "0.57": 15,
+        "0.58": 13,
+        "0.59": 14,
+        "0.6": 17,
+        "0.61": 16,
+        "0.62": 9,
+        "0.63": 10,
+        "0.64": 8,
+        "0.65": 2,
+        "0.66": 2,
+        "0.67": 1,
+        "0.73": 1,
+        "0.74": 2,
+        "0.75": 3,
+        "0.76": 3,
+        "0.77": 7,
+        "0.78": 11,
+        "0.79": 14,
+        "0.8": 22,
+        "0.81": 23,
+        "0.82": 15,
+        "0.83": 12,
+        "0.84": 15,
+        "0.85": 26,
+        "0.86": 24,
+        "0.87": 30,
+        "0.88": 21,
+        "0.89": 10,
+        "0.9": 5,
+        "0.91": 14,
+        "0.92": 37,
+        "0.93": 97,
+        "0.94": 107,
+        "0.95": 78,
+        "0.96": 35,
+        "0.97": 163,
+        "0.98": 181,
+        "0.99": 323,
+        "1.0": 1001
+      }
+    },
+    "score_value": {
+      "n": 2400,
+      "distinct": 66,
+      "min": 0.0,
+      "max": 3.0,
+      "min_gap": 0.009999999999999787,
+      "multiples_of_0.01": true,
+      "multiples_of_0.001": true,
+      "most_common": [
+        {
+          "value": 2.0,
+          "count": 481,
+          "share": 0.20041666666666666
+        },
+        {
+          "value": 0.0,
+          "count": 360,
+          "share": 0.15
+        },
+        {
+          "value": 3.0,
+          "count": 145,
+          "share": 0.06041666666666667
+        },
+        {
+          "value": 1.0,
+          "count": 120,
+          "share": 0.05
+        },
+        {
+          "value": 2.01,
+          "count": 119,
+          "share": 0.04958333333333333
+        },
+        {
+          "value": 0.98,
+          "count": 96,
+          "share": 0.04
+        },
+        {
+          "value": 2.99,
+          "count": 95,
+          "share": 0.03958333333333333
+        },
+        {
+          "value": 2.97,
+          "count": 76,
+          "share": 0.03166666666666667
+        }
+      ],
+      "values": [
+        0.0,
+        0.02,
+        0.03,
+        0.04,
+        0.05,
+        0.06,
+        0.07,
+        0.08,
+        0.1,
+        0.9,
+        0.91,
+        0.92,
+        0.93,
+        0.94,
+        0.95,
+        0.96,
+        0.97,
+        0.98,
+        0.99,
+        1.0,
+        1.1,
+        1.11,
+        1.12,
+        1.13,
+        1.14,
+        1.15,
+        1.16,
+        1.17,
+        2.0,
+        2.01,
+        2.33,
+        2.34,
+        2.35,
+        2.36,
+        2.37,
+        2.38,
+        2.39,
+        2.4,
+        2.41,
+        2.42,
+        2.43,
+        2.44,
+        2.45,
+        2.46,
+        2.73,
+        2.74,
+        2.75,
+        2.76,
+        2.77,
+        2.78,
+        2.79,
+        2.8,
+        2.81,
+        2.82,
+        2.83,
+        2.84,
+        2.85,
+        2.92,
+        2.93,
+        2.94,
+        2.95,
+        2.96,
+        2.97,
+        2.98,
+        2.99,
+        3.0
+      ],
+      "value_counts": {
+        "0.0": 360,
+        "0.02": 43,
+        "0.03": 70,
+        "0.04": 10,
+        "0.05": 26,
+        "0.06": 58,
+        "0.07": 29,
+        "0.08": 3,
+        "0.1": 1,
+        "0.9": 1,
+        "0.91": 3,
+        "0.92": 19,
+        "0.93": 29,
+        "0.94": 48,
+        "0.95": 16,
+        "0.96": 3,
+        "0.97": 17,
+        "0.98": 96,
+        "0.99": 8,
+        "1.0": 120,
+        "1.1": 1,
+        "1.11": 14,
+        "1.12": 22,
+        "1.13": 32,
+        "1.14": 23,
+        "1.15": 17,
+        "1.16": 7,
+        "1.17": 4,
+        "2.0": 481,
+        "2.01": 119,
+        "2.33": 2,
+        "2.34": 1,
+        "2.35": 3,
+        "2.36": 7,
+        "2.37": 10,
+        "2.38": 10,
+        "2.39": 17,
+        "2.4": 18,
+        "2.41": 11,
+        "2.42": 14,
+        "2.43": 14,
+        "2.44": 8,
+        "2.45": 3,
+        "2.46": 2,
+        "2.73": 1,
+        "2.74": 2,
+        "2.75": 3,
+        "2.76": 3,
+        "2.77": 7,
+        "2.78": 11,
+        "2.79": 14,
+        "2.8": 22,
+        "2.81": 23,
+        "2.82": 15,
+        "2.83": 7,
+        "2.84": 7,
+        "2.85": 5,
+        "2.92": 4,
+        "2.93": 14,
+        "2.94": 32,
+        "2.95": 50,
+        "2.96": 25,
+        "2.97": 76,
+        "2.98": 39,
+        "2.99": 95,
+        "3.0": 145
+      }
+    },
+    "confidence_vs_max_probability": {
+      "n": 8400,
+      "mean_signed_gap": -0.09209642857142916,
+      "mean_absolute_gap": 0.09212023809523867,
+      "max_absolute_gap": 0.37,
+      "fraction_differing": 0.4713095238095238,
+      "fraction_above_max_probability": 0.0011904761904761906
+    }
+  },
+  "agreement_by_margin": {
+    "bands": [
+      {
+        "margin_band": "0.2-0.4",
+        "cells": 13,
+        "observations": 390,
+        "agreement": 1.0,
+        "mean_sigma": 0.015923480583589365
+      },
+      {
+        "margin_band": "0.4-0.6",
+        "cells": 17,
+        "observations": 510,
+        "agreement": 1.0,
+        "mean_sigma": 0.017085410975752502
+      },
+      {
+        "margin_band": "0.6-0.8",
+        "cells": 23,
+        "observations": 690,
+        "agreement": 1.0,
+        "mean_sigma": 0.005804159308901873
+      },
+      {
+        "margin_band": "0.8-1.0",
+        "cells": 67,
+        "observations": 2010,
+        "agreement": 1.0,
+        "mean_sigma": 0.0027055039818489274
+      }
+    ],
+    "agreement_spread_across_bands": 0.0,
+    "note": "Decidedness is the returned max probability for choice and score, and |p - 0.5| * 2 for noul, which carries no confidence field."
+  },
+  "accuracy": {
+    "choice": {
+      "accuracy": 0.72,
+      "n": 50,
+      "wilson95": [
+        0.5833487630404345,
+        0.8252582933408877
+      ],
+      "random_baseline": 0.35,
+      "majority_baseline": 0.32
+    },
+    "noul": {
+      "accuracy": 0.72,
+      "n": 50,
+      "wilson95": [
+        0.5833487630404345,
+        0.8252582933408877
+      ],
+      "random_baseline": 0.5,
+      "majority_baseline": 0.52
+    },
+    "score": {
+      "accuracy": 0.95,
+      "n": 20,
+      "wilson95": [
+        0.763868806553258,
+        0.9911185511992047
+      ],
+      "random_baseline": 0.25,
+      "majority_baseline": 0.3
+    },
+    "cheap_heuristic": {
+      "accuracy": 0.7875,
+      "n": 80,
+      "description": "keyword argmax on the semantic control, clause density on 3SAT"
+    }
+  },
+  "sizes": {
+    "states": 50,
+    "repetitions": 30,
+    "conditions": 4,
+    "calls_planned": 6000,
+    "scale": 1.0,
+    "plan_states": 50,
+    "plan_repetitions": 30
+  },
+  "run": {
+    "total_calls": 6000,
+    "failed_calls": 0,
+    "total_retries": 0,
+    "input_tokens": 6716400,
+    "output_tokens": 481361,
+    "cost_usd": 0.2820888,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "elapsed_s": 48.335543155670166,
+    "sustained_req_per_s": 124.13225565038778,
+    "peak_concurrency": 24,
+    "final_concurrency": 24,
+    "throttle_events": 0,
+    "status_counts": {
+      "200": 6000
+    },
+    "log_path": "/home/wkelly/src/typesafe/jev/eval/runs/full-20260919/e1.jsonl",
+    "log_records": 6000
+  }
+}

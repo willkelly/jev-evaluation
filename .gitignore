@@ -1,5 +1,17 @@
 .venv/
 __pycache__/
 *.pyc
-runs/
 .env
+
+# Raw call logs are 1.3 GB and are not distributable at that size. Everything
+# needed to read the results -- the report, the figures and the per-experiment
+# result JSON -- is kept. Re-running the harness regenerates the logs.
+runs/*
+!runs/full-20260919/
+runs/full-20260919/*
+!runs/full-20260919/report.md
+!runs/full-20260919/report.html
+!runs/full-20260919/run_meta.json
+!runs/full-20260919/e2_conditions.json
+!runs/full-20260919/*_result.json
+!runs/full-20260919/plots/

@@ -1,0 +1,5650 @@
+{
+  "experiment": "E2",
+  "question": "Do the returned probabilities mean anything on a distribution the vendor did not calibrate against?",
+  "headline": {
+    "metric": "matched_accuracy",
+    "value": 0.5,
+    "baseline": 0.5,
+    "baseline_name": "density-matched control at n=20, balanced by construction (majority class and clause-density heuristic both exactly 0.5)",
+    "n": 2800
+  },
+  "by_difficulty": [
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2910200000000004,
+        "brier": 0.08537899999999995,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.70898,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.29096000000000033,
+        "brier": 0.08536639999999988,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7090400000000003,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.28628000000000076,
+        "brier": 0.0827351999999999,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7137200000000008,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2993200000000006,
+        "brier": 0.09025040000000009,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7006799999999999,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 3.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.28356000000000015,
+        "brier": 0.08107359999999995,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7164400000000007,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 3.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.28428000000000075,
+        "brier": 0.0914655999999999,
+        "auroc": 0.3903030303030303,
+        "unmatched_accuracy": 0.99,
+        "mean_predicted": 0.7057199999999998,
+        "true_fraction": 0.99,
+        "majority_baseline": 0.99,
+        "density_heuristic_baseline": 0.99,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 3.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2717000000000004,
+        "brier": 0.09646380000000006,
+        "auroc": 0.357966164714631,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.978,
+        "mean_predicted": 0.7063,
+        "true_fraction": 0.978,
+        "majority_baseline": 0.978,
+        "density_heuristic_baseline": 0.978,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 3.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2378000000000009,
+        "brier": 0.1064136000000001,
+        "auroc": 0.48693605972086984,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.948,
+        "mean_predicted": 0.7102,
+        "true_fraction": 0.948,
+        "majority_baseline": 0.948,
+        "density_heuristic_baseline": 0.948,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 4.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.12862000000000096,
+        "brier": 0.15140580000000037,
+        "auroc": 0.5085565476190477,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.84,
+        "mean_predicted": 0.7113800000000001,
+        "true_fraction": 0.84,
+        "majority_baseline": 0.84,
+        "density_heuristic_baseline": 0.84,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 4.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.005780000000000701,
+        "brier": 0.2071302000000011,
+        "auroc": 0.508135980187292,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.708,
+        "mean_predicted": 0.7022200000000003,
+        "true_fraction": 0.708,
+        "majority_baseline": 0.708,
+        "density_heuristic_baseline": 0.708,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 4.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.1814799999999993,
+        "brier": 0.2824560000000006,
+        "auroc": 0.48993477282950965,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.532,
+        "mean_predicted": 0.71272,
+        "true_fraction": 0.532,
+        "majority_baseline": 0.532,
+        "density_heuristic_baseline": 0.468,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 4.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.34297999999999923,
+        "brier": 0.3499654000000011,
+        "auroc": 0.4791475432549923,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.362,
+        "mean_predicted": 0.7049800000000006,
+        "true_fraction": 0.362,
+        "majority_baseline": 0.638,
+        "density_heuristic_baseline": 0.638,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 5.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.43569999999999937,
+        "brier": 0.3888662000000011,
+        "auroc": 0.5600251101058211,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.278,
+        "mean_predicted": 0.7137000000000004,
+        "true_fraction": 0.278,
+        "majority_baseline": 0.722,
+        "density_heuristic_baseline": 0.722,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 5.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.5171199999999997,
+        "brier": 0.41283960000000114,
+        "auroc": 0.46729843310790126,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.174,
+        "mean_predicted": 0.6911199999999993,
+        "true_fraction": 0.174,
+        "majority_baseline": 0.826,
+        "density_heuristic_baseline": 0.826,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 5.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6151399999999996,
+        "brier": 0.4577710000000012,
+        "auroc": 0.49056027683069564,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.086,
+        "mean_predicted": 0.70114,
+        "true_fraction": 0.086,
+        "majority_baseline": 0.914,
+        "density_heuristic_baseline": 0.914,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 5.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6217199999999996,
+        "brier": 0.45382640000000124,
+        "auroc": 0.5121527777777778,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.072,
+        "mean_predicted": 0.69372,
+        "true_fraction": 0.072,
+        "majority_baseline": 0.928,
+        "density_heuristic_baseline": 0.928,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 6.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6479999999999995,
+        "brier": 0.46743840000000153,
+        "auroc": 0.5776842105263158,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.05,
+        "mean_predicted": 0.6980000000000003,
+        "true_fraction": 0.05,
+        "majority_baseline": 0.95,
+        "density_heuristic_baseline": 0.95,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 6.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6690599999999995,
+        "brier": 0.4773518000000017,
+        "auroc": 0.5224742268041237,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.03,
+        "mean_predicted": 0.6990600000000002,
+        "true_fraction": 0.03,
+        "majority_baseline": 0.97,
+        "density_heuristic_baseline": 0.97,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 6.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6865799999999995,
+        "brier": 0.48388660000000144,
+        "auroc": 0.5138326585695007,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.012,
+        "mean_predicted": 0.6985800000000002,
+        "true_fraction": 0.012,
+        "majority_baseline": 0.988,
+        "density_heuristic_baseline": 0.988,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 6.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6956599999999994,
+        "brier": 0.4885326000000013,
+        "auroc": 0.570281124497992,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.004,
+        "mean_predicted": 0.6996600000000004,
+        "true_fraction": 0.004,
+        "majority_baseline": 0.996,
+        "density_heuristic_baseline": 0.996,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 7.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6986799999999997,
+        "brier": 0.49275520000000145,
+        "auroc": 0.5542168674698795,
+        "unmatched_accuracy": 0.004,
+        "mean_predicted": 0.7026800000000001,
+        "true_fraction": 0.004,
+        "majority_baseline": 0.996,
+        "density_heuristic_baseline": 0.996,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 7.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6946199999999996,
+        "brier": 0.4871490000000017,
+        "auroc": 0.5281124497991968,
+        "unmatched_accuracy": 0.004,
+        "mean_predicted": 0.6986199999999997,
+        "true_fraction": 0.004,
+        "majority_baseline": 0.996,
+        "density_heuristic_baseline": 0.996,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 7.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7111599999999991,
+        "brier": 0.5063168000000013,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7111600000000002,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 7.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6908599999999996,
+        "brier": 0.47795380000000176,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.6908599999999995,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 20,
+        "ratio": 8.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7041799999999995,
+        "brier": 0.4965410000000019,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7041799999999999,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7111600000000002,
+        "true_crossover_ratio": 4.547058823529412,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2682799999999985,
+        "brier": 0.07259959999999983,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7317200000000015,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2796799999999999,
+        "brier": 0.07900519999999987,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.720320000000001,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2775999999999998,
+        "brier": 0.07784639999999991,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7224000000000003,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2832999999999999,
+        "brier": 0.08306979999999996,
+        "auroc": 0.1713426853707415,
+        "unmatched_accuracy": 0.998,
+        "mean_predicted": 0.7147000000000001,
+        "true_fraction": 0.998,
+        "majority_baseline": 0.998,
+        "density_heuristic_baseline": 0.998,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 3.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2674999999999996,
+        "brier": 0.07596259999999988,
+        "auroc": 0.8599397590361446,
+        "unmatched_accuracy": 0.996,
+        "mean_predicted": 0.7285000000000007,
+        "true_fraction": 0.996,
+        "majority_baseline": 0.996,
+        "density_heuristic_baseline": 0.996,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 3.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2740199999999994,
+        "brier": 0.08603619999999992,
+        "auroc": 0.26121212121212123,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.99,
+        "mean_predicted": 0.7159800000000011,
+        "true_fraction": 0.99,
+        "majority_baseline": 0.99,
+        "density_heuristic_baseline": 0.99,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 3.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.23871999999999993,
+        "brier": 0.09957240000000002,
+        "auroc": 0.5213959680486877,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.956,
+        "mean_predicted": 0.7172800000000014,
+        "true_fraction": 0.956,
+        "majority_baseline": 0.956,
+        "density_heuristic_baseline": 0.956,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 3.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.1874800000000003,
+        "brier": 0.12500560000000008,
+        "auroc": 0.4556314765373999,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.902,
+        "mean_predicted": 0.7145199999999999,
+        "true_fraction": 0.902,
+        "majority_baseline": 0.902,
+        "density_heuristic_baseline": 0.902,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 4.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.15733999999999954,
+        "brier": 0.12979220000000014,
+        "auroc": 0.48168645989469233,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.882,
+        "mean_predicted": 0.7246600000000007,
+        "true_fraction": 0.882,
+        "majority_baseline": 0.882,
+        "density_heuristic_baseline": 0.882,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 4.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.07036000000000076,
+        "brier": 0.1743608000000009,
+        "auroc": 0.49390026396518516,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.786,
+        "mean_predicted": 0.7156400000000007,
+        "true_fraction": 0.786,
+        "majority_baseline": 0.786,
+        "density_heuristic_baseline": 0.786,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 4.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.06686000000000043,
+        "brier": 0.22692100000000054,
+        "auroc": 0.4840948733164302,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.666,
+        "mean_predicted": 0.7182200000000011,
+        "true_fraction": 0.666,
+        "majority_baseline": 0.666,
+        "density_heuristic_baseline": 0.334,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 4.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.1377799999999994,
+        "brier": 0.2650042000000008,
+        "auroc": 0.49506879238393325,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.568,
+        "mean_predicted": 0.7057800000000006,
+        "true_fraction": 0.568,
+        "majority_baseline": 0.568,
+        "density_heuristic_baseline": 0.432,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 5.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.18400000000000027,
+        "brier": 0.2810496000000007,
+        "auroc": 0.555858288727074,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.534,
+        "mean_predicted": 0.7180000000000007,
+        "true_fraction": 0.534,
+        "majority_baseline": 0.534,
+        "density_heuristic_baseline": 0.466,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 5.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2864599999999999,
+        "brier": 0.32442900000000097,
+        "auroc": 0.4989566772655008,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.408,
+        "mean_predicted": 0.6944600000000003,
+        "true_fraction": 0.408,
+        "majority_baseline": 0.592,
+        "density_heuristic_baseline": 0.592,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 5.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.40117999999999976,
+        "brier": 0.3735118000000011,
+        "auroc": 0.5121112806313688,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.306,
+        "mean_predicted": 0.7071800000000007,
+        "true_fraction": 0.306,
+        "majority_baseline": 0.694,
+        "density_heuristic_baseline": 0.694,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 5.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.4583599999999994,
+        "brier": 0.3928552000000005,
+        "auroc": 0.5124561403508772,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.24,
+        "mean_predicted": 0.69836,
+        "true_fraction": 0.24,
+        "majority_baseline": 0.76,
+        "density_heuristic_baseline": 0.76,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 6.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.5408799999999998,
+        "brier": 0.43809960000000076,
+        "auroc": 0.5058610988526037,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.176,
+        "mean_predicted": 0.7168800000000003,
+        "true_fraction": 0.176,
+        "majority_baseline": 0.824,
+        "density_heuristic_baseline": 0.824,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 6.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.5282399999999998,
+        "brier": 0.418142400000001,
+        "auroc": 0.48935309583658376,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.166,
+        "mean_predicted": 0.6942399999999999,
+        "true_fraction": 0.166,
+        "majority_baseline": 0.834,
+        "density_heuristic_baseline": 0.834,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 6.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.5860599999999996,
+        "brier": 0.45066420000000057,
+        "auroc": 0.5338324806751559,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.122,
+        "mean_predicted": 0.7080600000000004,
+        "true_fraction": 0.122,
+        "majority_baseline": 0.878,
+        "density_heuristic_baseline": 0.878,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 6.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.5991399999999996,
+        "brier": 0.44800180000000117,
+        "auroc": 0.5059052445812028,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.098,
+        "mean_predicted": 0.6971400000000004,
+        "true_fraction": 0.098,
+        "majority_baseline": 0.902,
+        "density_heuristic_baseline": 0.902,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 7.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.655419999999999,
+        "brier": 0.4809726000000014,
+        "auroc": 0.5514446793516561,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.054,
+        "mean_predicted": 0.7094200000000002,
+        "true_fraction": 0.054,
+        "majority_baseline": 0.946,
+        "density_heuristic_baseline": 0.946,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 7.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6494399999999996,
+        "brier": 0.46600520000000134,
+        "auroc": 0.5293045301248747,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.046,
+        "mean_predicted": 0.6954400000000004,
+        "true_fraction": 0.046,
+        "majority_baseline": 0.954,
+        "density_heuristic_baseline": 0.954,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 7.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6667599999999996,
+        "brier": 0.4810372000000015,
+        "auroc": 0.3545412632549562,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.036,
+        "mean_predicted": 0.7027599999999998,
+        "true_fraction": 0.036,
+        "majority_baseline": 0.964,
+        "density_heuristic_baseline": 0.964,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 7.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6739399999999998,
+        "brier": 0.4710498000000013,
+        "auroc": 0.3159298780487805,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.016,
+        "mean_predicted": 0.6899400000000003,
+        "true_fraction": 0.016,
+        "majority_baseline": 0.984,
+        "density_heuristic_baseline": 0.984,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 10,
+        "ratio": 8.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6910599999999991,
+        "brier": 0.5003458000000013,
+        "auroc": 0.3781372002230898,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.022,
+        "mean_predicted": 0.7130599999999994,
+        "true_fraction": 0.022,
+        "majority_baseline": 0.978,
+        "density_heuristic_baseline": 0.978,
+        "curve_max_abs_error": 0.6910599999999993,
+        "true_crossover_ratio": 5.067460317460317,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2874400000000006,
+        "brier": 0.08341559999999988,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.71256,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.30088000000000026,
+        "brier": 0.09135280000000004,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.6991200000000004,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.2824600000000008,
+        "brier": 0.08055339999999996,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7175400000000002,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.29690000000000083,
+        "brier": 0.08888740000000009,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7030999999999995,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 3.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.27336000000000005,
+        "brier": 0.07549959999999992,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7266400000000003,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 3.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.29572000000000065,
+        "brier": 0.08817160000000002,
+        "unmatched_accuracy": 1.0,
+        "mean_predicted": 0.7042800000000007,
+        "true_fraction": 1.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 3.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.28298000000000045,
+        "brier": 0.08280179999999995,
+        "auroc": 0.5801603206412825,
+        "unmatched_accuracy": 0.998,
+        "mean_predicted": 0.7150200000000007,
+        "true_fraction": 0.998,
+        "majority_baseline": 0.998,
+        "density_heuristic_baseline": 0.998,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 3.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.27366000000000074,
+        "brier": 0.09707979999999998,
+        "auroc": 0.5178471834913553,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.978,
+        "mean_predicted": 0.7043400000000001,
+        "true_fraction": 0.978,
+        "majority_baseline": 0.978,
+        "density_heuristic_baseline": 0.978,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 4.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.1330400000000005,
+        "brier": 0.1472860000000004,
+        "auroc": 0.49056603773584906,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.848,
+        "mean_predicted": 0.7149599999999995,
+        "true_fraction": 0.848,
+        "majority_baseline": 0.848,
+        "density_heuristic_baseline": 0.848,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [
+        "density-heuristic signature"
+      ],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 4.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.06851999999999883,
+        "brier": 0.23551320000000067,
+        "auroc": 0.5136303018756819,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.638,
+        "mean_predicted": 0.7065199999999998,
+        "true_fraction": 0.638,
+        "majority_baseline": 0.638,
+        "density_heuristic_baseline": 0.638,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: predicted probability non-monotone in ratio.",
+      "reasons": [
+        "Doesn't work: predicted probability non-monotone in ratio."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 4.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.39173999999999937,
+        "brier": 0.37035500000000077,
+        "auroc": 0.5163134694479795,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.318,
+        "mean_predicted": 0.7097400000000003,
+        "true_fraction": 0.318,
+        "majority_baseline": 0.682,
+        "density_heuristic_baseline": 0.682,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 4.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.5843599999999991,
+        "brier": 0.44850800000000124,
+        "auroc": 0.5427573845177192,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.122,
+        "mean_predicted": 0.7063600000000001,
+        "true_fraction": 0.122,
+        "majority_baseline": 0.878,
+        "density_heuristic_baseline": 0.878,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 5.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6639399999999993,
+        "brier": 0.4918842000000009,
+        "auroc": 0.569023569023569,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.054,
+        "mean_predicted": 0.71794,
+        "true_fraction": 0.054,
+        "majority_baseline": 0.946,
+        "density_heuristic_baseline": 0.946,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 5.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6818399999999998,
+        "brier": 0.4818568000000013,
+        "auroc": 0.3306656504065041,
+        "matched_accuracy": 0.5,
+        "unmatched_accuracy": 0.016,
+        "mean_predicted": 0.6978400000000003,
+        "true_fraction": 0.016,
+        "majority_baseline": 0.984,
+        "density_heuristic_baseline": 0.984,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true,
+        "matched_baseline": 0.5,
+        "matched_n": 200,
+        "accuracy": 0.5,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.5
+      },
+      "metric": "matched_accuracy",
+      "value": 0.5,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 5.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6951999999999996,
+        "brier": 0.4920656000000008,
+        "auroc": 0.3815524193548387,
+        "unmatched_accuracy": 0.008,
+        "mean_predicted": 0.7031999999999993,
+        "true_fraction": 0.008,
+        "majority_baseline": 0.992,
+        "density_heuristic_baseline": 0.992,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 5.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.6959599999999995,
+        "brier": 0.4870612000000019,
+        "auroc": 0.5180360721442886,
+        "unmatched_accuracy": 0.002,
+        "mean_predicted": 0.6979600000000004,
+        "true_fraction": 0.002,
+        "majority_baseline": 0.998,
+        "density_heuristic_baseline": 0.998,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30."
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 6.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7187999999999993,
+        "brier": 0.5172956000000009,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7187999999999999,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 6.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7091999999999996,
+        "brier": 0.5037160000000013,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7092000000000003,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 6.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7166999999999992,
+        "brier": 0.5143630000000016,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7167000000000004,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 6.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7052399999999993,
+        "brier": 0.4980116000000013,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7052400000000002,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 7.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7175200000000002,
+        "brier": 0.5154796000000014,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7175200000000009,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 7.25
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7048999999999994,
+        "brier": 0.49764820000000115,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7048999999999997,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 7.5
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7151199999999994,
+        "brier": 0.5121444000000008,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7151200000000001,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 7.75
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7004399999999993,
+        "brier": 0.49139000000000127,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.7004400000000003,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "n": 50,
+        "ratio": 8.0
+      },
+      "tier": "Doesn't work",
+      "n": 500,
+      "metrics": {
+        "ece": 0.7151999999999996,
+        "brier": 0.5121064000000013,
+        "unmatched_accuracy": 0.0,
+        "mean_predicted": 0.715200000000001,
+        "true_fraction": 0.0,
+        "majority_baseline": 1.0,
+        "density_heuristic_baseline": 1.0,
+        "curve_max_abs_error": 0.7187999999999999,
+        "true_crossover_ratio": 4.3578125,
+        "prob_monotone": false,
+        "reliability_monotone": true
+      },
+      "metric": "matched_accuracy",
+      "value": null,
+      "baseline": 0.5,
+      "baseline_name": "balanced density-matched set",
+      "baseline_source": "assumed",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Doesn't work: ECE >0.30.",
+      "reasons": [
+        "Doesn't work: ECE >0.30.",
+        "undefined on this condition and treated as unmeasured: auroc (a metric that came back NaN is not a metric that failed its bar)"
+      ],
+      "signatures": [],
+      "missing": [
+        "accuracy",
+        "matched_accuracy"
+      ],
+      "unevaluated": [],
+      "undefined": [
+        "auroc"
+      ]
+    },
+    {
+      "difficulty": {
+        "set": "semantic control",
+        "level": "hard"
+      },
+      "tier": "Human",
+      "n": 500,
+      "metrics": {
+        "ece": 0.0746199999999998,
+        "reliability_monotone": true,
+        "ece_baseline": 0.0,
+        "brier": 0.034686199999999945,
+        "auroc": 0.994008,
+        "accuracy": 0.96,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.68
+      },
+      "metric": "ece",
+      "value": 0.0746199999999998,
+      "baseline": 0.0,
+      "baseline_name": "base-rate predictor ECE",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "config.ECE_TIERS",
+      "reasons": [
+        "config.ECE_TIERS"
+      ],
+      "signatures": [],
+      "missing": [],
+      "unevaluated": [],
+      "undefined": []
+    }
+  ],
+  "boundary_crossings": {
+    "n=20 Perfect->Superhuman": {
+      "n": 20,
+      "ratio": 2.0
+    },
+    "n=20 Superhuman->Human": {
+      "n": 20,
+      "ratio": 2.0
+    },
+    "n=20 Human->Bad": {
+      "n": 20,
+      "ratio": 2.0
+    },
+    "n=20 Bad->Doesn't work": {
+      "n": 20,
+      "ratio": 2.0
+    },
+    "n=10 Perfect->Superhuman": {
+      "n": 10,
+      "ratio": 2.0
+    },
+    "n=10 Superhuman->Human": {
+      "n": 10,
+      "ratio": 2.0
+    },
+    "n=10 Human->Bad": {
+      "n": 10,
+      "ratio": 2.0
+    },
+    "n=10 Bad->Doesn't work": {
+      "n": 10,
+      "ratio": 2.0
+    },
+    "n=50 Perfect->Superhuman": {
+      "n": 50,
+      "ratio": 2.0
+    },
+    "n=50 Superhuman->Human": {
+      "n": 50,
+      "ratio": 2.0
+    },
+    "n=50 Human->Bad": {
+      "n": 50,
+      "ratio": 2.0
+    },
+    "n=50 Bad->Doesn't work": {
+      "n": 50,
+      "ratio": 2.0
+    }
+  },
+  "boundary_crossings_detail": {
+    "n=20 Perfect->Superhuman": {
+      "boundary": "Perfect->Superhuman",
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=20 Superhuman->Human": {
+      "boundary": "Superhuman->Human",
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=20 Human->Bad": {
+      "boundary": "Human->Bad",
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=20 Bad->Doesn't work": {
+      "boundary": "Bad->Doesn't work",
+      "difficulty": {
+        "n": 20,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=10 Perfect->Superhuman": {
+      "boundary": "Perfect->Superhuman",
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=10 Superhuman->Human": {
+      "boundary": "Superhuman->Human",
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=10 Human->Bad": {
+      "boundary": "Human->Bad",
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=10 Bad->Doesn't work": {
+      "boundary": "Bad->Doesn't work",
+      "difficulty": {
+        "n": 10,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=50 Perfect->Superhuman": {
+      "boundary": "Perfect->Superhuman",
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=50 Superhuman->Human": {
+      "boundary": "Superhuman->Human",
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=50 Human->Bad": {
+      "boundary": "Human->Bad",
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    },
+    "n=50 Bad->Doesn't work": {
+      "boundary": "Bad->Doesn't work",
+      "difficulty": {
+        "n": 50,
+        "ratio": 2.0
+      },
+      "from_tier": null,
+      "to_tier": "Doesn't work",
+      "last_above": null,
+      "recovered_at": null
+    }
+  },
+  "plots": [
+    "plots/e2_curve_n20.png",
+    "plots/e2_curve_n10.png",
+    "plots/e2_curve_n50.png",
+    "plots/e2_reliability_sweep_n20.png",
+    "plots/e2_reliability_matched_n20.png",
+    "plots/e2_reliability_sweep_n10.png",
+    "plots/e2_reliability_matched_n10.png",
+    "plots/e2_reliability_sweep_n50.png",
+    "plots/e2_reliability_matched_n50.png",
+    "plots/e2_reliability_transition_n20.png",
+    "plots/e2_reliability_control.png",
+    "plots/e2_ece_by_ratio.png",
+    "plots/e2_matched_accuracy.png",
+    "plots/e2_accuracy_n20.png"
+  ],
+  "predictions": [
+    {
+      "id": "P4",
+      "claim": "Asymmetric failure: better at low ratio (SAT) than high (UNSAT)",
+      "falsified_if": "Symmetric, or better at high",
+      "verdict": "right",
+      "outcome": "accuracy 1.000 on SAT instances against 0.000 on UNSAT, a gap of +1.000 with non-overlapping 95% intervals -- but the model answered SAT on 100.0% of instances, so the asymmetry is a constant answer rather than a shallower witness",
+      "evidence": {
+        "n_sat": 5536,
+        "n_unsat": 6964,
+        "ratio_le_3": {
+          "n": 2500,
+          "accuracy": 1.0,
+          "mean_predicted": 0.7097720000000203,
+          "true_fraction": 1.0
+        },
+        "ratio_ge_7": {
+          "n": 2500,
+          "accuracy": 0.0016,
+          "mean_predicted": 0.7015000000000224,
+          "true_fraction": 0.0016
+        },
+        "accuracy_on_sat_instances": 1.0,
+        "accuracy_on_unsat_instances": 0.0,
+        "difference": 1.0,
+        "predicted_sat_rate": 1.0
+      }
+    },
+    {
+      "id": "P5",
+      "claim": "Density-matched accuracy 0.55-0.65 -- mostly reading clause density",
+      "falsified_if": "Matched accuracy >0.75",
+      "verdict": "wrong",
+      "outcome": "matched accuracy 0.500 (95% CI 0.481-0.519, n=2800) lies below the predicted 0.55-0.65 band",
+      "evidence": {
+        "matched_accuracy": 0.5,
+        "matched_baseline": 0.5,
+        "n": 2800,
+        "wilson_95": [
+          0.4814927722768871,
+          0.5185072277231129
+        ],
+        "by_instance_size": {
+          "n=20": {
+            "accuracy": 0.5,
+            "n": 2800
+          },
+          "n=10": {
+            "accuracy": 0.5,
+            "n": 4000
+          },
+          "n=50": {
+            "accuracy": 0.5,
+            "n": 1400
+          }
+        }
+      }
+    },
+    {
+      "id": "P6",
+      "claim": "Predicted-probability curve flatter than true curve at 4.26",
+      "falsified_if": "Sharp crossover within 0.5",
+      "verdict": "right",
+      "outcome": "the predicted curve changes by +0.001 per unit ratio against the solver curve's -0.567, 0.00 times as steep, and never crosses 0.5. Across the slope window the predicted curve RISES with ratio rather than falling, so it is not merely flatter than the true curve; it runs the wrong way, and the sweep-wide monotonicity test agrees, and every row of this sweep is tiered \"Doesn't work\" for it.",
+      "evidence": {
+        "predicted_slope_at_transition": 0.0010057142857146444,
+        "true_slope_at_transition": -0.5668571428571428,
+        "crossover_ratio": null,
+        "true_crossover_ratio": 4.547058823529412,
+        "slope_window": [
+          3.51,
+          5.01
+        ],
+        "flatness_threshold": 0.8,
+        "prob_monotone": false,
+        "prob_monotone_tested": true,
+        "flatness_ratio": 0.0017741935483877296,
+        "crossover_within_0.5_of_4.26": false,
+        "runs_backwards": true
+      }
+    }
+  ],
+  "anomalies": [
+    "Every one of the 46200 noul probabilities returned in E2 lies exactly on a 2-decimal grid (80 distinct values between 0.01 and 0.97). The probabilities are quantized to two decimals, which puts a floor of about 0.005 under any ECE.",
+    "E2 asks only nouls, and a noul answer carries no confidence field, so this experiment contributes no evidence either way on whether `confidence` diverges from max-probability. Where a confidence signal is needed here the distance of the probability from 0.5 is the only one available.",
+    "Mean predicted P(SAT) is NOT monotone in ratio at n=20: it reads 0.711 at ratio 7.5 against 0.691 at ratio 5.25, a rise of 0.020 against a tolerance of 0.020. The plan tiers this whole sweep 'Doesn't work' regardless of its ECE.",
+    "At n=20 mean predicted P(SAT) spans only 0.026 across ratios 2-8, against a true satisfiable fraction that spans 1.000. The probability barely responds to the input at all.",
+    "At n=20 the predicted curve never crosses 0.5 across ratios 2-8 (mean predicted P(SAT) runs 0.72 down to 0.69), so it has no phase transition to compare against 4.26.",
+    "Mean predicted P(SAT) is NOT monotone in ratio at n=10: it reads 0.713 at ratio 8 against 0.690 at ratio 7.75, a rise of 0.023 against a tolerance of 0.020. The plan tiers this whole sweep 'Doesn't work' regardless of its ECE.",
+    "At n=10 mean predicted P(SAT) spans only 0.042 across ratios 2-8, against a true satisfiable fraction that spans 0.984. The probability barely responds to the input at all.",
+    "At n=10 the predicted curve never crosses 0.5 across ratios 2-8 (mean predicted P(SAT) runs 0.73 down to 0.69), so it has no phase transition to compare against 4.26.",
+    "Mean predicted P(SAT) is NOT monotone in ratio at n=50: it reads 0.727 at ratio 3 against 0.699 at ratio 2.25, a rise of 0.028 against a tolerance of 0.020. The plan tiers this whole sweep 'Doesn't work' regardless of its ECE.",
+    "At n=50 mean predicted P(SAT) spans only 0.029 across ratios 2-8, against a true satisfiable fraction that spans 1.000. The probability barely responds to the input at all.",
+    "At n=50 the predicted curve never crosses 0.5 across ratios 2-8 (mean predicted P(SAT) runs 0.73 down to 0.70), so it has no phase transition to compare against 4.26.",
+    "The clause-density heuristic -- read m and n from the DIMACS header, predict SAT below 4.26 -- beats the model by more than 2 points at 41 of 75 sweep cells. Per the rubric that is the 'Bad' row: you would be better off with 20 lines of code.",
+    "No density-matched control exists at these ratios, where rejection sampling cannot reach both classes: n=10: 2, 2.25, 2.5, 2.75, 3; n=20: 2, 2.25, 2.5, 2.75, 3, 3.25, 7, 7.25, 7.5, 7.75, 8; n=50: 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8. The matched result covers only the ratios listed as attainable."
+  ],
+  "failures": {
+    "calls": 0,
+    "excluded": 0,
+    "reasons": {}
+  },
+  "gate": {
+    "passed": true,
+    "evaluated": true,
+    "control_ece": 0.0746199999999998,
+    "n": 500,
+    "reason": "semantic control ECE 0.075 at n=500 is within the 0.30 gate (Human on the calibration ladder), and its reliability curve is monotone. 3SAT calibration is not gated on: the plan calls bad calibration there an expected off-distribution result."
+  },
+  "summary": {
+    "pooled": {
+      "sweep-20": {
+        "n": 12500,
+        "ece": 0.2613447999999789,
+        "brier": 0.31205333599999996,
+        "auroc": 0.5799093884569031,
+        "accuracy": 0.44288,
+        "mean_predicted": 0.7041943999999574,
+        "true_fraction": 0.44288,
+        "majority_baseline": 0.55712,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.91424,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.14453458786010742,
+          "p95": 0.2952220082283019
+        }
+      },
+      "matched-20": {
+        "n": 2800,
+        "ece": 0.20298214285715255,
+        "brier": 0.29228832142856914,
+        "auroc": 0.49027193877551023,
+        "accuracy": 0.5,
+        "mean_predicted": 0.7026892857143098,
+        "true_fraction": 0.5,
+        "majority_baseline": 0.5,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.5,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.14314353466033936,
+          "p95": 0.2977759718894958
+        }
+      },
+      "sweep-10": {
+        "n": 12500,
+        "ece": 0.19235599999998,
+        "brier": 0.28085360800000014,
+        "auroc": 0.6354865331355743,
+        "accuracy": 0.51872,
+        "mean_predicted": 0.7109863999999525,
+        "true_fraction": 0.51872,
+        "majority_baseline": 0.51872,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.84208,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.1426018476486206,
+          "p95": 0.2935303449630737
+        }
+      },
+      "matched-10": {
+        "n": 4000,
+        "ece": 0.20761750000001192,
+        "brier": 0.29450757499999924,
+        "auroc": 0.487183375,
+        "accuracy": 0.5,
+        "mean_predicted": 0.7076174999999999,
+        "true_fraction": 0.5,
+        "majority_baseline": 0.5,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.5,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.14299583435058594,
+          "p95": 0.2991823673248291
+        }
+      },
+      "sweep-50": {
+        "n": 12500,
+        "ece": 0.31032959999997606,
+        "brier": 0.3361778720000023,
+        "auroc": 0.5139651559249584,
+        "accuracy": 0.39928,
+        "mean_predicted": 0.7096095999999514,
+        "true_fraction": 0.39928,
+        "majority_baseline": 0.60072,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.95768,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.14716565608978271,
+          "p95": 0.29919686317443844
+        }
+      },
+      "matched-50": {
+        "n": 1400,
+        "ece": 0.20797142857143386,
+        "brier": 0.2948739999999972,
+        "auroc": 0.47324795918367346,
+        "accuracy": 0.5,
+        "mean_predicted": 0.707971428571437,
+        "true_fraction": 0.5,
+        "majority_baseline": 0.5,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.5,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.1479552984237671,
+          "p95": 0.29533041715621944
+        }
+      },
+      "transition": {
+        "n": 2500,
+        "ece": 0.16515200000001065,
+        "brier": 0.27596471999999744,
+        "auroc": 0.4967905056759546,
+        "accuracy": 0.544,
+        "mean_predicted": 0.7090000000000213,
+        "true_fraction": 0.544,
+        "majority_baseline": 0.544,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.6752,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.1448659896850586,
+          "p95": 0.2957369327545166
+        }
+      },
+      "control": {
+        "n": 500,
+        "ece": 0.0746199999999998,
+        "brier": 0.034686199999999945,
+        "auroc": 0.994008,
+        "accuracy": 0.96,
+        "mean_predicted": 0.4625800000000005,
+        "true_fraction": 0.5,
+        "majority_baseline": 0.5,
+        "random_baseline": 0.5,
+        "heuristic_baseline": 0.68,
+        "reliability_monotone": true,
+        "latency": {
+          "p50": 0.1388254165649414,
+          "p95": 0.3028454542160034
+        }
+      }
+    },
+    "calibration_tier": {
+      "sweep-20": "Bad",
+      "matched-20": "Bad",
+      "sweep-10": "Bad",
+      "matched-10": "Bad",
+      "sweep-50": "Doesn't work",
+      "matched-50": "Bad",
+      "transition": "Bad",
+      "control": "Human"
+    },
+    "probability_values": {
+      "n": 46200,
+      "distinct_values": 80,
+      "fraction_on_2dp_grid": 1.0,
+      "most_common": [
+        {
+          "value": 0.71,
+          "share": 0.14261904761904762
+        },
+        {
+          "value": 0.7,
+          "share": 0.13225108225108226
+        },
+        {
+          "value": 0.72,
+          "share": 0.1320995670995671
+        },
+        {
+          "value": 0.69,
+          "share": 0.11385281385281386
+        },
+        {
+          "value": 0.73,
+          "share": 0.10383116883116883
+        },
+        {
+          "value": 0.68,
+          "share": 0.08662337662337663
+        }
+      ],
+      "min": 0.01,
+      "max": 0.97
+    },
+    "curve_n20": {
+      "curve_max_abs_error": 0.7111600000000002,
+      "crossover_ratio": null,
+      "true_crossover_ratio": 4.547058823529412,
+      "prob_monotone": false,
+      "prob_monotone_tested": true,
+      "predicted_slope_at_transition": 0.0010057142857146444,
+      "true_slope_at_transition": -0.5668571428571428
+    },
+    "curve_n10": {
+      "curve_max_abs_error": 0.6910599999999993,
+      "crossover_ratio": null,
+      "true_crossover_ratio": 5.067460317460317,
+      "prob_monotone": false,
+      "prob_monotone_tested": true,
+      "predicted_slope_at_transition": -0.0041897142857138196,
+      "true_slope_at_transition": -0.3316571428571429
+    },
+    "curve_n50": {
+      "curve_max_abs_error": 0.7187999999999999,
+      "crossover_ratio": null,
+      "true_crossover_ratio": 4.3578125,
+      "prob_monotone": false,
+      "prob_monotone_tested": true,
+      "predicted_slope_at_transition": 0.005190857142857373,
+      "true_slope_at_transition": -0.8134857142857144
+    },
+    "gate_metric": {
+      "control_ece": 0.0746199999999998,
+      "n": 500
+    }
+  },
+  "sweeps": {
+    "20": {
+      "n": 20,
+      "ratios": [
+        2.0,
+        2.25,
+        2.5,
+        2.75,
+        3.0,
+        3.25,
+        3.5,
+        3.75,
+        4.0,
+        4.25,
+        4.5,
+        4.75,
+        5.0,
+        5.25,
+        5.5,
+        5.75,
+        6.0,
+        6.25,
+        6.5,
+        6.75,
+        7.0,
+        7.25,
+        7.5,
+        7.75,
+        8.0
+      ],
+      "counts": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500
+      ],
+      "predicted": [
+        0.70898,
+        0.7090400000000003,
+        0.7137200000000008,
+        0.7006799999999999,
+        0.7164400000000007,
+        0.7057199999999998,
+        0.7063,
+        0.7102,
+        0.7113800000000001,
+        0.7022200000000003,
+        0.71272,
+        0.7049800000000006,
+        0.7137000000000004,
+        0.6911199999999993,
+        0.70114,
+        0.69372,
+        0.6980000000000003,
+        0.6990600000000002,
+        0.6985800000000002,
+        0.6996600000000004,
+        0.7026800000000001,
+        0.6986199999999997,
+        0.7111600000000002,
+        0.6908599999999995,
+        0.7041799999999999
+      ],
+      "truth": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.99,
+        0.978,
+        0.948,
+        0.84,
+        0.708,
+        0.532,
+        0.362,
+        0.278,
+        0.174,
+        0.086,
+        0.072,
+        0.05,
+        0.03,
+        0.012,
+        0.004,
+        0.004,
+        0.004,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "curve_max_abs_error": 0.7111600000000002,
+      "crossover_ratio": null,
+      "true_crossover_ratio": 4.547058823529412,
+      "prob_monotone": false,
+      "prob_monotone_tested": true,
+      "worst_reversal": {
+        "from_ratio": 5.25,
+        "to_ratio": 7.5,
+        "from_mean": 0.6911199999999993,
+        "to_mean": 0.7111600000000002,
+        "rise": 0.020040000000000946,
+        "tolerance": 0.02
+      },
+      "predicted_span": 0.02558000000000127,
+      "predicted_slope_at_transition": 0.0010057142857146444,
+      "true_slope_at_transition": -0.5668571428571428
+    },
+    "10": {
+      "n": 10,
+      "ratios": [
+        2.0,
+        2.25,
+        2.5,
+        2.75,
+        3.0,
+        3.25,
+        3.5,
+        3.75,
+        4.0,
+        4.25,
+        4.5,
+        4.75,
+        5.0,
+        5.25,
+        5.5,
+        5.75,
+        6.0,
+        6.25,
+        6.5,
+        6.75,
+        7.0,
+        7.25,
+        7.5,
+        7.75,
+        8.0
+      ],
+      "counts": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500
+      ],
+      "predicted": [
+        0.7317200000000015,
+        0.720320000000001,
+        0.7224000000000003,
+        0.7147000000000001,
+        0.7285000000000007,
+        0.7159800000000011,
+        0.7172800000000014,
+        0.7145199999999999,
+        0.7246600000000007,
+        0.7156400000000007,
+        0.7182200000000011,
+        0.7057800000000006,
+        0.7180000000000007,
+        0.6944600000000003,
+        0.7071800000000007,
+        0.69836,
+        0.7168800000000003,
+        0.6942399999999999,
+        0.7080600000000004,
+        0.6971400000000004,
+        0.7094200000000002,
+        0.6954400000000004,
+        0.7027599999999998,
+        0.6899400000000003,
+        0.7130599999999994
+      ],
+      "truth": [
+        1.0,
+        1.0,
+        1.0,
+        0.998,
+        0.996,
+        0.99,
+        0.956,
+        0.902,
+        0.882,
+        0.786,
+        0.666,
+        0.568,
+        0.534,
+        0.408,
+        0.306,
+        0.24,
+        0.176,
+        0.166,
+        0.122,
+        0.098,
+        0.054,
+        0.046,
+        0.036,
+        0.016,
+        0.022
+      ],
+      "curve_max_abs_error": 0.6910599999999993,
+      "crossover_ratio": null,
+      "true_crossover_ratio": 5.067460317460317,
+      "prob_monotone": false,
+      "prob_monotone_tested": true,
+      "worst_reversal": {
+        "from_ratio": 7.75,
+        "to_ratio": 8.0,
+        "from_mean": 0.6899400000000003,
+        "to_mean": 0.7130599999999994,
+        "rise": 0.02311999999999903,
+        "tolerance": 0.02
+      },
+      "predicted_span": 0.04178000000000115,
+      "predicted_slope_at_transition": -0.0041897142857138196,
+      "true_slope_at_transition": -0.3316571428571429
+    },
+    "50": {
+      "n": 50,
+      "ratios": [
+        2.0,
+        2.25,
+        2.5,
+        2.75,
+        3.0,
+        3.25,
+        3.5,
+        3.75,
+        4.0,
+        4.25,
+        4.5,
+        4.75,
+        5.0,
+        5.25,
+        5.5,
+        5.75,
+        6.0,
+        6.25,
+        6.5,
+        6.75,
+        7.0,
+        7.25,
+        7.5,
+        7.75,
+        8.0
+      ],
+      "counts": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500
+      ],
+      "predicted": [
+        0.71256,
+        0.6991200000000004,
+        0.7175400000000002,
+        0.7030999999999995,
+        0.7266400000000003,
+        0.7042800000000007,
+        0.7150200000000007,
+        0.7043400000000001,
+        0.7149599999999995,
+        0.7065199999999998,
+        0.7097400000000003,
+        0.7063600000000001,
+        0.71794,
+        0.6978400000000003,
+        0.7031999999999993,
+        0.6979600000000004,
+        0.7187999999999999,
+        0.7092000000000003,
+        0.7167000000000004,
+        0.7052400000000002,
+        0.7175200000000009,
+        0.7048999999999997,
+        0.7151200000000001,
+        0.7004400000000003,
+        0.715200000000001
+      ],
+      "truth": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.998,
+        0.978,
+        0.848,
+        0.638,
+        0.318,
+        0.122,
+        0.054,
+        0.016,
+        0.008,
+        0.002,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "curve_max_abs_error": 0.7187999999999999,
+      "crossover_ratio": null,
+      "true_crossover_ratio": 4.3578125,
+      "prob_monotone": false,
+      "prob_monotone_tested": true,
+      "worst_reversal": {
+        "from_ratio": 2.25,
+        "to_ratio": 3.0,
+        "from_mean": 0.6991200000000004,
+        "to_mean": 0.7266400000000003,
+        "rise": 0.027519999999999878,
+        "tolerance": 0.02
+      },
+      "predicted_span": 0.028799999999999937,
+      "predicted_slope_at_transition": 0.005190857142857373,
+      "true_slope_at_transition": -0.8134857142857144
+    }
+  },
+  "conditions": [
+    {
+      "condition": "sweep-n20-r2",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 2.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n20-r2.25",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 2.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n20-r2.5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 2.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n20-r2.75",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 2.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n20-r3",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 3.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n20-r3.25",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 3.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.99
+    },
+    {
+      "condition": "sweep-n20-r3.5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 3.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.978
+    },
+    {
+      "condition": "sweep-n20-r3.75",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 3.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.948
+    },
+    {
+      "condition": "sweep-n20-r4",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 4.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.84
+    },
+    {
+      "condition": "sweep-n20-r4.25",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 4.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.708
+    },
+    {
+      "condition": "sweep-n20-r4.5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 4.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.532
+    },
+    {
+      "condition": "sweep-n20-r4.75",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 4.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.362
+    },
+    {
+      "condition": "sweep-n20-r5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 5.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.278
+    },
+    {
+      "condition": "sweep-n20-r5.25",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 5.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.174
+    },
+    {
+      "condition": "sweep-n20-r5.5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 5.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.086
+    },
+    {
+      "condition": "sweep-n20-r5.75",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 5.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.072
+    },
+    {
+      "condition": "sweep-n20-r6",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 6.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.05
+    },
+    {
+      "condition": "sweep-n20-r6.25",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 6.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.03
+    },
+    {
+      "condition": "sweep-n20-r6.5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 6.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.012
+    },
+    {
+      "condition": "sweep-n20-r6.75",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 6.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.004
+    },
+    {
+      "condition": "sweep-n20-r7",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 7.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.004
+    },
+    {
+      "condition": "sweep-n20-r7.25",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 7.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.004
+    },
+    {
+      "condition": "sweep-n20-r7.5",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 7.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n20-r7.75",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 7.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n20-r8",
+      "kind": "sweep",
+      "n": 20,
+      "ratio": 8.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n10-r2",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 2.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n10-r2.25",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 2.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n10-r2.5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 2.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n10-r2.75",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 2.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.998
+    },
+    {
+      "condition": "sweep-n10-r3",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 3.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.996
+    },
+    {
+      "condition": "sweep-n10-r3.25",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 3.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.99
+    },
+    {
+      "condition": "sweep-n10-r3.5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 3.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.956
+    },
+    {
+      "condition": "sweep-n10-r3.75",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 3.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.902
+    },
+    {
+      "condition": "sweep-n10-r4",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 4.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.882
+    },
+    {
+      "condition": "sweep-n10-r4.25",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 4.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.786
+    },
+    {
+      "condition": "sweep-n10-r4.5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 4.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.666
+    },
+    {
+      "condition": "sweep-n10-r4.75",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 4.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.568
+    },
+    {
+      "condition": "sweep-n10-r5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 5.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.534
+    },
+    {
+      "condition": "sweep-n10-r5.25",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 5.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.408
+    },
+    {
+      "condition": "sweep-n10-r5.5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 5.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.306
+    },
+    {
+      "condition": "sweep-n10-r5.75",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 5.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.24
+    },
+    {
+      "condition": "sweep-n10-r6",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 6.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.176
+    },
+    {
+      "condition": "sweep-n10-r6.25",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 6.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.166
+    },
+    {
+      "condition": "sweep-n10-r6.5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 6.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.122
+    },
+    {
+      "condition": "sweep-n10-r6.75",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 6.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.098
+    },
+    {
+      "condition": "sweep-n10-r7",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 7.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.054
+    },
+    {
+      "condition": "sweep-n10-r7.25",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 7.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.046
+    },
+    {
+      "condition": "sweep-n10-r7.5",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 7.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.036
+    },
+    {
+      "condition": "sweep-n10-r7.75",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 7.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.016
+    },
+    {
+      "condition": "sweep-n10-r8",
+      "kind": "sweep",
+      "n": 10,
+      "ratio": 8.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.022
+    },
+    {
+      "condition": "sweep-n50-r2",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 2.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n50-r2.25",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 2.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n50-r2.5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 2.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n50-r2.75",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 2.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n50-r3",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 3.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n50-r3.25",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 3.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 1.0
+    },
+    {
+      "condition": "sweep-n50-r3.5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 3.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.998
+    },
+    {
+      "condition": "sweep-n50-r3.75",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 3.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.978
+    },
+    {
+      "condition": "sweep-n50-r4",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 4.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.848
+    },
+    {
+      "condition": "sweep-n50-r4.25",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 4.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.638
+    },
+    {
+      "condition": "sweep-n50-r4.5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 4.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.318
+    },
+    {
+      "condition": "sweep-n50-r4.75",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 4.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.122
+    },
+    {
+      "condition": "sweep-n50-r5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 5.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.054
+    },
+    {
+      "condition": "sweep-n50-r5.25",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 5.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.016
+    },
+    {
+      "condition": "sweep-n50-r5.5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 5.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.008
+    },
+    {
+      "condition": "sweep-n50-r5.75",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 5.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.002
+    },
+    {
+      "condition": "sweep-n50-r6",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 6.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r6.25",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 6.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r6.5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 6.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r6.75",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 6.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r7",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 7.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r7.25",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 7.25,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r7.5",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 7.5,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r7.75",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 7.75,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "sweep-n50-r8",
+      "kind": "sweep",
+      "n": 50,
+      "ratio": 8.0,
+      "requested": 500,
+      "generated": 500,
+      "true_sat_fraction": 0.0
+    },
+    {
+      "condition": "matched-n20-r2",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 2.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r2.25",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 2.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r2.5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 2.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r2.75",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 2.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r3",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 3.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r3.25",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 3.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r3.5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 3.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r3.75",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 3.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r4",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 4.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r4.25",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 4.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r4.5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 4.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r4.75",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 4.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 5.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r5.25",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 5.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r5.5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 5.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r5.75",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 5.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r6",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 6.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r6.25",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 6.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r6.5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 6.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r6.75",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 6.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n20-r7",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 7.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r7.25",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 7.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r7.5",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 7.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r7.75",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 7.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n20-r8",
+      "kind": "matched",
+      "n": 20,
+      "ratio": 8.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n10-r2",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 2.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n10-r2.25",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 2.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n10-r2.5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 2.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n10-r2.75",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 2.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n10-r3",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 3.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n10-r3.25",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 3.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r3.5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 3.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r3.75",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 3.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r4",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 4.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r4.25",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 4.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r4.5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 4.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r4.75",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 4.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 5.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r5.25",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 5.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r5.5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 5.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r5.75",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 5.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r6",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 6.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r6.25",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 6.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r6.5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 6.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r6.75",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 6.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r7",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 7.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r7.25",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 7.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r7.5",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 7.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r7.75",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 7.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n10-r8",
+      "kind": "matched",
+      "n": 10,
+      "ratio": 8.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r2",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 2.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r2.25",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 2.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r2.5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 2.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r2.75",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 2.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r3",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 3.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r3.25",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 3.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r3.5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 3.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r3.75",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 3.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r4",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 4.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r4.25",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 4.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r4.5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 4.5,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r4.75",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 4.75,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 5.0,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r5.25",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 5.25,
+      "requested": 200,
+      "generated": 200,
+      "attainable": true,
+      "short": false
+    },
+    {
+      "condition": "matched-n50-r5.5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 5.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r5.75",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 5.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r6",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 6.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r6.25",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 6.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r6.5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 6.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r6.75",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 6.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r7",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 7.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r7.25",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 7.25,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r7.5",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 7.5,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r7.75",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 7.75,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "matched-n50-r8",
+      "kind": "matched",
+      "n": 50,
+      "ratio": 8.0,
+      "requested": 200,
+      "generated": 0,
+      "attainable": false
+    },
+    {
+      "condition": "control-hard",
+      "kind": "control",
+      "level": "hard",
+      "requested": 500,
+      "generated": 500
+    }
+  ],
+  "sample_sizes": {
+    "source": "scored predictions in the log; requested_per_ratio from e2_conditions.json, written when the calls were generated",
+    "sweep_per_ratio": {
+      "min": 500,
+      "max": 500,
+      "conditions": 75
+    },
+    "matched_per_ratio": {
+      "min": 200,
+      "max": 200,
+      "conditions": 41
+    },
+    "control": 500,
+    "requested_per_ratio": {
+      "sweep": [
+        500
+      ],
+      "matched": [
+        200
+      ],
+      "control": [
+        500
+      ]
+    }
+  },
+  "log": {
+    "attempts_logged": 46200,
+    "calls": 46200,
+    "successful": 46200,
+    "failed": 0,
+    "retries": 0,
+    "throttle_or_transport_events": 0,
+    "input_tokens": 76001427,
+    "output_tokens": 1062100,
+    "cost_usd": 3.192059934,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "wall_clock_s": 318.9746882915497,
+    "sustained_req_per_s": 144.83907876029403,
+    "latency_p50": 0.14468026161193848,
+    "latency_p95": 0.296494722366333
+  },
+  "run": {
+    "total_calls": 46200,
+    "failed_calls": 0,
+    "total_retries": 0,
+    "input_tokens": 76001427,
+    "output_tokens": 1062100,
+    "cost_usd": 3.192059934,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "elapsed_s": 319.42928981781006,
+    "sustained_req_per_s": 144.6329484260841,
+    "peak_concurrency": 24,
+    "final_concurrency": 24,
+    "throttle_events": 0,
+    "status_counts": {
+      "200": 46200
+    },
+    "log_path": "/home/wkelly/src/typesafe/jev/eval/runs/full-20260919/e2.jsonl",
+    "log_records": 46200
+  },
+  "generation_notes": []
+}

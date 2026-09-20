@@ -1,0 +1,1390 @@
+{
+  "experiment": "E3",
+  "title": "Batching and parallelism",
+  "question": "Does question 200 of a batch get the same quality as question 3, and do questions batched together contaminate each other?",
+  "headline": {
+    "metric": "positional decay at question 50 (accuracy at position 1 minus accuracy at position 50)",
+    "value": -0.00666666666666671,
+    "baseline": 0.0,
+    "baseline_name": "zero decay, which is what a genuinely parallel architecture predicts",
+    "n": 300
+  },
+  "by_difficulty": [
+    {
+      "difficulty": {
+        "position": 1
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.8033333333333333,
+        "decay": 0.0,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": 0.0,
+        "decay_200": 0.0,
+        "decay_255": 0.0,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": 0.0,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 5
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 20
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 50
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 100
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.8033333333333333,
+        "decay": 0.0,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": 0.0,
+        "decay_200": 0.0,
+        "decay_255": 0.0,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": 0.0,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 200
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.8033333333333333,
+        "decay": 0.0,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": 0.0,
+        "decay_200": 0.0,
+        "decay_255": 0.0,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": 0.0,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 255
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "drift": 0.004566666666666628,
+        "latency_slope": 0.19671996863114066,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": true,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "drift <= 0.005 ('zero drift' read as <= 0.005)"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "reliability_monotone"
+      ],
+      "unevaluated": [],
+      "undefined": []
+    }
+  ],
+  "boundary_crossings": {},
+  "plots": [
+    "plots/e3_position.png",
+    "plots/e3_filler_position.png",
+    "plots/e3_latency.png",
+    "plots/e3_cost.png",
+    "plots/e3_count_accuracy.png"
+  ],
+  "predictions": [
+    {
+      "id": "P7",
+      "claim": "No positional decay -- architecture is genuinely parallel",
+      "outcome": "Accuracy fell +0.000 from position 1 to position 200 (95% CI -0.064 to +0.064). That is inside the 5% falsification bar.",
+      "verdict": "right",
+      "evidence": {
+        "decay_200": 0.0,
+        "decay_200_ci": [
+          -0.06366889282624486,
+          0.06366889282624486
+        ],
+        "accuracy_at_1": 0.8033333333333333,
+        "accuracy_at_200": 0.8033333333333333,
+        "n_per_position": 300,
+        "knee": null
+      }
+    },
+    {
+      "id": "P8",
+      "claim": "Mild contamination, 2-5% drift; better on related questions, worse on unrelated",
+      "outcome": "Mean probability drift (total variation between the batched and individual answer distributions, which for a noul is the absolute difference of the two probabilities) was 0.0046; the discrete answer changed on 0.002 of questions. Related questions: accuracy -0.001 batched (drift 0.0075, McNemar p=1). Unrelated questions: accuracy +0.000 batched (drift 0.0026, McNemar p=1). Drift is outside the predicted 2-5% band but inside the 10% falsification bar. The predicted direction split did not hold.",
+      "verdict": "wrong",
+      "evidence": {
+        "probability_drift": 0.004566666666666628,
+        "answer_drift": 0.0016666666666666668,
+        "explicit_falsifier_fired": false,
+        "in_predicted_band": false,
+        "direction_measured": true,
+        "related": {
+          "n": 1200,
+          "probability_drift": 0.007549999999999962,
+          "answer_drift": 0.004166666666666667,
+          "mean_delta_p_correct": -0.00037500000000000115,
+          "accuracy_batched": 0.9441666666666667,
+          "accuracy_individual": 0.945,
+          "accuracy_delta": -0.0008333333333332416,
+          "mcnemar_p": 1.0,
+          "direction": "batched worse"
+        },
+        "unrelated": {
+          "n": 1800,
+          "probability_drift": 0.0025777777777777696,
+          "answer_drift": 0.0,
+          "mean_delta_p_correct": -0.0005555555555555558,
+          "accuracy_batched": 1.0,
+          "accuracy_individual": 1.0,
+          "accuracy_delta": 0.0,
+          "mcnemar_p": 1.0,
+          "direction": "no change"
+        }
+      }
+    },
+    {
+      "id": "P9",
+      "claim": "Latency roughly flat in question count",
+      "outcome": "Fitted log-log slope of p50 latency against question count is 0.197 (0 is flat, 1 is linear). p50 moved by a factor of 2.94 from 1 to 255 questions. Roughly flat, as predicted. Input tokens grew 7.2x over the same range and latency fits them with a log-log slope of 0.532; a question cannot be added without its tokens, so this condition cannot fully separate 'flat in question count' from 'rising with input size'.",
+      "verdict": "right",
+      "evidence": {
+        "latency_slope_loglog": 0.19671996863114066,
+        "latency_slope_vs_input_tokens_loglog": 0.5320512017123615,
+        "input_token_growth_factor": 7.23252182386027,
+        "latency_ratio": 2.9382621516605436,
+        "marginal_input_tokens_per_question": 90.04835696224605,
+        "marginal_cost_per_question_usd": 3.782030992414334e-06,
+        "scales_linearly": false
+      }
+    }
+  ],
+  "anomalies": [
+    "Every one of the 3194813 probabilities E3 saw is exactly representable to two decimal places. The returned probabilities are quantized at 0.01, which sets a lower bound on any calibration measurement and means a drift below 0.01 cannot be observed at all.",
+    "The decision-carrying probability was 1.0 on 0.52 of 836700 answers -- clustering at one value rather than spreading smoothly.",
+    "`confidence` differed from the maximum returned probability on 0.003 of the 415571 choice and score answers, by 0.0000 on average (signed mean -0.0000). They are not the same quantity.",
+    "137721 of 137721 score answers carried the undocumented `legend` field mapping rubric indices to labels."
+  ],
+  "failures": {
+    "calls": 0,
+    "excluded": 0,
+    "reasons": {},
+    "attempted": 9300
+  },
+  "gate": {
+    "passed": true,
+    "reason": "Positional decay at question 50 is -0.007 (95% CI -0.070 to +0.057, n=300 targets per position), at or below the 10% gate. No batch-size cap is required and E5 and E6 can run at full batch size. Measured knee: none within the swept range, so no knee up to position 255."
+  },
+  "what_this_changes": "The Phase 2 gate does not bind: accuracy at question 200 is within 0.000 of accuracy at question 1, so the parallel-question designs are not constrained by quality and can ask everything they want in one call. Latency is roughly flat in question count too, so what limits batch size is the 255-option choice cap and the state's token cost, not this model.",
+  "by_position_decay_only": [
+    {
+      "difficulty": {
+        "position": 1
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.8033333333333333,
+        "decay": 0.0,
+        "decay_50": 0.0,
+        "decay_200": 0.0,
+        "decay_255": 0.0,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": 0.0,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 5
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 20
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 50
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 100
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.8033333333333333,
+        "decay": 0.0,
+        "decay_50": 0.0,
+        "decay_200": 0.0,
+        "decay_255": 0.0,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": 0.0,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 200
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.8033333333333333,
+        "decay": 0.0,
+        "decay_50": 0.0,
+        "decay_200": 0.0,
+        "decay_255": 0.0,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": 0.0,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    },
+    {
+      "difficulty": {
+        "position": 255
+      },
+      "tier": "Perfect",
+      "n": 300,
+      "metrics": {
+        "accuracy": 0.81,
+        "decay": -0.00666666666666671,
+        "decay_50": -0.00666666666666671,
+        "decay_200": -0.00666666666666671,
+        "decay_255": -0.00666666666666671,
+        "unbatched_accuracy": 0.7966666666666666,
+        "chance_baseline": 0.5,
+        "heuristic_baseline": 0.0,
+        "n": 300
+      },
+      "metric": "decay_50",
+      "value": -0.00666666666666671,
+      "baseline": 0.7966666666666666,
+      "baseline_name": "the same questions asked one at a time",
+      "baseline_source": "measured",
+      "reportable": true,
+      "fully_evaluated": false,
+      "matched_rule": "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+      "reasons": [
+        "Perfect: flat accuracy to 255, zero drift, sublinear latency.",
+        "decay_255 <= 0.005 ('flat' read as <= 0.005)",
+        "Perfect rests on part of its rule: drift, latency_slope were not measured on this condition, so the rung was decided by the criteria that were"
+      ],
+      "signatures": [],
+      "missing": [
+        "collapse_batch_size",
+        "drift",
+        "latency_slope",
+        "reliability_monotone"
+      ],
+      "unevaluated": [
+        "drift",
+        "latency_slope"
+      ],
+      "undefined": []
+    }
+  ],
+  "boundary_crossings_decay_only": {},
+  "knee": {
+    "knee_position": null,
+    "knee_position_resolved": null,
+    "nominal_knee_resolved": null,
+    "safe_batch_size": 255,
+    "knee_bracket": null,
+    "knee_criterion": "first swept position whose accuracy is more than 5% below position 1; 'resolved' additionally requires the 95% interval on that decay to exclude zero",
+    "max_position_swept": 255
+  },
+  "repeatability": {
+    "comparable": true,
+    "position_sweep_at_1": 0.8033333333333333,
+    "count_sweep_at_255": 0.8133333333333334,
+    "difference": -0.010000000000000009,
+    "n": [
+      300,
+      300
+    ],
+    "note": "byte-identical requests in the two conditions; a non-zero difference is run-to-run variance, not a batching effect"
+  },
+  "baselines": {
+    "target_chance": 0.5,
+    "target_keyword_heuristic": 0.0,
+    "target_unbatched": 0.7966666666666666,
+    "filler_chance": 0.3331692913385827,
+    "contamination_unbatched": 0.978,
+    "interference_hard_majority": 0.7166666666666667,
+    "interference_hard_density_heuristic": 0.7166666666666667
+  },
+  "conditions": {
+    "position": {
+      "positions": [
+        1,
+        5,
+        20,
+        50,
+        100,
+        200,
+        255
+      ],
+      "accuracy": {
+        "1": 0.8033333333333333,
+        "5": 0.81,
+        "20": 0.81,
+        "50": 0.81,
+        "100": 0.8033333333333333,
+        "200": 0.8033333333333333,
+        "255": 0.81
+      },
+      "correct": {
+        "1": 241,
+        "5": 243,
+        "20": 243,
+        "50": 243,
+        "100": 241,
+        "200": 241,
+        "255": 243
+      },
+      "wilson": {
+        "1": [
+          0.7546412316550143,
+          0.8443553658020945
+        ],
+        "5": [
+          0.7617962081751881,
+          0.8503651496655933
+        ],
+        "20": [
+          0.7617962081751881,
+          0.8503651496655933
+        ],
+        "50": [
+          0.7617962081751881,
+          0.8503651496655933
+        ],
+        "100": [
+          0.7546412316550143,
+          0.8443553658020945
+        ],
+        "200": [
+          0.7546412316550143,
+          0.8443553658020945
+        ],
+        "255": [
+          0.7617962081751881,
+          0.8503651496655933
+        ]
+      },
+      "n": {
+        "1": 300,
+        "5": 300,
+        "20": 300,
+        "50": 300,
+        "100": 300,
+        "200": 300,
+        "255": 300
+      },
+      "decay": {
+        "1": 0.0,
+        "5": -0.00666666666666671,
+        "20": -0.00666666666666671,
+        "50": -0.00666666666666671,
+        "100": 0.0,
+        "200": 0.0,
+        "255": -0.00666666666666671
+      },
+      "decay_ci": {
+        "1": [
+          -0.06366889282624486,
+          0.06366889282624486
+        ],
+        "5": [
+          -0.06991432332979931,
+          0.05662956303272296
+        ],
+        "20": [
+          -0.06991432332979931,
+          0.05662956303272296
+        ],
+        "50": [
+          -0.06991432332979931,
+          0.05662956303272296
+        ],
+        "100": [
+          -0.06366889282624486,
+          0.06366889282624486
+        ],
+        "200": [
+          -0.06366889282624486,
+          0.06366889282624486
+        ],
+        "255": [
+          -0.06991432332979931,
+          0.05662956303272296
+        ]
+      },
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.0,
+      "filler_accuracy": 0.9962223472065992,
+      "filler_n": 533400,
+      "filler_chance_baseline": 0.3331692913385827,
+      "filler_accuracy_by_own_position": [
+        {
+          "bin": 0,
+          "mean_position": 13.581005586592179,
+          "accuracy": 0.9952886405959032,
+          "n": 53700,
+          "wilson": [
+            0.9946729771215378,
+            0.9958334476523466
+          ]
+        },
+        {
+          "bin": 1,
+          "mean_position": 38.9367816091954,
+          "accuracy": 0.9960344827586207,
+          "n": 52200,
+          "wilson": [
+            0.9954576292783227,
+            0.996538334100152
+          ]
+        },
+        {
+          "bin": 2,
+          "mean_position": 64.5,
+          "accuracy": 0.9966849816849817,
+          "n": 54600,
+          "wilson": [
+            0.9961666509621294,
+            0.9971334274014669
+          ]
+        },
+        {
+          "bin": 3,
+          "mean_position": 89.94252873563218,
+          "accuracy": 0.9955747126436781,
+          "n": 52200,
+          "wilson": [
+            0.9949676957544487,
+            0.9961087950591985
+          ]
+        },
+        {
+          "bin": 4,
+          "mean_position": 115.5,
+          "accuracy": 0.9958791208791209,
+          "n": 54600,
+          "wilson": [
+            0.9953057816242394,
+            0.9963826885145701
+          ]
+        },
+        {
+          "bin": 5,
+          "mean_position": 141.0,
+          "accuracy": 0.9961333333333333,
+          "n": 52500,
+          "wilson": [
+            0.9955649343932511,
+            0.9966291327943444
+          ]
+        },
+        {
+          "bin": 6,
+          "mean_position": 166.5,
+          "accuracy": 0.9961538461538462,
+          "n": 54600,
+          "wilson": [
+            0.9955985948585065,
+            0.9966392871751167
+          ]
+        },
+        {
+          "bin": 7,
+          "mean_position": 191.95402298850576,
+          "accuracy": 0.9966666666666667,
+          "n": 52200,
+          "wilson": [
+            0.9961343328940248,
+            0.9971259052610882
+          ]
+        },
+        {
+          "bin": 8,
+          "mean_position": 217.5,
+          "accuracy": 0.9959157509157509,
+          "n": 54600,
+          "wilson": [
+            0.9953447874773671,
+            0.996416937580751
+          ]
+        },
+        {
+          "bin": 9,
+          "mean_position": 242.93103448275863,
+          "accuracy": 0.9979310344827587,
+          "n": 52200,
+          "wilson": [
+            0.997502891718532,
+            0.9982858959898571
+          ]
+        }
+      ]
+    },
+    "count": {
+      "rows": [
+        {
+          "questions": 1,
+          "calls": 300,
+          "p50_latency_s": 0.1317082643508911,
+          "p95_latency_s": 0.22641890048980717,
+          "mean_input_tokens": 3667.24,
+          "cost_per_call_usd": 0.00015402407999999998,
+          "cost_per_decision_usd": 0.00015402407999999998,
+          "target_accuracy": 0.7966666666666666,
+          "target_n": 300,
+          "target_wilson": [
+            0.7475056887150938,
+            0.8383261483583421
+          ],
+          "filler_accuracy": null,
+          "filler_n": 0
+        },
+        {
+          "questions": 2,
+          "calls": 300,
+          "p50_latency_s": 0.13577616214752197,
+          "p95_latency_s": 0.23317332267761232,
+          "mean_input_tokens": 3755.5266666666666,
+          "cost_per_call_usd": 0.00015773211999999998,
+          "cost_per_decision_usd": 7.886605999999999e-05,
+          "target_accuracy": 0.81,
+          "target_n": 300,
+          "target_wilson": [
+            0.7617962081751881,
+            0.8503651496655933
+          ],
+          "filler_accuracy": 0.9933333333333333,
+          "filler_n": 300
+        },
+        {
+          "questions": 4,
+          "calls": 300,
+          "p50_latency_s": 0.1358473300933838,
+          "p95_latency_s": 0.2609472990036011,
+          "mean_input_tokens": 3931.1566666666668,
+          "cost_per_call_usd": 0.00016510858,
+          "cost_per_decision_usd": 4.1277145e-05,
+          "target_accuracy": 0.8066666666666666,
+          "target_n": 300,
+          "target_wilson": [
+            0.7582162445043988,
+            0.8473627331445462
+          ],
+          "filler_accuracy": 0.9944444444444445,
+          "filler_n": 900
+        },
+        {
+          "questions": 8,
+          "calls": 300,
+          "p50_latency_s": 0.1495896577835083,
+          "p95_latency_s": 0.2641325354576112,
+          "mean_input_tokens": 4291.61,
+          "cost_per_call_usd": 0.00018024761999999999,
+          "cost_per_decision_usd": 2.2530952499999998e-05,
+          "target_accuracy": 0.8166666666666667,
+          "target_n": 300,
+          "target_wilson": [
+            0.7689713823226987,
+            0.8563547359017554
+          ],
+          "filler_accuracy": 0.9966666666666667,
+          "filler_n": 2100
+        },
+        {
+          "questions": 16,
+          "calls": 300,
+          "p50_latency_s": 0.1772630214691162,
+          "p95_latency_s": 0.28728513717651366,
+          "mean_input_tokens": 5004.5633333333335,
+          "cost_per_call_usd": 0.00021019166,
+          "cost_per_decision_usd": 1.313697875e-05,
+          "target_accuracy": 0.8033333333333333,
+          "target_n": 300,
+          "target_wilson": [
+            0.7546412316550143,
+            0.8443553658020945
+          ],
+          "filler_accuracy": 0.9966666666666667,
+          "filler_n": 4500
+        },
+        {
+          "questions": 32,
+          "calls": 300,
+          "p50_latency_s": 0.1941676139831543,
+          "p95_latency_s": 0.2957605719566345,
+          "mean_input_tokens": 6439.013333333333,
+          "cost_per_call_usd": 0.00027043856,
+          "cost_per_decision_usd": 8.451205e-06,
+          "target_accuracy": 0.8133333333333334,
+          "target_n": 300,
+          "target_wilson": [
+            0.7653812201652491,
+            0.8533625178673686
+          ],
+          "filler_accuracy": 0.9958064516129033,
+          "filler_n": 9300
+        },
+        {
+          "questions": 64,
+          "calls": 300,
+          "p50_latency_s": 0.2091062068939209,
+          "p95_latency_s": 0.3136315941810608,
+          "mean_input_tokens": 9308.09,
+          "cost_per_call_usd": 0.00039093978,
+          "cost_per_decision_usd": 6.1084340625e-06,
+          "target_accuracy": 0.81,
+          "target_n": 300,
+          "target_wilson": [
+            0.7617962081751881,
+            0.8503651496655933
+          ],
+          "filler_accuracy": 0.9958201058201058,
+          "filler_n": 18900
+        },
+        {
+          "questions": 128,
+          "calls": 300,
+          "p50_latency_s": 0.29628074169158936,
+          "p95_latency_s": 0.41102218627929693,
+          "mean_input_tokens": 15101.923333333334,
+          "cost_per_call_usd": 0.00063428078,
+          "cost_per_decision_usd": 4.95531859375e-06,
+          "target_accuracy": 0.7966666666666666,
+          "target_n": 300,
+          "target_wilson": [
+            0.7475056887150938,
+            0.8383261483583421
+          ],
+          "filler_accuracy": 0.9961679790026247,
+          "filler_n": 38100
+        },
+        {
+          "questions": 200,
+          "calls": 300,
+          "p50_latency_s": 0.35033464431762695,
+          "p95_latency_s": 0.46216251850128176,
+          "mean_input_tokens": 21589.996666666666,
+          "cost_per_call_usd": 0.00090677986,
+          "cost_per_decision_usd": 4.5338992999999995e-06,
+          "target_accuracy": 0.8066666666666666,
+          "target_n": 300,
+          "target_wilson": [
+            0.7582162445043988,
+            0.8473627331445462
+          ],
+          "filler_accuracy": 0.995963149078727,
+          "filler_n": 59700
+        },
+        {
+          "questions": 255,
+          "calls": 300,
+          "p50_latency_s": 0.386993408203125,
+          "p95_latency_s": 0.5341333389282227,
+          "mean_input_tokens": 26523.393333333333,
+          "cost_per_call_usd": 0.00111398252,
+          "cost_per_decision_usd": 4.368558901960784e-06,
+          "target_accuracy": 0.8133333333333334,
+          "target_n": 300,
+          "target_wilson": [
+            0.7653812201652491,
+            0.8533625178673686
+          ],
+          "filler_accuracy": 0.9962992125984252,
+          "filler_n": 76200
+        }
+      ],
+      "latency_slope_loglog": 0.19671996863114066,
+      "latency_slope_vs_input_tokens_loglog": 0.5320512017123615,
+      "input_token_growth_factor": 7.23252182386027,
+      "latency_ratio_across_range": 2.9382621516605436,
+      "latency_span": {
+        "from_questions": 1,
+        "to_questions": 255
+      },
+      "marginal_input_tokens_per_question": 90.04835696224605,
+      "fixed_input_tokens": 3567.8179890138645,
+      "marginal_cost_per_question_usd": 3.782030992414334e-06,
+      "chance_baseline": 0.5,
+      "heuristic_baseline": 0.0,
+      "unbatched_accuracy": 0.7966666666666666
+    },
+    "order": {
+      "n": 300,
+      "accuracy": 0.8033333333333333,
+      "wilson": [
+        0.7546412316550143,
+        0.8443553658020945
+      ],
+      "by_realized_position_quartile": [
+        {
+          "quartile": 1,
+          "position_range": [
+            1,
+            64
+          ],
+          "accuracy": 0.8194444444444444,
+          "n": 72,
+          "wilson": [
+            0.7151965826080176,
+            0.891331834899801
+          ]
+        },
+        {
+          "quartile": 2,
+          "position_range": [
+            65,
+            128
+          ],
+          "accuracy": 0.8484848484848485,
+          "n": 66,
+          "wilson": [
+            0.7430709513021234,
+            0.9155636301732872
+          ]
+        },
+        {
+          "quartile": 3,
+          "position_range": [
+            130,
+            191
+          ],
+          "accuracy": 0.7954545454545454,
+          "n": 88,
+          "wilson": [
+            0.6996803607394827,
+            0.8665127362312627
+          ]
+        },
+        {
+          "quartile": 4,
+          "position_range": [
+            193,
+            255
+          ],
+          "accuracy": 0.7567567567567568,
+          "n": 74,
+          "wilson": [
+            0.6479367133123635,
+            0.8402350215921952
+          ]
+        }
+      ],
+      "designated_pooled_accuracy": 0.8071428571428572,
+      "designated_pooled_n": 2100,
+      "shuffled_minus_designated": -0.003809523809523818,
+      "difference_ci": [
+        -0.0551598801002662,
+        0.04076161153956225
+      ],
+      "position_matched_expected_accuracy": 0.805797325542781,
+      "shuffled_minus_position_matched": -0.0024639922094477074,
+      "comparison_note": "`shuffled_minus_designated` compares two different position distributions and so absorbs positional decay; `shuffled_minus_position_matched` is the residual after the designated curve is evaluated at each shuffled trial's realized position, which is the part attributable to placement itself."
+    },
+    "contamination": {
+      "paired_questions": 3000,
+      "by_group": {
+        "all": {
+          "n": 3000,
+          "probability_drift": 0.004566666666666628,
+          "answer_drift": 0.0016666666666666668,
+          "mean_delta_p_correct": -0.00048333333333333393,
+          "accuracy_batched": 0.9776666666666667,
+          "accuracy_individual": 0.978,
+          "accuracy_delta": -0.0003333333333332966,
+          "mcnemar_p": 1.0,
+          "direction": "batched worse"
+        },
+        "related": {
+          "n": 1200,
+          "probability_drift": 0.007549999999999962,
+          "answer_drift": 0.004166666666666667,
+          "mean_delta_p_correct": -0.00037500000000000115,
+          "accuracy_batched": 0.9441666666666667,
+          "accuracy_individual": 0.945,
+          "accuracy_delta": -0.0008333333333332416,
+          "mcnemar_p": 1.0,
+          "direction": "batched worse"
+        },
+        "score": {
+          "n": 600,
+          "probability_drift": 0.004833333333333329,
+          "answer_drift": 0.0016666666666666668,
+          "mean_delta_p_correct": -0.0009166666666666663,
+          "accuracy_batched": 0.9383333333333334,
+          "accuracy_individual": 0.9366666666666666,
+          "accuracy_delta": 0.0016666666666667052,
+          "mcnemar_p": 1.0,
+          "direction": "batched better"
+        },
+        "noul": {
+          "n": 1500,
+          "probability_drift": 0.006133333333333294,
+          "answer_drift": 0.0013333333333333333,
+          "mean_delta_p_correct": -0.0006400000000000012,
+          "accuracy_batched": 0.986,
+          "accuracy_individual": 0.986,
+          "accuracy_delta": 0.0,
+          "mcnemar_p": 1.0,
+          "direction": "no change"
+        },
+        "unrelated": {
+          "n": 1800,
+          "probability_drift": 0.0025777777777777696,
+          "answer_drift": 0.0,
+          "mean_delta_p_correct": -0.0005555555555555558,
+          "accuracy_batched": 1.0,
+          "accuracy_individual": 1.0,
+          "accuracy_delta": 0.0,
+          "mcnemar_p": 1.0,
+          "direction": "no change"
+        },
+        "choice": {
+          "n": 900,
+          "probability_drift": 0.0017777777777777783,
+          "answer_drift": 0.0022222222222222222,
+          "mean_delta_p_correct": 6.666666666666647e-05,
+          "accuracy_batched": 0.99,
+          "accuracy_individual": 0.9922222222222222,
+          "accuracy_delta": -0.0022222222222222365,
+          "mcnemar_p": 0.5,
+          "direction": "batched worse"
+        }
+      },
+      "probability_drift": 0.004566666666666628,
+      "answer_drift": 0.0016666666666666668,
+      "unbatched_accuracy": 0.978,
+      "batched_accuracy": 0.9776666666666667
+    },
+    "interference": {
+      "paired_easy_questions": 2700,
+      "easy_accuracy_with_hard": 0.9996296296296296,
+      "easy_accuracy_without_hard": 0.9992592592592593,
+      "mcnemar_p": 1.0,
+      "hard_n": 300,
+      "hard_accuracy": 0.7166666666666667,
+      "hard_majority_baseline": 0.7166666666666667,
+      "hard_density_baseline": 0.7166666666666667,
+      "easy_accuracy_delta": 0.00037037037037035425,
+      "interference_ci": [
+        -0.001436145946016022,
+        0.0023502182656233712
+      ]
+    }
+  },
+  "response_scan": {
+    "probabilities_seen": 3194813,
+    "two_decimal_fraction": 1.0,
+    "decisions_seen": 836700,
+    "most_common_decision_probabilities": [
+      {
+        "value": 1.0,
+        "count": 436733
+      },
+      {
+        "value": 0.01,
+        "count": 167366
+      },
+      {
+        "value": 0.99,
+        "count": 112694
+      },
+      {
+        "value": 0.98,
+        "count": 42545
+      },
+      {
+        "value": 0.02,
+        "count": 24779
+      },
+      {
+        "value": 0.97,
+        "count": 14733
+      },
+      {
+        "value": 0.0,
+        "count": 8378
+      },
+      {
+        "value": 0.96,
+        "count": 5596
+      }
+    ],
+    "confidence_comparisons": 415571,
+    "confidence_vs_max_probability_mean_abs": 3.9391584109574114e-05,
+    "confidence_vs_max_probability_mean_signed": -3.919907789523286e-05,
+    "confidence_diverged_fraction": 0.0031546955875169347,
+    "score_answers": 137721,
+    "score_answers_with_legend": 137721,
+    "undocumented_top_level_fields": {},
+    "undocumented_answer_fields": {}
+  },
+  "notes": [
+    "Positional-decay target is dyck(length=24, max_depth=4), measured at accuracy 0.833 against a 0.500 majority baseline on 48 held-out instances. The semantic control's hard level was rejected as the target: it measured 0.958, leaving too little room for a decay of the size the plan cares about to be visible.",
+    "The 95% interval on decay at position 50 spans 0.127, wider than the 5% bar it is graded against. The tier at that position is not resolved by this sample."
+  ],
+  "sample_sizes": {
+    "scale": 1.0,
+    "instances_per_condition": 300,
+    "positions": [
+      1,
+      5,
+      20,
+      50,
+      100,
+      200,
+      255
+    ],
+    "counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      200,
+      255
+    ],
+    "batch_questions": 255,
+    "contamination_questions_per_state": 10,
+    "easy_questions_per_interference_batch": 9
+  },
+  "run": {
+    "total_calls": 9300,
+    "failed_calls": 0,
+    "total_retries": 1490,
+    "input_tokens": 104972954,
+    "output_tokens": 41126681,
+    "cost_usd": 4.408864068,
+    "model_versions": [
+      "jev-1.13.0"
+    ],
+    "elapsed_s": 591.222048997879,
+    "sustained_req_per_s": 15.730130525009162,
+    "peak_concurrency": 128,
+    "final_concurrency": 128,
+    "throttle_events": 1490,
+    "throttle_episodes": 139,
+    "aborted": null,
+    "status_counts": {
+      "200": 9300,
+      "429": 1490
+    },
+    "log_path": "/home/wkelly/src/typesafe/jev/eval/runs/full-20260919/e3.jsonl",
+    "log_records": 10790
+  }
+}
