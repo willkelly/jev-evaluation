@@ -1,13 +1,13 @@
 # A prompting guide for jev
 
 Ten rules that follow from [the evaluation](README.md). Each gives the request to
-write, the request to avoid, and the measurement behind the advice.
+write, the request to avoid, the measurement behind the advice, and a link to the
+experiment and the code that produced it.
 
 Figures marked as measured were run against `jev-1.13.0` on sixty problems per
-condition. They are reproducible from the seeds in `jeveval/generators/`.
+condition, and are reproducible from the seeds in the generators linked below.
 
-The full report, with figures, is at
-<https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html>.
+The full report, with figures, is at <https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html>.
 
 ---
 
@@ -77,6 +77,8 @@ Sixty questions about one state, asked both ways just now: **60 requests, 160,31
 
 > **The trap.** This does not extend to putting several subjects in one request. Sixty different tickets placed in one state, with questions numbered to match, scored **0.367** against **1.000** for the same tickets asked one per request. The model answers every question from the whole state; it does not reliably bind question *n* to item *n*. One subject per request, as many questions about it as you like.
 
+*Produced by [3. Many questions at once](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE3) — [`e3_batching.py`](jeveval/experiments/e3_batching.py). Problems and their answers come from [`dyck.py`](jeveval/generators/dyck.py), [`filler.py`](jeveval/generators/filler.py), [`semantic.py`](jeveval/generators/semantic.py).*
+
 ---
 
 ## 2. Send the source, not a structure you built for it
@@ -140,6 +142,8 @@ Converting your data into the form that would make the question easy for a progr
 
 The same sixty programs, asked the same question, sent three ways just now: **source 1.000**, syntax tree 0.667, control-flow edge list 0.567. The edge list is the form that reduces the question to a graph search, and it did worst. It also cost the most: 1098 input tokens per request against 430 for the source. You pay 2.6 times as much to do worse.
 
+*Produced by [7. State size and form](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE4) — [`e4_input_size.py`](jeveval/experiments/e4_input_size.py). Problems and their answers come from [`filler.py`](jeveval/generators/filler.py), [`progreach.py`](jeveval/generators/progreach.py), [`semantic.py`](jeveval/generators/semantic.py).*
+
 ---
 
 ## 3. Use one flat choice, up to 255 options
@@ -174,6 +178,8 @@ Accuracy does not fall as options are added, so the filter-then-choose pattern i
 ```
 
 At 255 options, one flat choice scored **0.997** against 1.000 at two options: accuracy does not fall anywhere in that range. The two-stage pattern scored 1.000, a gain of 0.003, for five times the requests. Measured on 300 shared problems, the difference is not significant.
+
+*Produced by [4. Number of options](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE7) — [`e7_cardinality.py`](jeveval/experiments/e7_cardinality.py). Problems and their answers come from [`taxonomy.py`](jeveval/generators/taxonomy.py).*
 
 ---
 
@@ -214,6 +220,8 @@ The model reads the option names. Opaque identifiers throw away information you 
 ```
 
 The same problems asked both ways scored **0.953** with readable names against **0.935** with bit strings, a gap of 1.7 points on paired items. Smaller than predicted, but free: the description field costs a few tokens and the model uses it.
+
+*Produced by [5. Asking about combinations](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE5) — [`e5_enrollment.py`](jeveval/experiments/e5_enrollment.py). Problems and their answers come from [`dfa.py`](jeveval/generators/dfa.py), [`sudoku.py`](jeveval/generators/sudoku.py).*
 
 ---
 
@@ -257,6 +265,8 @@ Separate yes/no questions cannot express that two outcomes are mutually exclusiv
 
 On states where two outcomes cannot both hold, the combined form placed **0.049** of its probability on the impossible combination, against **0.191** implied by the model's own separate answers. The joint carries 0.87 nats of structure the separate questions do not express.
 
+*Produced by [5. Asking about combinations](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE5) — [`e5_enrollment.py`](jeveval/experiments/e5_enrollment.py). Problems and their answers come from [`dfa.py`](jeveval/generators/dfa.py), [`sudoku.py`](jeveval/generators/sudoku.py).*
+
 ---
 
 ## 6. Do not gate anything on confidence
@@ -292,6 +302,8 @@ Confidence on answerable states averaged **0.986**; on states that cannot be ans
 
 > A yes/no question returns no confidence field at all. For those the only available substitute is the distance of the probability from one half, which is a weaker signal still.
 
+*Produced by [9. Limits and attacks](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE9) — [`e9_edges.py`](jeveval/experiments/e9_edges.py). Problems and their answers come from [`adversarial.py`](jeveval/generators/adversarial.py), [`dyck.py`](jeveval/generators/dyck.py), [`graphreach.py`](jeveval/generators/graphreach.py), [`numeric.py`](jeveval/generators/numeric.py).*
+
 ---
 
 ## 7. Record each derived fact the first time; never ask twice
@@ -316,6 +328,8 @@ for pair in pairs:
 ```
 
 Pairwise comparisons of items close together in the true order contradicted themselves on **5.3%** of triples. The product rule was violated by 0.060, and a question and its negation summed to one only within 0.063. At that rate a ranking built from pairwise requests over about six items is more likely than not to contain a contradiction.
+
+*Produced by [6. Agreement across requests](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE6) — [`e6_coherence.py`](jeveval/experiments/e6_coherence.py). Problems and their answers come from [`ordering.py`](jeveval/generators/ordering.py).*
 
 ---
 
@@ -350,6 +364,8 @@ if len(legal) == 1:
 The formula on the right says *x* and *not x*. It is unsatisfiable by inspection. Asked just now, the model returned **P = 0.38** that it is satisfiable. On a hard unsatisfiable formula at clause ratio 8.0 it returned **P = 0.71**. Across the full sweep it answered satisfiable for every formula at every ratio, and a short program reading clause density beat it at 41 of 75 conditions.
 
 > The same limit showed up where the constraint had already been solved. Given a Sudoku cell with exactly one legal digit supplied as the only sensible option, the model still answered correctly only 0.855 of the time.
+
+*Produced by [2. Calibration](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE2) — [`e2_calibration.py`](jeveval/experiments/e2_calibration.py) and [5. Asking about combinations](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE5) — [`e5_enrollment.py`](jeveval/experiments/e5_enrollment.py). Problems and their answers come from [`dfa.py`](jeveval/generators/dfa.py), [`sat3.py`](jeveval/generators/sat3.py), [`semantic.py`](jeveval/generators/semantic.py), [`sudoku.py`](jeveval/generators/sudoku.py).*
 
 ---
 
@@ -410,6 +426,8 @@ Text added to an otherwise ordinary support ticket:
 
 > Measured on 60 paired tickets per technique, each against the same ticket clean. *Noise control* inserts the same quantity of text carrying no instruction, and is the floor. The successful example below moved the answer from the correct department to the attacker's, and confidence fell only from 1.00 to 0.62 — not far enough to catch it.
 
+*Produced by [9. Limits and attacks](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE9) — [`e9_edges.py`](jeveval/experiments/e9_edges.py). Problems and their answers come from [`adversarial.py`](jeveval/generators/adversarial.py), [`dyck.py`](jeveval/generators/dyck.py), [`graphreach.py`](jeveval/generators/graphreach.py), [`numeric.py`](jeveval/generators/numeric.py).*
+
 ---
 
 ## 10. Use worked examples freely, and put them in the state
@@ -465,10 +483,13 @@ Examples do not cost calibration, and a definition of your own is followed even 
 
 Ten examples in the state moved calibration error from 0.069 to **0.065** — it did not degrade. A rubric written to mean the opposite of ordinary usage was followed on **0.950** of items. There is no request-level instruction field on this endpoint, so the instruction channel is the per-question string; the state is the roomier and better-performing place.
 
+*Produced by [8. Learning from examples](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE8) — [`e8_icl.py`](jeveval/experiments/e8_icl.py). Problems and their answers come from [`semantic.py`](jeveval/generators/semantic.py).*
+
 ---
 
 ## Where these come from
 
 Every figure above is either from the full run of nine experiments described in
 [the plan](jev-evaluation-plan.md), or measured directly while writing this guide.
-Ground truth always comes from a solver or from construction, never from the model.
+Ground truth always comes from a solver or from construction, never from the model
+and never from another model.
