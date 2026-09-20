@@ -6,9 +6,10 @@ link to the experiment and the code that produced it.
 
 Figures come from one of two places. Those attributed to an experiment are from the full
 run against `jev-1.13.0`, and the sample size is given with each. Those described as
-measured live were run while writing this guide, on sixty problems per condition. Both are
-reproducible from the seeds in the generators linked below, and every number here is
-checked against the measured results by `tools/verify_citations.py`.
+measured live were run while writing this guide, on sixty problems per condition, and are
+recorded in [`runs/guide-demos/`](runs/guide-demos/). Both are reproducible from the seeds
+in the generators linked below, and `tools/verify_citations.py` checks that every number
+here traces to one of them.
 
 A difference is treated as real here only if it exceeds the model's own variation between
 identical requests, which the first experiment puts at 0.011. Anything smaller than roughly
@@ -667,6 +668,6 @@ Text added to an otherwise ordinary support ticket:
 ## Where these come from
 
 Every figure above is either from the full run of nine experiments described in
-[the plan](jev-evaluation-plan.md), or measured directly while writing this guide.
-Ground truth always comes from a solver or from construction, never from the model
-and never from another model.
+[the plan](jev-evaluation-plan.md), or measured directly while writing this guide and
+recorded in [`runs/guide-demos/`](runs/guide-demos/). Ground truth always comes from a
+solver or from construction, never from the model and never from another model.

@@ -39,15 +39,19 @@ def _embed(text: str) -> str:
     return text.replace("</", "<\\/").replace("<!--", "<\\!--")
 
 
-def build_html(run: str) -> Path:
+def render_html() -> str:
     tpl = (TOOLS / "report_template.html").read_text()
     data = (TOOLS / "reportdata.json").read_text()
     prose = (TOOLS / "prose.json").read_text()
     page = tpl.replace("__DATA__", _embed(data)).replace("__PROSE__", _embed(prose))
     if "__DATA__" in page or "__PROSE__" in page:
         raise SystemExit("template placeholders were not both replaced")
+    return page
+
+
+def build_html(run: str) -> Path:
     out = ROOT / "runs" / run / "report.html"
-    out.write_text(page)
+    out.write_text(render_html())
     return out
 
 
@@ -73,6 +77,12 @@ def _slug(rule: dict) -> str:
 
 
 def build_guide() -> Path:
+    path = ROOT / "PROMPTING.md"
+    path.write_text(render_guide())
+    return path
+
+
+def render_guide() -> str:
     prose = json.loads((TOOLS / "prose.json").read_text())
     rules = prose["_rules"]
     out: list[str] = [
@@ -136,15 +146,30 @@ def build_guide() -> Path:
             "recorded in [`runs/guide-demos/`](runs/guide-demos/). Ground truth always comes from a",
             "solver or from construction, never from the model and never from another model.", ""]
 
-    path = ROOT / "PROMPTING.md"
-    path.write_text("\n".join(out))
-    return path
+    return "\n".join(out)
 
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--run", default="full-20260919")
+    ap.add_argument("--check", action="store_true",
+                    help="report whether the committed output is up to date, and write nothing")
     args = ap.parse_args(argv)
+
+    if args.check:
+        stale = [
+            path.relative_to(ROOT)
+            for path, fresh in ((ROOT / "runs" / args.run / "report.html", render_html()),
+                                (ROOT / "PROMPTING.md", render_guide()))
+            if not path.exists() or path.read_text() != fresh
+        ]
+        if stale:
+            print("out of date: " + ", ".join(str(p) for p in stale))
+            print("run tools/build_report.py to regenerate")
+            return 1
+        print("report.html and PROMPTING.md are up to date with tools/prose.json")
+        return 0
+
     page = build_html(args.run)
     guide = build_guide()
     print(f"wrote {page.relative_to(ROOT)}  ({page.stat().st_size / 1024:.0f} KB)")
