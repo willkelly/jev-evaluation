@@ -176,7 +176,7 @@ The saving is in tokens. Sixty questions about one state, measured live: **60 re
 
 ## 3. Send the source, not something derived from it
 
-Adding fields around the source is fine. Replacing the source with a derived representation makes the answer worse.
+How you package the state does not matter. Replacing the source with a derived representation makes the answer worse.
 
 **Do** — Send the source as your system already holds it, with line numbers
 
@@ -205,7 +205,9 @@ def prepare(src):                    # you write this, run it every
 
 The same programs sent three ways, **1,600 paired instances**: source **0.894**, syntax tree 0.598, control-flow graph 0.530. The gap appears in all eight difficulty settings.
 
-> Note what the preprocessing costs. The graph form carried more information than the source, not less — it kept the full text of every statement and added the edges — and still did worst, while costing about 2.5 times the input tokens. You write the code, run it on every request, pay more, and lose 36 points.
+Packaging is a separate question and was measured separately: the same facts sent as a structured object and as a single JSON string scored **0.954** and 0.953 over 1,500 paired instances, a difference of 0.001 at McNemar *p* = 0.754. What the representation says is what matters, not the wrapper it arrives in.
+
+> Note what the preprocessing costs. The graph form carried more information than the source, not less — it kept the full text of every statement and added the edges — and still did worst, while costing about 2.5 times the input tokens, measured live over 60 programs. You write the code, run it on every request, pay more, and lose 36 points.
 
 *Produced by [7. State size and form](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE4) — [`e4_input_size.py`](jeveval/experiments/e4_input_size.py). Problems and their answers come from [`filler.py`](jeveval/generators/filler.py), [`progreach.py`](jeveval/generators/progreach.py), [`semantic.py`](jeveval/generators/semantic.py).*
 
@@ -226,22 +228,24 @@ state = {"ticket": ticket, "history": history, "account": account}
 ```python
 resp = post(request)
 used = resp["usage"]["input_tokens"]   # the only figure that counts
-# a word- or character-based estimate undercounted this by about 20%
+# a word- or character-based estimate ran about 20% low here; on a
+# 200-token state the true count was 3.6x the estimate
 ```
 
 **Don't** — Trust your own token count to stay inside the limit
 
 ```python
 if estimate_tokens(state) < 32_000:   # the documented state limit
-    post(request)                     # but the estimate ran ~20% low,
-# HTTP 400 max_tokens_exceeded        # so this clears it and still fails
+    post(request)                     # but on a state this size the
+# HTTP 400 max_tokens_exceeded        # estimate runs ~20% low, so this
+                                      # clears the check and still fails
 ```
 
 Accuracy lost between the smallest state and a 10,000-token state: **0.000**, over 1,000 problems. Moving the relevant fact to 0, 25, 50, 75 or 100 percent of the way through, holding length constant, also cost **0.000**. The middle-of-state penalty other models show did not appear. That is flat as far as accuracy could be measured: the largest rung that answered was targeted at 20,000 tokens and reported as 24,313.
 
-The limit brackets where the documentation says it is. Growing one state until it was refused: a request reporting **28,844** input tokens was answered, and the next target up was refused with `max_tokens_exceeded`. A refused request reports no token count, so the boundary is bracketed rather than pinned. Separately, 255 questions over a state that reported 9,982 input tokens on its own totalled **32,720** input tokens and was answered — which is how you can tell the 32k bound applies to the state plus the longest single question rather than to the whole request, with 64k as the separate per-request ceiling.
+The limit brackets where the documentation says it is. Growing one state until it was refused: a request reporting **28,844** input tokens was answered, and the next target up was refused with `max_tokens_exceeded`. A refused request reports no token count, so the boundary is bracketed rather than pinned: the largest target that was answered was 24,000 and the smallest refused was 28,000, with every target from there up to 60,000 also refused. Separately, 255 questions over a state that reported 9,982 input tokens on its own totalled **32,720** input tokens and was answered — which is how you can tell the 32k bound applies to the state plus the longest single question rather than to the whole request. The 64k per-request ceiling is documentation only. The largest request this evaluation had answered reported 32,720 input tokens, so nothing here reached it.
 
-> The evaluation first read this as an undocumented limit, because its own sweep jumped from about 24,000 tokens straight to 50,000 and saw only the refusal. It is documented, and the measurements above agree with it. What is worth carrying is the gap between an estimate and the truth: a state this harness targeted at 24,000 tokens was reported by the endpoint as 28,844, about 20 percent higher. Budget against `usage.input_tokens` from a real response, and leave room.
+> The evaluation first read this as an undocumented limit, because its own sweep jumped from about 24,000 tokens straight to 50,000 and saw only the refusal. It is documented, and the measurements above agree with it. What is worth carrying is the gap between an estimate and the truth: a state this harness targeted at 24,000 tokens was reported by the endpoint as 28,844, about 20 percent higher. That figure holds for large states and only for large states: the endpoint's count ran 1.22 times the estimate at 20,000 tokens and 1.24 at 10,000, but 1.43 at 2,000 and 3.60 at 200. The smaller the state, the worse an estimate is, so a margin that looks generous on a short request is not one. Budget against `usage.input_tokens` from a real response, and leave room.
 
 *Produced by [7. State size and form](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE4) — [`e4_input_size.py`](jeveval/experiments/e4_input_size.py). Problems and their answers come from [`filler.py`](jeveval/generators/filler.py), [`progreach.py`](jeveval/generators/progreach.py), [`semantic.py`](jeveval/generators/semantic.py).*
 
