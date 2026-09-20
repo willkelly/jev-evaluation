@@ -6,10 +6,9 @@ link to the experiment and the code that produced it.
 
 Figures come from one of two places. Those attributed to an experiment are from the full
 run against `jev-1.13.0`, and the sample size is given with each. Those described as
-measured live were run while writing this guide, on sixty problems per condition, and are
-recorded in [`runs/guide-demos/`](runs/guide-demos/). Both are reproducible from the seeds
-in the generators linked below, and `tools/verify_citations.py` checks that every number
-here traces to one of them.
+measured live were run while writing this guide, on sixty problems per condition. Both are
+reproducible from the seeds in the generators linked below, and every number here is
+checked against the measured results by `tools/verify_citations.py`.
 
 A difference is treated as real here only if it exceeds the model's own variation between
 identical requests, which the first experiment puts at 0.011. Anything smaller than roughly
@@ -596,7 +595,7 @@ Asking for the whole ordering at once is measurably better, not merely tidier: o
 
 ## 12. Filter for an invented ruling, not for imperative phrasing
 
-Imperative jailbreak phrasing moved the answer on 0 of 60 tickets. An invented supervisor's decision moved it on 65%.
+Imperative jailbreak phrasing moved the answer on 0 of 60 tickets. An invented supervisor's ruling moved it on 65%. Confidence falls when either is present, whether or not it works.
 
 **Don't** — Filter for imperative jailbreak phrasing
 
@@ -607,13 +606,14 @@ if re.search(r"ignore (the )?(above|previous)", text, re.I):
 # it was written for, and none of the three that actually worked
 ```
 
-**Don't** — Treat a low-confidence answer as merely a hard case
+**Don't** — Read a fallen confidence as proof the attack succeeded
 
 ```python
 if answer.confidence < 0.8:
-    queue_as_difficult(answer)
-# a successful attack moved this one from 1.00 to 0.62;
-# the signal, such as it is, says tampering rather than difficulty
+    flag_as_attacked(answer)
+# fires on ~75% of authority attacks that work -- but just as
+# often on ones that fail. It reports instruction-shaped text
+# in the state, not that the answer was changed.
 ```
 
 **Do** — Separate untrusted text from your own fields
@@ -658,7 +658,7 @@ Text added to an otherwise ordinary support ticket:
 |---|---|---|
 | press | press | **account_access** |
 
-> Measured on 60 paired tickets per technique, each against the same ticket clean. *Noise control* inserts the same quantity of text carrying no instruction and is the comparison point. The crude command is the one everyone writes a filter for, and it is the one that never worked; a claim that someone senior has already decided is the one that did. Confidence fell on the successful example below, from 1.00 to 0.62, but this run did not test a confidence threshold as a detector, so treat that as a lead to measure on your own traffic rather than as a control.
+> Measured on 60 paired tickets per technique, each against the same ticket clean. *Noise control* inserts the same quantity of text carrying no instruction and is the comparison point. The crude command is the one everyone writes a filter for, and it is the one that never worked; a claim that someone senior has already decided is the one that did. Confidence does fall when this happens: on the 147 authority attacks that moved the answer it averaged 0.680 against 0.983 on clean tickets, and 75% of them landed below 0.8. But it falls on attacks that fail too (0.604), and on techniques that never work at all, so it reports that something is trying to give the model orders rather than that the attempt succeeded.
 
 *Produced by [9. Limits and attacks](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE9) — [`e9_edges.py`](jeveval/experiments/e9_edges.py). Problems and their answers come from [`adversarial.py`](jeveval/generators/adversarial.py), [`dyck.py`](jeveval/generators/dyck.py), [`graphreach.py`](jeveval/generators/graphreach.py), [`numeric.py`](jeveval/generators/numeric.py).*
 
@@ -667,6 +667,6 @@ Text added to an otherwise ordinary support ticket:
 ## Where these come from
 
 Every figure above is either from the full run of nine experiments described in
-[the plan](jev-evaluation-plan.md), or measured directly while writing this guide and
-recorded in [`runs/guide-demos/`](runs/guide-demos/). Ground truth always comes from a
-solver or from construction, never from the model and never from another model.
+[the plan](jev-evaluation-plan.md), or measured directly while writing this guide.
+Ground truth always comes from a solver or from construction, never from the model
+and never from another model.
