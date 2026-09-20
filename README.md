@@ -134,7 +134,9 @@ jeveval/
 tests/            unit tests for the hand-written core
 tools/            report_template.html, prose.json and reportdata.json are the
                   report's sources; build_report.py assembles them and
-                  verify_citations.py checks every figure against a measurement
+                  verify_citations.py checks every figure against a measurement.
+                  position_bias.py re-reads the raw logs for one figure the
+                  experiments do not compute cleanly themselves
 PROMPTING.md      the twelve rules, generated from the same measurements
 runs/<id>/        report, figures, per-experiment results
 ```

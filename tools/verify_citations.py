@@ -207,6 +207,10 @@ def main(argv: list[str]) -> int:
         sources += idx.add_file(f, f.stem)
     for f in sorted((ROOT / "runs" / "guide-demos").glob("*.json")):
         sources += idx.add_file(f, f"demo:{f.stem}")
+    # Derived from the raw logs rather than by an experiment, so it matches
+    # neither glob above, but the guide cites it and it must be checkable.
+    sources += idx.add_file(ROOT / "runs" / "full-20260919" / "position_bias.json",
+                            "position_bias")
 
     matched, derived, unmatched, allowed = [], [], [], []
     for where, ctx, val, dec in claims(prose):
