@@ -37,11 +37,15 @@ and finished 8× sooner than the same questions asked one per request, with
 identical answers. This is the result the plan expected to be its biggest
 surprise, and it produced none.
 
-**Confidence does not track ignorance, and this is the finding that matters
-most.** Confidence separates answerable from unanswerable states by 0.202. Gate
-on confidence ≥ 0.95 and you still admit 47% of states that cannot be answered at
-all. The deployment pattern the vendor recommends — act when confident, escalate
-when not — has no reliable signal to threshold on.
+**Confidence predicts whether an answer is right, but not whether the question
+could be answered.** Over 34,200 answers it ranks correct above wrong at AUROC
+0.878 and is roughly calibrated as a probability of correctness (ECE 0.037).
+But it barely moves on an unanswerable state: the pooled separation is 0.202,
+and that average hides the real result. Missing information drops it 0.461 and
+self-contradiction 0.389, while **fluent nonsense drops it 0.009** — invented
+words in grammatical English draw the same confidence as a real ticket. The
+recommended pattern, act when confident and escalate when not, catches wrong
+answers and misses unanswerable inputs.
 
 **Doing the model's work in advance makes it worse.** The same programs, asked
 the same reachability question, scored 0.894 as source text, 0.598 as a syntax

@@ -480,7 +480,7 @@ Over 3,600 repeats per condition, renaming every question key shifted **0.0%** o
 
 ## 10. Do not read confidence as whether the model could answer
 
-On states that cannot be answered from the information given, confidence barely moves. No threshold separates them.
+Confidence predicts whether an answer is right. It does not predict whether the state contained the answer at all, and on fluent nonsense it does not move.
 
 **Don't** — Act when confident, escalate when not
 
@@ -489,15 +489,16 @@ if answer.confidence >= 0.95:
     act(answer.choice)
 else:
     escalate()
-# admits 47% of states that cannot be answered at all
+# admits 47% of unanswerable states, nearly all of the nonsense ones
 ```
 
-**Don't** — Fall back to the probability for yes/no questions
+**Don't** — Expect nonsense to lower it
 
 ```python
-margin = abs(answer.p - 0.5) * 2   # a noul returns no confidence,
-if margin >= 0.9:                  # so this is the only stand-in
-    act(answer.predicted)
+# invented words in grammatical English:
+#   "The plemtor korbanes whenever the junavo is voskar."
+# mean confidence 0.977, and 0 of 60 fell below 0.8 --
+# indistinguishable from a real ticket at 0.985
 ```
 
 **Don't** — Write a threshold finer than the model can express
@@ -507,29 +508,40 @@ if answer.p >= 0.905:   # identical to >= 0.91, and to >= 0.902:
     act()               # every probability lands on a 0.01 grid
 ```
 
-**Do** — Gate on something you can check
+**Do** — Check the state yourself for what the answer requires
 
 ```python
 required = {"order_id", "amount"}
 if not required <= set(state):
-    escalate()          # the state lacks what the answer needs
-else:
-    act(answer.choice)  # plus a fixed sample reviewed regardless
+    escalate()          # answerability is a property of your data,
+                        # not something to infer from the response
 ```
 
-Confidence on answerable states averaged **0.986**; on states that cannot be answered from the information given, **0.784**. A separation of 0.202 is not enough to threshold on, and no threshold in the table below separates them:
+**Do** — Use confidence to rank answers by how likely they are right
 
-| Gate at confidence ≥ | Answerable kept | Unanswerable wrongly admitted |
-|---|---|---|
-| 0.5 | 100% | 81% |
-| 0.7 | 98% | 62% |
-| 0.8 | 98% | 62% |
-| 0.9 | 97% | 59% |
-| 0.95 | 92% | 47% |
+```python
+# among requests that passed the check above, confidence ranks
+# correct answers over wrong ones at AUROC 0.878 (n=34,200)
+review_queue = sorted(answers, key=lambda a: a.confidence)[:budget]
+```
 
-> Three things about the returned numbers that change any threshold you write. Every probability observed, across 3.19 million of them, lies on a two-decimal grid, so a gap of 0.005 between two options does not exist in the response. The deciding probability was exactly 1.0 on 52% of one experiment's answers, so the scale is not used evenly. And `confidence` is a different field from the largest returned probability: they differ on 47.1% of choice and score answers, by as much as 0.37, so code must not substitute one for the other.
+Confidence on answerable states averaged **0.985**. On states missing what the question needs it fell to 0.532, and on self-contradictory states to 0.603 — separations of 0.461 and 0.389, with 95% and 73% of those answers below 0.8. A threshold catches most of both.
+
+On fluent nonsense it did not move at all: mean **0.977**, a separation of **0.009**, and not one answer in sixty below 0.8. The pooled separation of 0.202 that the evaluation reports is the average of a signal that works and a signal that is absent.
+
+What confidence does track is whether the answer is right. Over **34,200** answers carrying one, it ranks correct above wrong at AUROC **0.878** and is roughly calibrated as a probability of correctness, with an expected calibration error of 0.037: answers returned at 0.9 were right 88% of the time, and at 0.5, 51%.
+
+| Confidence returned | Fraction actually correct |
+|---|---|
+| 0.5 | 0.514 |
+| 0.7 | 0.667 |
+| 0.8 | 0.828 |
+| 0.9 | 0.883 |
+| 1.0 | 0.976 |
+
+> So the two questions come apart. *Is this answer right?* Confidence answers well. *Could the question be answered from this state at all?* Confidence answers only when the state is visibly incomplete or self-contradictory. Decide answerability from your own data and use confidence to triage quality among what remains.
 >
-> This is measured on states that cannot be answered. Confidence behaves differently on a different problem — see the rule on injection, where a successful attack did move it.
+> A yes/no question returns no confidence field, so none of this applies to it. The only substitute is the probability's distance from one half, which is weaker still. And the correctness result is measured where a right answer exists to be ranked; it says nothing about the nonsense case, where there is no correct department to be confident about.
 
 *Produced by [9. Limits and attacks](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE9) — [`e9_edges.py`](jeveval/experiments/e9_edges.py) and [1. Repeatability](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE1) — [`e1_determinism.py`](jeveval/experiments/e1_determinism.py). Problems and their answers come from [`adversarial.py`](jeveval/generators/adversarial.py), [`dyck.py`](jeveval/generators/dyck.py), [`graphreach.py`](jeveval/generators/graphreach.py), [`numeric.py`](jeveval/generators/numeric.py), [`sat3.py`](jeveval/generators/sat3.py), [`semantic.py`](jeveval/generators/semantic.py).*
 
