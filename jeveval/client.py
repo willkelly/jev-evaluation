@@ -240,7 +240,12 @@ class JevClient:
         parts = urlsplit(config.API_URL)
         self._host = parts.netloc
         self._path = parts.path or "/"
-        self._ssl = ssl.create_default_context()
+        # The scheme is honoured rather than assumed. The hosted endpoint is
+        # https, but an implementation of the same protocol running on this
+        # machine is plain http, and refusing to speak to it would make the
+        # harness the reason a comparison could not be run.
+        self._https = parts.scheme != "http"
+        self._ssl = ssl.create_default_context() if self._https else None
         self._local = threading.local()
         self._key: str | None = None
         self._fatal: str | None = None
@@ -268,13 +273,18 @@ class JevClient:
 
     # -- connection management -------------------------------------------
 
-    def _conn(self) -> http.client.HTTPSConnection:
+    def _conn(self) -> http.client.HTTPConnection:
         """One keep-alive connection per worker thread."""
         conn = getattr(self._local, "conn", None)
         if conn is None:
-            conn = http.client.HTTPSConnection(
-                self._host, context=self._ssl, timeout=self.rate.request_timeout
-            )
+            if self._https:
+                conn = http.client.HTTPSConnection(
+                    self._host, context=self._ssl, timeout=self.rate.request_timeout
+                )
+            else:
+                conn = http.client.HTTPConnection(
+                    self._host, timeout=self.rate.request_timeout
+                )
             self._local.conn = conn
         return conn
 
