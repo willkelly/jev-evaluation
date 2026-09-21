@@ -1,6 +1,6 @@
 # A prompting guide for jev
 
-Twelve rules that follow from [the evaluation](README.md), in four groups. Each gives
+Thirteen rules that follow from [the evaluation](README.md), in four groups. Each gives
 the requests to write, the mistakes to avoid, the measurement behind the advice, and a
 link to the experiment and the code that produced it.
 
@@ -39,6 +39,7 @@ The full report, with figures, is at <https://willkelly.github.io/jev-evaluation
 10. [Do not read confidence as whether the model could answer](#10-do-not-read-confidence-as-whether-the-model-could-answer)
 11. [Record each derived fact the first time; never ask twice](#11-record-each-derived-fact-the-first-time-never-ask-twice)
 12. [Filter for an invented ruling, not for imperative phrasing](#12-filter-for-an-invented-ruling-not-for-imperative-phrasing)
+13. [Put the threshold where the answers actually fall](#13-put-the-threshold-where-the-answers-actually-fall)
 
 ---
 
@@ -699,6 +700,49 @@ Text added to an otherwise ordinary support ticket:
 > The two rates above are measured live, on 60 paired tickets per technique, each against the same ticket clean; *noise control* inserts the same quantity of text carrying no instruction and is the comparison point. The full run puts the same two techniques at 0.005 and 0.735 over 200 tickets each, so the ordering is the same and the live figures are the noisier estimate of it. The crude command is the one everyone writes a filter for, and it is the one that never worked; a claim that someone senior has already decided is the one that did. The confidence figures that follow are from that full run rather than the live one. Confidence does fall when an attack lands: on the 147 authority attacks that moved the answer it averaged 0.680 against 0.983 on clean tickets, and 75% of them landed below 0.8. But it falls on attacks that fail too (0.604), and on techniques that never work at all, so it reports that something is trying to give the model orders rather than that the attempt succeeded.
 
 *Produced by [9. Limits and attacks](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE9) — [`e9_edges.py`](jeveval/experiments/e9_edges.py). Problems and their answers come from [`adversarial.py`](jeveval/generators/adversarial.py), [`dyck.py`](jeveval/generators/dyck.py), [`graphreach.py`](jeveval/generators/graphreach.py), [`numeric.py`](jeveval/generators/numeric.py).*
+
+## 13. Put the threshold where the answers actually fall
+
+The numbers that come back are clustered, not spread across the range. A cut at the middle of the scale, or at a round number, usually lands in empty space or inside one of the two groups you meant to separate. Measure where each group falls, then cut between them.
+
+**Don't** — Treat the middle of the range as the dividing line
+
+```python
+if answer.noul >= 0.5:        # the obvious cut
+    matches.append(line)      # and it discards half the true matches:
+                              # recall 0.518, accuracy 0.837 over 252 lines
+```
+
+**Do** — Read both groups off labelled examples, then cut between them
+
+```python
+# same 252 lines, same answers, cut where the two groups actually are
+# non-matching lines: median 0.01     matching lines: 0.10 to 0.88
+if answer.noul >= 0.05:
+    matches.append(line)      # recall 1.000, accuracy 1.000
+```
+
+**Do** — Ask whether any cut exists before you look for one
+
+```python
+# a rank statistic needs no threshold and answers a different question:
+#   is there a cut that would work at all?
+auroc(scores_of_the_positives, scores_of_the_negatives)
+# 1.000 here -- the two groups do not overlap, so every error above
+# was the cut and none of it was the model
+```
+
+Two cases from this evaluation, both of which were first read as the model failing.
+
+**A yes/no predicate over lines of a document.** Non-matching lines come back at a median probability of **0.01**; matching lines run from 0.10 to 0.88. A cut at 0.5 therefore passes through the middle of the matches and throws half of them away: recall **0.518**, accuracy 0.837. The same answers cut at 0.05 give recall **1.000** and accuracy 1.000, and the ranking is perfect — AUROC 1.000 — so every error at 0.5 belonged to the threshold and none of it to the model.
+
+**Confidence on a state that cannot answer the question.** Confidence is not spread either: it is exactly 1.00 on **86%** of answerable tickets. Fluent nonsense pulls it off that ceiling but never far — never below 0.88 — so the usual gate at 0.8 catches **0.0%** of it, and the mean moves by 0.009, which reads as no signal. Ranked, the separation is 0.893, and a gate at anything short of 1.00 catches **97.5%** for a false-alarm rate of 14.0%.
+
+> The reason both cuts were wrong is the same, and it is a property of this model rather than of either task: the numbers it returns cluster on a few values. Every probability lies on a two-decimal grid, one value alone accounts for 10.2% of all yes/no answers, and the value carrying the decision is exactly 1.0 on 52% of them. A scale used that way has no natural midpoint, so a threshold inherited from habit is a guess about someone else's distribution.
+>
+> Two practical consequences. Report a rank statistic before any threshold, because it separates *is there a signal* from *have I found the cut*, and only the first is a fact about the model. And do not read an unmoved mean as an absent signal: on the nonsense case the mean moved 0.009 while the ranking separated at 0.893. A mean over a quantity pinned to a ceiling cannot see a shift off that ceiling.
+>
+> Measured in `runs/guide-demos/semantic-grep.json` and `runs/full-20260919/abstention_gates.json`.
 
 ---
 

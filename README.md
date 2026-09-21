@@ -9,7 +9,7 @@ reported here was chosen after seeing an outcome.
 One run produced every number below: **123,805 requests, 138 minutes, $12.69,
 five failures**, all answered by `jev-1.13.0`.
 
-- **[A prompting guide](PROMPTING.md)** — twelve rules for using this model, each
+- **[A prompting guide](PROMPTING.md)** — thirteen rules for using this model, each
   with the requests to write, the mistakes to avoid, and the measurement behind it.
   Start here if you are deciding how to call the API.
 - **[The report](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html)**
@@ -145,7 +145,7 @@ tools/            report_template.html, prose.json and reportdata.json are the
                   verify_citations.py checks every figure against a measurement.
                   position_bias.py re-reads the raw logs for one figure the
                   experiments do not compute cleanly themselves
-PROMPTING.md      the twelve rules, generated from the same measurements
+PROMPTING.md      the thirteen rules, generated from the same measurements
 runs/<id>/        report, figures, per-experiment results
 ```
 

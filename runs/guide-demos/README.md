@@ -14,12 +14,13 @@ problems per condition unless the file says otherwise.
 | `cal.json` | one satisfiable and one unsatisfiable formula with the probability returned for each |
 | `encodings.json` | one program rendered as source, syntax tree and control-flow graph |
 | `ticket-binding.json` | how a question should point at one of many subjects sharing a request: by position against by sender, over five blocks of sixty tickets |
+| `semantic-grep.json` | a yes/no predicate asked of every line of a document, four ways; kept for where it puts its probabilities rather than for the predicate |
 
-`ticket-binding.jsonl` is the one raw call log kept here. The full run's logs
-are 1.3 GB and are excluded; this one is 1.4 MB, and keeping it means
-`tools/ticket_binding.py --score-only` can recompute that result from a
-checkout without an API key. It holds no credentials: the client never writes
-the request headers.
+`ticket-binding.jsonl` and `semantic-grep.jsonl` are the only raw call logs kept here. The full run's logs
+are 1.3 GB and are excluded; these are 1.4 MB and 1.5 MB, and keeping them means
+`tools/ticket_binding.py --score-only` and `tools/semantic_grep.py` can
+recompute those results from a checkout without an API key. They hold no
+credentials: the client never writes the request headers.
 
 They are kept so that every number in the guide traces to a file in this
 repository. `tools/verify_citations.py` checks exactly that, and fails if a

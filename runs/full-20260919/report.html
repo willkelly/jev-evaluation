@@ -520,7 +520,7 @@
   <section id="guide">
     <div class="col">
       <h2>A prompting guide</h2>
-      <p class="lede">Twelve rules that follow from the results above, in four groups. Each gives
+      <p class="lede">Thirteen rules that follow from the results above, in four groups. Each gives
         the requests to write, the mistakes to avoid, and the measurement behind the advice.</p>
       <p class="lede">Figures come from one of two places. Those attributed to an experiment are
         from the full run against <code>jev-1.13.0</code>, and the sample size is given with each.
@@ -1743,6 +1743,31 @@
      "path": "jeveval/experiments/e9_edges.py"
     }
    ]
+  },
+  {
+   "n": 13,
+   "group": "What you can rely on from the answer",
+   "title": "Put the threshold where the answers actually fall",
+   "rule": "The numbers that come back are clustered, not spread across the range. A cut at the middle of the scale, or at a round number, usually lands in empty space or inside one of the two groups you meant to separate. Measure where each group falls, then cut between them.",
+   "items": [
+    {
+     "kind": "dont",
+     "label": "Treat the middle of the range as the dividing line",
+     "code": "if answer.noul >= 0.5:        # the obvious cut\n    matches.append(line)      # and it discards half the true matches:\n                              # recall 0.518, accuracy 0.837 over 252 lines"
+    },
+    {
+     "kind": "do",
+     "label": "Read both groups off labelled examples, then cut between them",
+     "code": "# same 252 lines, same answers, cut where the two groups actually are\n# non-matching lines: median 0.01     matching lines: 0.10 to 0.88\nif answer.noul >= 0.05:\n    matches.append(line)      # recall 1.000, accuracy 1.000"
+    },
+    {
+     "kind": "do",
+     "label": "Ask whether any cut exists before you look for one",
+     "code": "# a rank statistic needs no threshold and answers a different question:\n#   is there a cut that would work at all?\nauroc(scores_of_the_positives, scores_of_the_negatives)\n# 1.000 here -- the two groups do not overlap, so every error above\n# was the cut and none of it was the model"
+    }
+   ],
+   "evidence": "<p>Two cases from this evaluation, both of which were first read as the model failing.<\/p><p><strong>A yes/no predicate over lines of a document.<\/strong> Non-matching lines come back at a median probability of <strong>0.01<\/strong>; matching lines run from 0.10 to 0.88. A cut at 0.5 therefore passes through the middle of the matches and throws half of them away: recall <strong>0.518<\/strong>, accuracy 0.837. The same answers cut at 0.05 give recall <strong>1.000<\/strong> and accuracy 1.000, and the ranking is perfect — AUROC 1.000 — so every error at 0.5 belonged to the threshold and none of it to the model.<\/p><p><strong>Confidence on a state that cannot answer the question.<\/strong> Confidence is not spread either: it is exactly 1.00 on <strong>86%<\/strong> of answerable tickets. Fluent nonsense pulls it off that ceiling but never far — never below 0.88 — so the usual gate at 0.8 catches <strong>0.0%<\/strong> of it, and the mean moves by 0.009, which reads as no signal. Ranked, the separation is 0.893, and a gate at anything short of 1.00 catches <strong>97.5%<\/strong> for a false-alarm rate of 14.0%.<\/p>",
+   "warn": "<p>The reason both cuts were wrong is the same, and it is a property of this model rather than of either task: the numbers it returns cluster on a few values. Every probability lies on a two-decimal grid, one value alone accounts for 10.2% of all yes/no answers, and the value carrying the decision is exactly 1.0 on 52% of them. A scale used that way has no natural midpoint, so a threshold inherited from habit is a guess about someone else's distribution.<\/p><p>Two practical consequences. Report a rank statistic before any threshold, because it separates <em>is there a signal<\/em> from <em>have I found the cut<\/em>, and only the first is a fact about the model. And do not read an unmoved mean as an absent signal: on the nonsense case the mean moved 0.009 while the ranking separated at 0.893. A mean over a quantity pinned to a ceiling cannot see a shift off that ceiling.<\/p><p>Measured in <code>runs/guide-demos/semantic-grep.json<\/code> and <code>runs/full-20260919/abstention_gates.json<\/code>.<\/p>"
   }
  ]
 }

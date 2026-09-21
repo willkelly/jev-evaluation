@@ -1,0 +1,110 @@
+{
+ "source": "runs/guide-demos/semantic-grep.jsonl",
+ "predicate": "the line is about elephants",
+ "design": {
+  "documents": 12,
+  "lines_per_document": 21,
+  "group_size": 7,
+  "note": "no matching line contains the word 'elephant'"
+ },
+ "arms": {
+  "A-one-request-per-line": {
+   "requests": 252,
+   "input_tokens": 73420,
+   "matching": {
+    "n": 85,
+    "p10": 0.1,
+    "median": 0.64,
+    "p90": 0.88
+   },
+   "non_matching": {
+    "n": 167,
+    "median": 0.01,
+    "p90": 0.01
+   },
+   "auroc": 1.0,
+   "at_conventional_threshold": {
+    "threshold": 0.5,
+    "accuracy": 0.8373015873015873,
+    "precision": 1.0,
+    "recall": 0.5176470588235295,
+    "errors": 41
+   },
+   "at_measured_threshold": {
+    "threshold": 0.05,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "errors": 0
+   }
+  },
+  "B-by-line-number": {
+   "requests": 12,
+   "input_tokens": 11561,
+   "matching": {
+    "n": 85,
+    "p10": 0.05,
+    "median": 0.69,
+    "p90": 0.89
+   },
+   "non_matching": {
+    "n": 167,
+    "median": 0.01,
+    "p90": 0.01
+   },
+   "auroc": 0.9815427967594224,
+   "at_conventional_threshold": {
+    "threshold": 0.5,
+    "accuracy": 0.9047619047619048,
+    "precision": 1.0,
+    "recall": 0.7176470588235294,
+    "errors": 24
+   },
+   "at_measured_threshold": {
+    "threshold": 0.05,
+    "accuracy": 0.9682539682539683,
+    "precision": 1.0,
+    "recall": 0.9058823529411765,
+    "errors": 8
+   }
+  },
+  "C-by-quoted-text": {
+   "requests": 12,
+   "input_tokens": 14781,
+   "matching": {
+    "n": 85,
+    "p10": 0.51,
+    "median": 0.83,
+    "p90": 0.93
+   },
+   "non_matching": {
+    "n": 167,
+    "median": 0.01,
+    "p90": 0.02
+   },
+   "auroc": 1.0,
+   "at_conventional_threshold": {
+    "threshold": 0.5,
+    "accuracy": 0.9682539682539683,
+    "precision": 1.0,
+    "recall": 0.9058823529411765,
+    "errors": 8
+   },
+   "at_measured_threshold": {
+    "threshold": 0.05,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "errors": 0
+   }
+  },
+  "D-subset-choice": {
+   "requests": 36,
+   "input_tokens": 177869,
+   "no_threshold_to_set": "a choice returns one discrete subset",
+   "accuracy": 0.8968253968253969,
+   "groups_exactly_right": 17,
+   "groups": 36
+  }
+ }
+}

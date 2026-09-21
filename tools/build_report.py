@@ -8,7 +8,7 @@ a checkout, so they are here now and this script is what assembles them:
 
     tools/report_template.html   layout, styling and the rendering code
     tools/reportdata.json        extracted from the nine *_result.json files
-    tools/prose.json             the authored text and the twelve rules
+    tools/prose.json             the authored text and the thirteen rules
 
     python tools/build_report.py
 
@@ -87,7 +87,7 @@ def render_guide() -> str:
     rules = prose["_rules"]
     out: list[str] = [
         "# A prompting guide for jev", "",
-        "Twelve rules that follow from [the evaluation](README.md), in four groups. Each gives",
+        "Thirteen rules that follow from [the evaluation](README.md), in four groups. Each gives",
         "the requests to write, the mistakes to avoid, the measurement behind the advice, and a",
         "link to the experiment and the code that produced it.", "",
         "Figures come from one of two places. Those attributed to an experiment are from the full",
