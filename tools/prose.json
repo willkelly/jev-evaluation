@@ -666,23 +666,28 @@
   {
    "n": 2,
    "group": "What goes in one request",
-   "title": "Keep one subject per request, and ask as many questions as you like",
-   "rule": "Questions about the same subject cost about 90 input tokens each and lose no accuracy. Several subjects in one request lose a great deal.",
+   "title": "Batch questions freely, and let each one name its subject",
+   "rule": "Questions about the same subject cost about 90 input tokens each and lose no accuracy. Several subjects can share a request too, as long as each question names its subject instead of its position.",
    "items": [
     {
      "kind": "do",
      "label": "Put every question about one subject in one request",
-     "code": "{\n  \"model\": \"jev-latest\",\n  \"state\": {\n    \"ticket\": \"…one ticket…\"\n  },\n  \"questions\": {\n    \"is_billing\": {\n      \"type\": \"noul\",\n      \"instructions\": \"The ticket is about a payment problem.\"\n    },\n    \"is_urgent\": {\n      \"type\": \"noul\",\n      \"instructions\": \"The customer needs a reply today.\"\n    },\n    \"department\": {\n      \"type\": \"choice\",\n      \"criteria\": {\n        \"billing\": \"Payment and invoices\",\n        \"shipping\": \"Delivery\"\n      }\n    }\n  }\n}\n\n# many subjects: this same request, once per subject"
+     "code": "{\n  \"model\": \"jev-latest\",\n  \"state\": {\n    \"ticket\": \"…one ticket…\"\n  },\n  \"questions\": {\n    \"is_billing\": {\n      \"type\": \"noul\",\n      \"instructions\": \"The ticket is about a payment problem.\"\n    },\n    \"is_urgent\": {\n      \"type\": \"noul\",\n      \"instructions\": \"The customer needs a reply today.\"\n    },\n    \"department\": {\n      \"type\": \"choice\",\n      \"criteria\": {\n        \"billing\": \"Payment and invoices\",\n        \"shipping\": \"Delivery\"\n      }\n    }\n  }\n}\n\n# 0.9777 batched against 0.9780 one per request, over 3,000 paired\n# questions, and each extra question adds about 90 input tokens"
     },
     {
      "kind": "dont",
-     "label": "Carry several subjects in one request, numbered to match",
-     "code": "{\n  \"model\": \"jev-latest\",\n  \"state\": {\n    \"tickets\": [\n      \"…ticket 1…\",\n      \"…ticket 2…\",\n      \"…ticket 60…\"\n    ]\n  },\n  \"questions\": {\n    \"t001\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Ticket 1: which department?\",\n      \"criteria\": {\n        \"billing\": \"Payment and invoices\",\n        \"shipping\": \"Delivery\"\n      }\n    },\n    \"t002\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Ticket 2: which department?\",\n      \"criteria\": {\n        \"billing\": \"Payment and invoices\",\n        \"shipping\": \"Delivery\"\n      }\n    }\n  }\n}"
+     "label": "Point at a subject by its position in a list",
+     "code": "{\n  \"state\": {\"tickets\": [\"…ticket 1…\", \"…ticket 2…\", \"…ticket 60…\"]},\n  \"questions\": {\n    \"t001\": {\"type\": \"choice\", \"instructions\": \"Ticket 1: which department?\"},\n    \"t060\": {\"type\": \"choice\", \"instructions\": \"Ticket 60: which department?\"}\n  }\n}\n// 0.420 over 300 judgements, and it decays down the list:\n// 0.870 over the first third, 0.240 the second, 0.150 the last"
+    },
+    {
+     "kind": "do",
+     "label": "Identify each subject by one of its own fields",
+     "code": "{\n  \"state\": {\"tickets\": [\"…ticket 1…\", \"…ticket 2…\", \"…ticket 60…\"]},\n  \"questions\": {\n    \"t001\": {\"type\": \"choice\",\n             \"instructions\": \"The ticket from Ingrid Iqbal, received 2026-04-04: which department?\"}\n  }\n}\n// 1.000 over the same 300 judgements, in 5 requests rather than 300.\n// Pick a field that identifies without answering: the sender and date\n// contain no department keyword, where the subject line names the right\n// department on 57 of 60 tickets and would be scoring your own code."
     }
    ],
-   "evidence": "<p>Asking the same questions batched and one per request agreed on <strong>3,000 paired questions</strong>: 0.9777 batched against 0.9780 individually. Position does not matter either — the target question scored 0.803 at position 1 and 0.810 at position 255, 300 problems per position.</p><p>That is not a ceiling effect hiding a loss: 1,800 of the paired questions concern unrelated facts and sit at 1.000 in both arms, but the 1,200 about related facts sit at 0.944 batched and 0.945 individually, where a loss had room to show and none did. The saving is in tokens. Sixty questions about one state, measured live: <strong>60 requests and 160,310 input tokens</strong> against <strong>1 request and 7,972</strong>, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.</p>",
+   "evidence": "<p>Asking the same questions batched and one per request agreed on <strong>3,000 paired questions</strong>: 0.9777 batched against 0.9780 individually. Position does not matter either — the target question scored 0.803 at position 1 and 0.810 at position 255, 300 problems per position.</p><p>That is not a ceiling effect hiding a loss: 1,800 of the paired questions concern unrelated facts and sit at 1.000 in both arms, but the 1,200 about related facts sit at 0.944 batched and 0.945 individually, where a loss had room to show and none did. The saving is in tokens. Sixty questions about one state, measured live: <strong>60 requests and 160,310 input tokens</strong> against <strong>1 request and 7,972</strong>, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.</p><p>Several subjects in one request is a separate question, and the answer turns entirely on how a question picks its subject out. Sixty tickets in one state, five blocks of them, asked three ways. One ticket per request: <strong>1.000</strong> over 300 judgements, in 300 requests. The same sixty in one state with each question naming its ticket by position — <code>Ticket 1: which department?</code> — <strong>0.420</strong>. The same sixty, in a state identical byte for byte, with each question naming its ticket by sender and date instead: <strong>1.000</strong>, in 5 requests rather than 300.</p><p>Only the wording that picks out the ticket differs between the last two, so that is what the loss was. The identifier is metadata — the sender's name, address and the date received contain no department keyword on any of the 300 tickets, checked before the run, so the question cannot be classifying the ticket on the model's behalf.</p>",
    "table": null,
-   "warn": "<p>Numbering the questions to match a list of subjects looks like the same saving and is not. Sixty tickets in one state scored <strong>0.367</strong> against <strong>1.000</strong> for the same tickets one per request, and it saves only 1.7 times the tokens rather than 20, because the whole list is sent whatever you ask. Every question is answered from the entire state, and the model does not reliably bind question <em>n</em> to item <em>n</em>.</p>",
+   "warn": "<p>Numbering the questions to match a list of subjects is the one arrangement that fails, and it fails by losing its place. Accuracy over the numbered arm runs <strong>0.870</strong> across the first third of the list, 0.240 across the second and <strong>0.150</strong> across the last, against a chance rate of 0.125 over eight departments. By the end of a sixty-item list the position in the question no longer picks out anything. Naming the subject does not decay: 1.000 across all three thirds.</p><p>Every question is still answered from the entire state, which is why the fix is to make the question identify its subject rather than to hope the model keeps count. Watch which field you pick: one that contains the answer turns the measurement into a test of your own code. Here the subject line would have done exactly that, naming the correct department on 57 of 60 tickets.</p>",
    "example": null,
    "from": [
     {
@@ -690,7 +695,8 @@
      "label": "3. Many questions at once",
      "path": "jeveval/experiments/e3_batching.py"
     }
-   ]
+   ],
+   "nav": null
   },
   {
    "n": 3,

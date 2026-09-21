@@ -1,0 +1,58 @@
+{
+ "source": "tools/ticket_binding.py",
+ "question": "how a question should point at one of many subjects in a shared request",
+ "design": {
+  "blocks": 5,
+  "tickets_per_block": 60,
+  "seed": 20260919,
+  "options": 8,
+  "chance": 0.125,
+  "identifier": "sender name, address and date received",
+  "identifier_leaks_department": false,
+  "state_identical_between_B_and_C": true
+ },
+ "arms": {
+  "A-one-per-request": {
+   "requests": 300,
+   "judgements": 300,
+   "accuracy": 1.0,
+   "correct": 300,
+   "input_tokens": 179601,
+   "input_tokens_per_judgement": 598.67,
+   "latency_p50": 0.1348562240600586,
+   "accuracy_by_third_of_list": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "B-by-position": {
+   "requests": 5,
+   "judgements": 300,
+   "accuracy": 0.42,
+   "correct": 126,
+   "input_tokens": 105276,
+   "input_tokens_per_judgement": 350.92,
+   "latency_p50": 0.2663228511810303,
+   "accuracy_by_third_of_list": [
+    0.87,
+    0.24,
+    0.15
+   ]
+  },
+  "C-by-sender": {
+   "requests": 5,
+   "judgements": 300,
+   "accuracy": 1.0,
+   "correct": 300,
+   "input_tokens": 113099,
+   "input_tokens_per_judgement": 376.99666666666667,
+   "latency_p50": 0.3153977394104004,
+   "accuracy_by_third_of_list": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ }
+}

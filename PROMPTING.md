@@ -24,7 +24,7 @@ The full report, with figures, is at <https://willkelly.github.io/jev-evaluation
 1. [Decide formal constraints in code, never with the model](#1-decide-formal-constraints-in-code-never-with-the-model)
 ### What goes in one request
 
-2. [Keep one subject per request, and ask as many questions as you like](#2-keep-one-subject-per-request-and-ask-as-many-questions-as-you-like)
+2. [Batch questions freely, and let each one name its subject](#2-batch-questions-freely-and-let-each-one-name-its-subject)
 3. [Send the source, not something derived from it](#3-send-the-source-not-something-derived-from-it)
 4. [Budget state against reported tokens, not your own estimate](#4-budget-state-against-reported-tokens-not-your-own-estimate)
 5. [Put worked examples in the state, and say what your terms mean](#5-put-worked-examples-in-the-state-and-say-what-your-terms-mean)
@@ -99,9 +99,9 @@ Asked whether `x AND NOT x` is satisfiable — false by inspection — the model
 
 # What goes in one request
 
-## 2. Keep one subject per request, and ask as many questions as you like
+## 2. Batch questions freely, and let each one name its subject
 
-Questions about the same subject cost about 90 input tokens each and lose no accuracy. Several subjects in one request lose a great deal.
+Questions about the same subject cost about 90 input tokens each and lose no accuracy. Several subjects can share a request too, as long as each question names its subject instead of its position.
 
 **Do** — Put every question about one subject in one request
 
@@ -130,47 +130,51 @@ Questions about the same subject cost about 90 input tokens each and lose no acc
   }
 }
 
-# many subjects: this same request, once per subject
+# 0.9777 batched against 0.9780 one per request, over 3,000 paired
+# questions, and each extra question adds about 90 input tokens
 ```
 
-**Don't** — Carry several subjects in one request, numbered to match
+**Don't** — Point at a subject by its position in a list
 
 ```json
 {
-  "model": "jev-latest",
-  "state": {
-    "tickets": [
-      "…ticket 1…",
-      "…ticket 2…",
-      "…ticket 60…"
-    ]
-  },
+  "state": {"tickets": ["…ticket 1…", "…ticket 2…", "…ticket 60…"]},
   "questions": {
-    "t001": {
-      "type": "choice",
-      "instructions": "Ticket 1: which department?",
-      "criteria": {
-        "billing": "Payment and invoices",
-        "shipping": "Delivery"
-      }
-    },
-    "t002": {
-      "type": "choice",
-      "instructions": "Ticket 2: which department?",
-      "criteria": {
-        "billing": "Payment and invoices",
-        "shipping": "Delivery"
-      }
-    }
+    "t001": {"type": "choice", "instructions": "Ticket 1: which department?"},
+    "t060": {"type": "choice", "instructions": "Ticket 60: which department?"}
   }
 }
+// 0.420 over 300 judgements, and it decays down the list:
+// 0.870 over the first third, 0.240 the second, 0.150 the last
+```
+
+**Do** — Identify each subject by one of its own fields
+
+```json
+{
+  "state": {"tickets": ["…ticket 1…", "…ticket 2…", "…ticket 60…"]},
+  "questions": {
+    "t001": {"type": "choice",
+             "instructions": "The ticket from Ingrid Iqbal, received 2026-04-04: which department?"}
+  }
+}
+// 1.000 over the same 300 judgements, in 5 requests rather than 300.
+// Pick a field that identifies without answering: the sender and date
+// contain no department keyword, where the subject line names the right
+// department on 57 of 60 tickets and would be scoring your own code.
 ```
 
 Asking the same questions batched and one per request agreed on **3,000 paired questions**: 0.9777 batched against 0.9780 individually. Position does not matter either — the target question scored 0.803 at position 1 and 0.810 at position 255, 300 problems per position.
 
 That is not a ceiling effect hiding a loss: 1,800 of the paired questions concern unrelated facts and sit at 1.000 in both arms, but the 1,200 about related facts sit at 0.944 batched and 0.945 individually, where a loss had room to show and none did. The saving is in tokens. Sixty questions about one state, measured live: **60 requests and 160,310 input tokens** against **1 request and 7,972**, because the state is sent once instead of sixty times. Above a fixed cost per request, each further question adds about 90 input tokens.
 
-> Numbering the questions to match a list of subjects looks like the same saving and is not. Sixty tickets in one state scored **0.367** against **1.000** for the same tickets one per request, and it saves only 1.7 times the tokens rather than 20, because the whole list is sent whatever you ask. Every question is answered from the entire state, and the model does not reliably bind question *n* to item *n*.
+Several subjects in one request is a separate question, and the answer turns entirely on how a question picks its subject out. Sixty tickets in one state, five blocks of them, asked three ways. One ticket per request: **1.000** over 300 judgements, in 300 requests. The same sixty in one state with each question naming its ticket by position — `Ticket 1: which department?` — **0.420**. The same sixty, in a state identical byte for byte, with each question naming its ticket by sender and date instead: **1.000**, in 5 requests rather than 300.
+
+Only the wording that picks out the ticket differs between the last two, so that is what the loss was. The identifier is metadata — the sender's name, address and the date received contain no department keyword on any of the 300 tickets, checked before the run, so the question cannot be classifying the ticket on the model's behalf.
+
+> Numbering the questions to match a list of subjects is the one arrangement that fails, and it fails by losing its place. Accuracy over the numbered arm runs **0.870** across the first third of the list, 0.240 across the second and **0.150** across the last, against a chance rate of 0.125 over eight departments. By the end of a sixty-item list the position in the question no longer picks out anything. Naming the subject does not decay: 1.000 across all three thirds.
+>
+> Every question is still answered from the entire state, which is why the fix is to make the question identify its subject rather than to hope the model keeps count. Watch which field you pick: one that contains the answer turns the measurement into a test of your own code. Here the subject line would have done exactly that, naming the correct department on 57 of 60 tickets.
 
 *Produced by [3. Many questions at once](https://willkelly.github.io/jev-evaluation/runs/full-20260919/report.html#xE3) — [`e3_batching.py`](jeveval/experiments/e3_batching.py). Problems and their answers come from [`dyck.py`](jeveval/generators/dyck.py), [`filler.py`](jeveval/generators/filler.py), [`semantic.py`](jeveval/generators/semantic.py).*
 

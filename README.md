@@ -37,6 +37,12 @@ and finished 8× sooner than the same questions asked one per request, with
 identical answers. This is the result the plan expected to be its biggest
 surprise, and it produced none.
 
+Several subjects share a request just as well, provided each question names its
+subject rather than its position. Sixty tickets in one state scored **1.000**
+when each question named its ticket by sender and date, and **0.420** when it
+said "Ticket 1" — and that arm decays down the list, 0.870 over the first third
+to 0.150 over the last, against a chance rate of 0.125.
+
 **Confidence detects an unanswerable state, but not at one threshold.** Over
 34,200 answers it ranks correct above wrong at AUROC 0.878 — a figure inflated
 by pooling easy conditions with hard ones, and 0.699 measured inside a single

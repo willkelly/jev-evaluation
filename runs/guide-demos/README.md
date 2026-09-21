@@ -13,6 +13,7 @@ problems per condition unless the file says otherwise.
 | `ctx.json` | the state-size sweep across the documented 32k boundary, and a question-count sweep against the 64k per-request limit |
 | `cal.json` | one satisfiable and one unsatisfiable formula with the probability returned for each |
 | `encodings.json` | one program rendered as source, syntax tree and control-flow graph |
+| `ticket-binding.json` | how a question should point at one of many subjects sharing a request: by position against by sender, over five blocks of sixty tickets |
 
 They are kept so that every number in the guide traces to a file in this
 repository. `tools/verify_citations.py` checks exactly that, and fails if a
