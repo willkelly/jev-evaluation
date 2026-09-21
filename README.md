@@ -161,10 +161,25 @@ scoring bug in an experiment cannot reproduce itself in the check. Derived figur
 — a drift, a rate of decline — are rebuilt from the log only for the calibration
 experiment, which is the largest remaining gap against the plan.
 
-The raw logs are 1.3 GB and are not in this repository. The report, the figures,
-the per-experiment results and the live measurements the guide cites are. The
-written report is rebuilt from `tools/` by `build_report.py`, so a checkout can
-regenerate it without an API key; re-running the experiments regenerates the logs.
+The raw logs are 1.3 GB, which is too much for this repository, so they are
+published separately at **<https://jev-logs.wilk.dev>** — 133,696 records, one
+JSON object per call, compressed with zstd to 47 MB. That is every request,
+retry and failure of the run, each with the correct answer recorded beside it,
+so any number in the report can be recomputed from them rather than taken on
+trust. [`manifest.json`](https://jev-logs.wilk.dev/manifest.json) carries a
+sha256 and a record count for each file. They hold no credentials: the client
+never writes request headers, and every email address in them is a generated
+`.example` address.
+
+```sh
+curl -O https://jev-logs.wilk.dev/e2.jsonl.zst
+zstd -d e2.jsonl.zst
+```
+
+The report, the figures, the per-experiment results and the live measurements
+the guide cites are all in this repository. The written report is rebuilt from
+`tools/` by `build_report.py`, so a checkout can regenerate it without an API
+key; re-running the experiments regenerates the logs.
 
 ## What the endpoint actually accepts
 

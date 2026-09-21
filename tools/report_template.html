@@ -601,11 +601,14 @@
       — the harness, the plan, the nine experiments, the generators that make the problems and
       their answers, and the tests. The guide above is also
       <a href="https://github.com/willkelly/jev-evaluation/blob/main/PROMPTING.md">its own document</a>.</p>
-    <p><strong>Reproducing this.</strong> Every request, retry and failure is recorded in
-      <code>runs/full-20260919/*.jsonl</code>, each carrying its own correct answer. Per-experiment
-      results are in <code>*_result.json</code> and the figures in <code>plots/</code>. The master
-      seed is <code>20260919</code>; every problem can be regenerated from its generator,
-      difficulty, seed and index.</p>
+    <p><strong>The logs.</strong> Every request, retry and failure of this run is published at
+      <a href="https://jev-logs.wilk.dev">jev-logs.wilk.dev</a> — 133,696 records, one JSON object
+      per call, each carrying its own correct answer, compressed to 47&nbsp;MB. Every figure above
+      can be recomputed from them rather than taken on trust, and
+      <a href="https://jev-logs.wilk.dev/manifest.json">manifest.json</a> gives a checksum and a
+      record count for each file. Per-experiment results are in <code>*_result.json</code> and the
+      figures in <code>plots/</code>. The master seed is <code>20260919</code>; every problem can be
+      regenerated from its generator, difficulty, seed and index.</p>
     <p>Recomputing results from the recorded requests is only partly built. A separate tool
       rejoins any experiment's answers to their correct answers and recomputes accuracy and
       calibration independently of the experiment's own code. Derived figures, such as a drift or
