@@ -15,6 +15,12 @@ problems per condition unless the file says otherwise.
 | `encodings.json` | one program rendered as source, syntax tree and control-flow graph |
 | `ticket-binding.json` | how a question should point at one of many subjects sharing a request: by position against by sender, over five blocks of sixty tickets |
 
+`ticket-binding.jsonl` is the one raw call log kept here. The full run's logs
+are 1.3 GB and are excluded; this one is 1.4 MB, and keeping it means
+`tools/ticket_binding.py --score-only` can recompute that result from a
+checkout without an API key. It holds no credentials: the client never writes
+the request headers.
+
 They are kept so that every number in the guide traces to a file in this
 repository. `tools/verify_citations.py` checks exactly that, and fails if a
 figure in the prose cannot be matched to a value here or in the full run.
