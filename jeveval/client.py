@@ -259,6 +259,7 @@ class JevClient:
         self.input_tokens = 0
         self.output_tokens = 0
         self.model_versions: set[str] = set()
+        self.stale_reconnects = 0
         self.status_counts: dict[str, int] = {}
         self._started: float | None = None
 
@@ -273,9 +274,17 @@ class JevClient:
 
     # -- connection management -------------------------------------------
 
-    def _conn(self) -> http.client.HTTPConnection:
-        """One keep-alive connection per worker thread."""
+    # Errors that mean "the peer closed an idle keep-alive socket", as opposed
+    # to "the peer is overloaded". The two are indistinguishable at the status
+    # level -- both arrive as no status at all -- and conflating them is how a
+    # healthy server ends up being treated as a throttling one.
+    STALE_CONNECTION = (BrokenPipeError, ConnectionResetError,
+                        http.client.RemoteDisconnected, http.client.BadStatusLine)
+
+    def _conn(self) -> tuple[http.client.HTTPConnection, bool]:
+        """One keep-alive connection per worker thread, and whether it is new."""
         conn = getattr(self._local, "conn", None)
+        fresh = conn is None
         if conn is None:
             if self._https:
                 conn = http.client.HTTPSConnection(
@@ -286,7 +295,7 @@ class JevClient:
                     self._host, timeout=self.rate.request_timeout
                 )
             self._local.conn = conn
-        return conn
+        return conn, fresh
 
     def _drop_connection(self) -> None:
         conn = getattr(self._local, "conn", None)
@@ -301,23 +310,34 @@ class JevClient:
         self._drop_connection()
 
     def _post(self, body: bytes) -> tuple[int, bytes, dict]:
-        conn = self._conn()
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self._key}",
             "Accept": "application/json",
             "Content-Length": str(len(body)),
         }
-        try:
-            conn.request("POST", self._path, body=body, headers=headers)
-            resp = conn.getresponse()
-            data = resp.read()
-            return resp.status, data, dict(resp.getheaders())
-        except Exception:
-            # A dead keep-alive connection must not poison every later call on
-            # this thread, so drop it and let the retry build a fresh one.
-            self._drop_connection()
-            raise
+        # A server is free to close an idle keep-alive connection whenever it
+        # likes, and the client only finds out by writing to it. That is not an
+        # error worth reporting: reconnect and send again. Only a reused
+        # connection gets this second chance, so a genuinely unreachable server
+        # still fails on its first attempt instead of being retried twice.
+        for attempt in (1, 2):
+            conn, fresh = self._conn()
+            try:
+                conn.request("POST", self._path, body=body, headers=headers)
+                resp = conn.getresponse()
+                data = resp.read()
+                return resp.status, data, dict(resp.getheaders())
+            except Exception as exc:
+                # A dead connection must not poison every later call on this
+                # thread, so drop it and let the next attempt build a fresh one.
+                self._drop_connection()
+                if attempt == 1 and not fresh and isinstance(exc, self.STALE_CONNECTION):
+                    with self._counter_lock:
+                        self.stale_reconnects += 1
+                    continue
+                raise
+        raise AssertionError("unreachable")
 
     # -- one call ---------------------------------------------------------
 
@@ -394,7 +414,14 @@ class JevClient:
                 last_status = status
                 record["outcome"] = "retry"
                 self.log.write(record)
-                if status in (429, 503) or status is None:
+                # Back off for backpressure, not for a socket the peer closed.
+                # A timeout does mean the server is struggling, so it counts.
+                overloaded = status in (429, 503) or (
+                    status is None and transport_error is not None
+                    and not transport_error.startswith(
+                        tuple(e.__name__ for e in self.STALE_CONNECTION))
+                )
+                if overloaded:
                     self.limiter.on_throttle()
                 if attempt >= self.rate.max_retries:
                     break
